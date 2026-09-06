@@ -10,6 +10,9 @@ conteudo.py    Todo o texto do artigo: titulo, autores, resumo, palavras-chave,
                as 11 secoes, as 25 equacoes em LaTeX, as 5 tabelas, as chamadas
                das 15 figuras e as 18 referencias. E aqui que se edita o artigo.
 figuras.py     Gera as 15 figuras em PNG (400 dpi) e PDF na pasta figuras.
+atualizar_figuras_docx.py
+               Substitui no DOCX as 15 imagens regeneradas, preserva a largura,
+               recalcula a altura sem distorcao e inclui texto alternativo.
 omml_gen.py    Converte as equacoes LaTeX de conteudo.py em OMML, o formato de
                equacao nativo do Word, usando o pandoc.
 build_docx.py  Monta o .docx sobre o template-a4.docx, preservando os estilos do
@@ -25,6 +28,11 @@ Ordem de execucao
     python3 build_docx.py
     soffice --headless --convert-to pdf artigo-perdas-semicondutores-trafo-af.docx
     python3 check_pdf.py artigo-perdas-semicondutores-trafo-af.pdf
+
+Se apenas as figuras forem alteradas, sem mudanca de texto ou equacoes:
+    python3 figuras.py
+    python3 atualizar_figuras_docx.py
+    soffice --headless --convert-to pdf artigo-perdas-semicondutores-trafo-af.docx
 
 Dependencias: python3 com matplotlib e numpy, pandoc, libreoffice-writer e
 libreoffice-math. Os scripts esperam encontrar o template-a4.docx descompactado

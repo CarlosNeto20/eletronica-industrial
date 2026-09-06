@@ -7,7 +7,9 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle, Polygon
 
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "figuras")
+SRC = os.path.dirname(os.path.abspath(__file__))
+ARTIGO = os.path.dirname(SRC)
+OUT = os.path.join(ARTIGO, "figuras")
 os.makedirs(OUT, exist_ok=True)
 
 plt.rcParams.update({
@@ -30,6 +32,8 @@ plt.rcParams.update({
     "savefig.dpi": 400,
     "savefig.bbox": "tight",
     "savefig.pad_inches": 0.02,
+    "pdf.fonttype": 42,
+    "ps.fonttype": 42,
 })
 
 K = "#1a1a1a"
@@ -67,6 +71,28 @@ def axes_cross(ax, xlab, ylab, xlab_off=(0, 0), ylab_off=(0, 0)):
     ax.text(0 + (x1 - x0) * 0.012 + ylab_off[0], y1 + ylab_off[1], ylab,
             fontsize=8, ha="left", va="top")
     ax.set_xticks([]); ax.set_yticks([])
+
+
+def angle_arc(ax, origin, point, radius_pt=13, label=r"$\alpha$",
+              color=G1, lw=0.7):
+    """Desenha um arco circular em coordenadas de tela, sem distorcao pelos eixos."""
+    fig = ax.figure
+    fig.canvas.draw()
+    tr = ax.transData
+    inv = tr.inverted()
+    c = tr.transform(origin)
+    q = tr.transform(point)
+    theta = math.atan2(q[1] - c[1], q[0] - c[0])
+    radius_px = radius_pt * fig.dpi / 72.0
+    ang = np.linspace(0.0, theta, 80)
+    pts = np.column_stack((c[0] + radius_px * np.cos(ang),
+                           c[1] + radius_px * np.sin(ang)))
+    xy = inv.transform(pts)
+    ax.plot(xy[:, 0], xy[:, 1], color=color, lw=lw, solid_capstyle="round")
+    mid = 0.58 * theta
+    lab_px = c + 1.38 * radius_px * np.array([math.cos(mid), math.sin(mid)])
+    lab_xy = inv.transform(lab_px)
+    ax.text(lab_xy[0], lab_xy[1], label, fontsize=7.5, ha="center", va="center")
 
 
 # ---------------------------------------------------------------- Fig. 1
@@ -119,15 +145,12 @@ def fig01():
     b.plot([vF], [iF], "o", ms=2.8, color=K)
     b.text(-0.07, iF, r"$I_F$", ha="right", va="center", fontsize=7.5)
     b.text(vF, -0.48, r"$V_F$", ha="center", va="top", fontsize=7.5)
-    th = np.linspace(0, math.atan2(1 / rT, 1.0), 50)
-    Rr = 0.30
-    b.plot(VTO + Rr * np.cos(th), 2.30 * Rr * np.sin(th), lw=0.6, color=G1)
-    b.text(VTO + 0.14, 0.72, r"$\alpha$", fontsize=7.5)
-    b.annotate(r"$r_T = 1/\tan\alpha$", xy=(VTO + 0.30, 0.42),
-               xytext=(1.12, 1.05), fontsize=7.5, color=K, ha="left",
+    b.annotate(r"$r_T=1/\tan\alpha$", xy=(1.10, (1.10 - VTO) / rT),
+               xytext=(1.36, 1.05), fontsize=7.5, color=K, ha="left",
                arrowprops=dict(arrowstyle="->", lw=0.6, color=K))
     b.set_title("(b)", y=-0.15, fontsize=8)
     fig.subplots_adjust(wspace=0.20)
+    angle_arc(b, (VTO, 0), (VTO + 0.45, 0.45 / rT))
     save(fig, "fig01-diodo-caracteristica")
 
 
@@ -135,8 +158,10 @@ def fig01():
 def fig02():
     fig, (a, b) = plt.subplots(2, 1, figsize=(COL1, 2.6), sharex=True,
                                gridspec_kw=dict(height_ratios=[1.3, 1.0], hspace=0.20))
-    t0, t1, t2, t3, tend = 0.0, 1.0, 1.9, 2.75, 4.2
+    t0, t2, t3, tend = 0.0, 1.9, 2.75, 4.2
     IF, IRR = 1.0, -0.78
+    # t1 e o cruzamento por zero da rampa de corrente.
+    t1 = t2 * IF / (IF - IRR)
     t = np.linspace(-0.9, tend, 1600)
     i = np.piecewise(
         t, [t < t0, (t >= t0) & (t < t2), t >= t2],
@@ -146,13 +171,16 @@ def fig02():
     a.axhline(0, color=K, lw=0.6)
     msk = t >= t1
     a.fill_between(t[msk], 0, np.minimum(i[msk], 0), color=FILL, lw=0)
-    a.text(2.30, -0.30, r"$Q_{rr}$", fontsize=8, ha="center")
+    # Rotulo no interior livre da area, afastado da curva de recuperacao.
+    a.text(1.55, -0.23, r"$Q_{rr}$", fontsize=8, ha="center", va="center",
+           zorder=5)
     a.annotate("", xy=(t1, 0.34), xytext=(t3, 0.34),
                arrowprops=dict(arrowstyle="<->", lw=0.7, color=K))
     a.text((t1 + t3) / 2, 0.44, r"$t_{rr}$", ha="center", fontsize=8)
     for tt, lab in ((t1, r"$t_1$"), (t2, r"$t_2$"), (t3, r"$t_3$")):
         a.plot([tt, tt], [0, -0.07], color=K, lw=0.6)
-        a.text(tt, 0.07, lab, ha="center", fontsize=7.5)
+        a.text(tt, 0.08, lab, ha="center", va="bottom", fontsize=7.5,
+               zorder=6, bbox=dict(facecolor="white", edgecolor="none", pad=0.35))
     a.plot([-0.9, t0], [IF, IF], color=K)
     a.text(-0.85, IF + 0.12, r"$I_F$", fontsize=7.5)
     a.plot([t2, tend], [IRR, IRR], ls=":", lw=0.6, color=G1)
@@ -183,7 +211,7 @@ def fig02():
 
 # ---------------------------------------------------------------- Fig. 3
 def fig03():
-    fig, axs = plt.subplots(2, 2, figsize=(COL2, 2.75), sharex="col",
+    fig, axs = plt.subplots(2, 2, figsize=(COL2, 2.70), sharex="col",
                             gridspec_kw=dict(height_ratios=[1, 0.75], hspace=0.20,
                                              wspace=0.20))
     t = np.linspace(0, 1, 600)
@@ -194,7 +222,7 @@ def fig03():
     axs[0, 0].text(0.88, 0.80, r"$i$", fontsize=8.5, color=G1)
     axs[1, 0].plot(t, v * i, color=K)
     axs[1, 0].fill_between(t, 0, v * i, color=FILL, lw=0)
-    axs[1, 0].text(0.5, 0.075, r"$E=\dfrac{1}{6}\,V I\,t_r$", ha="center",
+    axs[1, 0].text(0.5, 0.11, r"$E=\dfrac{1}{6}\,V I\,t_r$", ha="center",
                    fontsize=8)
     axs[0, 0].set_title("(a) carga resistiva", fontsize=8)
 
@@ -206,21 +234,29 @@ def fig03():
     axs[0, 1].text(0.30, 0.42, r"$i$", fontsize=8.5, color=G1)
     axs[1, 1].plot(t, v2 * i2, color=K)
     axs[1, 1].fill_between(t, 0, v2 * i2, color=FILL, lw=0)
-    axs[1, 1].text(0.5, 0.075, r"$E=\dfrac{1}{2}\,V I\,t_r$", ha="center",
+    axs[1, 1].text(0.5, 0.11, r"$E=\dfrac{1}{2}\,V I\,t_r$", ha="center",
                    fontsize=8)
     axs[0, 1].set_title("(b) carga indutiva grampeada", fontsize=8)
 
     for r in range(2):
         for c in range(2):
             ax = axs[r, c]
-            ax.set_xlim(-0.02, 1.02); ax.set_xticks([]); ax.set_yticks([])
+            ax.set_xlim(-0.02, 1.02)
             clean(ax, ("top", "right"))
     for c in range(2):
         axs[0, c].set_ylim(-0.05, 1.15)
-        axs[1, c].set_ylim(-0.02, 0.72)
-        axs[1, c].set_xlabel(r"intervalo de transição $t_r$", fontsize=7.5)
-    axs[0, 0].set_ylabel(r"$v,\ i$", fontsize=8)
-    axs[1, 0].set_ylabel(r"$p = v\,i$", fontsize=8)
+        axs[0, c].set_yticks([0, 1])
+        axs[0, c].set_yticklabels(["0", "1"])
+        axs[1, c].set_ylim(-0.04, 1.08)
+        axs[1, c].set_xticks([0, 0.5, 1.0])
+        axs[1, c].set_xticklabels(["0", "0,5", "1"])
+        axs[1, c].set_xlabel(r"tempo normalizado  $t/t_r$", fontsize=7.5)
+    axs[1, 0].set_yticks([0, 0.25, 1.0])
+    axs[1, 0].set_yticklabels(["0", "0,25", "1"])
+    axs[1, 1].set_yticks([0, 0.5, 1.0])
+    axs[1, 1].set_yticklabels(["0", "0,5", "1"])
+    axs[0, 0].set_ylabel(r"$v/V,\ i/I$", fontsize=8)
+    axs[1, 0].set_ylabel(r"$p/(VI)$", fontsize=8)
     save(fig, "fig03-modelos-comutacao")
 
 
@@ -239,20 +275,26 @@ def fig04():
         vv = VH + (VBO - VH) * np.exp(-(ii - iBO) / i0)
         ax.plot(vv, ii, color=color, lw=lw, ls=ls)
 
-    for VBO, col in ((1.10, K), (0.70, G1), (0.38, G2)):
-        scr_curve(a, VBO, col)
+    gate_cases = ((1.10, K, "-", "o", r"$I_{G1}$", (1.08, 0.95)),
+                  (0.70, G1, "--", "s", r"$I_{G2}$", (0.68, 1.45)),
+                  (0.38, G1, ":", "^", r"$I_{G3}$", (0.30, 1.95)))
+    for VBO, col, ls, _, _, _ in gate_cases:
+        scr_curve(a, VBO, col, lw=1.20, ls=ls)
     a.plot(np.linspace(-1.15, 0, 100), -0.03 * np.ones(100), color=K, lw=1.15)
     a.plot([-1.15, -1.15], [-0.03, -2.3], color=K, lw=1.15)
     a.plot([-1.15, -1.27], [-2.3, -2.45], color=K, lw=1.15)
     a.set_xlim(-1.65, 1.55); a.set_ylim(-2.9, 3.9)
     axes_cross(a, r"$V_{AK}$", r"$i_A$", xlab_off=(-0.02, 0.12))
-    a.plot([1.10], [0.055], "o", ms=2.6, color=K)
-    a.text(1.14, 0.16, r"$V_{BO}$", fontsize=7.5, ha="left")
+    for VBO, col, _, marker, lab, pos in gate_cases:
+        a.plot([VBO], [0.055], marker=marker, ms=2.5, color=col, zorder=4)
+        a.annotate(lab, xy=(VBO, 0.055), xytext=pos, fontsize=7.1,
+                   color=col, ha="center", va="center",
+                   arrowprops=dict(arrowstyle="->", lw=0.55, color=col,
+                                   shrinkA=1.5, shrinkB=2.5))
+    a.text(1.10, -0.20, r"$V_{BO}$", fontsize=7.5, ha="center", va="top")
     a.text(-1.62, -2.62, r"$-V_{RRM}$", fontsize=7.5, ha="left")
-    a.annotate(r"$I_G$ crescente", xy=(0.30, 0.90), xytext=(-1.60, 2.30),
-               fontsize=7.2, color=G1, ha="left",
-               arrowprops=dict(arrowstyle="->", lw=0.6, color=G1,
-                               connectionstyle="arc3,rad=0.15"))
+    a.text(-1.60, 2.35, r"$I_{G1}<I_{G2}<I_{G3}$", fontsize=7.1,
+           color=K, ha="left")
     a.annotate("estado\nconduzindo", xy=(0.22, 2.55), xytext=(0.62, 2.95),
                fontsize=7.2, color=G1, ha="left",
                arrowprops=dict(arrowstyle="->", lw=0.6, color=G1))
@@ -343,13 +385,19 @@ def fig05():
     ax.set_xlim(0, 170); ax.set_ylim(0, 30); ax2.set_ylim(0, 6.0)
     ax.grid(True, ls=":", color=G2)
     ax.plot([0], [24.64], "o", ms=3.2, color=K)
-    ax.annotate("caso dimensionante\n24,64 W", xy=(0, 24.64), xytext=(26, 24.0),
-                fontsize=6.8, color=K, va="center",
-                arrowprops=dict(arrowstyle="->", lw=0.6, color=K))
+    ax.annotate("máxima dissipação  ($\\alpha=0^\\circ$)\n24,64 W",
+                xy=(0, 24.64), xytext=(16, 29.0),
+                fontsize=6.8, color=K, ha="left", va="top", zorder=6,
+                bbox=dict(facecolor="white", edgecolor="none", pad=0.45),
+                arrowprops=dict(arrowstyle="->", lw=0.6, color=K,
+                                shrinkA=2.0, shrinkB=2.0))
     ax.plot([90], [12.32], "o", ms=3.2, color=K)
-    ax.annotate("exemplo do texto\n12,32 W", xy=(90, 12.32), xytext=(98, 16.5),
-                fontsize=6.8, color=K,
-                arrowprops=dict(arrowstyle="->", lw=0.6, color=K))
+    ax.annotate(r"$\alpha=90^\circ$  (exemplo)" "\n12,32 W",
+                xy=(90, 12.32), xytext=(99, 17.3),
+                fontsize=6.8, color=K, zorder=6,
+                bbox=dict(facecolor="white", edgecolor="none", pad=0.45),
+                arrowprops=dict(arrowstyle="->", lw=0.6, color=K,
+                                shrinkA=2.0, shrinkB=2.0))
     ax.legend(handles=[l1, l2], frameon=False, loc="lower left",
               bbox_to_anchor=(0.01, 0.01), handlelength=1.8)
     clean(ax, ("top",)); clean(ax2, ("top",))
@@ -358,7 +406,7 @@ def fig05():
 
 # ---------------------------------------------------------------- Fig. 6
 def fig06():
-    fig, axs = plt.subplots(4, 1, figsize=(COL1, 3.55), sharex=True,
+    fig, axs = plt.subplots(4, 1, figsize=(COL1, 3.70), sharex=True,
                             gridspec_kw=dict(hspace=0.16))
     ts = [0, 0.9, 1.7, 3.1, 3.9, 6.3, 7.1, 8.5, 9.4]
     xmax = 10.6
@@ -381,31 +429,39 @@ def fig06():
     for ax, y, lab in ((axs[0], vgs, r"$v_{GS}$"), (axs[1], idd, r"$i_D$"),
                        (axs[2], vds, r"$v_{DS}$"), (axs[3], ig, r"$i_G$")):
         ax.plot(t, y, color=K)
-        ax.set_ylabel(lab, rotation=0, labelpad=12, fontsize=8, va="center")
-        ax.set_xlim(0, xmax); ax.set_yticks([]); ax.set_xticks([])
+        ax.set_ylabel(lab, rotation=0, labelpad=14, fontsize=8, va="center")
+        ax.set_xlim(0, xmax); ax.set_xticks([])
         clean(ax, ("top", "right"))
         for tt in ts[1:]:
             ax.axvline(tt, color=G2, lw=0.35, ls=":")
     axs[3].axhline(0, color=K, lw=0.6)
     axs[3].set_ylim(-1.6, 1.6)
+    axs[3].set_yticks([-1, 0, 1])
+    axs[3].set_yticklabels([r"$-I_G$", "0", r"$+I_G$"])
     axs[0].set_ylim(-0.05, 1.55)
     axs[0].axhline(VMIL, color=G2, lw=0.5, ls="--")
     axs[0].axhline(VTH, color=G2, lw=0.5, ls=":")
-    axs[0].text(xmax * 0.99, VMIL + 0.05, "patamar de Miller", fontsize=6.5,
-                color=G1, ha="right")
-    axs[0].text(xmax * 0.99, VTH - 0.20, r"$V_{GS(th)}$", fontsize=6.8,
-                color=G1, ha="right")
+    axs[0].set_yticks([0, VTH, VMIL, VFULL])
+    axs[0].set_yticklabels(["0", r"$V_{GS(th)}$", r"$V_{GP}$", r"$V_G$"])
+    axs[0].text(xmax * 0.99, VMIL + 0.09, "patamar de Miller", fontsize=7.0,
+                color=G1, ha="right",
+                bbox=dict(facecolor="white", edgecolor="none", pad=0.25))
     axs[1].set_ylim(-0.08, 1.42)
+    axs[1].set_yticks([0, 1])
+    axs[1].set_yticklabels(["0", r"$I_D$"])
     axs[2].set_ylim(-0.08, 1.30)
-    for i, tt in enumerate(ts):
-        axs[3].text(tt, -2.05, r"$t_%d$" % i, ha="center", fontsize=6.8)
+    axs[2].set_yticks([0.06, 1.0])
+    axs[2].set_yticklabels([r"$V_{DS(on)}$", r"$V_{DC}$"])
+    axs[3].set_xticks(ts)
+    axs[3].set_xticklabels([r"$t_%d$" % i for i in range(len(ts))], fontsize=7.0)
+    axs[3].tick_params(axis="x", length=2, pad=1)
     axs[1].annotate("", xy=(ts[1], 1.22), xytext=(ts[2], 1.22),
                     arrowprops=dict(arrowstyle="<->", lw=0.6, color=K))
-    axs[1].text((ts[1] + ts[2]) / 2, 1.27, r"$t_r$", ha="center", fontsize=7)
+    axs[1].text((ts[1] + ts[2]) / 2, 1.27, r"$t_r$", ha="center", fontsize=7.2)
     axs[1].annotate("", xy=(ts[7], 1.22), xytext=(ts[8], 1.22),
                     arrowprops=dict(arrowstyle="<->", lw=0.6, color=K))
-    axs[1].text((ts[7] + ts[8]) / 2, 1.27, r"$t_f$", ha="center", fontsize=7)
-    axs[3].text(xmax, -2.05, r"$t$", fontsize=8, ha="right")
+    axs[1].text((ts[7] + ts[8]) / 2, 1.27, r"$t_f$", ha="center", fontsize=7.2)
+    axs[3].set_xlabel(r"tempo  $t$", fontsize=8, labelpad=1)
     save(fig, "fig06-mosfet-comutacao")
 
 
@@ -429,9 +485,12 @@ def fig07():
     ax.set_xlabel(r"frequência de comutação  $f_s$  (kHz)")
     ax.set_ylabel("perda total no dispositivo  (W)")
     ax.set_xlim(5, 320); ax.set_ylim(2, 400)
-    ax.grid(True, which="both", ls=":", color=G2, alpha=0.5)
+    ax.grid(True, which="major", ls=":", color=G2, alpha=0.55)
     ax.legend(frameon=False, loc="upper left", handlelength=2.0)
-    ax.text(5.6, 2.35, "patamares de condução", fontsize=6.4, color=G1)
+    ax.annotate("patamares de condução", xy=(205, d_c), xytext=(145, 4.0),
+                fontsize=6.8, color=G1, ha="center",
+                bbox=dict(facecolor="white", edgecolor="none", pad=0.30),
+                arrowprops=dict(arrowstyle="->", lw=0.5, color=G1))
     clean(ax)
     save(fig, "fig07-perda-vs-frequencia")
 
@@ -509,6 +568,7 @@ def fig09():
     a.axvline(Icr, color=G2, lw=0.6, ls=":")
     a.annotate(r"$I_{cruz}=13{,}2$ A", xy=(Icr, Pcr), xytext=(16.0, 13.5),
                fontsize=7, ha="left",
+               bbox=dict(facecolor="white", edgecolor="none", pad=0.30),
                arrowprops=dict(arrowstyle="->", lw=0.6, color=K))
     a.set_xlabel(r"corrente comutada  $I$  (A)")
     a.set_ylabel("perda total  (W)")
@@ -516,8 +576,6 @@ def fig09():
     a.grid(True, ls=":", color=G2)
     a.legend(frameon=False, loc="upper left", handlelength=1.9,
              bbox_to_anchor=(-0.01, 0.86))
-    a.text(1.6, 3.5, "MOSFET vence", fontsize=6.6, color=G1)
-    a.text(19.0, 3.5, "IGBT vence", fontsize=6.6, color=G1)
     a.set_title(r"(a)  $V=400$ V,  $f_s=20$ kHz", fontsize=8)
     clean(a)
 
@@ -542,30 +600,30 @@ def fig09():
 
 # ---------------------------------------------------------------- Fig. 10
 def fig10():
-    def up(H, sh):
-        return np.tanh((H - sh) / 0.40)
-
-    fig, (a, b) = plt.subplots(1, 2, figsize=(COL2, 2.25), sharey=True)
+    fig, (a, b) = plt.subplots(1, 2, figsize=(COL2, 2.25))
 
     # (a) Forward: laco unipolar no primeiro quadrante
-    Hu = np.linspace(0.05, 1.45, 300)
-    up_b = 0.30 + 0.70 * np.tanh((Hu - 0.75) / 0.34)
-    dn_b = 0.30 + 0.70 * np.tanh((Hu - 0.45) / 0.34)
+    Hu = np.linspace(0.08, 1.48, 300)
+    up_b = 0.57 + 0.41 * np.tanh((Hu - 0.78) / 0.30)
+    dn_b = 0.57 + 0.41 * np.tanh((Hu - 0.43) / 0.30)
     a.plot(Hu, up_b, color=K); a.plot(Hu, dn_b, color=K)
     a.plot([Hu[0], Hu[0]], [up_b[0], dn_b[0]], color=K)
     a.plot([Hu[-1], Hu[-1]], [up_b[-1], dn_b[-1]], color=K)
     a.fill_between(Hu, up_b, dn_b, color=FILL, alpha=0.7, lw=0)
-    Bmin, Bmax = dn_b[0], up_b[-1]
-    a.set_xlim(-0.75, 1.85); a.set_ylim(-1.25, 1.25)
+    Bmin, Bmax = min(up_b[0], dn_b[0]), max(up_b[-1], dn_b[-1])
+    a.set_xlim(-0.58, 1.88); a.set_ylim(-0.14, 1.18)
     axes_cross(a, r"$H$", r"$B$", xlab_off=(-0.02, 0.06))
-    a.annotate("", xy=(-0.30, Bmax), xytext=(-0.30, Bmin),
+    a.annotate("", xy=(-0.26, Bmax), xytext=(-0.26, Bmin),
                arrowprops=dict(arrowstyle="<->", lw=0.8, color=K))
-    a.plot([-0.30, Hu[-1]], [Bmax, Bmax], ls=":", lw=0.5, color=G1)
-    a.plot([-0.30, Hu[0]], [Bmin, Bmin], ls=":", lw=0.5, color=G1)
-    a.text(-0.38, (Bmin + Bmax) / 2, r"$\Delta B$", ha="right", va="center",
+    a.plot([-0.26, Hu[-1]], [Bmax, Bmax], ls=":", lw=0.5, color=G1)
+    a.plot([-0.26, Hu[0]], [Bmin, Bmin], ls=":", lw=0.5, color=G1)
+    a.text(-0.34, (Bmin + Bmax) / 2, r"$\Delta B$", ha="right", va="center",
            fontsize=8)
-    a.text(0.95, -0.55, "apenas o 1.º\nquadrante", fontsize=6.8, color=G1,
-           ha="center")
+    a.text(1.55, Bmax, r"$B_{max}$", fontsize=7, va="center", ha="left")
+    a.text(0.17, Bmin - 0.015, r"$B_{min}>0$", fontsize=7, va="top", ha="left",
+           bbox=dict(facecolor="white", edgecolor="none", pad=0.20))
+    a.text(1.05, 0.20, "ciclo unipolar\nno 1.º quadrante", fontsize=6.8,
+           color=G1, ha="center")
     a.set_title("(a) Forward: assimétrico", fontsize=7.8)
 
     # (b) simetrico
@@ -581,7 +639,8 @@ def fig10():
                arrowprops=dict(arrowstyle="<->", lw=0.8, color=K))
     b.plot([-1.30, 1.55], [Bp, Bp], ls=":", lw=0.5, color=G1)
     b.plot([-1.30, -1.55], [-Bp, -Bp], ls=":", lw=0.5, color=G1)
-    b.text(-1.40, 0, r"$\Delta B$", ha="right", va="center", fontsize=8)
+    b.text(-1.40, 0.15, r"$\Delta B=2B_{ac}$", ha="right", va="center",
+           fontsize=8, bbox=dict(facecolor="white", edgecolor="none", pad=0.25))
     b.text(1.62, Bp, r"$+B_{ac}$", fontsize=7, va="center")
     b.text(-1.62, -Bp, r"$-B_{ac}$", fontsize=7, va="center", ha="right")
     b.set_title("(b) Ponte completa: simétrico", fontsize=7.8)
@@ -597,9 +656,13 @@ def fig11():
 
     fig, ax = plt.subplots(figsize=(COL1, 2.15))
     ax.plot(f / 1e3, 2 * eps, color=K, label=r"$D_{max}=2\varepsilon$")
+    label_factor = {20: 1.18, 24: 1.18, 26: 0.84, 30: 0.82}
     for g, d in awg.items():
         ax.axhline(d, color=G2, lw=0.45, ls=":")
-        ax.text(1.15e-2, d * 1.06, f"{g} AWG", fontsize=6.3, color=G1)
+        factor = label_factor[g]
+        ax.text(1.15e-2, d * factor, f"{g} AWG", fontsize=6.6, color=G1,
+                va="bottom" if factor > 1 else "top",
+                bbox=dict(facecolor="white", edgecolor="none", pad=0.20))
     ax.axvline(100, color=K, lw=0.6, ls="--")
     ax.plot([100], [0.4187], "o", ms=3.4, color=K)
     ax.annotate("100 kHz:  0,419 mm\n(26 AWG)", xy=(100, 0.4187),
@@ -617,8 +680,8 @@ def fig11():
 
 # ---------------------------------------------------------------- Fig. 12
 def fig12():
-    fig = plt.figure(figsize=(COL2, 2.85))
-    gs = fig.add_gridspec(4, 2, width_ratios=[1.85, 1.0], hspace=0.18, wspace=0.12)
+    fig = plt.figure(figsize=(COL2, 2.64))
+    gs = fig.add_gridspec(4, 2, width_ratios=[1.85, 1.0], hspace=0.18, wspace=0.16)
     ax = fig.add_subplot(gs[:, 0])
     ax.set_xlim(0.3, 21.4); ax.set_ylim(0.4, 14.4); ax.axis("off")
     LW = 0.95
@@ -739,27 +802,40 @@ def fig12():
     ip = np.where(np.abs(vp) > 0.5, np.sign(vp), 0.0)
     isec = np.where(np.abs(vp) > 0.5, 1.0, 0.0)
 
-    for r, (y, lab, yl) in enumerate((
-            (vp, r"$v_p$", (-1.55, 1.60)),
-            (Bv / np.abs(Bv).max(), r"$B$", (-1.55, 1.55)),
-            (ip, r"$i_p$", (-1.55, 1.55)),
-            (isec, r"$i_s$", (-0.45, 1.55)))):
+    waveforms = (
+        (vp, r"$v_p$", (-1.55, 1.60), [-1, 0, 1],
+         [r"$-V_{in}$", "0", r"$+V_{in}$"]),
+        (Bv / np.abs(Bv).max(), r"$B$", (-1.55, 1.55), [-1, 0, 1],
+         [r"$-B_{ac}$", "0", r"$+B_{ac}$"]),
+        (ip, r"$i_p$", (-1.55, 1.55), [-1, 0, 1],
+         [r"$-I_p$", "0", r"$+I_p$"]),
+        (isec, r"$i_s$", (-0.35, 1.55), [0, 1], ["0", r"$I_s$"]),
+    )
+    for r, (y, lab, yl, yticks, ylabels) in enumerate(waveforms):
         axw = fig.add_subplot(gs[r, 1])
         axw.plot(t, y, color=K, lw=1.1)
         axw.axhline(0, color=G2, lw=0.5)
-        axw.set_ylabel(lab, rotation=0, labelpad=10, fontsize=8, va="center")
+        axw.set_ylabel(lab, rotation=0, labelpad=12, fontsize=8, va="center")
         axw.set_xlim(0, 2); axw.set_ylim(*yl)
-        axw.set_xticks([]); axw.set_yticks([])
-        clean(axw, ("top", "right", "bottom", "left"))
+        axw.set_yticks(yticks); axw.set_yticklabels(ylabels, fontsize=6.7, color=G1)
+        axw.tick_params(axis="y", length=0, pad=2)
+        axw.set_xticks([])
+        clean(axw, ("top", "right", "bottom"))
+        axw.spines["left"].set_color(G2)
+        axw.spines["left"].set_linewidth(0.5)
         for kk in (0.5, 1.0, 1.5):
             axw.axvline(kk, color=G2, lw=0.35, ls=":")
         if r == 0:
             axw.annotate("", xy=(0, 1.32), xytext=(D, 1.32),
                          arrowprops=dict(arrowstyle="<->", lw=0.6, color=K))
-            axw.text(D / 2 + 0.02, 1.36, r"$DT$", ha="center", fontsize=6.8)
+            axw.text(D / 2 + 0.02, 1.36, r"$DT$", ha="center", fontsize=7.0)
         if r == 3:
-            axw.text(1.0, -0.37, r"$T = 10\ \mu$s", ha="center", fontsize=6.8,
-                     color=G1)
+            axw.spines["bottom"].set_visible(True)
+            axw.spines["bottom"].set_color(G2)
+            axw.set_xticks([0, 0.5, 1.0, 1.5, 2.0])
+            axw.set_xticklabels(["0", r"$T/2$", r"$T$", r"$3T/2$", r"$2T$"])
+            axw.tick_params(axis="x", length=2, pad=1, labelsize=6.7)
+            axw.set_xlabel(r"tempo  $t$   ($T=10\ \mu$s)", fontsize=7.0, labelpad=1)
     save(fig, "fig12-full-bridge")
 
 
@@ -810,8 +886,11 @@ def fig13():
     b.axhline(0.40, color=K, lw=0.8, ls="-.")
     b.fill_between(B, 0.40, Ku, where=Ku > 0.40, color=FILL, alpha=0.75, lw=0)
     b.axvline(70, color=K, lw=0.7, ls="--")
-    b.text(43.5, 0.500, "não cabe\nna janela", fontsize=6.8, color=G1,
-           ha="left")
+    b.annotate("região inviável:\nnão cabe na janela", xy=(48, 0.50),
+               xytext=(40.5, 0.695), fontsize=6.8, color=G1,
+               ha="left", va="top",
+               bbox=dict(facecolor="white", edgecolor="none", pad=0.35),
+               arrowprops=dict(arrowstyle="->", lw=0.55, color=G1))
     b.text(107, 0.425, r"limite  $K_u=0{,}40$", fontsize=6.8, color=G1,
            ha="right")
     b.plot([70], [0.3574], "o", ms=4.0, color=K, mfc="white", mew=1.0)
@@ -825,8 +904,8 @@ def fig13():
 
 # ---------------------------------------------------------------- Fig. 14
 def fig14():
-    fig, ax = plt.subplots(figsize=(COL1, 2.1))
-    ax.set_xlim(0, 13.2); ax.set_ylim(0, 8.6); ax.axis("off")
+    fig, ax = plt.subplots(figsize=(COL1, 2.25))
+    ax.set_xlim(0, 13.6); ax.set_ylim(0, 9.0); ax.axis("off")
     CORE = "#e0e0e0"
 
     # nucleo E-E em corte
@@ -841,39 +920,46 @@ def fig14():
     ax.add_patch(Rectangle((5.55, 1.85), 2.0, 3.90, facecolor=CORE,
                            edgecolor=K, lw=0.9))
     ax.text(6.55, 3.80, "perna\ncentral", ha="center", va="center",
-            fontsize=6.5, color=G1)
-    ax.text(1.07, 3.80, "núcleo", ha="center", va="center", fontsize=6.5,
+            fontsize=6.8, color=G1)
+    ax.text(1.07, 3.80, "núcleo", ha="center", va="center", fontsize=6.8,
             color=G1, rotation=90)
 
     # camadas na janela
     x = 1.95
-    for lab, w, hatch, fc in (("½ P", 0.72, "", "#ffffff"),
+    x_start = x
+    for lab, w, hatch, fc in ((r"$P/2$", 0.72, "", "#ffffff"),
                               ("S", 1.05, "///", "#bdbdbd"),
-                              ("½ P", 0.72, "", "#ffffff")):
+                              (r"$P/2$", 0.72, "", "#ffffff")):
         ax.add_patch(Rectangle((x, 2.10), w, 3.40, facecolor=fc, edgecolor=K,
                                lw=0.85, hatch=hatch))
         ax.text(x + w / 2, 3.80, lab, ha="center", va="center", fontsize=7.2)
         x += w + 0.22
-    ax.annotate("", xy=(1.95, 1.72), xytext=(x - 0.22, 1.72),
-                arrowprops=dict(arrowstyle="<->", lw=0.6, color=K))
-    ax.text((1.95 + x - 0.22) / 2, 7.05, "sequência intercalada", ha="center",
+    x_end = x - 0.22
+    ax.text((x_start + x_end) / 2, 7.20, "sequência intercalada", ha="center",
             fontsize=7.2)
-    ax.plot([(1.95 + x - 0.22) / 2, (1.95 + x - 0.22) / 2], [6.80, 5.60],
+    ax.plot([(x_start + x_end) / 2, (x_start + x_end) / 2], [6.95, 5.60],
             color=G2, lw=0.6)
 
+    # cota das tres camadas fora do nucleo, sem sobrepor a travessa inferior
+    ydim = 0.78
+    ax.plot([x_start, x_start], [1.00, ydim], color=G2, lw=0.5)
+    ax.plot([x_end, x_end], [1.00, ydim], color=G2, lw=0.5)
+    ax.annotate("", xy=(x_start, ydim), xytext=(x_end, ydim),
+                arrowprops=dict(arrowstyle="<->", lw=0.6, color=K))
+    ax.text((x_start + x_end) / 2, 0.05, "30 / 10 / 30 espiras",
+            fontsize=6.8, color=G1, ha="center", va="bottom")
+
     # legenda a direita, fora do nucleo
-    ax.add_patch(Rectangle((9.30, 4.95), 0.55, 0.42, facecolor="#ffffff",
+    ax.add_patch(Rectangle((9.30, 5.35), 0.55, 0.42, facecolor="#ffffff",
                            edgecolor=K, lw=0.85))
-    ax.text(10.05, 5.16, "primário", fontsize=7.2, va="center")
-    ax.text(9.30, 4.45, "60 espiras", fontsize=6.6, color=G1)
-    ax.text(9.30, 3.95, "3 fios 26 AWG", fontsize=6.6, color=G1)
-    ax.add_patch(Rectangle((9.30, 2.90), 0.55, 0.42, facecolor="#bdbdbd",
+    ax.text(10.05, 5.56, "primário", fontsize=7.2, va="center")
+    ax.text(9.30, 5.02, "60 espiras\n3 fios 26 AWG", fontsize=6.8, color=G1,
+            va="top", linespacing=1.15)
+    ax.add_patch(Rectangle((9.30, 3.25), 0.55, 0.42, facecolor="#bdbdbd",
                            edgecolor=K, lw=0.85, hatch="///"))
-    ax.text(10.05, 3.11, "secundário", fontsize=7.2, va="center")
-    ax.text(9.30, 2.40, "10 espiras", fontsize=6.6, color=G1)
-    ax.text(9.30, 1.90, "17 fios 26 AWG", fontsize=6.6, color=G1)
-    ax.text((1.95 + x - 0.22) / 2, 1.32, "30 / 10 / 30 espiras", fontsize=6.6,
-            color=G1, ha="center")
+    ax.text(10.05, 3.46, "secundário", fontsize=7.2, va="center")
+    ax.text(9.30, 2.92, "10 espiras\n17 fios 26 AWG", fontsize=6.8, color=G1,
+            va="top", linespacing=1.15)
     save(fig, "fig14-bobinagem")
 
 
@@ -900,17 +986,17 @@ def fig15():
                 r"$\eta$ = " + f"{eta[i]:.1f} %".replace(".", ","),
                 va="center", fontsize=7, linespacing=1.35)
         ax.text(mos[i] / 2, y[i], f"{mos[i]:.1f}".replace(".", ","), va="center",
-                ha="center", fontsize=6.5)
+                ha="center", fontsize=6.7)
         ax.text(mos[i] + ret[i] / 2, y[i], f"{ret[i]:.1f}".replace(".", ","),
-                va="center", ha="center", fontsize=6.5)
+                va="center", ha="center", fontsize=6.7)
         ax.text(mos[i] + ret[i] + tra[i] / 2, y[i],
                 f"{tra[i]:.1f}".replace(".", ","), va="center", ha="center",
-                fontsize=6.5, color="white")
-    ax.set_yticks(y); ax.set_yticklabels(labels, fontsize=7)
+                fontsize=6.7, color="white")
+    ax.set_yticks(y); ax.set_yticklabels(labels, fontsize=7.1)
     ax.set_xlabel("perda (W)")
     ax.set_xlim(0, 27)
     ax.set_ylim(1.75, -0.85)
-    ax.legend(frameon=False, loc="upper center", fontsize=6.9, handlelength=1.3,
+    ax.legend(frameon=False, loc="upper center", fontsize=7.0, handlelength=1.3,
               ncol=3, columnspacing=0.9, bbox_to_anchor=(0.46, 1.20))
     ax.grid(True, axis="x", ls=":", color=G2)
     ax.set_axisbelow(True)
