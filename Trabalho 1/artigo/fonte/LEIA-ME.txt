@@ -26,17 +26,22 @@ Ordem de execucao
     python3 figuras.py
     python3 omml_gen.py
     python3 build_docx.py
-    soffice --headless --convert-to pdf artigo-perdas-semicondutores-trafo-af.docx
+    exportar o PDF pelo Microsoft Word
     python3 check_pdf.py artigo-perdas-semicondutores-trafo-af.pdf
 
 Se apenas as figuras forem alteradas, sem mudanca de texto ou equacoes:
     python3 figuras.py
     python3 atualizar_figuras_docx.py
-    soffice --headless --convert-to pdf artigo-perdas-semicondutores-trafo-af.docx
+    exportar o PDF pelo Microsoft Word
 
 Dependencias: python3 com matplotlib e numpy, pandoc, libreoffice-writer e
 libreoffice-math. Os scripts esperam encontrar o template-a4.docx descompactado
 numa pasta tpl ao lado deles.
+
+Para a versao final, a exportacao pelo Microsoft Word e preferivel. Ela mantem
+Times New Roman no corpo (10 pt) e Cambria Math nas equacoes (10 pt), como no
+template e no artigo do retificador. O LibreOffice substitui essas fontes por
+Liberation Serif/OpenSymbol e pode ampliar visualmente as equacoes.
 
 Duas armadilhas encontradas na montagem, registradas para nao se repetirem
 -------------------------------------------------------------------------

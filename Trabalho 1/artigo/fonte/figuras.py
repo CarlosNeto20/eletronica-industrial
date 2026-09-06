@@ -14,7 +14,9 @@ os.makedirs(OUT, exist_ok=True)
 
 plt.rcParams.update({
     "font.family": "serif",
-    "font.serif": ["DejaVu Serif", "Times New Roman", "Nimbus Roman"],
+    # A tipografia principal do template IEEE e dos artigos de referencia e
+    # Times New Roman. DejaVu Serif permanece apenas como ultimo fallback.
+    "font.serif": ["Times New Roman", "Nimbus Roman", "DejaVu Serif"],
     "mathtext.fontset": "stix",
     "font.size": 8,
     "axes.labelsize": 8,
