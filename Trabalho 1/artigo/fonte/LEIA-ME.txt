@@ -1,0 +1,42 @@
+Fontes do artigo IEEE
+=====================
+
+Estes arquivos reconstroem o artigo do zero. Servem para o caso de o texto, os
+numeros ou as figuras precisarem de ajuste depois da entrega.
+
+Arquivos
+--------
+conteudo.py    Todo o texto do artigo: titulo, autores, resumo, palavras-chave,
+               as 11 secoes, as 25 equacoes em LaTeX, as 5 tabelas, as chamadas
+               das 15 figuras e as 18 referencias. E aqui que se edita o artigo.
+figuras.py     Gera as 15 figuras em PNG (400 dpi) e PDF na pasta figuras.
+omml_gen.py    Converte as equacoes LaTeX de conteudo.py em OMML, o formato de
+               equacao nativo do Word, usando o pandoc.
+build_docx.py  Monta o .docx sobre o template-a4.docx, preservando os estilos do
+               modelo IEEE.
+check_pdf.py   Varre o PDF gerado procurando o marcador de erro que o LibreOffice
+               imprime em vermelho quando nao entende uma equacao.
+cruza.py       Confere se cada numero do artigo aparece tambem no memorial .md.
+
+Ordem de execucao
+-----------------
+    python3 figuras.py
+    python3 omml_gen.py
+    python3 build_docx.py
+    soffice --headless --convert-to pdf artigo-perdas-semicondutores-trafo-af.docx
+    python3 check_pdf.py artigo-perdas-semicondutores-trafo-af.pdf
+
+Dependencias: python3 com matplotlib e numpy, pandoc, libreoffice-writer e
+libreoffice-math. Os scripts esperam encontrar o template-a4.docx descompactado
+numa pasta tpl ao lado deles.
+
+Duas armadilhas encontradas na montagem, registradas para nao se repetirem
+-------------------------------------------------------------------------
+1. O template-a4.docx e OOXML strict. A biblioteca python-docx nao abre esse
+   formato. Por isso o documento e escrito diretamente em XML, no mesmo espaco
+   de nomes do template.
+2. O LibreOffice converte as equacoes OMML para o formato interno do Math, cujo
+   analisador reserva palavras como "to" e "in". Um subscrito escrito como um
+   unico bloco de texto "TO" vira erro de sintaxe e sai como um sinal vermelho
+   no PDF. O omml_gen.py detecta esses casos e quebra o bloco em letras. No
+   Word o problema nao existe.
