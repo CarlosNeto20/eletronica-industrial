@@ -1,0 +1,54 @@
+Fontes do artigo IEEE do Trabalho 2
+===================================
+
+Estes arquivos reconstroem o artigo do zero, no formato IEEE A4 do
+template-a4.docx (o mesmo do Trabalho 1). Servem para o caso de o texto, os
+números ou as figuras precisarem de ajuste.
+
+Arquivos
+--------
+conteudo.py       Todo o texto do artigo: título, autores, resumo, palavras-
+                  chave, as 8 seções, as 9 equações em LaTeX, as 2 tabelas, as
+                  chamadas das 21 figuras e as 9 referências. É aqui que se
+                  edita o artigo.
+montar_figuras.py Monta as figuras em ../figuras a partir das figuras do
+                  enunciado (documento explicativo/imagens), das etapas e
+                  resultados do PLECS (desenvolvimento/figuras) e das capturas
+                  dos esquemáticos (simulação PLECS/simulacao-circuitos, com o
+                  fundo amarelo do PLECS trocado por branco).
+omml_gen.py       Converte as equações LaTeX em OMML (equação nativa do Word).
+                  Diferente do Trabalho 1, NÃO usa o pandoc: LaTeX -> MathML
+                  (biblioteca latex2mathml) -> OMML (MML2OMML.XSL do Office).
+build_docx.py     Monta o .docx sobre o template (cópia do Trabalho 1, com a
+                  regra de subscritos ajustada para aceitar aV_i, 2f_s, a²L_b).
+exportar_pdf.ps1  Exporta o PDF pelo Microsoft Word (automação COM).
+
+Ordem de execução (a partir desta pasta)
+----------------------------------------
+    python montar_figuras.py
+    python omml_gen.py
+    python build_docx.py
+    powershell -ExecutionPolicy Bypass -File exportar_pdf.ps1
+
+Saída em ../build; as versões de entrega ficam copiadas em ../ (pasta artigo).
+
+Dependências: Python 3 com pillow, latex2mathml, lxml e pymupdf; Microsoft
+Word/Office instalado (MML2OMML.XSL e exportação do PDF). O template precisa
+estar descompactado em ../tpl (tar -xf "..\..\documentos de referência\template-a4.docx").
+
+Convenções de texto em conteudo.py
+----------------------------------
+- Símbolos com subscrito se escrevem X_y (V_i, L_o, f_s). Coeficientes podem
+  vir colados (aV_i, 2f_s). Subscritos compostos: L_crit, não L_{m,crit}.
+- Figuras numeradas pela ordem das chamadas fig(); as referências "Fig. N" no
+  texto são manuais. span=2 = largura total (vira uma "ilha" de uma coluna).
+- Equações numeradas explicitamente em eq(latex, "n").
+
+Armadilhas conhecidas
+---------------------
+1. O template é OOXML strict; o documento é escrito diretamente em XML.
+2. Figuras de largura total muito altas deixam espaço em branco antes delas,
+   porque o Word equilibra as colunas da seção anterior. Por isso os degraus
+   de carga ficam em uma coluna, com (a) sobre (b).
+3. Na linha de comando do Claude Code, "Remove-Item" com curinga pode ser
+   bloqueado; não é necessário apagar nada antes de regenerar.
