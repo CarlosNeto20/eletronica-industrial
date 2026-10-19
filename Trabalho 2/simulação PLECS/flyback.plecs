@@ -1,0 +1,2316 @@
+Plecs {
+  Name          "flyback"
+  Version       "5.0"
+  CircuitModel  "ContStateSpace"
+  StartTime     "0.0"
+  TimeSpan      "0.8"
+  Timeout       ""
+  Solver        "auto"
+  MaxStep       "1e-6"
+  InitStep      "-1"
+  FixedStep     "1e-3"
+  Refine        "1"
+  ZCStepSize    "1e-9"
+  RelTol        "1e-4"
+  AbsTol        "-1"
+  TurnOnThreshold "0"
+  NonIdealSwitchResistance "1"
+  SyncFixedStepTasks "2"
+  UseSingleCommonBaseRate "2"
+  LossVariableLimitExceededMsg "3"
+  NegativeSwitchLossMsg "3"
+  DivisionByZeroMsg "3"
+  DatatypeOverflowMsg "3"
+  DatatypeInheritanceConflictMsg "2"
+  ContSampleTimeConflictMsg "2"
+  StiffnessDetectionMsg "2"
+  MaxConsecutiveZCs "1000"
+  AlgebraicLoopWithStateMachineMsg "3"
+  AssertionAction "1"
+  FixedPointDatatypeOverride "1"
+  InitializationCommands "% ---- Flyback de uma chave (enunciado, secao 4.3)\n"
+"Po = 200;  Vi = 200;  Vo = 54;  fs = 20e3;  D = 0.4;\na  = Vo/Vi*(1-D)/D;    "
+"    % 0.405 = Ns/Np\nNp = 100;  Ns = 40.5;\nLcrit = Vi^2*D^2/(2*fs*Po);      "
+" % 800e-6, fronteira MCD/MCC\nkL = 10;                    % 1 -> MCD (720 uH)"
+"; 10 -> MCC (7200 uH)\nLm  = 0.9*Lcrit*kL;        % referida ao primario\nCo "
+" = 137.2e-6;  Rse = 0.044;\nRo  = Vo^2/Po;\nR20 = 5*Ro;  R80 = 1.25*Ro;\nf_ca"
+"rga = 2;               % degraus: 0.75 s (100->20 %) e 0.5 s (20->100 %)\n% -"
+"--- Buck-Boost equivalente\nVi_eq = a*Vi;  L_eq = a^2*Lm;  fs_eq = fs;  D_eq "
+"= D;\n% ---- condicoes iniciais\nVC0 = Vo;\nILm0 = (kL>1)*a*(Po/Vo)/(1-D);   "
+" % MCC: 2.5 A; MCD: 0\nIL_eq0 = ILm0/a;\narquivo_saida = 'flyback_mcd_degrau'"
+";  if kL>1, arquivo_saida = 'flyback_mcc_degrau'; end\n"
+  InitialState  "1"
+  SystemState   ""
+  JacobianComputation "2"
+  TaskingMode   "1"
+  TaskConfigurations ""
+  CodeGenParameterInlining "2"
+  CodeGenFloatingPointFormat "2"
+  CodeGenAbsTimeUsageMsg "3"
+  CodeGenBaseName ""
+  CodeGenOutputDir ""
+  CodeGenExtraOpts ""
+  CodeGenTarget "Generic"
+  CodeGenTargetSettings ""
+  ExtendedMatrixPrecision "1"
+  MatrixSignificanceCheck "2"
+  RemoveUnusedStateSpaceOutputs "2"
+  EnableStateSpaceSplitting "2"
+  DisplayStateSpaceSplitting "1"
+  DiscretizationMethod "2"
+  ExternalModeSettings ""
+  AlgebraicLoopMethod "1"
+  AlgebraicLoopTolerance "1e-6"
+  ScriptsDialogGeometry ""
+  ScriptsDialogSplitterPos "0"
+  MixedSignalSolverBypassOperatingPoint "1"
+  MixedSignalSolverInitialConditions "2"
+  MixedSignalSolverMaxNewtonIterations "25"
+  MixedSignalSolverNumThreads "-1"
+  OperatingPointMaxNewtonIterations "50"
+  OperatingPointRelativeNewtonTolerance "1e-3"
+  OperatingPointAbsoluteNewtonTolerance "1e-12"
+  OperatingPointNodalVoltageNewtonTolerance "1e-6"
+  SpiceTemperature "27"
+  SpiceGMin     "0"
+  SpiceInductorRPar "0"
+  SpiceInductorRSer "0"
+  SpiceCapacitorGPar "0"
+  SpiceCapacitorRSer "0"
+  NetlistParserDetails "2"
+  InvalidNetlistFunctionEvaluationMsg "1"
+  IncompatibleInitialConditionMsg "2"
+  Schematic {
+    Location      [0, 24; 1283, 761]
+    ZoomFactor    1
+    SliderPosition [0, 0]
+    ShowBrowser   off
+    BrowserWidth  100
+    Component {
+      Type          DCVoltageSource
+      Name          "Vi"
+      Show          on
+      Position      [60, 170]
+      Direction     up
+      Flipped       off
+      LabelPosition west
+      Parameter {
+        Variable      "V"
+        Value         "Vi"
+        Show          off
+      }
+    }
+    Component {
+      Type          Inductor
+      Name          "Lm"
+      Show          on
+      Position      [170, 135]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "L"
+        Value         "Lm"
+        Show          off
+      }
+      Parameter {
+        Variable      "i_init"
+        Value         "ILm0"
+        Show          off
+      }
+    }
+    Component {
+      Type          PlecsProbe
+      Name          "P_Lm"
+      Show          off
+      Position      [110, 40]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Probe {
+        Component     "Lm"
+        Path          ""
+        Signals       {"Inductor current"}
+      }
+    }
+    Component {
+      Type          Gain
+      Name          "KP_Lm"
+      Show          off
+      Position      [170, 40]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "K"
+        Value         "1/a"
+        Show          off
+      }
+      Parameter {
+        Variable      "Multiplication"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "OutputDataType"
+        Value         "11"
+        Show          off
+      }
+      Parameter {
+        Variable      "DataTypeOverflowMode"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "GainDataType"
+        Value         "11"
+        Show          off
+      }
+    }
+    Component {
+      Type          Goto
+      Name          "GP_Lm"
+      Show          off
+      Position      [230, 40]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "IL_iso"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Transformer
+      Name          "Tr"
+      Show          on
+      Position      [270, 110]
+      Direction     right
+      Flipped       on
+      LabelPosition south
+      Parameter {
+        Variable      "Windings"
+        Value         "[1 1]"
+        Show          off
+      }
+      Parameter {
+        Variable      "n"
+        Value         "[Np -Ns]"
+        Show          off
+      }
+      Parameter {
+        Variable      "Polarity"
+        Value         "+"
+        Show          off
+      }
+      Parameter {
+        Variable      "Lm"
+        Value         "inf"
+        Show          off
+      }
+      Parameter {
+        Variable      "im0"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          MosfetWithDiode
+      Name          "S1"
+      Show          on
+      Position      [260, 220]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "Ron"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "s_init"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "thermal"
+        Value         ""
+        Show          off
+      }
+      Parameter {
+        Variable      "Rth"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "Np"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "T_init"
+        Value         ""
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "FS1"
+      Show          off
+      Position      [180, 265]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "g_S1"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Ground
+      Name          "Gnd_p"
+      Show          off
+      Position      [140, 350]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+    }
+    Component {
+      Type          Diode
+      Name          "D1"
+      Show          on
+      Position      [340, 90]
+      Direction     left
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Vf"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "Ron"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "thermal"
+        Value         ""
+        Show          off
+      }
+      Parameter {
+        Variable      "Rth"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "Np"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "T_init"
+        Value         ""
+        Show          off
+      }
+      Parameter {
+        Variable      "SwitchModel"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "f_grid"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "Rse_iso"
+      Show          on
+      Position      [440, 150]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "R"
+        Value         "Rse"
+        Show          off
+      }
+    }
+    Component {
+      Type          Capacitor
+      Name          "Co_iso"
+      Show          on
+      Position      [440, 230]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "C"
+        Value         "Co"
+        Show          off
+      }
+      Parameter {
+        Variable      "v_init"
+        Value         "VC0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Voltmeter
+      Name          "Vm_iso"
+      Show          on
+      Position      [500, 190]
+      Direction     up
+      Flipped       off
+      LabelPosition west
+    }
+    Component {
+      Type          Goto
+      Name          "GVo_iso"
+      Show          off
+      Position      [570, 190]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "Vo_iso"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Ammeter
+      Name          "Am_iso"
+      Show          on
+      Position      [580, 90]
+      Direction     left
+      Flipped       off
+      LabelPosition south
+    }
+    Component {
+      Type          Goto
+      Name          "GIo_iso"
+      Show          off
+      Position      [615, 50]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "Io_iso"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R20_iso"
+      Show          on
+      Position      [630, 190]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "R"
+        Value         "R20"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R80_iso"
+      Show          on
+      Position      [740, 150]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "R"
+        Value         "R80"
+        Show          off
+      }
+    }
+    Component {
+      Type          Switch
+      Name          "Sc_iso"
+      Show          on
+      Position      [740, 230]
+      Direction     up
+      Flipped       off
+      LabelPosition west
+      Parameter {
+        Variable      "s_init"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "SwitchModel"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "f_grid"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "Fc_iso"
+      Show          off
+      Position      [780, 230]
+      Direction     left
+      Flipped       off
+      LabelPosition north
+      Parameter {
+        Variable      "Tag"
+        Value         "carga"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Ground
+      Name          "Gnd_s"
+      Show          off
+      Position      [400, 320]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+    }
+    Component {
+      Type          DCVoltageSource
+      Name          "Vi_eq"
+      Show          on
+      Position      [65, 475]
+      Direction     up
+      Flipped       off
+      LabelPosition west
+      Parameter {
+        Variable      "V"
+        Value         "Vi_eq"
+        Show          off
+      }
+    }
+    Component {
+      Type          MosfetWithDiode
+      Name          "S_eq"
+      Show          on
+      Position      [165, 395]
+      Direction     left
+      Flipped       off
+      LabelPosition north
+      Parameter {
+        Variable      "Ron"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "s_init"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "thermal"
+        Value         ""
+        Show          off
+      }
+      Parameter {
+        Variable      "Rth"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "Np"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "T_init"
+        Value         ""
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "FS_eq"
+      Show          off
+      Position      [85, 440]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "g_eq"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Inductor
+      Name          "L_eq"
+      Show          on
+      Position      [255, 475]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "L"
+        Value         "L_eq"
+        Show          off
+      }
+      Parameter {
+        Variable      "i_init"
+        Value         "IL_eq0"
+        Show          off
+      }
+    }
+    Component {
+      Type          PlecsProbe
+      Name          "P_Leq"
+      Show          off
+      Position      [325, 440]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Probe {
+        Component     "L_eq"
+        Path          ""
+        Signals       {"Inductor current"}
+      }
+    }
+    Component {
+      Type          Goto
+      Name          "GP_Leq"
+      Show          off
+      Position      [385, 440]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "IL_eq"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Diode
+      Name          "D_eq"
+      Show          on
+      Position      [325, 395]
+      Direction     right
+      Flipped       off
+      LabelPosition north
+      Parameter {
+        Variable      "Vf"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "Ron"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "thermal"
+        Value         ""
+        Show          off
+      }
+      Parameter {
+        Variable      "Rth"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "Np"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "T_init"
+        Value         ""
+        Show          off
+      }
+      Parameter {
+        Variable      "SwitchModel"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "f_grid"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "Rse_eq"
+      Show          on
+      Position      [455, 520]
+      Direction     up
+      Flipped       on
+      LabelPosition east
+      Parameter {
+        Variable      "R"
+        Value         "Rse"
+        Show          off
+      }
+    }
+    Component {
+      Type          Capacitor
+      Name          "Co_eq"
+      Show          on
+      Position      [455, 440]
+      Direction     up
+      Flipped       on
+      LabelPosition east
+      Parameter {
+        Variable      "C"
+        Value         "Co"
+        Show          off
+      }
+      Parameter {
+        Variable      "v_init"
+        Value         "VC0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Voltmeter
+      Name          "Vm_eq"
+      Show          on
+      Position      [515, 440]
+      Direction     up
+      Flipped       on
+      LabelPosition eastNortheast
+    }
+    Component {
+      Type          Goto
+      Name          "GVo_eq"
+      Show          off
+      Position      [585, 440]
+      Direction     left
+      Flipped       on
+      LabelPosition north
+      Parameter {
+        Variable      "Tag"
+        Value         "Vo_eq"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Ammeter
+      Name          "Am_eq"
+      Show          on
+      Position      [595, 580]
+      Direction     right
+      Flipped       on
+      LabelPosition north
+    }
+    Component {
+      Type          Goto
+      Name          "GIo_eq"
+      Show          off
+      Position      [630, 620]
+      Direction     left
+      Flipped       on
+      LabelPosition north
+      Parameter {
+        Variable      "Tag"
+        Value         "Io_eq"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R20_eq"
+      Show          on
+      Position      [645, 440]
+      Direction     up
+      Flipped       on
+      LabelPosition east
+      Parameter {
+        Variable      "R"
+        Value         "R20"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R80_eq"
+      Show          on
+      Position      [755, 520]
+      Direction     up
+      Flipped       on
+      LabelPosition east
+      Parameter {
+        Variable      "R"
+        Value         "R80"
+        Show          off
+      }
+    }
+    Component {
+      Type          Switch
+      Name          "Sc_eq"
+      Show          on
+      Position      [755, 440]
+      Direction     up
+      Flipped       on
+      LabelPosition west
+      Parameter {
+        Variable      "s_init"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "SwitchModel"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "f_grid"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "Fc_eq"
+      Show          off
+      Position      [815, 440]
+      Direction     right
+      Flipped       on
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "carga"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Ground
+      Name          "Gnd_eq2"
+      Show          off
+      Position      [455, 600]
+      Direction     down
+      Flipped       on
+      LabelPosition west
+    }
+    Component {
+      Type          PulseGenerator
+      Name          "PG_S1"
+      Show          on
+      Position      [935, 40]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Hi"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "Lo"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "f"
+        Value         "fs"
+        Show          off
+      }
+      Parameter {
+        Variable      "DutyCycle"
+        Value         "D"
+        Show          off
+      }
+      Parameter {
+        Variable      "Delay"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "DataType"
+        Value         "10"
+        Show          off
+      }
+    }
+    Component {
+      Type          Goto
+      Name          "GPG_S1"
+      Show          off
+      Position      [1000, 40]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "g_S1"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          PulseGenerator
+      Name          "PG_eq"
+      Show          on
+      Position      [935, 100]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Hi"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "Lo"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "f"
+        Value         "fs_eq"
+        Show          off
+      }
+      Parameter {
+        Variable      "DutyCycle"
+        Value         "D_eq"
+        Show          off
+      }
+      Parameter {
+        Variable      "Delay"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "DataType"
+        Value         "10"
+        Show          off
+      }
+    }
+    Component {
+      Type          Goto
+      Name          "GPG_eq"
+      Show          off
+      Position      [1000, 100]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "g_eq"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          PulseGenerator
+      Name          "PG_carga"
+      Show          on
+      Position      [935, 160]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Hi"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "Lo"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "f"
+        Value         "f_carga"
+        Show          off
+      }
+      Parameter {
+        Variable      "DutyCycle"
+        Value         "0.5"
+        Show          off
+      }
+      Parameter {
+        Variable      "Delay"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "DataType"
+        Value         "10"
+        Show          off
+      }
+    }
+    Component {
+      Type          Goto
+      Name          "GPG_carga"
+      Show          off
+      Position      [1000, 160]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "carga"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Scope
+      Name          "Scope"
+      Show          on
+      Position      [1145, 340]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Frame         [-15, -20; 15, 20]
+      Location      [0, 26; 1200, 800]
+      State         ""
+      SavedViews    ""
+      HeaderState   ""
+      PlotPalettes  ""
+      Axes          "3"
+      TimeRange     "0"
+      ScrollingMode "1"
+      SingleTimeAxis "1"
+      Open          "0"
+      Ts            "-1"
+      SampleLimit   "0"
+      XAxisLabel    "Tempo / s"
+      ShowLegend    "1"
+      Axis {
+        Name          "Vo / V"
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Axis {
+        Name          "Io / A"
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Axis {
+        Name          "IL / A (secundario)"
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Fourier {
+        SingleXAxis       on
+        AxisLabel         "Frequency / Hz"
+        Scaling           0
+        PhaseDisplay      0
+        ShowFourierLegend off
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+      }
+    }
+    Component {
+      Type          SignalMux
+      Name          "MuxVo"
+      Show          off
+      Position      [1015, 230]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Frame         [-2, -10; 7, 10]
+      Parameter {
+        Variable      "Width"
+        Value         "2"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "FVo_iso"
+      Show          off
+      Position      [935, 210]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "Vo_iso"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "FVo_eq"
+      Show          off
+      Position      [935, 250]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "Vo_eq"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          SignalMux
+      Name          "MuxIo"
+      Show          off
+      Position      [1015, 310]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Frame         [-2, -10; 7, 10]
+      Parameter {
+        Variable      "Width"
+        Value         "2"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "FIo_iso"
+      Show          off
+      Position      [935, 290]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "Io_iso"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "FIo_eq"
+      Show          off
+      Position      [935, 330]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "Io_eq"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          SignalMux
+      Name          "MuxIL"
+      Show          off
+      Position      [1015, 400]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Frame         [-2, -10; 7, 10]
+      Parameter {
+        Variable      "Width"
+        Value         "2"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "FIL_iso"
+      Show          off
+      Position      [935, 380]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "IL_iso"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "FIL_eq"
+      Show          off
+      Position      [935, 420]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "IL_eq"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          SignalMux
+      Name          "MuxArq"
+      Show          off
+      Position      [1035, 535]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Frame         [-2, -30; 7, 30]
+      Parameter {
+        Variable      "Width"
+        Value         "6"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "Farq0"
+      Show          off
+      Position      [935, 460]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "Vo_iso"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "Farq1"
+      Show          off
+      Position      [935, 490]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "Vo_eq"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "Farq2"
+      Show          off
+      Position      [935, 520]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "Io_iso"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "Farq3"
+      Show          off
+      Position      [935, 550]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "Io_eq"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "Farq4"
+      Show          off
+      Position      [935, 580]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "IL_iso"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "Farq5"
+      Show          off
+      Position      [935, 610]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "IL_eq"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "CustomMessage"
+        Value         ""
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          ToFile
+      Name          "ToFile"
+      Show          on
+      Position      [1115, 535]
+      Direction     right
+      Flipped       off
+      LabelPosition north
+      Parameter {
+        Variable      "Filename"
+        Value         "['../resultados PLECS/' arquivo_saida]"
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "FileType"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "WriteSignalNames"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "SampleTime"
+        Value         "2e-6"
+        Show          off
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "P_Lm"
+      SrcTerminal   1
+      DstComponent  "KP_Lm"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "KP_Lm"
+      SrcTerminal   2
+      DstComponent  "GP_Lm"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "FS1"
+      SrcTerminal   1
+      Points        [225, 265]
+      DstComponent  "S1"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Vi"
+      SrcTerminal   1
+      Points        [60, 90; 170, 90]
+      Branch {
+        DstComponent  "Lm"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [240, 90; 240, 95]
+        DstComponent  "Tr"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Lm"
+      SrcTerminal   2
+      Points        [170, 170; 240, 170]
+      Branch {
+        Points        [240, 125]
+        DstComponent  "Tr"
+        DstTerminal   2
+      }
+      Branch {
+        Points        [260, 170]
+        DstComponent  "S1"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Vi"
+      SrcTerminal   2
+      Points        [60, 330]
+      Branch {
+        Points        [260, 330]
+        DstComponent  "S1"
+        DstTerminal   2
+      }
+      Branch {
+        Points        [140, 330]
+        DstComponent  "Gnd_p"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Rse_iso"
+      SrcTerminal   2
+      DstComponent  "Co_iso"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Vm_iso"
+      SrcTerminal   3
+      DstComponent  "GVo_iso"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Am_iso"
+      SrcTerminal   3
+      Points        [580, 50]
+      DstComponent  "GIo_iso"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "R80_iso"
+      SrcTerminal   2
+      DstComponent  "Sc_iso"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Fc_iso"
+      SrcTerminal   1
+      DstComponent  "Sc_iso"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Am_iso"
+      SrcTerminal   2
+      Points        [620, 90]
+      Branch {
+        Points        [630, 90]
+        DstComponent  "R20_iso"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [740, 90]
+        DstComponent  "R80_iso"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Tr"
+      SrcTerminal   3
+      Points        [280, 90; 300, 90]
+      DstComponent  "D1"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "D1"
+      SrcTerminal   2
+      Points        [380, 90]
+      Branch {
+        Points        [440, 90]
+        DstComponent  "Rse_iso"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [500, 90]
+        DstComponent  "Vm_iso"
+        DstTerminal   1
+      }
+      Branch {
+        DstComponent  "Am_iso"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Tr"
+      SrcTerminal   4
+      Points        [280, 130; 300, 130; 300, 290]
+      Branch {
+        Points        [440, 290]
+        DstComponent  "Co_iso"
+        DstTerminal   2
+      }
+      Branch {
+        Points        [500, 290]
+        DstComponent  "Vm_iso"
+        DstTerminal   2
+      }
+      Branch {
+        Points        [630, 290]
+        DstComponent  "R20_iso"
+        DstTerminal   2
+      }
+      Branch {
+        Points        [740, 290]
+        DstComponent  "Sc_iso"
+        DstTerminal   2
+      }
+      Branch {
+        Points        [400, 290]
+        DstComponent  "Gnd_s"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "FS_eq"
+      SrcTerminal   1
+      Points        [165, 440]
+      DstComponent  "S_eq"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "P_Leq"
+      SrcTerminal   1
+      DstComponent  "GP_Leq"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Rse_eq"
+      SrcTerminal   2
+      DstComponent  "Co_eq"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Vm_eq"
+      SrcTerminal   3
+      DstComponent  "GVo_eq"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Am_eq"
+      SrcTerminal   3
+      Points        [595, 620]
+      DstComponent  "GIo_eq"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "R80_eq"
+      SrcTerminal   2
+      DstComponent  "Sc_eq"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Fc_eq"
+      SrcTerminal   1
+      DstComponent  "Sc_eq"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Am_eq"
+      SrcTerminal   2
+      Points        [635, 580]
+      Branch {
+        Points        [645, 580]
+        DstComponent  "R20_eq"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [755, 580]
+        DstComponent  "R80_eq"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "S_eq"
+      SrcTerminal   2
+      Points        [255, 395]
+      Branch {
+        DstComponent  "L_eq"
+        DstTerminal   1
+      }
+      Branch {
+        DstComponent  "D_eq"
+        DstTerminal   2
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Vm_eq"
+      SrcTerminal   1
+      Points        [515, 580]
+      Branch {
+        DstComponent  "Am_eq"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [455, 580]
+        Branch {
+          DstComponent  "Rse_eq"
+          DstTerminal   1
+        }
+        Branch {
+          DstComponent  "Gnd_eq2"
+          DstTerminal   1
+        }
+        Branch {
+          Points        [255, 580]
+          Branch {
+            Points        [65, 580]
+            DstComponent  "Vi_eq"
+            DstTerminal   2
+          }
+          Branch {
+            DstComponent  "L_eq"
+            DstTerminal   2
+          }
+        }
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Co_eq"
+      SrcTerminal   2
+      Points        [455, 395]
+      Branch {
+        DstComponent  "D_eq"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [515, 395]
+        Branch {
+          DstComponent  "Vm_eq"
+          DstTerminal   2
+        }
+        Branch {
+          Points        [645, 395]
+          Branch {
+            DstComponent  "R20_eq"
+            DstTerminal   2
+          }
+          Branch {
+            Points        [755, 395]
+            DstComponent  "Sc_eq"
+            DstTerminal   2
+          }
+        }
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "PG_S1"
+      SrcTerminal   1
+      DstComponent  "GPG_S1"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "PG_eq"
+      SrcTerminal   1
+      DstComponent  "GPG_eq"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "PG_carga"
+      SrcTerminal   1
+      DstComponent  "GPG_carga"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "FVo_iso"
+      SrcTerminal   1
+      Points        [965, 210; 965, 225]
+      DstComponent  "MuxVo"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "FVo_eq"
+      SrcTerminal   1
+      Points        [965, 250; 965, 235]
+      DstComponent  "MuxVo"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "MuxVo"
+      SrcTerminal   1
+      Points        [1085, 230; 1085, 330]
+      DstComponent  "Scope"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "FIo_iso"
+      SrcTerminal   1
+      Points        [965, 290; 965, 305]
+      DstComponent  "MuxIo"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "FIo_eq"
+      SrcTerminal   1
+      Points        [965, 330; 965, 315]
+      DstComponent  "MuxIo"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "MuxIo"
+      SrcTerminal   1
+      Points        [1070, 310; 1070, 340]
+      DstComponent  "Scope"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "FIL_iso"
+      SrcTerminal   1
+      Points        [965, 380; 965, 395]
+      DstComponent  "MuxIL"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "FIL_eq"
+      SrcTerminal   1
+      Points        [965, 420; 965, 405]
+      DstComponent  "MuxIL"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "MuxIL"
+      SrcTerminal   1
+      Points        [1085, 400; 1085, 350]
+      DstComponent  "Scope"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Farq0"
+      SrcTerminal   1
+      Points        [1000, 460; 1000, 510]
+      DstComponent  "MuxArq"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Farq1"
+      SrcTerminal   1
+      Points        [990, 490; 990, 520]
+      DstComponent  "MuxArq"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Farq2"
+      SrcTerminal   1
+      Points        [980, 520; 980, 530]
+      DstComponent  "MuxArq"
+      DstTerminal   4
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Farq3"
+      SrcTerminal   1
+      Points        [980, 550; 980, 540]
+      DstComponent  "MuxArq"
+      DstTerminal   5
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Farq4"
+      SrcTerminal   1
+      Points        [990, 580; 990, 550]
+      DstComponent  "MuxArq"
+      DstTerminal   6
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Farq5"
+      SrcTerminal   1
+      Points        [1000, 610; 1000, 560]
+      DstComponent  "MuxArq"
+      DstTerminal   7
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "MuxArq"
+      SrcTerminal   1
+      DstComponent  "ToFile"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Vi_eq"
+      SrcTerminal   1
+      Points        [65, 395]
+      DstComponent  "S_eq"
+      DstTerminal   1
+    }
+  }
+}

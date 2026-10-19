@@ -1,0 +1,62 @@
+{
+  "ensaios": [
+    {
+      "ensaio": "degrau_176",
+      "amostras": 180001,
+      "modelo": "forward_degrau",
+      "status": "hashes e duração conferidos"
+    },
+    {
+      "ensaio": "degrau_220",
+      "amostras": 180001,
+      "modelo": "forward_degrau",
+      "status": "hashes e duração conferidos"
+    },
+    {
+      "ensaio": "degrau_264",
+      "amostras": 180001,
+      "modelo": "forward_degrau",
+      "status": "hashes e duração conferidos"
+    },
+    {
+      "ensaio": "curto_220",
+      "amostras": 360001,
+      "modelo": "forward_curto",
+      "status": "hashes e duração conferidos"
+    },
+    {
+      "ensaio": "bateria_220",
+      "amostras": 300001,
+      "modelo": "forward_bateria",
+      "status": "hashes e duração conferidos"
+    },
+    {
+      "ensaio": "ripple_original",
+      "amostras": 100001,
+      "modelo": "forward_capacitor_original",
+      "status": "hashes e duração conferidos"
+    },
+    {
+      "ensaio": "ripple_revisado",
+      "amostras": 100001,
+      "modelo": "forward_barramento_cc",
+      "status": "hashes e duração conferidos"
+    },
+    {
+      "ensaio": "convergencia",
+      "amostras": 360001,
+      "modelo": "forward_degrau",
+      "status": "hashes e duração conferidos"
+    }
+  ],
+  "artigo": {
+    "paginas": 6,
+    "equacoes_editaveis": 10,
+    "figuras": 10,
+    "docx_sha256": "40a2893fbd9d70203d8adaf44b4d609f35fd29f09bb70113f0fcffed7de5af79",
+    "pdf_sha256": "e664c125deb2e93104f47e829d0f4d06911d72388f5307f233c6e60869dcd332"
+  },
+  "template_preservado": true,
+  "polos_revisados_estaveis_nos_seis_pontos": true,
+  "nota": "Verificação automática de integridade; a revisão visual foi registrada separadamente. Não certifica hardware."
+}

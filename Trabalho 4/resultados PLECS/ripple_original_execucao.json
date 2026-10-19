@@ -1,0 +1,48 @@
+{
+  "ensaio": "ripple_original",
+  "modelo": "forward_capacitor_original",
+  "sha256_modelo": "b63fd116e39afd81ade4a68d39a7ee5695ce5e2c20aa6571ec383adf928b4846",
+  "inicio": "2026-10-19T15:23:44.713896-03:00",
+  "PLECS": "5.0.6",
+  "ModelVars": {
+    "Vbus": 373.0
+  },
+  "status": "executado",
+  "opcoes": {
+    "ModelVars": {
+      "Vbus": 373.0,
+      "Tstop": 0.2
+    },
+    "SolverOpts": {
+      "TimeSpan": 0.2,
+      "MaxStep": 2e-07,
+      "RelTol": 1e-06,
+      "AbsTol": 1e-08,
+      "OutputTimesOption": "specified"
+    }
+  },
+  "grade_saida": {
+    "inicio_s": 0.18,
+    "passo_s": 2e-07,
+    "fim_s": 0.2
+  },
+  "duracao_real_s": 21.014999999999418,
+  "amostras": 100001,
+  "colunas": [
+    "tempo_s",
+    "v_saida_V",
+    "i_indutor_A",
+    "v_bus_V",
+    "controle_V",
+    "portadora_V",
+    "PWM_01",
+    "u_tensao_V",
+    "u_corrente_V",
+    "v_Q1_V",
+    "i_Q1_A",
+    "i_magnetizante_A",
+    "v_primario_V"
+  ],
+  "sha256_csv": "2db3ad3b541ca9d835225d6b983cd0ba11212f2e5dcdf11fdb8bdfbd39cb1b28",
+  "tempo_final_s": 0.2
+}

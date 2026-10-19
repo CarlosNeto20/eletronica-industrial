@@ -1,0 +1,49 @@
+{
+  "ensaio": "degrau_176",
+  "modelo": "forward_degrau",
+  "sha256_modelo": "88a16654071332f586ac1742bdfb443134708a4cae7d8d4f067077457b33490f",
+  "inicio": "2026-10-19T15:20:37.831326-03:00",
+  "PLECS": "5.0.6",
+  "ModelVars": {
+    "Vrms": 176.0
+  },
+  "status": "executado",
+  "opcoes": {
+    "ModelVars": {
+      "Vrms": 176.0,
+      "Tstop": 0.36
+    },
+    "SolverOpts": {
+      "TimeSpan": 0.36,
+      "MaxStep": 2e-06,
+      "RelTol": 1e-06,
+      "AbsTol": 1e-08,
+      "OutputTimesOption": "specified"
+    }
+  },
+  "grade_saida": {
+    "inicio_s": 0.0,
+    "passo_s": 2e-06,
+    "fim_s": 0.36
+  },
+  "duracao_real_s": 16.17199999999866,
+  "amostras": 180001,
+  "colunas": [
+    "tempo_s",
+    "v_saida_V",
+    "i_indutor_A",
+    "v_bus_V",
+    "controle_V",
+    "portadora_V",
+    "PWM_01",
+    "u_tensao_V",
+    "u_corrente_V",
+    "v_Q1_V",
+    "i_Q1_A",
+    "i_magnetizante_A",
+    "v_primario_V",
+    "i_rede_A"
+  ],
+  "sha256_csv": "cc80b196c329627b7336752200eb094dc83d1670c799edcc42d061ec63b5d4e0",
+  "tempo_final_s": 0.36
+}

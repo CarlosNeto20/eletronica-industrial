@@ -1,0 +1,10 @@
+# Materiais de conferência restritos; não publicar com a entrega.
+documento explicativo/
+desenvolvimento/extracao_restrita.txt
+desenvolvimento/qa_fonte/
+desenvolvimento/qa_template/
+artigo/qa/
+**/__pycache__/
+~$*
+
+desenvolvimento/qa_modelos/

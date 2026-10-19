@@ -1,0 +1,57 @@
+{
+  "forward_barramento_cc.plecs": {
+    "components_original": 35,
+    "components_saved": 35,
+    "differences": [],
+    "init_original": "% Trabalho 4 - parâmetros SI; modos: 0 degrau, 1 curto, 2 bateria\nVrms=220; Vbus=310; fs=50000; Tstop=0.36;\nLo=136.6e-6; Co=0.0044; ESR=0.055; Cin=940e-6;\nLm=19.08e-3; Rcu=0.02; Rline=0.5; Lline=100e-6; Rbat=0.01; Cbat=0.4;\nmode=0; Iref=15; Vref=27; Dlim=0.45; Tsoft=0.005;\nKiv=13090.03899996963; Kpv=7.744664852199339; wpv=147653.78890071853;\nKii=3459.617457097387; Kpi=0.45735159332506625; wpi=137643.76176516476;\n",
+    "init_saved": "% Trabalho 4 - parÃ¢metros SI; modos: 0 degrau, 1 curto, 2 bateria\nVrms=220; Vbus=310; fs=50000; Tstop=0.36;\nLo=136.6e-6; Co=0.0044; ESR=0.055; Cin=940e-6;\nLm=19.08e-3; Rcu=0.02; Rline=0.5; Lline=100e-6; Rbat=0.01; Cbat=0.4;\nmode=0; Iref=15; Vref=27; Dlim=0.45; Tsoft=0.005;\nKiv=13090.03899996963; Kpv=7.744664852199339; wpv=147653.78890071853;\nKii=3459.617457097387; Kpi=0.45735159332506625; wpi=137643.76176516476;\n",
+    "conexoes_iguais": true,
+    "inicializacao_funcional_igual": true,
+    "sha256_executado": "1f4dcee4c2308cd44283d9d34d3a0d3f43238661e3b25c7cd59ad7d529b4b2b4",
+    "sha256_formatado": "5189cef9300fb1e6fa88c42b50929661bc4ab72a74781454a307ef499f43b3ef"
+  },
+  "forward_bateria.plecs": {
+    "components_original": 46,
+    "components_saved": 46,
+    "differences": [],
+    "init_original": "% Trabalho 4 - parâmetros SI; modos: 0 degrau, 1 curto, 2 bateria\nVrms=220; Vbus=310; fs=50000; Tstop=0.6;\nLo=136.6e-6; Co=0.0044; ESR=0.055; Cin=940e-6;\nLm=19.08e-3; Rcu=0.02; Rline=0.5; Lline=100e-6; Rbat=0.01; Cbat=0.4;\nmode=2; Iref=15; Vref=27; Dlim=0.45; Tsoft=0.005;\nKiv=13090.03899996963; Kpv=7.744664852199339; wpv=147653.78890071853;\nKii=3459.617457097387; Kpi=0.45735159332506625; wpi=137643.76176516476;\n",
+    "init_saved": "% Trabalho 4 - parÃ¢metros SI; modos: 0 degrau, 1 curto, 2 bateria\nVrms=220; Vbus=310; fs=50000; Tstop=0.6;\nLo=136.6e-6; Co=0.0044; ESR=0.055; Cin=940e-6;\nLm=19.08e-3; Rcu=0.02; Rline=0.5; Lline=100e-6; Rbat=0.01; Cbat=0.4;\nmode=2; Iref=15; Vref=27; Dlim=0.45; Tsoft=0.005;\nKiv=13090.03899996963; Kpv=7.744664852199339; wpv=147653.78890071853;\nKii=3459.617457097387; Kpi=0.45735159332506625; wpi=137643.76176516476;\n",
+    "conexoes_iguais": true,
+    "inicializacao_funcional_igual": true,
+    "sha256_executado": "cf1d8c47d127fc67457998db14a9c99c0030ba15fd5db640f60509b6aac5ef7b",
+    "sha256_formatado": "b94292825f0f8d3b9268c39e5d59fc02a3434e45a32eda244971f89426f6ff82"
+  },
+  "forward_capacitor_original.plecs": {
+    "components_original": 35,
+    "components_saved": 35,
+    "differences": [],
+    "init_original": "% Trabalho 4 - parâmetros SI; modos: 0 degrau, 1 curto, 2 bateria\nVrms=220; Vbus=310; fs=50000; Tstop=0.36;\nLo=136.6e-6; Co=0.0022; ESR=0.11; Cin=940e-6;\nLm=19.08e-3; Rcu=0.02; Rline=0.5; Lline=100e-6; Rbat=0.01; Cbat=0.4;\nmode=0; Iref=15; Vref=27; Dlim=0.45; Tsoft=0.005;\nKiv=13090.03899996963; Kpv=7.744664852199339; wpv=147653.78890071853;\nKii=3459.617457097387; Kpi=0.45735159332506625; wpi=137643.76176516476;\n",
+    "init_saved": "% Trabalho 4 - parÃ¢metros SI; modos: 0 degrau, 1 curto, 2 bateria\nVrms=220; Vbus=310; fs=50000; Tstop=0.36;\nLo=136.6e-6; Co=0.0022; ESR=0.11; Cin=940e-6;\nLm=19.08e-3; Rcu=0.02; Rline=0.5; Lline=100e-6; Rbat=0.01; Cbat=0.4;\nmode=0; Iref=15; Vref=27; Dlim=0.45; Tsoft=0.005;\nKiv=13090.03899996963; Kpv=7.744664852199339; wpv=147653.78890071853;\nKii=3459.617457097387; Kpi=0.45735159332506625; wpi=137643.76176516476;\n",
+    "conexoes_iguais": true,
+    "inicializacao_funcional_igual": true,
+    "sha256_executado": "b63fd116e39afd81ade4a68d39a7ee5695ce5e2c20aa6571ec383adf928b4846",
+    "sha256_formatado": "93c9440b744fea48f8594bc0831862098a0314190046c9bfcffdae3e0f9cdc9f"
+  },
+  "forward_curto.plecs": {
+    "components_original": 44,
+    "components_saved": 44,
+    "differences": [],
+    "init_original": "% Trabalho 4 - parâmetros SI; modos: 0 degrau, 1 curto, 2 bateria\nVrms=220; Vbus=310; fs=50000; Tstop=0.36;\nLo=136.6e-6; Co=0.0044; ESR=0.055; Cin=940e-6;\nLm=19.08e-3; Rcu=0.02; Rline=0.5; Lline=100e-6; Rbat=0.01; Cbat=0.4;\nmode=1; Iref=15; Vref=27; Dlim=0.45; Tsoft=0.005;\nKiv=13090.03899996963; Kpv=7.744664852199339; wpv=147653.78890071853;\nKii=3459.617457097387; Kpi=0.45735159332506625; wpi=137643.76176516476;\n",
+    "init_saved": "% Trabalho 4 - parÃ¢metros SI; modos: 0 degrau, 1 curto, 2 bateria\nVrms=220; Vbus=310; fs=50000; Tstop=0.36;\nLo=136.6e-6; Co=0.0044; ESR=0.055; Cin=940e-6;\nLm=19.08e-3; Rcu=0.02; Rline=0.5; Lline=100e-6; Rbat=0.01; Cbat=0.4;\nmode=1; Iref=15; Vref=27; Dlim=0.45; Tsoft=0.005;\nKiv=13090.03899996963; Kpv=7.744664852199339; wpv=147653.78890071853;\nKii=3459.617457097387; Kpi=0.45735159332506625; wpi=137643.76176516476;\n",
+    "conexoes_iguais": true,
+    "inicializacao_funcional_igual": true,
+    "sha256_executado": "caf74eae017484a473e8f19e98ddaae7140573ec6f782556ac1bf0abf82a23cf",
+    "sha256_formatado": "09ab1d6b71b3ef6d847dfeebd227c256518ccb1260e68421b1dbb53cf2cdb0c3"
+  },
+  "forward_degrau.plecs": {
+    "components_original": 44,
+    "components_saved": 44,
+    "differences": [],
+    "init_original": "% Trabalho 4 - parâmetros SI; modos: 0 degrau, 1 curto, 2 bateria\nVrms=220; Vbus=310; fs=50000; Tstop=0.36;\nLo=136.6e-6; Co=0.0044; ESR=0.055; Cin=940e-6;\nLm=19.08e-3; Rcu=0.02; Rline=0.5; Lline=100e-6; Rbat=0.01; Cbat=0.4;\nmode=0; Iref=15; Vref=27; Dlim=0.45; Tsoft=0.005;\nKiv=13090.03899996963; Kpv=7.744664852199339; wpv=147653.78890071853;\nKii=3459.617457097387; Kpi=0.45735159332506625; wpi=137643.76176516476;\n",
+    "init_saved": "% Trabalho 4 - parÃ¢metros SI; modos: 0 degrau, 1 curto, 2 bateria\nVrms=220; Vbus=310; fs=50000; Tstop=0.36;\nLo=136.6e-6; Co=0.0044; ESR=0.055; Cin=940e-6;\nLm=19.08e-3; Rcu=0.02; Rline=0.5; Lline=100e-6; Rbat=0.01; Cbat=0.4;\nmode=0; Iref=15; Vref=27; Dlim=0.45; Tsoft=0.005;\nKiv=13090.03899996963; Kpv=7.744664852199339; wpv=147653.78890071853;\nKii=3459.617457097387; Kpi=0.45735159332506625; wpi=137643.76176516476;\n",
+    "conexoes_iguais": true,
+    "inicializacao_funcional_igual": true,
+    "sha256_executado": "88a16654071332f586ac1742bdfb443134708a4cae7d8d4f067077457b33490f",
+    "sha256_formatado": "ffde6467a6372524354988c0c6c6accba4ffb39a5ea4f9bc3ada87220b1ea9cb"
+  }
+}

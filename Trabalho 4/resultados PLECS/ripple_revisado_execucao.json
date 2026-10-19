@@ -1,0 +1,48 @@
+{
+  "ensaio": "ripple_revisado",
+  "modelo": "forward_barramento_cc",
+  "sha256_modelo": "1f4dcee4c2308cd44283d9d34d3a0d3f43238661e3b25c7cd59ad7d529b4b2b4",
+  "inicio": "2026-10-19T15:23:18.315992-03:00",
+  "PLECS": "5.0.6",
+  "ModelVars": {
+    "Vbus": 373.0
+  },
+  "status": "executado",
+  "opcoes": {
+    "ModelVars": {
+      "Vbus": 373.0,
+      "Tstop": 0.2
+    },
+    "SolverOpts": {
+      "TimeSpan": 0.2,
+      "MaxStep": 2e-07,
+      "RelTol": 1e-06,
+      "AbsTol": 1e-08,
+      "OutputTimesOption": "specified"
+    }
+  },
+  "grade_saida": {
+    "inicio_s": 0.18,
+    "passo_s": 2e-07,
+    "fim_s": 0.2
+  },
+  "duracao_real_s": 20.625,
+  "amostras": 100001,
+  "colunas": [
+    "tempo_s",
+    "v_saida_V",
+    "i_indutor_A",
+    "v_bus_V",
+    "controle_V",
+    "portadora_V",
+    "PWM_01",
+    "u_tensao_V",
+    "u_corrente_V",
+    "v_Q1_V",
+    "i_Q1_A",
+    "i_magnetizante_A",
+    "v_primario_V"
+  ],
+  "sha256_csv": "aa5b92d8019dda3f9b08e66fb3caa2a332ebc14a27fb91d1e5ec4a93c73dbcd6",
+  "tempo_final_s": 0.2
+}

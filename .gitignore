@@ -1,0 +1,23 @@
+# Dados brutos grandes: permanecem nas pastas locais e podem ser regenerados no PLECS.
+Trabalho 2/resultados PLECS/*.csv
+Trabalho 3/resultados PLECS/*.csv
+Trabalho 4/resultados PLECS/*.csv
+Trabalho 4/resultados PLECS/*_rpc.json.gz
+Trabalho 4/resultados PLECS/graficos/
+
+# Material didático de circulação restrita e recortes de conferência.
+Trabalho 3/documento explicativo/
+Trabalho 4/documento explicativo/
+Trabalho 2/documento explicativo/imagens/
+
+# Construções intermediárias e arquivos locais de revisão.
+Trabalho 2/artigo/build/
+Trabalho 3/artigo/build/
+Trabalho 4/artigo/qa/
+Trabalho 4/desenvolvimento/qa_modelos/
+Trabalho 4/simulação PLECS/versoes_formatadas_plecs/
+Trabalho 4/manifesto_entrega.json
+**/__pycache__/
+*.pyc
+*:Zone.Identifier
+~$*

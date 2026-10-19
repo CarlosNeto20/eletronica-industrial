@@ -1,0 +1,50 @@
+{
+  "ensaio": "bateria_220",
+  "modelo": "forward_bateria",
+  "sha256_modelo": "cf1d8c47d127fc67457998db14a9c99c0030ba15fd5db640f60509b6aac5ef7b",
+  "inicio": "2026-10-19T15:22:15.038397-03:00",
+  "PLECS": "5.0.6",
+  "ModelVars": {
+    "Vrms": 220.0
+  },
+  "status": "executado",
+  "opcoes": {
+    "ModelVars": {
+      "Vrms": 220.0,
+      "Tstop": 0.6
+    },
+    "SolverOpts": {
+      "TimeSpan": 0.6,
+      "MaxStep": 2e-06,
+      "RelTol": 1e-06,
+      "AbsTol": 1e-08,
+      "OutputTimesOption": "specified"
+    }
+  },
+  "grade_saida": {
+    "inicio_s": 0.0,
+    "passo_s": 2e-06,
+    "fim_s": 0.6
+  },
+  "duracao_real_s": 22.39099999999962,
+  "amostras": 300001,
+  "colunas": [
+    "tempo_s",
+    "v_saida_V",
+    "i_indutor_A",
+    "v_bus_V",
+    "controle_V",
+    "portadora_V",
+    "PWM_01",
+    "u_tensao_V",
+    "u_corrente_V",
+    "v_Q1_V",
+    "i_Q1_A",
+    "i_magnetizante_A",
+    "v_primario_V",
+    "i_rede_A",
+    "i_bateria_A"
+  ],
+  "sha256_csv": "0d712dd6e8109f8e19d5157af5e451e1e9b01a941c43f3bd8d94fc36bb4502c6",
+  "tempo_final_s": 0.6
+}

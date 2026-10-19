@@ -1,0 +1,66 @@
+Fontes do artigo IEEE do Trabalho 3
+===================================
+
+Estes arquivos reconstroem o artigo do zero, no formato IEEE A4 do
+template-a4.docx (o mesmo dos Trabalhos 1 e 2). O fluxo é o do Trabalho 2.
+
+Arquivos
+--------
+conteudo.py          Todo o texto do artigo: título, autores, resumo, palavras-
+                     chave, as 8 seções, as 20 equações em LaTeX, as 7 tabelas,
+                     as chamadas das figuras e as 13 referências. É aqui que se
+                     edita o artigo. A lista ORDEM define a numeração das
+                     figuras, e o texto as cita por N["nome"].
+montar_figuras.py    Monta as figuras em ../figuras a partir da planilha e do
+                     anexo do professor (documento explicativo/imagens), das
+                     figuras do memorial (desenvolvimento/figuras) e da captura
+                     do esquemático do PLECS (simulação PLECS/simulacao-
+                     circuitos/plecs-circ-carregador.png), se ela existir.
+omml_gen.py          Converte as equações LaTeX em OMML (equação nativa do
+                     Word): LaTeX -> MathML (latex2mathml) -> OMML (MML2OMML.XSL
+                     do Office). Cópia do Trabalho 2.
+build_docx.py        Monta o .docx sobre o template. Cópia do Trabalho 2, só com
+                     o nome do arquivo de saída trocado.
+exportar_pdf.ps1     Exporta o PDF pelo Microsoft Word (automação COM).
+exportar_markdown.py Gera o memorial desenvolvimento/01 a 05 a partir de
+                     conteudo.py, para que memorial e artigo não divirjam.
+
+Ordem de execução (a partir desta pasta)
+----------------------------------------
+    python montar_figuras.py
+    python omml_gen.py
+    python build_docx.py
+    powershell -ExecutionPolicy Bypass -File exportar_pdf.ps1
+    python exportar_markdown.py
+
+Saída em ../build; as versões de entrega são copiadas para ../ (pasta artigo):
+artigo-carregador-forward-duas-chaves.docx e .pdf.
+
+Dependências: Python 3 com pillow, latex2mathml, lxml e pymupdf; Microsoft
+Word/Office instalado (MML2OMML.XSL e exportação do PDF). O template fica
+descompactado em ../tpl.
+
+Convenções de texto em conteudo.py
+----------------------------------
+- Símbolos com subscrito se escrevem X_y (V_i, L_o, f_s). Subscritos compostos
+  sem vírgula: V_C1min, I_Dmed, V_imax.
+- Parágrafo que usa "% N[...]" para citar figura precisa escrever o sinal de
+  porcentagem como "%%".
+- Figuras: span=2 = largura total (vira uma "ilha" de uma coluna). A chamada
+  fig() tem de seguir a lista ORDEM (há um assert).
+- Equações numeradas explicitamente em eq(latex, "n"); devem caber em uma
+  coluna (as longas foram partidas em duas).
+
+Armadilhas conhecidas
+---------------------
+1. O template é OOXML strict; o documento é escrito diretamente em XML.
+2. Uma figura de largura total que não cabe no fim da página vai para a
+   seguinte e deixa um vazio. Além disso, o Word equilibra as colunas do trecho
+   de texto que divide a página com uma ilha. Por isso as figuras de resultados
+   foram feitas na largura de uma coluna (176 V e 264 V sobrepostas), e as
+   ilhas que sobraram ficam coladas umas nas outras (Tabela III + Fig. 8;
+   Fig. 13 + Tabela V; Fig. 23 + Tabela VII). Depois de mexer no texto, conferir
+   o PDF página a página.
+3. A captura do esquemático do PLECS é a Fig. 15. Se o arquivo
+   plecs-circ-carregador.png for apagado, o artigo sai sem ela e a numeração
+   das figuras seguintes muda sozinha.

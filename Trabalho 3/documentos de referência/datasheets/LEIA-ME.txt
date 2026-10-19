@@ -1,0 +1,19 @@
+Datasheets dos componentes comerciais escolhidos no Trabalho 3
+==============================================================
+
+Baixados dos sites dos fabricantes em 11/10/2026. As tabelas usadas no artigo
+são recortadas por recortar_datasheets.py para desenvolvimento/figuras/ds-*.png.
+
+Arquivo                     Componente (função no carregador)                    Origem
+--------------------------  ---------------------------------------------------  ---------------------------------------------
+GBU8-Vishay.pdf             GBU8J, ponte 8 A / 600 V (retificador de entrada)     https://www.vishay.com/docs/88616/gbu8a.pdf
+IRFP460-Vishay.pdf          IRFP460, MOSFET 500 V / 20 A (chaves do Forward)      https://www.vishay.com/docs/91237/91237.pdf
+UF4001-UF4007-Vishay.pdf    UF4005, ultrarrápido 600 V / 1 A (desmagnetização)    https://www.vishay.com/docs/88755/uf4001.pdf
+MUR3020WT-Vishay.pdf        VS-MUR3020WT, 2 x 15 A / 200 V (retificador e roda    https://www.vishay.com/docs/94080/vs-mur3020wt-n3.pdf
+                            livre do secundário)
+B41821-B43821-TDK.pdf       B41821F6228M, 2200 uF / 50 V, RSE 0,11 ohm (filtro    https://www.tdk-electronics.tdk.com/inf/20/30/db/aec_2013/B41821_B43821.pdf
+                            de saída; é o capacitor adotado pelo professor)
+UC3525A-TI.pdf              UC3525A, modulador PWM (circuito de controle)         https://www.ti.com/lit/ds/symlink/uc3525a.pdf
+
+O capacitor do barramento (TDK B43658, 470 uF / 450 V) já vem recortado na
+planilha do professor: documento explicativo/imagens/fig-datasheet-tdk-b43658.png.
