@@ -89,8 +89,9 @@ body.append(para('Palavras-chave—'+C.KEYWORDS,'Keywords',first=0,after=6))
 rels=E.fromstring(pkg['word/_rels/document.xml.rels']);rns=E.QName(rels).namespace
 ct=E.fromstring(pkg['[Content_Types].xml']);ctns=E.QName(ct).namespace
 if not any(e.get('Extension')=='png' for e in ct):E.SubElement(ct,'{'+ctns+'}Default',Extension='png',ContentType='image/png')
-def figure(name,no):
-    blob=(OUT/'figuras'/(name+'.png')).read_bytes();pw,ph=struct.unpack('>II',blob[16:24]);cx=round(234*12700);cy=round(cx*ph/pw)
+LARGURA={1:234,2:504}  # pt: uma coluna e largura útil da página (A4 menos margens de 45,35 pt)
+def figure(name,no,span=1):
+    blob=(OUT/'figuras'/(name+'.png')).read_bytes();pw,ph=struct.unpack('>II',blob[16:24]);cx=round(LARGURA[span]*12700);cy=round(cx*ph/pw)
     rid='rIdArtigo'+str(no);target=f'media/artigo_fig_{no}.png';pkg['word/'+target]=blob
     E.SubElement(rels,'{'+rns+'}Relationship',Id=rid,Type=NS['r']+'/image',Target=target)
     p=para('',align='center',keep=True,first=0,after=0);r=add(p,'w:r');draw=add(r,'w:drawing');inline=add(draw,'wp:inline',{'distT':0,'distB':0,'distL':0,'distR':0})
@@ -119,6 +120,15 @@ def table(rows,widths):
             add(pa[0],'w:spacing',{'w:line':'10pt','w:lineRule':'atLeast','w:after':'0pt'})
             tc.append(pa)
     return t
+W_='{'+NS['w']+'}'
+def encerrar_secao(sec):
+    """Encerra a seção atual no último parágrafo, que precisa ser de texto corrido.
+    Uma figura de largura total fica numa "ilha" de uma coluna entre duas seções de duas colunas; o Word
+    equilibra as colunas antes da ilha, como nos artigos dos trabalhos anteriores."""
+    ult=body[-1];estilo=ult.find('w:pPr/w:pStyle',NS) if ult.tag==W_+'p' else None
+    assert estilo is not None and estilo.get(W_+'val')=='BodyText' and ult.find('w:pPr/w:sectPr',NS) is None,'figura de largura total deve seguir um parágrafo de texto'
+    ult.find('w:pPr',NS).append(deepcopy(sec))
+secao_1col=deepcopy(body_sec);secao_1col.find('w:cols',NS).set(W_+'num','1')
 fn=en=0
 for b in C.B:
     k=b[0]
@@ -127,7 +137,11 @@ for b in C.B:
     elif k=='p':body.append(para(b[1]))
     elif k=='eq':en+=1;body.append(equation(b[1],en))
     elif k=='fig':
-        fn+=1;body.append(figure(b[1],fn));body.append(para(f'Fig. {fn}. '+b[2],'figurecaption',first=0,after=7))
+        fn+=1;span=b[3];pf=figure(b[1],fn,span);pc=para(f'Fig. {fn}. '+b[2],'figurecaption',first=0,after=7)
+        if span==2:encerrar_secao(body_sec)
+        body.append(pf);body.append(pc)
+        if span==2:
+            pc.find('w:pPr',NS).append(deepcopy(secao_1col))
     elif k=='table':body.append(para(b[1],'tablehead',align='center',keep=True,first=0));body.append(table(b[2],b[3]));body.append(para('',after=2))
 body.append(para('Referências','Heading1',keep=True,first=0))
 for ref in C.REFS:
