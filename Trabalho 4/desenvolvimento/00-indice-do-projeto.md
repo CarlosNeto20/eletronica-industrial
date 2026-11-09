@@ -27,4 +27,4 @@ As pastas `qa_fonte` e o arquivo `extracao_restrita.txt` são materiais de confe
 
 ## Estado final
 
-Entrega concluída em 19/10/2026: cinco modelos principais, oito ensaios efetivamente executados, dados brutos, gráficos, artigo IEEE A4 de seis páginas em DOCX/PDF e verificação de integridade. Abrir `../LEIA-ME-ENTREGA.md` para instruções rápidas. Os valores medidos e ressalvas estão em 08-resultados.md; `verificacao_entrega.json` e o manifesto na raiz registram a conferência final.
+Entrega concluída em 19/10/2026: cinco modelos principais, oito ensaios efetivamente executados, dados brutos, gráficos, artigo IEEE A4 de sete páginas em DOCX/PDF e verificação de integridade. Abrir `../LEIA-ME-ENTREGA.md` para instruções rápidas. Os valores medidos e ressalvas estão em 08-resultados.md; `verificacao_entrega.json` e o manifesto na raiz registram a conferência final.

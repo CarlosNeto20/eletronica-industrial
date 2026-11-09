@@ -6,7 +6,7 @@ Projeto de carregador Forward de duas chaves, UFC — Eletrônica Industrial. En
 
 ## Documentos principais
 
-- [Artigo IEEE A4 em PDF](artigo/Trabalho4_Forward_15A.pdf): seis páginas, dez figuras próprias, dez equações e três tabelas.
+- [Artigo IEEE A4 em PDF](artigo/Trabalho4_Forward_15A.pdf): sete páginas, treze figuras próprias (três delas são os esquemáticos PLECS dos modelos), dez equações e três tabelas.
 - [Artigo editável em DOCX](artigo/Trabalho4_Forward_15A.docx): derivado do template fornecido; equações nativas editáveis. O PDF foi exportado desta mesma versão no Microsoft Word.
 - [Índice do memorial](desenvolvimento/00-indice-do-projeto.md): auditoria, cálculos, magnéticos, controle, guia, resultados e melhorias opcionais.
 - [Resultados interpretados](desenvolvimento/08-resultados.md): janelas, médias, picos, critérios e limitações.
@@ -44,6 +44,7 @@ Para reconstruir o artigo após revisar conteúdo e resultados:
 
 ```powershell
 & $taskPython 'artigo\fonte\gerar_figura_arquitetura.py'
+& $taskPython 'artigo\fonte\montar_figuras.py'
 & $taskPython 'artigo\fonte\gerar_artigo.py'
 & '.\artigo\fonte\exportar_pdf.ps1'
 & $taskPython 'desenvolvimento\verificar_entrega.py'

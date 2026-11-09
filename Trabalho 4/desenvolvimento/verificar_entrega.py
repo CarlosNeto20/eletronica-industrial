@@ -31,13 +31,13 @@ with zipfile.ZipFile(tpl) as a, zipfile.ZipFile(docx) as b:
     text=' '.join(root.xpath('//*[local-name()="t"]/text()'))
     assert 'Jonatas Manoel Assunção Felix' in text and 'Jose Carlos Moreira de Brito Neto' in text
     assert len(root.xpath('//*[local-name()="oMath"]'))==10
-    assert len(root.xpath('//*[local-name()="drawing"]'))==10
+    assert len(root.xpath('//*[local-name()="drawing"]'))==13
     assert not any(t in text.lower() for t in ['paper title','first author','insert here','xxx-x-xxxx'])
 d=pymupdf.open(pdf);pt='\n'.join(p.get_text() for p in d)
-assert len(d)==6
-for i in range(1,11):assert re.search(r'Fig\.\s*'+str(i)+r'\.',pt),i
+assert len(d)==7
+for i in range(1,14):assert re.search(r'Fig\.\s*'+str(i)+r'\.',pt),i
 assert all(abs(p.rect.width-595.3)<2 and abs(p.rect.height-841.9)<2 for p in d)
-report=dict(ensaios=records,artigo=dict(paginas=len(d),equacoes_editaveis=10,figuras=10,docx_sha256=sha(docx),pdf_sha256=sha(pdf)),template_preservado=True,polos_revisados_estaveis_nos_seis_pontos=True,nota='Verificação automática de integridade; a revisão visual foi registrada separadamente. Não certifica hardware.')
+report=dict(ensaios=records,artigo=dict(paginas=len(d),equacoes_editaveis=10,figuras=13,docx_sha256=sha(docx),pdf_sha256=sha(pdf)),template_preservado=True,polos_revisados_estaveis_nos_seis_pontos=True,nota='Verificação automática de integridade; a revisão visual foi registrada separadamente. Não certifica hardware.')
 (ROOT/'desenvolvimento/verificacao_entrega.json').write_text(json.dumps(report,indent=2,ensure_ascii=False),encoding='utf8')
 manifest={}
 for folder in ['desenvolvimento','simulação PLECS','resultados PLECS','artigo']:
@@ -47,4 +47,4 @@ for folder in ['desenvolvimento','simulação PLECS','resultados PLECS','artigo'
         if p.name in ['extracao_restrita.txt','manifesto_entrega.json']:continue
         manifest[str(rel).replace('\\','/')]=dict(bytes=p.stat().st_size,sha256=sha(p))
 (ROOT/'manifesto_entrega.json').write_text(json.dumps(manifest,indent=2,ensure_ascii=False),encoding='utf8')
-print(f'OK: {len(records)} ensaios, {len(d)} páginas, 10 figuras, 10 equações; {len(manifest)} arquivos no manifesto.')
+print(f'OK: {len(records)} ensaios, {len(d)} páginas, 13 figuras, 10 equações; {len(manifest)} arquivos no manifesto.')
