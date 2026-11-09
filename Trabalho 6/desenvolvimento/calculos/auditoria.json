@@ -1,0 +1,492 @@
+[
+ {
+  "local": "p.3, sec. 3.1",
+  "item": "Prec = Po/0,933",
+  "unidade": "W",
+  "impresso": 2250,
+  "recalculado": 2250.8,
+  "desvio_pct": 0.0357,
+  "decisao": "Mantido",
+  "justificativa": "2100/0,933 = 2250,8 W; arredondamento aceito. O rendimento e orcamento de potencia, nao medicao."
+ },
+ {
+  "local": "p.3, sec. 3.2",
+  "item": "Ondulacao dVC (texto: 10% do pico)",
+  "unidade": "V",
+  "impresso": 37.33,
+  "recalculado": 24.8902,
+  "desvio_pct": -33.3,
+  "decisao": "Mantido 37,33 V (15%)",
+  "justificativa": "O valor usado e 0,15*1,4142*176 = 37,33 V, isto e 15%; 10% daria 24,89 V. O texto esta inconsistente, o numero e coerente com todo o restante."
+ },
+ {
+  "local": "p.4",
+  "item": "VC1max = raiz(2)*176",
+  "unidade": "V",
+  "impresso": 248.902,
+  "recalculado": 248.902,
+  "desvio_pct": -0.000166,
+  "decisao": "Mantido",
+  "justificativa": "Confere."
+ },
+ {
+  "local": "p.4",
+  "item": "VC1min",
+  "unidade": "V",
+  "impresso": 211.572,
+  "recalculado": 211.572,
+  "desvio_pct": -0.000195,
+  "decisao": "Mantido",
+  "justificativa": "Confere."
+ },
+ {
+  "local": "p.4",
+  "item": "thetaC1 = pi/2 - asin(VC1min/VC1max)",
+  "unidade": "rad",
+  "impresso": 0.555,
+  "recalculado": 0.554771,
+  "desvio_pct": -0.0412,
+  "decisao": "Mantido",
+  "justificativa": "Confere (= acos 0,85)."
+ },
+ {
+  "local": "p.5",
+  "item": "C1 = Prec(pi-theta)/(pi fr (Vmax^2-Vmin^2))",
+  "unidade": "F",
+  "impresso": 0.001796,
+  "recalculado": 0.00179633,
+  "desvio_pct": 0.0182,
+  "decisao": "Mantido; adotado 4x470 uF = 1880 uF",
+  "justificativa": "Confere. 1880 uF supera 1796 uF em 4,7%; com tolerancia de -20% (1504 uF) o vale cai para 204.5 V."
+ },
+ {
+  "local": "p.5",
+  "item": "tC1",
+  "unidade": "s",
+  "impresso": 0.001472,
+  "recalculado": 0.00147158,
+  "desvio_pct": -0.0288,
+  "decisao": "Mantido",
+  "justificativa": "Confere."
+ },
+ {
+  "local": "p.5",
+  "item": "VC1medio",
+  "unidade": "V",
+  "impresso": 230.237,
+  "recalculado": 230.237,
+  "desvio_pct": -0.000179,
+  "decisao": "Mantido",
+  "justificativa": "Confere."
+ },
+ {
+  "local": "p.5",
+  "item": "Ioeq",
+  "unidade": "A",
+  "impresso": 9.773,
+  "recalculado": 9.77256,
+  "desvio_pct": -0.00454,
+  "decisao": "Mantido",
+  "justificativa": "Confere."
+ },
+ {
+  "local": "p.5",
+  "item": "Roeq",
+  "unidade": "ohm",
+  "impresso": 23.56,
+  "recalculado": 23.5595,
+  "desvio_pct": -0.0021,
+  "decisao": "Mantido",
+  "justificativa": "Confere; a unidade impressa [W] deve ser ohm."
+ },
+ {
+  "local": "p.5",
+  "item": "Ichg = Ioeq*pi/theta",
+  "unidade": "A",
+  "impresso": 55.341,
+  "recalculado": 55.3406,
+  "desvio_pct": -0.000637,
+  "decisao": "Mantido como aproximacao",
+  "justificativa": "Confere; pulso retangular sem impedancia de rede. O PLECS mede o pulso real com 0,1 ohm."
+ },
+ {
+  "local": "p.5",
+  "item": "IC1ef",
+  "unidade": "A",
+  "impresso": 21.103,
+  "recalculado": 21.1025,
+  "desvio_pct": -0.00223,
+  "decisao": "Mantido",
+  "justificativa": "Confere a integral do pulso retangular."
+ },
+ {
+  "local": "p.6",
+  "item": "ID1med",
+  "unidade": "A",
+  "impresso": 4.886,
+  "recalculado": 4.88628,
+  "desvio_pct": 0.00569,
+  "decisao": "Mantido",
+  "justificativa": "Confere."
+ },
+ {
+  "local": "p.6",
+  "item": "ID1ef",
+  "unidade": "A",
+  "impresso": 16.444,
+  "recalculado": 16.4441,
+  "desvio_pct": 0.000862,
+  "decisao": "Mantido",
+  "justificativa": "Confere."
+ },
+ {
+  "local": "p.6",
+  "item": "ID1pk = 2*Ichg",
+  "unidade": "A",
+  "impresso": 110.681,
+  "recalculado": 110.681,
+  "desvio_pct": 0.000267,
+  "decisao": "Mantido como estimativa",
+  "justificativa": "Fator 2 e heuristico sobre o pulso retangular; comparado com o pico medido no PLECS."
+ },
+ {
+  "local": "p.6",
+  "item": "VDrrevpk = raiz(2)*264",
+  "unidade": "V",
+  "impresso": 373.352,
+  "recalculado": 373.352,
+  "desvio_pct": 0.000102,
+  "decisao": "Mantido",
+  "justificativa": "Confere."
+ },
+ {
+  "local": "p.7, sec. 4.1",
+  "item": "Vimin_cc = 223 V (rotulado tensao eficaz nominal)",
+  "unidade": "V",
+  "impresso": 223,
+  "recalculado": 211.572,
+  "desvio_pct": -5.12,
+  "decisao": "Revisado para analise: 211,57 V em rede e 210 V em bateria",
+  "justificativa": "223 V nao e deduzido no documento e nao e eficaz; e grandeza CC entre o vale (211,57 V) e a media (230,24 V) a 176 V."
+ },
+ {
+  "local": "p.7",
+  "item": "Mmax = Vopk/223",
+  "unidade": "",
+  "impresso": 0.729,
+  "recalculado": 0.729303,
+  "desvio_pct": 0.0416,
+  "decisao": "Complementado",
+  "justificativa": "Com 211,57 V: 0.769; com 210 V: 0.774. Ambos < 0,85."
+ },
+ {
+  "local": "p.7",
+  "item": "Mmin = Vopk/373",
+  "unidade": "",
+  "impresso": 0.436,
+  "recalculado": 0.436018,
+  "desvio_pct": 0.00403,
+  "decisao": "Mantido",
+  "justificativa": "Confere."
+ },
+ {
+  "local": "p.7",
+  "item": "dILo = 0,4*Iopk",
+  "unidade": "A",
+  "impresso": 10.33,
+  "recalculado": 10.3299,
+  "desvio_pct": -0.000893,
+  "decisao": "Mantido como criterio",
+  "justificativa": "Confere."
+ },
+ {
+  "local": "p.8, sec. 4.3",
+  "item": "Lo [Rashid]",
+  "unidade": "H",
+  "impresso": 0.0003656,
+  "recalculado": 0.000365551,
+  "desvio_pct": -0.0135,
+  "decisao": "Mantido 365,6 uH",
+  "justificativa": "A conta confere, mas usa dt = 0,5(1+M)/(2fs). Na unipolar o intervalo com vAB = Vcc no pico dura M/(2fs); a ondulacao real a 373 V e 6.27 A (24% de Iopk), logo o projeto e conservador."
+ },
+ {
+  "local": "p.8, sec. 4.4",
+  "item": "Co (texto fs/40, conta fs/20)",
+  "unidade": "F",
+  "impresso": 6.9294e-05,
+  "recalculado": 6.92935e-05,
+  "desvio_pct": -0.000712,
+  "decisao": "Mantido 60 uF; texto corrigido para fs/20",
+  "justificativa": "fc = 2fs/4 e corte = fc/10 levam a 2fs/40 = fs/20 = 1 kHz, que e o que a conta usa. Com fs/40 seria 277 uF. Com 60 uF, f0 = 1075 Hz."
+ },
+ {
+  "local": "p.8, sec. 4.5",
+  "item": "Ro = Voef^2/Po",
+  "unidade": "ohm",
+  "impresso": 6.298,
+  "recalculado": 6.29762,
+  "desvio_pct": -0.00605,
+  "decisao": "Mantido",
+  "justificativa": "Confere; unidade impressa [W] deve ser ohm."
+ },
+ {
+  "local": "p.9, sec. 4.5",
+  "item": "Hv = 4/(raiz(2)*115)",
+  "unidade": "",
+  "impresso": null,
+  "recalculado": 0.024595,
+  "desvio_pct": null,
+  "decisao": "Mantido",
+  "justificativa": "Divisor do Anexo 01 (25,22k/1025,22k) da 0.024600, diferenca de 0.019%."
+ },
+ {
+  "local": "p.9",
+  "item": "Gv(s): termo de amortecimento L1/Ro",
+  "unidade": "",
+  "impresso": "L1/Ro",
+  "recalculado": "Lo/Ro",
+  "desvio_pct": null,
+  "decisao": "Corrigido no texto",
+  "justificativa": "Na forma em s aparece L1; na forma em w, Lo. O correto e Lo/Ro."
+ },
+ {
+  "local": "p.11, passo 2",
+  "item": "fcv = 2fs/6",
+  "unidade": "Hz",
+  "impresso": 6666.667,
+  "recalculado": 6666.67,
+  "desvio_pct": -5e-06,
+  "decisao": "Mantido",
+  "justificativa": "Confere; 6,67 kHz = fs/3, acima da ressonancia LC (1075 Hz)."
+ },
+ {
+  "local": "p.11, passo 3",
+  "item": "P = arg(FTLAscv)",
+  "unidade": "graus",
+  "impresso": -176.289,
+  "recalculado": -176.289,
+  "desvio_pct": 0.000195,
+  "decisao": "Mantido",
+  "justificativa": "Confere com Vcc = 373 V e Ro = 6,298 ohm."
+ },
+ {
+  "local": "p.11, passo 4",
+  "item": "Atenuacao em fcv (texto 33,23 dB)",
+  "unidade": "dB",
+  "impresso": -33.23,
+  "recalculado": -26.2246,
+  "desvio_pct": 21.1,
+  "decisao": "Corrigido para -26,22 dB",
+  "justificativa": "O valor calculado na propria planilha e -26,223 dB; 33,23 dB e erro de texto."
+ },
+ {
+  "local": "p.11, passo 6",
+  "item": "alfa = MF - P - 90",
+  "unidade": "graus",
+  "impresso": 146.289,
+  "recalculado": 146.289,
+  "desvio_pct": -0.000235,
+  "decisao": "Mantido",
+  "justificativa": "Confere."
+ },
+ {
+  "local": "p.12, passo 8",
+  "item": "K = 47",
+  "unidade": "",
+  "impresso": 47,
+  "recalculado": 45.553,
+  "desvio_pct": -3.08,
+  "decisao": "Mantido K = 47",
+  "justificativa": "O K exato para alfa = 146,29 graus e 45.6; K = 47 da alfa = 146.80 graus e eleva a MF para 60.52 graus."
+ },
+ {
+  "local": "p.12, passo 9",
+  "item": "Fz1 = fcv/raiz(K)",
+  "unidade": "Hz",
+  "impresso": 972.433,
+  "recalculado": 972.433,
+  "desvio_pct": 2.84e-05,
+  "decisao": "Mantido",
+  "justificativa": "Confere."
+ },
+ {
+  "local": "p.12",
+  "item": "Fp2 = fcv*raiz(K)",
+  "unidade": "Hz",
+  "impresso": 45700.0,
+  "recalculado": 45704.4,
+  "desvio_pct": 0.00955,
+  "decisao": "Mantido",
+  "justificativa": "Confere; polo duplo acima de fs = 20 kHz e proximo da ondulacao unipolar (40 kHz)."
+ },
+ {
+  "local": "p.12",
+  "item": "Gv = 10^(|Av|/20)",
+  "unidade": "",
+  "impresso": 20.472,
+  "recalculado": 20.4752,
+  "desvio_pct": 0.0155,
+  "decisao": "Mantido",
+  "justificativa": "Valido porque a planta atenua em fcv (Av < 0); com Av > 0 o modulo inverteria o ganho."
+ },
+ {
+  "local": "p.13",
+  "item": "R2 (Tipo 3)",
+  "unidade": "ohm",
+  "impresso": 30510.0,
+  "recalculado": 30515.4,
+  "desvio_pct": 0.0176,
+  "decisao": "Mantido",
+  "justificativa": "Confere."
+ },
+ {
+  "local": "p.13",
+  "item": "R3 (Tipo 3)",
+  "unidade": "ohm",
+  "impresso": 217.391,
+  "recalculado": 217.391,
+  "desvio_pct": 0.00014,
+  "decisao": "Mantido",
+  "justificativa": "Confere."
+ },
+ {
+  "local": "p.13",
+  "item": "C1 (Tipo 3)",
+  "unidade": "F",
+  "impresso": 5.364e-09,
+  "recalculado": 5.36342e-09,
+  "desvio_pct": -0.0109,
+  "decisao": "Mantido",
+  "justificativa": "Confere."
+ },
+ {
+  "local": "p.13",
+  "item": "C2 (Tipo 3)",
+  "unidade": "F",
+  "impresso": 1.166e-10,
+  "recalculado": 1.16596e-10,
+  "desvio_pct": -0.0034,
+  "decisao": "Mantido",
+  "justificativa": "Confere."
+ },
+ {
+  "local": "p.13",
+  "item": "C3 (Tipo 3)",
+  "unidade": "F",
+  "impresso": 1.602e-08,
+  "recalculado": 1.60184e-08,
+  "desvio_pct": -0.00972,
+  "decisao": "Mantido",
+  "justificativa": "Confere."
+ },
+ {
+  "local": "p.15",
+  "item": "Margem de fase",
+  "unidade": "graus",
+  "impresso": 60.516,
+  "recalculado": 60.5157,
+  "desvio_pct": -0.000562,
+  "decisao": "Mantido em 373 V e plena carga",
+  "justificativa": "Confere; nos demais pontos a MF real e menor (ver 05)."
+ },
+ {
+  "local": "p.15",
+  "item": "Margem de ganho = infinito",
+  "unidade": "dB",
+  "impresso": "inf",
+  "recalculado": "finita",
+  "desvio_pct": null,
+  "decisao": "Corrigido",
+  "justificativa": "A fase cruza -180 graus perto de 44 kHz; a MG e finita (ver 05)."
+ },
+ {
+  "local": "p.18, Anexo 01",
+  "item": "Compensador no PSIM (RF, CFV2, C9, CI, RIP, RIZ)",
+  "unidade": "",
+  "impresso": "33k;5,6n;120p;18n;220;10k",
+  "recalculado": "30,5k;5,36n;117p;16,0n;217;10k",
+  "desvio_pct": null,
+  "decisao": "Nao usado como validacao",
+  "justificativa": "Valores comerciais proximos, mas zeros em 861/865 Hz e polos em 40.2/41.1 kHz; a simulacao do professor nao valida exatamente a funcao publicada."
+ },
+ {
+  "local": "p.16, sec. 5.2",
+  "item": "Iibmax = Pob/Vibmin",
+  "unidade": "A",
+  "impresso": 53.571,
+  "recalculado": 53.5714,
+  "desvio_pct": 0.0008,
+  "decisao": "Mantido como limite inferior",
+  "justificativa": "Pob = 2250 W e potencia de saida do CC-CC; sem rendimento proprio. Com eta = 0,95 (H) a bateria fornece 56.4 A."
+ },
+ {
+  "local": "p.16",
+  "item": "dIibmax = 0,2*Iibmax",
+  "unidade": "A",
+  "impresso": 10.714,
+  "recalculado": 10.7143,
+  "desvio_pct": 0.00267,
+  "decisao": "Mantido",
+  "justificativa": "Confere."
+ },
+ {
+  "local": "p.16, sec. 5.3",
+  "item": "Lb = Vib(2D-1)/(2 fsb dI)",
+  "unidade": "H",
+  "impresso": 3.92e-05,
+  "recalculado": 3.92e-05,
+  "desvio_pct": -1.73e-14,
+  "decisao": "Mantido",
+  "justificativa": "Confere; indutor ve 2fsb na regiao D > 0,5 da celula de tres estados."
+ },
+ {
+  "local": "p.16",
+  "item": "VC1 = Vib/(1-D) (capacitor inferior)",
+  "unidade": "V",
+  "impresso": 140,
+  "recalculado": 140.0,
+  "desvio_pct": -2.03e-14,
+  "decisao": "Mantido",
+  "justificativa": "Confere; e o C8 do Anexo 01."
+ },
+ {
+  "local": "p.16",
+  "item": "VNp = VC1/2",
+  "unidade": "V",
+  "impresso": 70,
+  "recalculado": 70.0,
+  "desvio_pct": -2.03e-14,
+  "decisao": "Mantido",
+  "justificativa": "Confere."
+ },
+ {
+  "local": "p.17",
+  "item": "a = VSec/VNp",
+  "unidade": "",
+  "impresso": 1,
+  "recalculado": 1.0,
+  "desvio_pct": 2.22e-14,
+  "decisao": "Mantido",
+  "justificativa": "Vob = VC8 + VC7 = 140 + 70 = 210 V: o retificador do secundario empilha C7 sobre C8."
+ },
+ {
+  "local": "p.16",
+  "item": "Razao ciclica a 56 V",
+  "unidade": "",
+  "impresso": "nao calculada",
+  "recalculado": 0.6,
+  "desvio_pct": null,
+  "decisao": "Complementado",
+  "justificativa": "D = 1 - 1,5*56/210 = 0,60, ainda acima de 0,5."
+ },
+ {
+  "local": "p.16 e p.6",
+  "item": "Vob = 210 V frente ao vale do retificador",
+  "unidade": "V",
+  "impresso": 210,
+  "recalculado": 211.572,
+  "desvio_pct": 0.748,
+  "decisao": "Registrado",
+  "justificativa": "Margem de apenas 1.57 V; a coerencia depende da logica de transferencia (ver 06)."
+ }
+]

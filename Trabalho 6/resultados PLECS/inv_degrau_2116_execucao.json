@@ -1,0 +1,77 @@
+{
+ "ensaio": "inv_degrau_2116",
+ "descricao": "Inversor a 211,57 V, degrau de vazio para 2100 W no pico da tensao",
+ "grupo": "submodelo",
+ "modelo": "inversor_malha_fechada",
+ "sha256_modelo": "d7424ff76a4d427ea5dd3743d1dbde7cf3bdd39fd2403c2e6d0b7a1be79ca248",
+ "inicio": "2026-11-09T19:03:25-03:00",
+ "PLECS": "PLECS Standalone 5.0 (64 bit), formato 5.0; 5.0.6 segundo o registro do Trabalho 4",
+ "opcoes": {
+  "ModelVars": {
+   "Vcc": 211.5716,
+   "carga": 1,
+   "Rres": 6.297619,
+   "tcarga": 0.0541667,
+   "Tstop": 0.1
+  },
+  "SolverOpts": {
+   "TimeSpan": 0.1,
+   "Solver": "radau",
+   "MaxStep": 5e-06,
+   "RelTol": 1e-06,
+   "AbsTol": 1e-08,
+   "OutputTimesOption": "specified",
+   "Timeout": 600.0,
+   "OutputTimes_n": 15002
+  }
+ },
+ "assinatura_opcoes": "2b80d541d606d5f743a90c5f030d685714cf6bfd027dbbd9ee03aff406cf1678",
+ "grade_saida": [
+  [
+   0.0,
+   0.1,
+   1e-05
+  ],
+  [
+   0.053166667,
+   0.058166667,
+   1e-06
+  ]
+ ],
+ "janelas": {
+  "antes": [
+   0.020833333333333336,
+   0.05416666666666667
+  ],
+  "depois": [
+   0.0875,
+   0.12083333333333333
+  ],
+  "degrau": [
+   0.05416666666666667,
+   0.05816666666666667
+  ]
+ },
+ "status": "executado",
+ "duracao_real_s": 24.531,
+ "amostras": 15002,
+ "colunas": [
+  "tempo_s",
+  "v_o_V",
+  "i_o_A",
+  "i_Lo_A",
+  "v_c_V",
+  "v_ref_V",
+  "v_c_livre_V",
+  "v_AB_V",
+  "i_QA_A",
+  "v_nl_V",
+  "v_bus_V",
+  "rede_on",
+  "dref_cc"
+ ],
+ "sha256_csv": "917819ede8df1ed0c4536f89d1cc815995624ac80b2c130defedae8556cfd12f",
+ "tempo_inicial_s": 0.0,
+ "tempo_final_s": 0.1,
+ "fim": "2026-11-09T19:03:51-03:00"
+}

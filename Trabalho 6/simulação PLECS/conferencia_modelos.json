@@ -1,0 +1,25 @@
+{
+ "retificador_barramento": {
+  "componentes": 27,
+  "erros": []
+ },
+ "elevador_bateria": {
+  "componentes": 55,
+  "erros": []
+ },
+ "elevador_sem_amortecedor": {
+  "componentes": 49,
+  "erros": []
+ },
+ "inversor_malha_fechada": {
+  "componentes": 49,
+  "erros": [],
+  "cscript": "compilado sem avisos (gcc -std=c99 -Wall -Wextra -Werror)"
+ },
+ "nobreak_completo": {
+  "componentes": 115,
+  "erros": [],
+  "cscript": "compilado sem avisos (gcc -std=c99 -Wall -Wextra -Werror)"
+ },
+ "realizacao_compensador_erro_relativo_max": 7.827808068972468e-13
+}

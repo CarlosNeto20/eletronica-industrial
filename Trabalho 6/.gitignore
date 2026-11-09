@@ -1,0 +1,12 @@
+# Material didatico do professor e conferencias derivadas: circulacao restrita, nao publicar.
+documento explicativo/
+desenvolvimento/extracao_restrita.txt
+desenvolvimento/qa_fonte/
+artigo/qa/
+# Dados brutos grandes do PLECS (regeneraveis com resultados PLECS/executar_ensaios.py).
+resultados PLECS/*.csv
+resultados PLECS/*_rpc.json.gz
+resultados PLECS/testes/
+# Arquivos temporarios
+**/__pycache__/
+~$*

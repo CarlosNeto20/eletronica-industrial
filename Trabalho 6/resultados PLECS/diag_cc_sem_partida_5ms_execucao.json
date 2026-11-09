@@ -1,0 +1,66 @@
+{
+ "ensaio": "diag_cc_sem_partida_5ms",
+ "descricao": "Diagnostico do CC-CC (sem amortecedores RC), 5 ms, corrente inicial em Lb de 0.0 A",
+ "grupo": "diagnostico",
+ "modelo": "elevador_sem_amortecedor",
+ "sha256_modelo": "e5725462edf19b82beaaa0f8101bc5683f2807bb60c46e8367ebc61ce06561fe",
+ "inicio": "2026-11-09T19:02:34-03:00",
+ "PLECS": "PLECS Standalone 5.0 (64 bit), formato 5.0; 5.0.6 segundo o registro do Trabalho 4",
+ "opcoes": {
+  "ModelVars": {
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Rcarga": 19.6,
+   "ILb0": 0.0,
+   "Vbus0": 210.0,
+   "VC8_0": 140.0,
+   "VC7_0": 70.0,
+   "Tstop": 0.005
+  },
+  "SolverOpts": {
+   "TimeSpan": 0.005,
+   "Solver": "radau",
+   "MaxStep": 5e-06,
+   "RelTol": 1e-06,
+   "AbsTol": 1e-08,
+   "OutputTimesOption": "specified",
+   "Timeout": 90.0,
+   "OutputTimes_n": 501
+  }
+ },
+ "assinatura_opcoes": "004cdc0fcd0fe7bf4412d103735e3e00de77e1adb0d1a9a1cdc4c8774f6d78f4",
+ "grade_saida": [
+  [
+   0.0,
+   0.005,
+   1e-05
+  ]
+ ],
+ "janelas": {
+  "final": [
+   0.004,
+   0.005
+  ]
+ },
+ "status": "executado",
+ "duracao_real_s": 0.172,
+ "amostras": 501,
+ "colunas": [
+  "tempo_s",
+  "v_bus_V",
+  "i_bat_A",
+  "v_C8_V",
+  "v_C7_V",
+  "v_S1_V",
+  "i_S1_A",
+  "i_S2_A",
+  "i_D17_A",
+  "i_sec_A",
+  "i_C4_A",
+  "gate_S1"
+ ],
+ "sha256_csv": "1755e58723e47020bd3788c3b6d10d2da570a431fe08950be9b0dfc91f6852d7",
+ "tempo_inicial_s": 0.0,
+ "tempo_final_s": 0.005,
+ "fim": "2026-11-09T19:02:35-03:00"
+}

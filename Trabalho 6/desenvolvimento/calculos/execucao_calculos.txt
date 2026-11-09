@@ -1,0 +1,23 @@
+execucao: 2026-11-09T21:54:16+00:00 | Python 3.10.12 | numpy 2.2.6
+Retificador (176 V, 2250 W, dV=37,33 V): {'Vrms': 176.0, 'P': 2250.0, 'VC1max': 248.902, 'dVC': 37.33, 'VC1min': 211.572, 'thetaC1_rad': 0.554771, 'C1_F': 0.00179633, 'tC1_s': 0.00147158, 'VC1medio': 230.237, 'Ioeq': 9.77256, 'Roeq': 23.5595, 'Ichg': 55.3406, 'IC1ef': 21.1025, 'ID1med': 4.88628, 'ID1ef': 16.4441, 'ID1pk_2Ichg': 110.681}
+Vales com 1880 uF: {'176': {'Vpico': 248.902, 'Vvale': 213.187, 'ondulacao': 35.7149, 'ondulacao_pct': 14.349}, '220': {'Vpico': 311.127, 'Vvale': 282.161, 'ondulacao': 28.9662, 'ondulacao_pct': 9.3101}, '264': {'Vpico': 373.352, 'Vvale': 348.933, 'ondulacao': 24.4193, 'ondulacao_pct': 6.54055}}
+Vale com 1880 uF -20% (1504 uF) a 176 V: 204.526
+Inversor: Lo=3.6555e-04 H, Co(fs/20)=6.9294e-05, Co(fs/40)=2.7717e-04, f0=1074.6 Hz
+Ondulacao real no pico a 373 V: 6.272 A (projeto 10,33 A)
+Carga 3 kVA FP 0,7: R=3.086 ohm, L=8.351 mH
+IEC 62040-3 referencia 3 kVA/115 V: {'Rs': 0.176333, 'Uc': 140.3, 'R1': 9.94146, 'C': 0.0125736, 'P_R1': 1980.0}
+Malha: Av=-26.225 dB, P=-176.289 graus, alfa=146.289, K exato=45.55, alfa(47)=146.804, Gv=20.4752, MF=60.516
+Componentes calculados: {'R1': 10000.0, 'R2': 30515.4, 'R3': 217.391, 'C1': 5.36342e-09, 'C2': 1.16596e-10, 'C3': 1.60184e-08}
+Polos/zeros (Hz): fz1=972.4 fz2=972.4 fp1=45704 fp2=45704
+Laco 373 V, plena 2100 W [{'f_Hz': 6662.2, 'fase_graus': -118.75, 'MF_graus': 61.25}] [{'f_Hz': 48526.0, 'MG_dB': 23.97}] estavel True Vo prev 114.8660
+Laco 373 V, vazio [{'f_Hz': 6679.5, 'fase_graus': -122.46, 'MF_graus': 57.54}] [{'f_Hz': 48043.0, 'MG_dB': 23.79}] estavel True Vo prev 114.8380
+Laco 248,9 V, plena [{'f_Hz': 4702.4, 'fase_graus': -119.19, 'MF_graus': 60.81}] [{'f_Hz': 48526.0, 'MG_dB': 27.49}] estavel True Vo prev 114.7950
+Laco 211,57 V, plena [{'f_Hz': 4119.2, 'fase_graus': -120.13, 'MF_graus': 59.87}] [{'f_Hz': 48526.0, 'MG_dB': 28.9}] estavel True Vo prev 114.7550
+Laco 211,57 V, vazio [{'f_Hz': 4141.6, 'fase_graus': -126.3, 'MF_graus': 53.7}] [{'f_Hz': 48043.0, 'MG_dB': 28.71}] estavel True Vo prev 114.7060
+Laco 210 V, plena [{'f_Hz': 4094.8, 'fase_graus': -120.18, 'MF_graus': 59.82}] [{'f_Hz': 48526.0, 'MG_dB': 28.96}] estavel True Vo prev 114.7530
+Laco 210 V, vazio [{'f_Hz': 4117.3, 'fase_graus': -126.4, 'MF_graus': 53.6}] [{'f_Hz': 48043.0, 'MG_dB': 28.78}] estavel True Vo prev 114.7040
+Laco 373 V, R 3 kVA FP=1 (4,41 ohm) [{'f_Hz': 6647.3, 'fase_graus': -117.15, 'MF_graus': 62.85}] [{'f_Hz': 48731.0, 'MG_dB': 24.05}] estavel True Vo prev 114.8780
+Laco 210 V, R 4,41 ohm [{'f_Hz': 4073.1, 'fase_graus': -117.56, 'MF_graus': 62.44}] [{'f_Hz': 48731.0, 'MG_dB': 29.04}] estavel True Vo prev 114.7740
+|Cv| em 40 kHz = 69.61; ondulacao de vo 0.327 Vpp; em vc 0.560 Vpp; inclinacao vc/portadora = 0.176
+CC-CC: {'Vibmin': 42.0, 'Vibmax': 56.0, 'Vob': 210.0, 'Pob': 2250.0, 'Dbmax': 0.7, 'fsb': 20000.0, 'Iibmax': 53.5714, 'dIibmax': 10.7143, 'Lb': 3.92e-05, 'Lb_adot': 3.92e-05, 'VC1': 140.0, 'VNp': 70.0, 'VSec': 70.0, 'a': 1.0, 'D_42': 0.7, 'D_56': 0.6}
+CC-CC pontos: {'42': {'D': 0.7, 'VC8': 140.0, 'VC7': 70.0, 'Vbus': 210.0, 'Iib': 53.5714, 'Iib_com_eta095': 56.391, 'dILb_pp': 10.7143, 'ILb_pico': 58.9286, 'V_chave': 70.0, 'V_D17_D18': 140.0, 'V_ponte_sec': 70.0, 'I_chave_media': 26.7857}, '56': {'D': 0.6, 'VC8': 140.0, 'VC7': 70.0, 'Vbus': 210.0, 'Iib': 40.1786, 'Iib_com_eta095': 42.2932, 'dILb_pp': 7.14286, 'ILb_pico': 43.75, 'V_chave': 70.0, 'V_D17_D18': 140.0, 'V_ponte_sec': 70.0, 'I_chave_media': 20.0893}}

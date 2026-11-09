@@ -1,0 +1,120 @@
+{
+ "solver": {
+  "Solver": "radau",
+  "MaxStep": "5e-06",
+  "RelTol": "1e-06",
+  "AbsTol": "1e-08"
+ },
+ "modelos": {
+  "retificador_barramento": {
+   "arquivo": "retificador_barramento.plecs",
+   "colunas": [
+    "tempo_s",
+    "v_rede_V",
+    "i_rede_A",
+    "i_D1_A",
+    "i_ponte_A",
+    "i_C4_A",
+    "v_bus_V"
+   ],
+   "componentes": 27,
+   "fios": 14,
+   "sinais": 7
+  },
+  "elevador_bateria": {
+   "arquivo": "elevador_bateria.plecs",
+   "colunas": [
+    "tempo_s",
+    "v_bus_V",
+    "i_bat_A",
+    "v_C8_V",
+    "v_C7_V",
+    "v_S1_V",
+    "i_S1_A",
+    "i_S2_A",
+    "i_D17_A",
+    "i_sec_A",
+    "i_C4_A",
+    "gate_S1"
+   ],
+   "componentes": 55,
+   "fios": 25,
+   "sinais": 15
+  },
+  "elevador_sem_amortecedor": {
+   "arquivo": "elevador_sem_amortecedor.plecs",
+   "colunas": [
+    "tempo_s",
+    "v_bus_V",
+    "i_bat_A",
+    "v_C8_V",
+    "v_C7_V",
+    "v_S1_V",
+    "i_S1_A",
+    "i_S2_A",
+    "i_D17_A",
+    "i_sec_A",
+    "i_C4_A",
+    "gate_S1"
+   ],
+   "componentes": 49,
+   "fios": 22,
+   "sinais": 15
+  },
+  "inversor_malha_fechada": {
+   "arquivo": "inversor_malha_fechada.plecs",
+   "colunas": [
+    "tempo_s",
+    "v_o_V",
+    "i_o_A",
+    "i_Lo_A",
+    "v_c_V",
+    "v_ref_V",
+    "v_c_livre_V",
+    "v_AB_V",
+    "i_QA_A",
+    "v_nl_V",
+    "v_bus_V",
+    "rede_on",
+    "dref_cc"
+   ],
+   "componentes": 49,
+   "fios": 17,
+   "sinais": 21
+  },
+  "nobreak_completo": {
+   "arquivo": "nobreak_completo.plecs",
+   "colunas": [
+    "tempo_s",
+    "v_rede_V",
+    "i_rede_A",
+    "i_D1_A",
+    "i_ponte_A",
+    "i_C4_A",
+    "v_bus_V",
+    "i_bat_A",
+    "v_C8_V",
+    "v_C7_V",
+    "i_S1_A",
+    "v_S1_V",
+    "v_o_V",
+    "i_o_A",
+    "i_Lo_A",
+    "v_c_V",
+    "v_ref_V",
+    "v_c_livre_V",
+    "rede_on",
+    "dref_cc",
+    "v_nl_V",
+    "i_QA_A",
+    "i_S2_A",
+    "i_D17_A",
+    "i_sec_A",
+    "v_AB_V"
+   ],
+   "componentes": 115,
+   "fios": 50,
+   "sinais": 38
+  }
+ }
+}

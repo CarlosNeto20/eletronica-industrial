@@ -1,0 +1,73 @@
+{
+ "ensaio": "inv_2116_nl",
+ "descricao": "Inversor com barramento ideal de 211.57 V, carga nao linear do Anexo 01",
+ "grupo": "submodelo",
+ "modelo": "inversor_malha_fechada",
+ "sha256_modelo": "d7424ff76a4d427ea5dd3743d1dbde7cf3bdd39fd2403c2e6d0b7a1be79ca248",
+ "inicio": "2026-11-09T19:03:21-03:00",
+ "PLECS": "PLECS Standalone 5.0 (64 bit), formato 5.0; 5.0.6 segundo o registro do Trabalho 4",
+ "opcoes": {
+  "ModelVars": {
+   "Vcc": 211.5716,
+   "carga": 2,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "Tstop": 0.1
+  },
+  "SolverOpts": {
+   "TimeSpan": 0.1,
+   "Solver": "radau",
+   "MaxStep": 5e-06,
+   "RelTol": 1e-06,
+   "AbsTol": 1e-08,
+   "OutputTimesOption": "specified",
+   "Timeout": 600.0,
+   "OutputTimes_n": 17801
+  }
+ },
+ "assinatura_opcoes": "671455252fb0dff703cdbbc4239a5994000c421d4018ecbc78c9096e460095a9",
+ "grade_saida": [
+  [
+   0.0,
+   0.1,
+   1e-05
+  ],
+  [
+   0.0865,
+   0.0885,
+   2.5e-07
+  ]
+ ],
+ "janelas": {
+  "regime": [
+   0.05,
+   0.1
+  ],
+  "detalhe": [
+   0.0865,
+   0.0885
+  ]
+ },
+ "status": "executado",
+ "duracao_real_s": 3.015,
+ "amostras": 17801,
+ "colunas": [
+  "tempo_s",
+  "v_o_V",
+  "i_o_A",
+  "i_Lo_A",
+  "v_c_V",
+  "v_ref_V",
+  "v_c_livre_V",
+  "v_AB_V",
+  "i_QA_A",
+  "v_nl_V",
+  "v_bus_V",
+  "rede_on",
+  "dref_cc"
+ ],
+ "sha256_csv": "5e18588e8a8968125a6131eee7ab0eeadd64775ddec6d3da42198a22e1fc987a",
+ "tempo_inicial_s": 0.0,
+ "tempo_final_s": 0.1,
+ "fim": "2026-11-09T19:03:25-03:00"
+}

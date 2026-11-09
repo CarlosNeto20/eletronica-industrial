@@ -1,0 +1,49 @@
+{
+ "ensaio": "diag_cc_sem_20ms",
+ "descricao": "Diagnostico do CC-CC (sem amortecedores RC), 20 ms, corrente inicial em Lb de 53.6 A",
+ "grupo": "diagnostico",
+ "modelo": "elevador_sem_amortecedor",
+ "sha256_modelo": "e5725462edf19b82beaaa0f8101bc5683f2807bb60c46e8367ebc61ce06561fe",
+ "inicio": "2026-11-09T19:01:04-03:00",
+ "PLECS": "PLECS Standalone 5.0 (64 bit), formato 5.0; 5.0.6 segundo o registro do Trabalho 4",
+ "opcoes": {
+  "ModelVars": {
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Rcarga": 19.6,
+   "ILb0": 53.5714,
+   "Vbus0": 210.0,
+   "VC8_0": 140.0,
+   "VC7_0": 70.0,
+   "Tstop": 0.02
+  },
+  "SolverOpts": {
+   "TimeSpan": 0.02,
+   "Solver": "radau",
+   "MaxStep": 5e-06,
+   "RelTol": 1e-06,
+   "AbsTol": 1e-08,
+   "OutputTimesOption": "specified",
+   "Timeout": 90.0,
+   "OutputTimes_n": 2001
+  }
+ },
+ "assinatura_opcoes": "a0120721924779c6b93e11e685b46df33dd6da76d8d2b0973fd554e7baeac582",
+ "grade_saida": [
+  [
+   0.0,
+   0.02,
+   1e-05
+  ]
+ ],
+ "janelas": {
+  "final": [
+   0.019,
+   0.02
+  ]
+ },
+ "status": "falhou",
+ "duracao_real_s": 90.078,
+ "erro": "<Fault -34000: \"Simulation error: Simulation exceeded maximum runtime of 90 seconds. This limit is specified by the circuit parameter 'Timeout'. To disable the limit, set the value to 0.\">",
+ "fim": "2026-11-09T19:02:34-03:00"
+}

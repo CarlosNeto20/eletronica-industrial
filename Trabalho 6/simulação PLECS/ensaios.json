@@ -1,0 +1,3017 @@
+{
+ "diag_cc_sem_5ms": {
+  "modelo": "elevador_sem_amortecedor",
+  "descricao": "Diagnostico do CC-CC (sem amortecedores RC), 5 ms, corrente inicial em Lb de 53.6 A",
+  "ModelVars": {
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Rcarga": 19.6,
+   "ILb0": 53.5714,
+   "Vbus0": 210.0,
+   "VC8_0": 140.0,
+   "VC7_0": 70.0,
+   "Tstop": 0.005
+  },
+  "TimeSpan": 0.005,
+  "grade": [
+   [
+    0.0,
+    0.005,
+    1e-05
+   ]
+  ],
+  "janelas": {
+   "final": [
+    0.004,
+    0.005
+   ]
+  },
+  "grupo": "diagnostico",
+  "Timeout": 90
+ },
+ "diag_cc_sem_20ms": {
+  "modelo": "elevador_sem_amortecedor",
+  "descricao": "Diagnostico do CC-CC (sem amortecedores RC), 20 ms, corrente inicial em Lb de 53.6 A",
+  "ModelVars": {
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Rcarga": 19.6,
+   "ILb0": 53.5714,
+   "Vbus0": 210.0,
+   "VC8_0": 140.0,
+   "VC7_0": 70.0,
+   "Tstop": 0.02
+  },
+  "TimeSpan": 0.02,
+  "grade": [
+   [
+    0.0,
+    0.02,
+    1e-05
+   ]
+  ],
+  "janelas": {
+   "final": [
+    0.019,
+    0.02
+   ]
+  },
+  "grupo": "diagnostico",
+  "Timeout": 90
+ },
+ "diag_cc_sem_partida_5ms": {
+  "modelo": "elevador_sem_amortecedor",
+  "descricao": "Diagnostico do CC-CC (sem amortecedores RC), 5 ms, corrente inicial em Lb de 0.0 A",
+  "ModelVars": {
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Rcarga": 19.6,
+   "ILb0": 0.0,
+   "Vbus0": 210.0,
+   "VC8_0": 140.0,
+   "VC7_0": 70.0,
+   "Tstop": 0.005
+  },
+  "TimeSpan": 0.005,
+  "grade": [
+   [
+    0.0,
+    0.005,
+    1e-05
+   ]
+  ],
+  "janelas": {
+   "final": [
+    0.004,
+    0.005
+   ]
+  },
+  "grupo": "diagnostico",
+  "Timeout": 90
+ },
+ "diag_cc_amort_20ms": {
+  "modelo": "elevador_bateria",
+  "descricao": "Diagnostico do CC-CC (com amortecedores RC), 20 ms, corrente inicial em Lb de 53.6 A",
+  "ModelVars": {
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Rcarga": 19.6,
+   "ILb0": 53.5714,
+   "Vbus0": 210.0,
+   "VC8_0": 140.0,
+   "VC7_0": 70.0,
+   "Tstop": 0.02
+  },
+  "TimeSpan": 0.02,
+  "grade": [
+   [
+    0.0,
+    0.02,
+    1e-05
+   ]
+  ],
+  "janelas": {
+   "final": [
+    0.019,
+    0.02
+   ]
+  },
+  "grupo": "diagnostico",
+  "Timeout": 90
+ },
+ "diag_cc_amort_partida_5ms": {
+  "modelo": "elevador_bateria",
+  "descricao": "Diagnostico do CC-CC (com amortecedores RC), 5 ms, corrente inicial em Lb de 0.0 A",
+  "ModelVars": {
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Rcarga": 19.6,
+   "ILb0": 0.0,
+   "Vbus0": 210.0,
+   "VC8_0": 140.0,
+   "VC7_0": 70.0,
+   "Tstop": 0.005
+  },
+  "TimeSpan": 0.005,
+  "grade": [
+   [
+    0.0,
+    0.005,
+    1e-05
+   ]
+  ],
+  "janelas": {
+   "final": [
+    0.004,
+    0.005
+   ]
+  },
+  "grupo": "diagnostico",
+  "Timeout": 90
+ },
+ "ret_176_planilha": {
+  "modelo": "retificador_barramento",
+  "descricao": "Retificador ideal da secao 3 a 176 V, carga equivalente a 2250 W",
+  "ModelVars": {
+   "Vrms": 176.0,
+   "Rcarga": 23.559505,
+   "Vbus0": 248.9016,
+   "C4": 0.001796327608,
+   "ESR_C4": 1e-06,
+   "Rbus": 1e-06,
+   "Vf_ponte": 0.0,
+   "Ron_ponte": 0.0001,
+   "Tstop": 0.15
+  },
+  "TimeSpan": 0.15,
+  "grade": [
+   [
+    0.0,
+    0.15,
+    1e-05
+   ],
+   [
+    0.1,
+    0.11,
+    2e-06
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.15
+   ]
+  },
+  "grupo": "submodelo",
+  "Timeout": 300
+ },
+ "ret_176_anexo": {
+  "modelo": "retificador_barramento",
+  "descricao": "Retificador com 1880 uF, ESR, 0,1 ohm e diodos reais a 176 V, carga equivalente a 2250 W",
+  "ModelVars": {
+   "Vrms": 176.0,
+   "Rcarga": 23.559505,
+   "Vbus0": 247.3016,
+   "Tstop": 0.15
+  },
+  "TimeSpan": 0.15,
+  "grade": [
+   [
+    0.0,
+    0.15,
+    1e-05
+   ],
+   [
+    0.1,
+    0.11,
+    2e-06
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.15
+   ]
+  },
+  "grupo": "submodelo",
+  "Timeout": 300
+ },
+ "ret_264_anexo": {
+  "modelo": "retificador_barramento",
+  "descricao": "Retificador com 1880 uF, ESR, 0,1 ohm e diodos reais a 264 V, carga equivalente a 2250 W",
+  "ModelVars": {
+   "Vrms": 264.0,
+   "Rcarga": 57.966252,
+   "Vbus0": 371.7524,
+   "Tstop": 0.15
+  },
+  "TimeSpan": 0.15,
+  "grade": [
+   [
+    0.0,
+    0.15,
+    1e-05
+   ],
+   [
+    0.1,
+    0.11,
+    2e-06
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.15
+   ]
+  },
+  "grupo": "submodelo",
+  "Timeout": 300
+ },
+ "elev_42": {
+  "modelo": "elevador_bateria",
+  "descricao": "CC-CC em malha aberta, bateria de 42 V, D = 0.70, carga de 2250 W em 210 V",
+  "ModelVars": {
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Rcarga": 19.6,
+   "ILb0": 53.5714,
+   "Vbus0": 210.0,
+   "VC8_0": 140.0,
+   "VC7_0": 70.0,
+   "Tstop": 0.1
+  },
+  "TimeSpan": 0.1,
+  "grade": [
+   [
+    0.0,
+    0.1,
+    1e-05
+   ],
+   [
+    0.098,
+    0.1,
+    2.5e-07
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.08,
+    0.1
+   ],
+   "detalhe": [
+    0.098,
+    0.1
+   ]
+  },
+  "grupo": "submodelo",
+  "Timeout": 600
+ },
+ "elev_56": {
+  "modelo": "elevador_bateria",
+  "descricao": "CC-CC em malha aberta, bateria de 56 V, D = 0.60, carga de 2250 W em 210 V",
+  "ModelVars": {
+   "Vbat": 56.0,
+   "Db": 0.6,
+   "Rcarga": 19.6,
+   "ILb0": 40.1786,
+   "Vbus0": 210.0,
+   "VC8_0": 140.0,
+   "VC7_0": 70.0,
+   "Tstop": 0.1
+  },
+  "TimeSpan": 0.1,
+  "grade": [
+   [
+    0.0,
+    0.1,
+    1e-05
+   ],
+   [
+    0.098,
+    0.1,
+    2.5e-07
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.08,
+    0.1
+   ],
+   "detalhe": [
+    0.098,
+    0.1
+   ]
+  },
+  "grupo": "submodelo",
+  "Timeout": 600
+ },
+ "inv_373_res": {
+  "modelo": "inversor_malha_fechada",
+  "descricao": "Inversor com barramento ideal de 373.35 V, 2100 W resistiva",
+  "ModelVars": {
+   "Vcc": 373.352,
+   "carga": 1,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "Tstop": 0.1
+  },
+  "TimeSpan": 0.1,
+  "grade": [
+   [
+    0.0,
+    0.1,
+    1e-05
+   ],
+   [
+    0.0865,
+    0.0885,
+    2.5e-07
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.05,
+    0.1
+   ],
+   "detalhe": [
+    0.0865,
+    0.0885
+   ]
+  },
+  "grupo": "submodelo",
+  "Timeout": 600
+ },
+ "inv_2116_res": {
+  "modelo": "inversor_malha_fechada",
+  "descricao": "Inversor com barramento ideal de 211.57 V, 2100 W resistiva",
+  "ModelVars": {
+   "Vcc": 211.5716,
+   "carga": 1,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "Tstop": 0.1
+  },
+  "TimeSpan": 0.1,
+  "grade": [
+   [
+    0.0,
+    0.1,
+    1e-05
+   ],
+   [
+    0.0865,
+    0.0885,
+    2.5e-07
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.05,
+    0.1
+   ],
+   "detalhe": [
+    0.0865,
+    0.0885
+   ]
+  },
+  "grupo": "submodelo",
+  "Timeout": 600
+ },
+ "inv_373_vazio": {
+  "modelo": "inversor_malha_fechada",
+  "descricao": "Inversor com barramento ideal de 373.35 V, vazio",
+  "ModelVars": {
+   "Vcc": 373.352,
+   "carga": 0,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "Tstop": 0.1
+  },
+  "TimeSpan": 0.1,
+  "grade": [
+   [
+    0.0,
+    0.1,
+    1e-05
+   ],
+   [
+    0.0865,
+    0.0885,
+    2.5e-07
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.05,
+    0.1
+   ],
+   "detalhe": [
+    0.0865,
+    0.0885
+   ]
+  },
+  "grupo": "submodelo",
+  "Timeout": 600
+ },
+ "inv_2116_vazio": {
+  "modelo": "inversor_malha_fechada",
+  "descricao": "Inversor com barramento ideal de 211.57 V, vazio",
+  "ModelVars": {
+   "Vcc": 211.5716,
+   "carga": 0,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "Tstop": 0.1
+  },
+  "TimeSpan": 0.1,
+  "grade": [
+   [
+    0.0,
+    0.1,
+    1e-05
+   ],
+   [
+    0.0865,
+    0.0885,
+    2.5e-07
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.05,
+    0.1
+   ],
+   "detalhe": [
+    0.0865,
+    0.0885
+   ]
+  },
+  "grupo": "submodelo",
+  "Timeout": 600
+ },
+ "inv_2116_nl": {
+  "modelo": "inversor_malha_fechada",
+  "descricao": "Inversor com barramento ideal de 211.57 V, carga nao linear do Anexo 01",
+  "ModelVars": {
+   "Vcc": 211.5716,
+   "carga": 2,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "Tstop": 0.1
+  },
+  "TimeSpan": 0.1,
+  "grade": [
+   [
+    0.0,
+    0.1,
+    1e-05
+   ],
+   [
+    0.0865,
+    0.0885,
+    2.5e-07
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.05,
+    0.1
+   ],
+   "detalhe": [
+    0.0865,
+    0.0885
+   ]
+  },
+  "grupo": "submodelo",
+  "Timeout": 600
+ },
+ "inv_degrau_2116": {
+  "modelo": "inversor_malha_fechada",
+  "descricao": "Inversor a 211,57 V, degrau de vazio para 2100 W no pico da tensao",
+  "ModelVars": {
+   "Vcc": 211.5716,
+   "carga": 1,
+   "Rres": 6.297619,
+   "tcarga": 0.0541667,
+   "Tstop": 0.1
+  },
+  "TimeSpan": 0.1,
+  "grade": [
+   [
+    0.0,
+    0.1,
+    1e-05
+   ],
+   [
+    0.053166667,
+    0.058166667,
+    1e-06
+   ]
+  ],
+  "janelas": {
+   "antes": [
+    0.020833333333333336,
+    0.05416666666666667
+   ],
+   "depois": [
+    0.0875,
+    0.12083333333333333
+   ],
+   "degrau": [
+    0.05416666666666667,
+    0.05816666666666667
+   ]
+  },
+  "grupo": "submodelo",
+  "Timeout": 600
+ },
+ "nb_176_nl": {
+  "modelo": "nobreak_completo",
+  "descricao": "Rede de 176 V com carga nao linear do Anexo 01; falta da rede em 0,1 s (cruzamento por zero)",
+  "ModelVars": {
+   "Vrms": 176.0,
+   "phi_rede": 0,
+   "carga": 2,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "tfalta": 0.1,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 247.3016,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 164.8677,
+   "VC7_0": 82.4339,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.0,
+    0.2,
+    2e-05
+   ],
+   [
+    0.0865,
+    0.0885,
+    5e-07
+   ],
+   [
+    0.1865,
+    0.1885,
+    5e-07
+   ],
+   [
+    0.099,
+    0.104,
+    1e-06
+   ]
+  ],
+  "janelas": {
+   "rede": [
+    0.06666666666666667,
+    0.1
+   ],
+   "bateria": [
+    0.16666666666666666,
+    0.2
+   ],
+   "transferencia": [
+    0.095,
+    0.12000000000000001
+   ],
+   "detalhe_rede": [
+    0.0865,
+    0.0885
+   ],
+   "detalhe_bateria": [
+    0.1865,
+    0.1885
+   ]
+  },
+  "grupo": "secao_6",
+  "Timeout": 1200
+ },
+ "nb_264_lin": {
+  "modelo": "nobreak_completo",
+  "descricao": "Rede de 264 V com carga resistiva 2100 W; falta da rede em 0,1 s (cruzamento por zero)",
+  "ModelVars": {
+   "Vrms": 264.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "tfalta": 0.1,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 371.7524,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 247.8349,
+   "VC7_0": 123.9175,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.0,
+    0.2,
+    2e-05
+   ],
+   [
+    0.0865,
+    0.0885,
+    5e-07
+   ],
+   [
+    0.1865,
+    0.1885,
+    5e-07
+   ],
+   [
+    0.099,
+    0.104,
+    1e-06
+   ]
+  ],
+  "janelas": {
+   "rede": [
+    0.06666666666666667,
+    0.1
+   ],
+   "bateria": [
+    0.16666666666666666,
+    0.2
+   ],
+   "transferencia": [
+    0.095,
+    0.12000000000000001
+   ],
+   "detalhe_rede": [
+    0.0865,
+    0.0885
+   ],
+   "detalhe_bateria": [
+    0.1865,
+    0.1885
+   ]
+  },
+  "grupo": "secao_6",
+  "Timeout": 1200
+ },
+ "nb_264_nl": {
+  "modelo": "nobreak_completo",
+  "descricao": "Rede de 264 V com carga nao linear do Anexo 01; falta da rede em 0,1 s (cruzamento por zero)",
+  "ModelVars": {
+   "Vrms": 264.0,
+   "phi_rede": 0,
+   "carga": 2,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "tfalta": 0.1,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 371.7524,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 247.8349,
+   "VC7_0": 123.9175,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.0,
+    0.2,
+    2e-05
+   ],
+   [
+    0.0865,
+    0.0885,
+    5e-07
+   ],
+   [
+    0.1865,
+    0.1885,
+    5e-07
+   ],
+   [
+    0.099,
+    0.104,
+    1e-06
+   ]
+  ],
+  "janelas": {
+   "rede": [
+    0.06666666666666667,
+    0.1
+   ],
+   "bateria": [
+    0.16666666666666666,
+    0.2
+   ],
+   "transferencia": [
+    0.095,
+    0.12000000000000001
+   ],
+   "detalhe_rede": [
+    0.0865,
+    0.0885
+   ],
+   "detalhe_bateria": [
+    0.1865,
+    0.1885
+   ]
+  },
+  "grupo": "secao_6",
+  "Timeout": 1200
+ },
+ "nb_220_lin": {
+  "modelo": "nobreak_completo",
+  "descricao": "Rede de 220 V com carga resistiva 2100 W; falta da rede em 0,1 s (cruzamento por zero)",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "tfalta": 0.1,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 309.527,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 206.3513,
+   "VC7_0": 103.1757,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.0,
+    0.2,
+    2e-05
+   ],
+   [
+    0.0865,
+    0.0885,
+    5e-07
+   ],
+   [
+    0.1865,
+    0.1885,
+    5e-07
+   ],
+   [
+    0.099,
+    0.104,
+    1e-06
+   ]
+  ],
+  "janelas": {
+   "rede": [
+    0.06666666666666667,
+    0.1
+   ],
+   "bateria": [
+    0.16666666666666666,
+    0.2
+   ],
+   "transferencia": [
+    0.095,
+    0.12000000000000001
+   ],
+   "detalhe_rede": [
+    0.0865,
+    0.0885
+   ],
+   "detalhe_bateria": [
+    0.1865,
+    0.1885
+   ]
+  },
+  "grupo": "secao_6",
+  "Timeout": 1200
+ },
+ "nb_220_nl": {
+  "modelo": "nobreak_completo",
+  "descricao": "Rede de 220 V com carga nao linear do Anexo 01; falta da rede em 0,1 s (cruzamento por zero)",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 2,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "tfalta": 0.1,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 309.527,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 206.3513,
+   "VC7_0": 103.1757,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.0,
+    0.2,
+    2e-05
+   ],
+   [
+    0.0865,
+    0.0885,
+    5e-07
+   ],
+   [
+    0.1865,
+    0.1885,
+    5e-07
+   ],
+   [
+    0.099,
+    0.104,
+    1e-06
+   ]
+  ],
+  "janelas": {
+   "rede": [
+    0.06666666666666667,
+    0.1
+   ],
+   "bateria": [
+    0.16666666666666666,
+    0.2
+   ],
+   "transferencia": [
+    0.095,
+    0.12000000000000001
+   ],
+   "detalhe_rede": [
+    0.0865,
+    0.0885
+   ],
+   "detalhe_bateria": [
+    0.1865,
+    0.1885
+   ]
+  },
+  "grupo": "secao_6",
+  "Timeout": 1200
+ },
+ "nb_176_lin": {
+  "modelo": "nobreak_completo",
+  "descricao": "Rede de 176 V com carga resistiva 2100 W; falta da rede em 0,1 s (cruzamento por zero)",
+  "ModelVars": {
+   "Vrms": 176.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "tfalta": 0.1,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 247.3016,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 164.8677,
+   "VC7_0": 82.4339,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.0,
+    0.2,
+    2e-05
+   ],
+   [
+    0.0865,
+    0.0885,
+    5e-07
+   ],
+   [
+    0.1865,
+    0.1885,
+    5e-07
+   ],
+   [
+    0.099,
+    0.104,
+    1e-06
+   ]
+  ],
+  "janelas": {
+   "rede": [
+    0.06666666666666667,
+    0.1
+   ],
+   "bateria": [
+    0.16666666666666666,
+    0.2
+   ],
+   "transferencia": [
+    0.095,
+    0.12000000000000001
+   ],
+   "detalhe_rede": [
+    0.0865,
+    0.0885
+   ],
+   "detalhe_bateria": [
+    0.1865,
+    0.1885
+   ]
+  },
+  "grupo": "secao_6",
+  "Timeout": 1200
+ },
+ "nb_220_rl3k": {
+  "modelo": "nobreak_completo",
+  "descricao": "Rede de 220 V com carga RL de 3 kVA com FP 0,7; falta da rede em 0,1 s (cruzamento por zero)",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 3,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "tfalta": 0.1,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 309.527,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 206.3513,
+   "VC7_0": 103.1757,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.0,
+    0.2,
+    2e-05
+   ],
+   [
+    0.0865,
+    0.0885,
+    5e-07
+   ],
+   [
+    0.1865,
+    0.1885,
+    5e-07
+   ],
+   [
+    0.099,
+    0.104,
+    1e-06
+   ]
+  ],
+  "janelas": {
+   "rede": [
+    0.06666666666666667,
+    0.1
+   ],
+   "bateria": [
+    0.16666666666666666,
+    0.2
+   ],
+   "transferencia": [
+    0.095,
+    0.12000000000000001
+   ],
+   "detalhe_rede": [
+    0.0865,
+    0.0885
+   ],
+   "detalhe_bateria": [
+    0.1865,
+    0.1885
+   ]
+  },
+  "grupo": "secao_6",
+  "Timeout": 1200
+ },
+ "nb_176_nl_anexo": {
+  "modelo": "nobreak_completo",
+  "descricao": "Como nb_176_nl, mas com o CC-CC sempre comandado (D = 0,7), como no circuito PSIM do Anexo 01",
+  "ModelVars": {
+   "Vrms": 176.0,
+   "phi_rede": 0,
+   "carga": 2,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "tfalta": 0.1,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 1,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 247.3016,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 164.8677,
+   "VC7_0": 82.4339,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.0,
+    0.2,
+    2e-05
+   ],
+   [
+    0.0865,
+    0.0885,
+    5e-07
+   ],
+   [
+    0.1865,
+    0.1885,
+    5e-07
+   ],
+   [
+    0.099,
+    0.104,
+    1e-06
+   ]
+  ],
+  "janelas": {
+   "rede": [
+    0.06666666666666667,
+    0.1
+   ],
+   "bateria": [
+    0.16666666666666666,
+    0.2
+   ],
+   "transferencia": [
+    0.095,
+    0.12000000000000001
+   ],
+   "detalhe_rede": [
+    0.0865,
+    0.0885
+   ],
+   "detalhe_bateria": [
+    0.1865,
+    0.1885
+   ]
+  },
+  "grupo": "secao_6",
+  "Timeout": 1200
+ },
+ "nb_176_nl_pico": {
+  "modelo": "nobreak_completo",
+  "descricao": "Como nb_176_nl, com a falta no pico positivo da tensao da rede",
+  "ModelVars": {
+   "Vrms": 176.0,
+   "phi_rede": 0,
+   "carga": 2,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "tfalta": 0.1041667,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 247.3016,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 164.8677,
+   "VC7_0": 82.4339,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.0,
+    0.2,
+    2e-05
+   ],
+   [
+    0.103166667,
+    0.108166667,
+    1e-06
+   ],
+   [
+    0.1865,
+    0.1885,
+    5e-07
+   ]
+  ],
+  "janelas": {
+   "rede": [
+    0.06666666666666667,
+    0.1
+   ],
+   "bateria": [
+    0.16666666666666666,
+    0.2
+   ],
+   "transferencia": [
+    0.09916666666666667,
+    0.12416666666666668
+   ],
+   "detalhe_rede": [
+    0.0865,
+    0.0885
+   ],
+   "detalhe_bateria": [
+    0.1865,
+    0.1885
+   ]
+  },
+  "grupo": "secao_6",
+  "Timeout": 1200
+ },
+ "nb_220_retorno": {
+  "modelo": "nobreak_completo",
+  "descricao": "Rede de 220 V, resistiva; falta em 0,1 s e retorno em 0,2 s, ambos no cruzamento por zero",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "tfalta": 0.1,
+   "tretorno": 0.2,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 309.527,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 206.3513,
+   "VC7_0": 103.1757,
+   "Tstop": 0.3
+  },
+  "TimeSpan": 0.3,
+  "grade": [
+   [
+    0.0,
+    0.3,
+    2e-05
+   ],
+   [
+    0.199,
+    0.21,
+    1e-06
+   ]
+  ],
+  "janelas": {
+   "rede": [
+    0.06666666666666667,
+    0.1
+   ],
+   "bateria": [
+    0.16666666666666666,
+    0.2
+   ],
+   "retorno": [
+    0.2,
+    0.22
+   ],
+   "apos_retorno": [
+    0.26666666666666666,
+    0.3
+   ]
+  },
+  "grupo": "secao_6",
+  "Timeout": 1200
+ },
+ "conv_176_nl": {
+  "modelo": "nobreak_completo",
+  "descricao": "Refinamento numerico de nb_176_nl (passo maximo 1 us, RelTol 1e-7)",
+  "ModelVars": {
+   "Vrms": 176.0,
+   "phi_rede": 0,
+   "carga": 2,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "tfalta": 0.1,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 247.3016,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 164.8677,
+   "VC7_0": 82.4339,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.0,
+    0.2,
+    2e-05
+   ],
+   [
+    0.0865,
+    0.0885,
+    5e-07
+   ],
+   [
+    0.1865,
+    0.1885,
+    5e-07
+   ],
+   [
+    0.099,
+    0.104,
+    1e-06
+   ]
+  ],
+  "janelas": {
+   "rede": [
+    0.06666666666666667,
+    0.1
+   ],
+   "bateria": [
+    0.16666666666666666,
+    0.2
+   ],
+   "transferencia": [
+    0.095,
+    0.12000000000000001
+   ],
+   "detalhe_rede": [
+    0.0865,
+    0.0885
+   ],
+   "detalhe_bateria": [
+    0.1865,
+    0.1885
+   ]
+  },
+  "grupo": "verificacao",
+  "Timeout": 1200,
+  "MaxStep": 1e-06,
+  "RelTol": 1e-07
+ },
+ "reg_176_0000": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 176 V, carga resistiva nominal de 0 W",
+  "ModelVars": {
+   "Vrms": 176.0,
+   "phi_rede": 0,
+   "carga": 0,
+   "Rres": 1000000.0,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 247.3016,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 164.8677,
+   "VC7_0": 82.4339,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_176_0210": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 176 V, carga resistiva nominal de 210 W",
+  "ModelVars": {
+   "Vrms": 176.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 62.97619,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 247.3016,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 164.8677,
+   "VC7_0": 82.4339,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_176_0420": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 176 V, carga resistiva nominal de 420 W",
+  "ModelVars": {
+   "Vrms": 176.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 31.488095,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 247.3016,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 164.8677,
+   "VC7_0": 82.4339,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_176_0630": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 176 V, carga resistiva nominal de 630 W",
+  "ModelVars": {
+   "Vrms": 176.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 20.992063,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 247.3016,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 164.8677,
+   "VC7_0": 82.4339,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_176_0840": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 176 V, carga resistiva nominal de 840 W",
+  "ModelVars": {
+   "Vrms": 176.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 15.744048,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 247.3016,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 164.8677,
+   "VC7_0": 82.4339,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_176_1050": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 176 V, carga resistiva nominal de 1050 W",
+  "ModelVars": {
+   "Vrms": 176.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 12.595238,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 247.3016,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 164.8677,
+   "VC7_0": 82.4339,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_176_1260": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 176 V, carga resistiva nominal de 1260 W",
+  "ModelVars": {
+   "Vrms": 176.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 10.496032,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 247.3016,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 164.8677,
+   "VC7_0": 82.4339,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_176_1470": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 176 V, carga resistiva nominal de 1470 W",
+  "ModelVars": {
+   "Vrms": 176.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 8.996599,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 247.3016,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 164.8677,
+   "VC7_0": 82.4339,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_176_1680": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 176 V, carga resistiva nominal de 1680 W",
+  "ModelVars": {
+   "Vrms": 176.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 7.872024,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 247.3016,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 164.8677,
+   "VC7_0": 82.4339,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_176_1890": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 176 V, carga resistiva nominal de 1890 W",
+  "ModelVars": {
+   "Vrms": 176.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 6.997354,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 247.3016,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 164.8677,
+   "VC7_0": 82.4339,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_176_2100": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 176 V, carga resistiva nominal de 2100 W",
+  "ModelVars": {
+   "Vrms": 176.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 247.3016,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 164.8677,
+   "VC7_0": 82.4339,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_220_0000": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 220 V, carga resistiva nominal de 0 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 0,
+   "Rres": 1000000.0,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 309.527,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 206.3513,
+   "VC7_0": 103.1757,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_220_0210": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 220 V, carga resistiva nominal de 210 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 62.97619,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 309.527,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 206.3513,
+   "VC7_0": 103.1757,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_220_0420": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 220 V, carga resistiva nominal de 420 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 31.488095,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 309.527,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 206.3513,
+   "VC7_0": 103.1757,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_220_0630": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 220 V, carga resistiva nominal de 630 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 20.992063,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 309.527,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 206.3513,
+   "VC7_0": 103.1757,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_220_0840": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 220 V, carga resistiva nominal de 840 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 15.744048,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 309.527,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 206.3513,
+   "VC7_0": 103.1757,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_220_1050": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 220 V, carga resistiva nominal de 1050 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 12.595238,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 309.527,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 206.3513,
+   "VC7_0": 103.1757,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_220_1260": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 220 V, carga resistiva nominal de 1260 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 10.496032,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 309.527,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 206.3513,
+   "VC7_0": 103.1757,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_220_1470": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 220 V, carga resistiva nominal de 1470 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 8.996599,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 309.527,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 206.3513,
+   "VC7_0": 103.1757,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_220_1680": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 220 V, carga resistiva nominal de 1680 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 7.872024,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 309.527,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 206.3513,
+   "VC7_0": 103.1757,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_220_1890": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 220 V, carga resistiva nominal de 1890 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 6.997354,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 309.527,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 206.3513,
+   "VC7_0": 103.1757,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_220_2100": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 220 V, carga resistiva nominal de 2100 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 309.527,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 206.3513,
+   "VC7_0": 103.1757,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_264_0000": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 264 V, carga resistiva nominal de 0 W",
+  "ModelVars": {
+   "Vrms": 264.0,
+   "phi_rede": 0,
+   "carga": 0,
+   "Rres": 1000000.0,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 371.7524,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 247.8349,
+   "VC7_0": 123.9175,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_264_0210": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 264 V, carga resistiva nominal de 210 W",
+  "ModelVars": {
+   "Vrms": 264.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 62.97619,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 371.7524,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 247.8349,
+   "VC7_0": 123.9175,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_264_0420": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 264 V, carga resistiva nominal de 420 W",
+  "ModelVars": {
+   "Vrms": 264.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 31.488095,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 371.7524,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 247.8349,
+   "VC7_0": 123.9175,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_264_0630": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 264 V, carga resistiva nominal de 630 W",
+  "ModelVars": {
+   "Vrms": 264.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 20.992063,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 371.7524,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 247.8349,
+   "VC7_0": 123.9175,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_264_0840": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 264 V, carga resistiva nominal de 840 W",
+  "ModelVars": {
+   "Vrms": 264.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 15.744048,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 371.7524,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 247.8349,
+   "VC7_0": 123.9175,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_264_1050": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 264 V, carga resistiva nominal de 1050 W",
+  "ModelVars": {
+   "Vrms": 264.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 12.595238,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 371.7524,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 247.8349,
+   "VC7_0": 123.9175,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_264_1260": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 264 V, carga resistiva nominal de 1260 W",
+  "ModelVars": {
+   "Vrms": 264.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 10.496032,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 371.7524,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 247.8349,
+   "VC7_0": 123.9175,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_264_1470": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 264 V, carga resistiva nominal de 1470 W",
+  "ModelVars": {
+   "Vrms": 264.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 8.996599,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 371.7524,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 247.8349,
+   "VC7_0": 123.9175,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_264_1680": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 264 V, carga resistiva nominal de 1680 W",
+  "ModelVars": {
+   "Vrms": 264.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 7.872024,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 371.7524,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 247.8349,
+   "VC7_0": 123.9175,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_264_1890": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 264 V, carga resistiva nominal de 1890 W",
+  "ModelVars": {
+   "Vrms": 264.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 6.997354,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 371.7524,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 247.8349,
+   "VC7_0": 123.9175,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_264_2100": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao: rede 264 V, carga resistiva nominal de 2100 W",
+  "ModelVars": {
+   "Vrms": 264.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 371.7524,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 247.8349,
+   "VC7_0": 123.9175,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao",
+  "Timeout": 1200
+ },
+ "reg_bat_0000": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao em modo bateria (42 V, D = 0,7), carga resistiva nominal de 0 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 0,
+   "Rres": 1000000.0,
+   "tcarga": 0,
+   "tfalta": 0,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 210.0,
+   "ILb0": 0.0,
+   "VC3_0": 140.0,
+   "VC8_0": 140.0,
+   "VC7_0": 70.0,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao_bateria",
+  "Timeout": 1200
+ },
+ "reg_bat_0210": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao em modo bateria (42 V, D = 0,7), carga resistiva nominal de 210 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 62.97619,
+   "tcarga": 0,
+   "tfalta": 0,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 210.0,
+   "ILb0": 5.2632,
+   "VC3_0": 140.0,
+   "VC8_0": 140.0,
+   "VC7_0": 70.0,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao_bateria",
+  "Timeout": 1200
+ },
+ "reg_bat_0420": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao em modo bateria (42 V, D = 0,7), carga resistiva nominal de 420 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 31.488095,
+   "tcarga": 0,
+   "tfalta": 0,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 210.0,
+   "ILb0": 10.5263,
+   "VC3_0": 140.0,
+   "VC8_0": 140.0,
+   "VC7_0": 70.0,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao_bateria",
+  "Timeout": 1200
+ },
+ "reg_bat_0630": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao em modo bateria (42 V, D = 0,7), carga resistiva nominal de 630 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 20.992063,
+   "tcarga": 0,
+   "tfalta": 0,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 210.0,
+   "ILb0": 15.7895,
+   "VC3_0": 140.0,
+   "VC8_0": 140.0,
+   "VC7_0": 70.0,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao_bateria",
+  "Timeout": 1200
+ },
+ "reg_bat_0840": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao em modo bateria (42 V, D = 0,7), carga resistiva nominal de 840 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 15.744048,
+   "tcarga": 0,
+   "tfalta": 0,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 210.0,
+   "ILb0": 21.0526,
+   "VC3_0": 140.0,
+   "VC8_0": 140.0,
+   "VC7_0": 70.0,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao_bateria",
+  "Timeout": 1200
+ },
+ "reg_bat_1050": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao em modo bateria (42 V, D = 0,7), carga resistiva nominal de 1050 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 12.595238,
+   "tcarga": 0,
+   "tfalta": 0,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 210.0,
+   "ILb0": 26.3158,
+   "VC3_0": 140.0,
+   "VC8_0": 140.0,
+   "VC7_0": 70.0,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao_bateria",
+  "Timeout": 1200
+ },
+ "reg_bat_1260": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao em modo bateria (42 V, D = 0,7), carga resistiva nominal de 1260 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 10.496032,
+   "tcarga": 0,
+   "tfalta": 0,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 210.0,
+   "ILb0": 31.5789,
+   "VC3_0": 140.0,
+   "VC8_0": 140.0,
+   "VC7_0": 70.0,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao_bateria",
+  "Timeout": 1200
+ },
+ "reg_bat_1470": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao em modo bateria (42 V, D = 0,7), carga resistiva nominal de 1470 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 8.996599,
+   "tcarga": 0,
+   "tfalta": 0,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 210.0,
+   "ILb0": 36.8421,
+   "VC3_0": 140.0,
+   "VC8_0": 140.0,
+   "VC7_0": 70.0,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao_bateria",
+  "Timeout": 1200
+ },
+ "reg_bat_1680": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao em modo bateria (42 V, D = 0,7), carga resistiva nominal de 1680 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 7.872024,
+   "tcarga": 0,
+   "tfalta": 0,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 210.0,
+   "ILb0": 42.1053,
+   "VC3_0": 140.0,
+   "VC8_0": 140.0,
+   "VC7_0": 70.0,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao_bateria",
+  "Timeout": 1200
+ },
+ "reg_bat_1890": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao em modo bateria (42 V, D = 0,7), carga resistiva nominal de 1890 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 6.997354,
+   "tcarga": 0,
+   "tfalta": 0,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 210.0,
+   "ILb0": 47.3684,
+   "VC3_0": 140.0,
+   "VC8_0": 140.0,
+   "VC7_0": 70.0,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao_bateria",
+  "Timeout": 1200
+ },
+ "reg_bat_2100": {
+  "modelo": "nobreak_completo",
+  "descricao": "Regulacao em modo bateria (42 V, D = 0,7), carga resistiva nominal de 2100 W",
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "tfalta": 0,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 210.0,
+   "ILb0": 52.6316,
+   "VC3_0": 140.0,
+   "VC8_0": 140.0,
+   "VC7_0": 70.0,
+   "Tstop": 0.2
+  },
+  "TimeSpan": 0.2,
+  "grade": [
+   [
+    0.1,
+    0.2,
+    4e-05
+   ]
+  ],
+  "janelas": {
+   "regime": [
+    0.1,
+    0.2
+   ]
+  },
+  "grupo": "regulacao_bateria",
+  "Timeout": 1200
+ }
+}

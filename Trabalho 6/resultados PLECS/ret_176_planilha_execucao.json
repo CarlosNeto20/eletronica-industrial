@@ -1,0 +1,66 @@
+{
+ "ensaio": "ret_176_planilha",
+ "descricao": "Retificador ideal da secao 3 a 176 V, carga equivalente a 2250 W",
+ "grupo": "submodelo",
+ "modelo": "retificador_barramento",
+ "sha256_modelo": "dc9c48d395d39e52d8998e20b2b1da4c39c50a13ef3bfe353cde7bb4f9af630f",
+ "inicio": "2026-11-09T18:29:16-03:00",
+ "PLECS": "PLECS Standalone 5.0 (64 bit), formato 5.0; 5.0.6 segundo o registro do Trabalho 4",
+ "opcoes": {
+  "ModelVars": {
+   "Vrms": 176.0,
+   "Rcarga": 23.559505,
+   "Vbus0": 248.9016,
+   "C4": 0.001796327608,
+   "ESR_C4": 1e-06,
+   "Rbus": 1e-06,
+   "Vf_ponte": 0.0,
+   "Ron_ponte": 0.0001,
+   "Tstop": 0.15
+  },
+  "SolverOpts": {
+   "TimeSpan": 0.15,
+   "Solver": "radau",
+   "MaxStep": 5e-06,
+   "RelTol": 1e-06,
+   "AbsTol": 1e-08,
+   "OutputTimesOption": "specified",
+   "OutputTimes_n": 19001
+  }
+ },
+ "assinatura_opcoes": "8cef5b3d24e9f0512d3cb76ec0a94dd596a3cff904602328732a07ac4acdd475",
+ "grade_saida": [
+  [
+   0.0,
+   0.15,
+   1e-05
+  ],
+  [
+   0.1,
+   0.11,
+   2e-06
+  ]
+ ],
+ "janelas": {
+  "regime": [
+   0.1,
+   0.15
+  ]
+ },
+ "status": "executado",
+ "duracao_real_s": 0.515,
+ "amostras": 19001,
+ "colunas": [
+  "tempo_s",
+  "v_rede_V",
+  "i_rede_A",
+  "i_D1_A",
+  "i_ponte_A",
+  "i_C4_A",
+  "v_bus_V"
+ ],
+ "sha256_csv": "efc4e9b71bbfa620c9ac586faa2d65c1052c7060c97d8032be8d91710a229fbb",
+ "tempo_inicial_s": 0.0,
+ "tempo_final_s": 0.15,
+ "fim": "2026-11-09T18:29:16-03:00"
+}

@@ -1,0 +1,50 @@
+local,item,unidade,impresso,recalculado,desvio_pct,decisao,justificativa
+"p.3, sec. 3.1","Prec = Po/0,933",W,2250,2250.8,0.0357,Mantido,"2100/0,933 = 2250,8 W; arredondamento aceito. O rendimento e orcamento de potencia, nao medicao."
+"p.3, sec. 3.2",Ondulacao dVC (texto: 10% do pico),V,37.33,24.8902,-33.3,"Mantido 37,33 V (15%)","O valor usado e 0,15*1,4142*176 = 37,33 V, isto e 15%; 10% daria 24,89 V. O texto esta inconsistente, o numero e coerente com todo o restante."
+p.4,VC1max = raiz(2)*176,V,248.902,248.902,-0.000166,Mantido,Confere.
+p.4,VC1min,V,211.572,211.572,-0.000195,Mantido,Confere.
+p.4,thetaC1 = pi/2 - asin(VC1min/VC1max),rad,0.555,0.554771,-0.0412,Mantido,"Confere (= acos 0,85)."
+p.5,C1 = Prec(pi-theta)/(pi fr (Vmax^2-Vmin^2)),F,0.001796,0.00179633,0.0182,Mantido; adotado 4x470 uF = 1880 uF,"Confere. 1880 uF supera 1796 uF em 4,7%; com tolerancia de -20% (1504 uF) o vale cai para 204.5 V."
+p.5,tC1,s,0.001472,0.00147158,-0.0288,Mantido,Confere.
+p.5,VC1medio,V,230.237,230.237,-0.000179,Mantido,Confere.
+p.5,Ioeq,A,9.773,9.77256,-0.00454,Mantido,Confere.
+p.5,Roeq,ohm,23.56,23.5595,-0.0021,Mantido,Confere; a unidade impressa [W] deve ser ohm.
+p.5,Ichg = Ioeq*pi/theta,A,55.341,55.3406,-0.000637,Mantido como aproximacao,"Confere; pulso retangular sem impedancia de rede. O PLECS mede o pulso real com 0,1 ohm."
+p.5,IC1ef,A,21.103,21.1025,-0.00223,Mantido,Confere a integral do pulso retangular.
+p.6,ID1med,A,4.886,4.88628,0.00569,Mantido,Confere.
+p.6,ID1ef,A,16.444,16.4441,0.000862,Mantido,Confere.
+p.6,ID1pk = 2*Ichg,A,110.681,110.681,0.000267,Mantido como estimativa,Fator 2 e heuristico sobre o pulso retangular; comparado com o pico medido no PLECS.
+p.6,VDrrevpk = raiz(2)*264,V,373.352,373.352,0.000102,Mantido,Confere.
+"p.7, sec. 4.1",Vimin_cc = 223 V (rotulado tensao eficaz nominal),V,223,211.572,-5.12,"Revisado para analise: 211,57 V em rede e 210 V em bateria","223 V nao e deduzido no documento e nao e eficaz; e grandeza CC entre o vale (211,57 V) e a media (230,24 V) a 176 V."
+p.7,Mmax = Vopk/223,,0.729,0.729303,0.0416,Complementado,"Com 211,57 V: 0.769; com 210 V: 0.774. Ambos < 0,85."
+p.7,Mmin = Vopk/373,,0.436,0.436018,0.00403,Mantido,Confere.
+p.7,"dILo = 0,4*Iopk",A,10.33,10.3299,-0.000893,Mantido como criterio,Confere.
+"p.8, sec. 4.3",Lo [Rashid],H,0.0003656,0.000365551,-0.0135,"Mantido 365,6 uH","A conta confere, mas usa dt = 0,5(1+M)/(2fs). Na unipolar o intervalo com vAB = Vcc no pico dura M/(2fs); a ondulacao real a 373 V e 6.27 A (24% de Iopk), logo o projeto e conservador."
+"p.8, sec. 4.4","Co (texto fs/40, conta fs/20)",F,6.9294e-05,6.92935e-05,-0.000712,Mantido 60 uF; texto corrigido para fs/20,"fc = 2fs/4 e corte = fc/10 levam a 2fs/40 = fs/20 = 1 kHz, que e o que a conta usa. Com fs/40 seria 277 uF. Com 60 uF, f0 = 1075 Hz."
+"p.8, sec. 4.5",Ro = Voef^2/Po,ohm,6.298,6.29762,-0.00605,Mantido,Confere; unidade impressa [W] deve ser ohm.
+"p.9, sec. 4.5",Hv = 4/(raiz(2)*115),,,0.024595,,Mantido,"Divisor do Anexo 01 (25,22k/1025,22k) da 0.024600, diferenca de 0.019%."
+p.9,Gv(s): termo de amortecimento L1/Ro,,L1/Ro,Lo/Ro,,Corrigido no texto,"Na forma em s aparece L1; na forma em w, Lo. O correto e Lo/Ro."
+"p.11, passo 2",fcv = 2fs/6,Hz,6666.667,6666.67,-5e-06,Mantido,"Confere; 6,67 kHz = fs/3, acima da ressonancia LC (1075 Hz)."
+"p.11, passo 3",P = arg(FTLAscv),graus,-176.289,-176.289,0.000195,Mantido,"Confere com Vcc = 373 V e Ro = 6,298 ohm."
+"p.11, passo 4","Atenuacao em fcv (texto 33,23 dB)",dB,-33.23,-26.2246,21.1,"Corrigido para -26,22 dB","O valor calculado na propria planilha e -26,223 dB; 33,23 dB e erro de texto."
+"p.11, passo 6",alfa = MF - P - 90,graus,146.289,146.289,-0.000235,Mantido,Confere.
+"p.12, passo 8",K = 47,,47,45.553,-3.08,Mantido K = 47,"O K exato para alfa = 146,29 graus e 45.6; K = 47 da alfa = 146.80 graus e eleva a MF para 60.52 graus."
+"p.12, passo 9",Fz1 = fcv/raiz(K),Hz,972.433,972.433,2.84e-05,Mantido,Confere.
+p.12,Fp2 = fcv*raiz(K),Hz,45700.0,45704.4,0.00955,Mantido,Confere; polo duplo acima de fs = 20 kHz e proximo da ondulacao unipolar (40 kHz).
+p.12,Gv = 10^(|Av|/20),,20.472,20.4752,0.0155,Mantido,Valido porque a planta atenua em fcv (Av < 0); com Av > 0 o modulo inverteria o ganho.
+p.13,R2 (Tipo 3),ohm,30510.0,30515.4,0.0176,Mantido,Confere.
+p.13,R3 (Tipo 3),ohm,217.391,217.391,0.00014,Mantido,Confere.
+p.13,C1 (Tipo 3),F,5.364e-09,5.36342e-09,-0.0109,Mantido,Confere.
+p.13,C2 (Tipo 3),F,1.166e-10,1.16596e-10,-0.0034,Mantido,Confere.
+p.13,C3 (Tipo 3),F,1.602e-08,1.60184e-08,-0.00972,Mantido,Confere.
+p.15,Margem de fase,graus,60.516,60.5157,-0.000562,Mantido em 373 V e plena carga,Confere; nos demais pontos a MF real e menor (ver 05).
+p.15,Margem de ganho = infinito,dB,inf,finita,,Corrigido,A fase cruza -180 graus perto de 44 kHz; a MG e finita (ver 05).
+"p.18, Anexo 01","Compensador no PSIM (RF, CFV2, C9, CI, RIP, RIZ)",,"33k;5,6n;120p;18n;220;10k","30,5k;5,36n;117p;16,0n;217;10k",,Nao usado como validacao,"Valores comerciais proximos, mas zeros em 861/865 Hz e polos em 40.2/41.1 kHz; a simulacao do professor nao valida exatamente a funcao publicada."
+"p.16, sec. 5.2",Iibmax = Pob/Vibmin,A,53.571,53.5714,0.0008,Mantido como limite inferior,"Pob = 2250 W e potencia de saida do CC-CC; sem rendimento proprio. Com eta = 0,95 (H) a bateria fornece 56.4 A."
+p.16,"dIibmax = 0,2*Iibmax",A,10.714,10.7143,0.00267,Mantido,Confere.
+"p.16, sec. 5.3",Lb = Vib(2D-1)/(2 fsb dI),H,3.92e-05,3.92e-05,-1.73e-14,Mantido,"Confere; indutor ve 2fsb na regiao D > 0,5 da celula de tres estados."
+p.16,VC1 = Vib/(1-D) (capacitor inferior),V,140,140.0,-2.03e-14,Mantido,Confere; e o C8 do Anexo 01.
+p.16,VNp = VC1/2,V,70,70.0,-2.03e-14,Mantido,Confere.
+p.17,a = VSec/VNp,,1,1.0,2.22e-14,Mantido,Vob = VC8 + VC7 = 140 + 70 = 210 V: o retificador do secundario empilha C7 sobre C8.
+p.16,Razao ciclica a 56 V,,nao calculada,0.6,,Complementado,"D = 1 - 1,5*56/210 = 0,60, ainda acima de 0,5."
+p.16 e p.6,Vob = 210 V frente ao vale do retificador,V,210,211.572,0.748,Registrado,Margem de apenas 1.57 V; a coerencia depende da logica de transferencia (ver 06).

@@ -1,0 +1,75 @@
+{
+ "ensaio": "elev_42",
+ "descricao": "CC-CC em malha aberta, bateria de 42 V, D = 0.70, carga de 2250 W em 210 V",
+ "grupo": "submodelo",
+ "modelo": "elevador_bateria",
+ "sha256_modelo": "82786f3eb44450d7585c4f4a27efc01084b94b1063a1f202885b9a04b78c49ec",
+ "inicio": "2026-11-09T19:02:35-03:00",
+ "PLECS": "PLECS Standalone 5.0 (64 bit), formato 5.0; 5.0.6 segundo o registro do Trabalho 4",
+ "opcoes": {
+  "ModelVars": {
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Rcarga": 19.6,
+   "ILb0": 53.5714,
+   "Vbus0": 210.0,
+   "VC8_0": 140.0,
+   "VC7_0": 70.0,
+   "Tstop": 0.1
+  },
+  "SolverOpts": {
+   "TimeSpan": 0.1,
+   "Solver": "radau",
+   "MaxStep": 5e-06,
+   "RelTol": 1e-06,
+   "AbsTol": 1e-08,
+   "OutputTimesOption": "specified",
+   "Timeout": 600.0,
+   "OutputTimes_n": 17801
+  }
+ },
+ "assinatura_opcoes": "74f3e4816daa01ffe0862982147c8b387ee830ebbc7d8e97433b9a4b10ad7623",
+ "grade_saida": [
+  [
+   0.0,
+   0.1,
+   1e-05
+  ],
+  [
+   0.098,
+   0.1,
+   2.5e-07
+  ]
+ ],
+ "janelas": {
+  "regime": [
+   0.08,
+   0.1
+  ],
+  "detalhe": [
+   0.098,
+   0.1
+  ]
+ },
+ "status": "executado",
+ "duracao_real_s": 17.719,
+ "amostras": 17801,
+ "colunas": [
+  "tempo_s",
+  "v_bus_V",
+  "i_bat_A",
+  "v_C8_V",
+  "v_C7_V",
+  "v_S1_V",
+  "i_S1_A",
+  "i_S2_A",
+  "i_D17_A",
+  "i_sec_A",
+  "i_C4_A",
+  "gate_S1"
+ ],
+ "sha256_csv": "cd77a64e3c605dd38dc95300fd8b455f87f04af04b3048ec73a22d055dbc93f0",
+ "tempo_inicial_s": 0.0,
+ "tempo_final_s": 0.1,
+ "fim": "2026-11-09T19:02:53-03:00"
+}

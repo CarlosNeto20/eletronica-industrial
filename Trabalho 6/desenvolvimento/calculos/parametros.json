@@ -1,0 +1,759 @@
+{
+ "meta": {
+  "trabalho": "Trabalho 6 - No-break dupla conversao 3 kVA",
+  "gerado_em": "2026-11-09T21:54:16+00:00",
+  "python": "3.10.12",
+  "numpy": "2.2.6",
+  "script": "desenvolvimento/calculos.py",
+  "classes": {
+   "F": "dado do professor (pagina)",
+   "A": "resultado analitico deste script",
+   "S": "resultado do PLECS",
+   "H": "hipotese"
+  }
+ },
+ "especificacoes": {
+  "Vinomef": 220.0,
+  "Vimaxef": 264.0,
+  "Viminef": 176.0,
+  "fr": 60.0,
+  "Voef": 115.0,
+  "Po": 2100.0,
+  "So": 3000.0,
+  "fo": 60.0,
+  "FP_carga": 0.7
+ },
+ "eta_inv_orcamento": 0.933,
+ "Prec": 2250.0,
+ "retificador": {
+  "planilha": {
+   "Vrms": 176.0,
+   "P": 2250.0,
+   "VC1max": 248.901587,
+   "dVC": 37.33,
+   "VC1min": 211.571587,
+   "thetaC1_rad": 0.5547710823,
+   "C1_F": 0.001796327608,
+   "tC1_s": 0.001471576001,
+   "VC1medio": 230.236587,
+   "Ioeq": 9.772556263,
+   "Roeq": 23.55950488,
+   "Ichg": 55.3406476,
+   "IC1ef": 21.10252915,
+   "ID1med": 4.886278131,
+   "ID1ef": 16.4441417,
+   "ID1pk_2Ichg": 110.6812952
+  },
+  "alternativa_10pct": {
+   "Vrms": 176.0,
+   "P": 2250.0,
+   "VC1max": 248.901587,
+   "dVC": 24.8901587,
+   "VC1min": 224.0114283,
+   "thetaC1_rad": 0.4510268118,
+   "C1_F": 0.00272845055,
+   "tC1_s": 0.001196385776,
+   "VC1medio": 236.4565076,
+   "Ioeq": 9.515491972,
+   "Roeq": 24.84963556,
+   "Ichg": 66.27942928,
+   "IC1ef": 23.24084314,
+   "ID1med": 4.757745986,
+   "ID1ef": 17.75783457,
+   "ID1pk_2Ichg": 132.5588586
+  },
+  "C1_adotado": 0.00188,
+  "Rse": 0.05,
+  "VDrrevpk": 373.3523805,
+  "Vimin_cc": 211.571587,
+  "Vimax_cc": 373.3523805,
+  "vales_com_1880uF": {
+   "176": {
+    "Vpico": 248.901587,
+    "Vvale": 213.186701,
+    "ondulacao": 35.71488594,
+    "ondulacao_pct": 14.34899888
+   },
+   "220": {
+    "Vpico": 311.1269837,
+    "Vvale": 282.1607454,
+    "ondulacao": 28.96623829,
+    "ondulacao_pct": 9.310101601
+   },
+   "264": {
+    "Vpico": 373.3523805,
+    "Vvale": 348.9330688,
+    "ondulacao": 24.41931167,
+    "ondulacao_pct": 6.540553362
+   }
+  },
+  "vale_176_C_menos20pct": 204.526471
+ },
+ "inversor": {
+  "fs": 20000.0,
+  "Vopk": 162.6345597,
+  "Ioef": 18.26086957,
+  "Iopk": 25.8247694,
+  "dILo_criterio": 10.32990776,
+  "Mmax_223": 0.7293029582,
+  "Mmin": 0.4360175863,
+  "Lo_calc": 0.0003655507857,
+  "Lo": 0.0003656,
+  "Co_fs20": 6.929350695e-05,
+  "Co_fs40": 0.0002771740278,
+  "Co": 6e-05,
+  "ESR_Co": 0.005,
+  "Ro": 6.297619048,
+  "f0_LC": 1074.586581,
+  "Z0": 2.468467811,
+  "Q_plena": 2.551225914,
+  "Q_vazio_ESR": 493.6935622,
+  "I_Co_60Hz": 2.601238717,
+  "indices_modulacao": {
+   "373,35 V (pico a 264 V)": {
+    "Vcc": 373.3523805,
+    "M_pico": 0.4356060606
+   },
+   "373 V (planilha)": {
+    "Vcc": 373.0,
+    "M_pico": 0.4360175863
+   },
+   "248,9 V (pico a 176 V)": {
+    "Vcc": 248.901587,
+    "M_pico": 0.6534090909
+   },
+   "230,2 V (media a 176 V)": {
+    "Vcc": 230.236587,
+    "M_pico": 0.706380171
+   },
+   "223 V (planilha)": {
+    "Vcc": 223.0,
+    "M_pico": 0.7293029582
+   },
+   "211,57 V (vale a 176 V)": {
+    "Vcc": 211.571587,
+    "M_pico": 0.7686975458
+   },
+   "210 V (saida do CC-CC)": {
+    "Vcc": 210.0,
+    "M_pico": 0.7744502842
+   }
+  },
+  "ondulacao_Lo": {
+   "373,35 V (pico a 264 V)": {
+    "dILo_max_App": 6.276665742,
+    "vo_no_max_V": 162.6345597
+   },
+   "373 V (planilha)": {
+    "dILo_max_App": 6.272089136,
+    "vo_no_max_V": 162.6345597
+   },
+   "248,9 V (pico a 176 V)": {
+    "dILo_max_App": 4.255018924,
+    "vo_no_max_V": 124.4507935
+   },
+   "230,2 V (media a 176 V)": {
+    "dILo_max_App": 3.935937277,
+    "vo_no_max_V": 115.1182935
+   },
+   "223 V (planilha)": {
+    "dILo_max_App": 3.812226477,
+    "vo_no_max_V": 111.5
+   },
+   "211,57 V (vale a 176 V)": {
+    "dILo_max_App": 3.616855631,
+    "vo_no_max_V": 105.7857935
+   },
+   "210 V (saida do CC-CC)": {
+    "dILo_max_App": 3.589989059,
+    "vo_no_max_V": 105.0
+   }
+  },
+  "dILo_real_373": 6.272089136,
+  "carga_3kVA": {
+   "Z": 4.408333333,
+   "R": 3.085833333,
+   "X": 3.148179699,
+   "L": 0.008350806014,
+   "Irms": 26.08695652
+  },
+  "iec_62040_ref": {
+   "Rs": 0.1763333333,
+   "Uc": 140.3,
+   "R1": 9.941459596,
+   "C": 0.0125736064,
+   "P_R1": 1980.0
+  },
+  "nao_linear_anexo": {
+   "Rs": 0.2,
+   "C": 0.00188,
+   "ESR": 0.05,
+   "R": 9.5,
+   "P_R_com_Uc_IEC": 2072.009474,
+   "tau_RC_ms": 17.86
+  },
+  "esforcos": [
+   {
+    "carga": "Resistiva 2100 W",
+    "Io_rms_A": 18.26086957,
+    "Io_pk_A": 25.8247694,
+    "fator_crista": 1.414213562,
+    "ILo_rms_A": 18.50136563,
+    "ILo_pk_A": 29.22380009,
+    "I_chave_rms_A": 13.0824411,
+    "I_chave_pk_A": 29.22380009,
+    "V_chave_max_V": 373.3523805
+   },
+   {
+    "carga": "Linear 3 kVA, FP 0,7 indutivo",
+    "Io_rms_A": 26.08695652,
+    "Io_pk_A": 36.89252771,
+    "fator_crista": 1.414213562,
+    "ILo_rms_A": 24.34028123,
+    "ILo_pk_A": 37.50036308,
+    "I_chave_rms_A": 17.21117791,
+    "I_chave_pk_A": 37.50036308,
+    "V_chave_max_V": 373.3523805
+   },
+   {
+    "carga": "Nao linear 3 kVA (FC = 3, referencia)",
+    "Io_rms_A": 26.08695652,
+    "Io_pk_A": 78.26086957,
+    "fator_crista": 3.0,
+    "ILo_rms_A": 26.25586551,
+    "ILo_pk_A": 81.39920244,
+    "I_chave_rms_A": 18.56570055,
+    "I_chave_pk_A": 81.39920244,
+    "V_chave_max_V": 373.3523805
+   }
+  ]
+ },
+ "malha": {
+  "Vref_pk": 4.0,
+  "Hv": 0.02459501848,
+  "Hv_divisor_anexo": 0.02459959814,
+  "Vd": 5.0,
+  "fcv": 6666.666667,
+  "Av_dB": -26.22455201,
+  "P_graus": -176.288656,
+  "MF_alvo": 60.0,
+  "alfa": 146.288656,
+  "K": 47.0,
+  "K_exato": 45.55298988,
+  "alfa_K47": 146.8043157,
+  "Gv": 20.47517397,
+  "componentes": {
+   "R1": 10000.0,
+   "R2": 30515.37404,
+   "R3": 217.3913043,
+   "C1": 5.363417713e-09,
+   "C2": 1.165960372e-10,
+   "C3": 1.601844275e-08
+  },
+  "componentes_psim": {
+   "R1": 10000.0,
+   "R2": 33000.0,
+   "R3": 220.0,
+   "C1": 5.6e-09,
+   "C2": 1.2e-10,
+   "C3": 1.8e-08
+  },
+  "polos_zeros": {
+   "Kc": 40310117.83,
+   "wz1": 6109.978476,
+   "wz2": 6109.978476,
+   "wp1": 287168.9884,
+   "wp2": 287168.9884
+  },
+  "polos_zeros_psim": {
+   "Kc": 38712121.21,
+   "wz1": 5411.255411,
+   "wz2": 5435.96434,
+   "wp1": 252525.2525,
+   "wp2": 257936.5079
+  },
+  "fz_Hz": [
+   972.4332767,
+   972.4332767
+  ],
+  "fp_Hz": [
+   45704.364,
+   45704.364
+  ],
+  "MF_projeto": 60.51565971,
+  "pontos": {
+   "373 V, plena 2100 W": {
+    "Vcc": 373.0,
+    "R": 6.29762,
+    "cruzamentos_0dB": [
+     {
+      "f_Hz": 6662.2,
+      "fase_graus": -118.75,
+      "MF_graus": 61.25
+     }
+    ],
+    "cruzamentos_fase_180": [
+     {
+      "f_Hz": 48526.0,
+      "MG_dB": 23.97
+     }
+    ],
+    "estavel_malha_fechada": true,
+    "parte_real_max_polos": -3932.67,
+    "L60_modulo": 89.4075,
+    "L60_fase": -84.3467,
+    "Vo_previsto_rms": 114.866,
+    "defasagem_60Hz_graus": -0.636993
+   },
+   "373 V, vazio": {
+    "Vcc": 373.0,
+    "R": "inf",
+    "cruzamentos_0dB": [
+     {
+      "f_Hz": 6679.5,
+      "fase_graus": -122.46,
+      "MF_graus": 57.54
+     }
+    ],
+    "cruzamentos_fase_180": [
+     {
+      "f_Hz": 48043.0,
+      "MG_dB": 23.79
+     }
+    ],
+    "estavel_malha_fechada": true,
+    "parte_real_max_polos": -3785.41,
+    "L60_modulo": 89.4291,
+    "L60_fase": -83.089,
+    "Vo_previsto_rms": 114.838,
+    "defasagem_60Hz_graus": -0.635148
+   },
+   "248,9 V, plena": {
+    "Vcc": 248.902,
+    "R": 6.29762,
+    "cruzamentos_0dB": [
+     {
+      "f_Hz": 4702.4,
+      "fase_graus": -119.19,
+      "MF_graus": 60.81
+     }
+    ],
+    "cruzamentos_fase_180": [
+     {
+      "f_Hz": 48526.0,
+      "MG_dB": 27.49
+     }
+    ],
+    "estavel_malha_fechada": true,
+    "parte_real_max_polos": -3598.78,
+    "L60_modulo": 59.6613,
+    "L60_fase": -84.3467,
+    "Vo_previsto_rms": 114.795,
+    "defasagem_60Hz_graus": -0.954016
+   },
+   "211,57 V, plena": {
+    "Vcc": 211.572,
+    "R": 6.29762,
+    "cruzamentos_0dB": [
+     {
+      "f_Hz": 4119.2,
+      "fase_graus": -120.13,
+      "MF_graus": 59.87
+     }
+    ],
+    "cruzamentos_fase_180": [
+     {
+      "f_Hz": 48526.0,
+      "MG_dB": 28.9
+     }
+    ],
+    "estavel_malha_fechada": true,
+    "parte_real_max_polos": -3456.48,
+    "L60_modulo": 50.7134,
+    "L60_fase": -84.3467,
+    "Vo_previsto_rms": 114.755,
+    "defasagem_60Hz_graus": -1.12198
+   },
+   "211,57 V, vazio": {
+    "Vcc": 211.572,
+    "R": "inf",
+    "cruzamentos_0dB": [
+     {
+      "f_Hz": 4141.6,
+      "fase_graus": -126.3,
+      "MF_graus": 53.7
+     }
+    ],
+    "cruzamentos_fase_180": [
+     {
+      "f_Hz": 48043.0,
+      "MG_dB": 28.71
+     }
+    ],
+    "estavel_malha_fechada": true,
+    "parte_real_max_polos": -3304.69,
+    "L60_modulo": 50.7256,
+    "L60_fase": -83.089,
+    "Vo_previsto_rms": 114.706,
+    "defasagem_60Hz_graus": -1.11852
+   },
+   "210 V, plena": {
+    "Vcc": 210.0,
+    "R": 6.29762,
+    "cruzamentos_0dB": [
+     {
+      "f_Hz": 4094.8,
+      "fase_graus": -120.18,
+      "MF_graus": 59.82
+     }
+    ],
+    "cruzamentos_fase_180": [
+     {
+      "f_Hz": 48526.0,
+      "MG_dB": 28.96
+     }
+    ],
+    "estavel_malha_fechada": true,
+    "parte_real_max_polos": -3449.84,
+    "L60_modulo": 50.3367,
+    "L60_fase": -84.3467,
+    "Vo_previsto_rms": 114.753,
+    "defasagem_60Hz_graus": -1.13036
+   },
+   "210 V, vazio": {
+    "Vcc": 210.0,
+    "R": "inf",
+    "cruzamentos_0dB": [
+     {
+      "f_Hz": 4117.3,
+      "fase_graus": -126.4,
+      "MF_graus": 53.6
+     }
+    ],
+    "cruzamentos_fase_180": [
+     {
+      "f_Hz": 48043.0,
+      "MG_dB": 28.78
+     }
+    ],
+    "estavel_malha_fechada": true,
+    "parte_real_max_polos": -3298.06,
+    "L60_modulo": 50.3488,
+    "L60_fase": -83.089,
+    "Vo_previsto_rms": 114.704,
+    "defasagem_60Hz_graus": -1.12687
+   },
+   "373 V, R 3 kVA FP=1 (4,41 ohm)": {
+    "Vcc": 373.0,
+    "R": 4.40833,
+    "cruzamentos_0dB": [
+     {
+      "f_Hz": 6647.3,
+      "fase_graus": -117.15,
+      "MF_graus": 62.85
+     }
+    ],
+    "cruzamentos_fase_180": [
+     {
+      "f_Hz": 48731.0,
+      "MG_dB": 24.05
+     }
+    ],
+    "estavel_malha_fechada": true,
+    "parte_real_max_polos": -4005.29,
+    "L60_modulo": 89.3851,
+    "L60_fase": -84.8854,
+    "Vo_previsto_rms": 114.878,
+    "defasagem_60Hz_graus": -0.637784
+   },
+   "210 V, R 4,41 ohm": {
+    "Vcc": 210.0,
+    "R": 4.40833,
+    "cruzamentos_0dB": [
+     {
+      "f_Hz": 4073.1,
+      "fase_graus": -117.56,
+      "MF_graus": 62.44
+     }
+    ],
+    "cruzamentos_fase_180": [
+     {
+      "f_Hz": 48731.0,
+      "MG_dB": 29.04
+     }
+    ],
+    "estavel_malha_fechada": true,
+    "parte_real_max_polos": -3525.54,
+    "L60_modulo": 50.3241,
+    "L60_fase": -84.8854,
+    "Vo_previsto_rms": 114.774,
+    "defasagem_60Hz_graus": -1.13185
+   }
+  },
+  "pontos_psim": {
+   "373 V, plena 2100 W": {
+    "Vcc": 373.0,
+    "R": 6.29762,
+    "cruzamentos_0dB": [
+     {
+      "f_Hz": 7849.3,
+      "fase_graus": -120.44,
+      "MF_graus": 59.56
+     }
+    ],
+    "cruzamentos_fase_180": [
+     {
+      "f_Hz": 42693.0,
+      "MG_dB": 21.08
+     }
+    ],
+    "estavel_malha_fechada": true,
+    "parte_real_max_polos": -3574.39,
+    "L60_modulo": 85.7438,
+    "L60_fase": -83.4746,
+    "Vo_previsto_rms": 114.84,
+    "defasagem_60Hz_graus": -0.662983
+   },
+   "373 V, vazio": {
+    "Vcc": 373.0,
+    "R": "inf",
+    "cruzamentos_0dB": [
+     {
+      "f_Hz": 7865.4,
+      "fase_graus": -123.58,
+      "MF_graus": 56.42
+     }
+    ],
+    "cruzamentos_fase_180": [
+     {
+      "f_Hz": 42217.0,
+      "MG_dB": 20.87
+     }
+    ],
+    "estavel_malha_fechada": true,
+    "parte_real_max_polos": -3452.09,
+    "L60_modulo": 85.7644,
+    "L60_fase": -82.2169,
+    "Vo_previsto_rms": 114.811,
+    "defasagem_60Hz_graus": -0.660833
+   },
+   "211,57 V, plena": {
+    "Vcc": 211.572,
+    "R": 6.29762,
+    "cruzamentos_0dB": [
+     {
+      "f_Hz": 4788.0,
+      "fase_graus": -118.05,
+      "MF_graus": 61.95
+     }
+    ],
+    "cruzamentos_fase_180": [
+     {
+      "f_Hz": 42693.0,
+      "MG_dB": 26.0
+     }
+    ],
+    "estavel_malha_fechada": true,
+    "parte_real_max_polos": -3154.22,
+    "L60_modulo": 48.6352,
+    "L60_fase": -83.4746,
+    "Vo_previsto_rms": 114.708,
+    "defasagem_60Hz_graus": -1.16755
+   },
+   "211,57 V, vazio": {
+    "Vcc": 211.572,
+    "R": "inf",
+    "cruzamentos_0dB": [
+     {
+      "f_Hz": 4808.6,
+      "fase_graus": -123.31,
+      "MF_graus": 56.69
+     }
+    ],
+    "cruzamentos_fase_180": [
+     {
+      "f_Hz": 42217.0,
+      "MG_dB": 25.8
+     }
+    ],
+    "estavel_malha_fechada": true,
+    "parte_real_max_polos": -3027.53,
+    "L60_modulo": 48.647,
+    "L60_fase": -82.2169,
+    "Vo_previsto_rms": 114.657,
+    "defasagem_60Hz_graus": -1.16354
+   }
+  },
+  "atraso_PWM_s": 1.25e-05,
+  "pontos_com_atraso": {
+   "373 V, plena 2100 W": {
+    "cruzamentos_0dB": [
+     {
+      "f_Hz": 6662.2,
+      "fase_graus": -148.73,
+      "MF_graus": 31.27
+     }
+    ],
+    "cruzamentos_fase_180": [
+     {
+      "f_Hz": 12105.0,
+      "MG_dB": 5.866
+     }
+    ]
+   },
+   "211,57 V, plena": {
+    "cruzamentos_0dB": [
+     {
+      "f_Hz": 4119.2,
+      "fase_graus": -138.67,
+      "MF_graus": 41.33
+     }
+    ],
+    "cruzamentos_fase_180": [
+     {
+      "f_Hz": 12105.0,
+      "MG_dB": 10.79
+     }
+    ]
+   },
+   "210 V, vazio": {
+    "cruzamentos_0dB": [
+     {
+      "f_Hz": 4117.3,
+      "fase_graus": -144.92,
+      "MF_graus": 35.08
+     }
+    ],
+    "cruzamentos_fase_180": [
+     {
+      "f_Hz": 11768.0,
+      "MG_dB": 10.56
+     }
+    ]
+   }
+  },
+  "Cv_40kHz": 69.60736853,
+  "dVo_pp_373": 0.3269096741,
+  "vc_ondulacao_pp": 0.5596675689,
+  "razao_inclinacao_vc_portadora": 0.1758247523
+ },
+ "cc_cc": {
+  "planilha": {
+   "Vibmin": 42.0,
+   "Vibmax": 56.0,
+   "Vob": 210.0,
+   "Pob": 2250.0,
+   "Dbmax": 0.7,
+   "fsb": 20000.0,
+   "Iibmax": 53.57142857,
+   "dIibmax": 10.71428571,
+   "Lb": 3.92e-05,
+   "Lb_adot": 3.92e-05,
+   "VC1": 140.0,
+   "VNp": 70.0,
+   "VSec": 70.0,
+   "a": 1.0,
+   "D_42": 0.7,
+   "D_56": 0.6
+  },
+  "pontos": {
+   "42": {
+    "D": 0.7,
+    "VC8": 140.0,
+    "VC7": 70.0,
+    "Vbus": 210.0,
+    "Iib": 53.57142857,
+    "Iib_com_eta095": 56.39097744,
+    "dILb_pp": 10.71428571,
+    "ILb_pico": 58.92857143,
+    "V_chave": 70.0,
+    "V_D17_D18": 140.0,
+    "V_ponte_sec": 70.0,
+    "I_chave_media": 26.78571429
+   },
+   "56": {
+    "D": 0.6,
+    "VC8": 140.0,
+    "VC7": 70.0,
+    "Vbus": 210.0,
+    "Iib": 40.17857143,
+    "Iib_com_eta095": 42.29323308,
+    "dILb_pp": 7.142857143,
+    "ILb_pico": 43.75,
+    "V_chave": 70.0,
+    "V_D17_D18": 140.0,
+    "V_ponte_sec": 70.0,
+    "I_chave_media": 20.08928571
+   }
+  },
+  "eta_H": 0.95,
+  "ondulacao_bus_120Hz_bateria_Vpp": 15.11730083,
+  "topologia": "Celula de comutacao de tres estados com autotransformador (dois primarios), secundario 1:1 em ponte e capacitor C7 empilhado sobre C8"
+ },
+ "simulacao": {
+  "classe": "H",
+  "nota": "Hipoteses de simulacao. Valores do Anexo 01 quando existem; demais escolhidos e justificados no 07-guia-plecs.md.",
+  "fs": 20000.0,
+  "fr": 60.0,
+  "fo": 60.0,
+  "Vref_pk": 4.0,
+  "Hv": 0.02459501848,
+  "Vd": 5.0,
+  "Vsat_comp": 5.0,
+  "Lo": 0.0003656,
+  "Co": 6e-05,
+  "ESR_Co": 0.005,
+  "Ro": 6.297619048,
+  "R3k": 3.085833333,
+  "L3k": 0.008350806014,
+  "C4": 0.00188,
+  "ESR_C4": 0.05,
+  "Rbus": 0.1,
+  "T1_relacao": 1.0,
+  "Vf_ponte": 0.8,
+  "Ron_ponte": 0.01,
+  "Vf_rapido": 0.8,
+  "Ron_rapido": 0.005,
+  "Ron_inv": 0.05,
+  "Ron_cc": 0.01,
+  "Lb": 3.92e-05,
+  "C7": 1e-05,
+  "C8": 1e-05,
+  "T32_Lm": 0.01,
+  "T32_Llk": 1e-06,
+  "T32_R": 0.001,
+  "n_T32": 1.0,
+  "Rsn_cc": 33.0,
+  "Csn_cc": 1e-09,
+  "zeta_sn": 0.5217758139,
+  "Vbat": 42.0,
+  "Db": 0.7,
+  "Vbat_alt": 56.0,
+  "Db_alt": 0.6,
+  "nl_Rs": 0.2,
+  "nl_C": 0.00188,
+  "nl_ESR": 0.05,
+  "nl_R": 9.5,
+  "comp": {
+   "Kc": 40310117.83,
+   "wz1": 6109.978476,
+   "wz2": 6109.978476,
+   "wp1": 287168.9884,
+   "wp2": 287168.9884
+  },
+  "solver": {
+   "Solver": "radau",
+   "MaxStep": 5e-06,
+   "RelTol": 1e-06,
+   "AbsTol": 1e-08
+  }
+ },
+ "figuras": [
+  "avanco_fase_K.png",
+  "bode_compensador.png",
+  "bode_laco.png",
+  "bode_planta.png",
+  "ganho_cc.png",
+  "ondulacao_Lo.png"
+ ]
+}

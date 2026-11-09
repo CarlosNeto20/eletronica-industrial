@@ -1,0 +1,174 @@
+Plecs {
+  Name "inversor_malha_fechada"
+  Version       "5.0"
+  CircuitModel  "ContStateSpace"
+  StartTime     "0.0"
+  TimeSpan "Tstop"
+  Timeout       ""
+  Solver "radau"
+  MaxStep "5e-06"
+  InitStep      "-1"
+  FixedStep     "1e-3"
+  Refine        "1"
+  ZCStepSize    "1e-9"
+  RelTol "1e-06"
+  AbsTol "1e-08"
+  TurnOnThreshold "0"
+  NonIdealSwitchResistance "1"
+  SyncFixedStepTasks "2"
+  UseSingleCommonBaseRate "2"
+  LossVariableLimitExceededMsg "3"
+  NegativeSwitchLossMsg "3"
+  DivisionByZeroMsg "3"
+  DatatypeOverflowMsg "3"
+  DatatypeInheritanceConflictMsg "2"
+  ContSampleTimeConflictMsg "2"
+  StiffnessDetectionMsg "2"
+  MaxConsecutiveZCs "1000"
+  AlgebraicLoopWithStateMachineMsg "3"
+  AssertionAction "1"
+  FixedPointDatatypeOverride "1"
+  InitializationCommands "% Trabalho 6 - no-break de dupla conversao 3 kVA. Gerado por gerar_modelos.py; unidades SI.\nfs=20000; fsb=20000; fr=60; fo=60;\nLo=0.0003656; Co=6e-05; ESR_Co=0.005; Ro=6.297619048;\nR3k=3.085833333; L3k=0.008350806014; nl_Rs=0.2; nl_C=0.00188; nl_ESR=0.05; nl_R=9.5;\nC4=0.00188; ESR_C4=0.05; Rbus=0.1; R_T1=0.002;\nVf_ponte=0.8; Ron_ponte=0.01; Vf_rapido=0.8; Ron_rapido=0.005;\nRon_inv=0.05; Ron_cc=0.01; Lb=3.92e-05; C7=1e-05; C8=1e-05;\nT32_Lm=0.01; T32_Llk=1e-06; T32_R=0.001;\nHv=0.02459501848; Vd=5; Vref_pk=4; Vsat=5;\nKc=40310117.83; wz1=6109.978476; wz2=6109.978476; wp1=287168.9884; wp2=287168.9884;\n% Variaveis de cenario (sobrescritas por ModelVars):\nVrms=220; phi_rede=0; Vcc=373.352; carga=1; Rres=6.297619; tcarga=0;\ntfalta=10; tretorno=100; tdet=0; modo_cc=0; Vbat=42; Db=0.7; Rcarga=19.6;\nVbus0=310; VC8_0=206; VC7_0=103; ILb0=0; VC3_0=140; Tstop=0.2;\n"
+  InitialState  "1"
+  SystemState   ""
+  JacobianComputation "2"
+  TaskingMode   "1"
+  TaskConfigurations ""
+  CodeGenParameterInlining "2"
+  CodeGenFloatingPointFormat "2"
+  CodeGenAbsTimeUsageMsg "3"
+  CodeGenBaseName ""
+  CodeGenOutputDir ""
+  CodeGenExtraOpts ""
+  CodeGenTarget "Generic"
+  CodeGenTargetSettings ""
+  ExtendedMatrixPrecision "1"
+  MatrixSignificanceCheck "2"
+  RemoveUnusedStateSpaceOutputs "2"
+  EnableStateSpaceSplitting "2"
+  DisplayStateSpaceSplitting "1"
+  DiscretizationMethod "2"
+  ExternalModeSettings ""
+  AlgebraicLoopMethod "1"
+  AlgebraicLoopTolerance "1e-6"
+  ScriptsDialogGeometry ""
+  ScriptsDialogSplitterPos "0"
+  MixedSignalSolverBypassOperatingPoint "1"
+  MixedSignalSolverInitialConditions "2"
+  MixedSignalSolverMaxNewtonIterations "25"
+  MixedSignalSolverNumThreads "-1"
+  OperatingPointMaxNewtonIterations "50"
+  OperatingPointRelativeNewtonTolerance "1e-3"
+  OperatingPointAbsoluteNewtonTolerance "1e-12"
+  OperatingPointNodalVoltageNewtonTolerance "1e-6"
+  SpiceTemperature "27"
+  SpiceGMin     "0"
+  SpiceInductorRPar "0"
+  SpiceInductorRSer "0"
+  SpiceCapacitorGPar "0"
+  SpiceCapacitorRSer "0"
+  NetlistParserDetails "2"
+  InvalidNetlistFunctionEvaluationMsg "1"
+  IncompatibleInitialConditionMsg "2"
+  Terminal { Type Output Index "1" }
+  Terminal { Type Output Index "2" }
+  Terminal { Type Output Index "3" }
+  Terminal { Type Output Index "4" }
+  Terminal { Type Output Index "5" }
+  Terminal { Type Output Index "6" }
+  Terminal { Type Output Index "7" }
+  Terminal { Type Output Index "8" }
+  Terminal { Type Output Index "9" }
+  Terminal { Type Output Index "10" }
+  Terminal { Type Output Index "11" }
+  Terminal { Type Output Index "12" }
+  Schematic { Location [40, 40; 1600, 900] ZoomFactor 0.7 SliderPosition [0, 0] ShowBrowser off BrowserWidth 100
+    Component { Type DCVoltageSource Name "Vcc" Show on Position [820, 220] Direction down Flipped off LabelPosition south Parameter { Variable "V" Value "Vcc" Show off } }
+    Component { Type Voltmeter Name "Vm_bus" Show on Position [780, 220] Direction down Flipped off LabelPosition south  }
+    Component { Type Ground Name "GND_bus" Show on Position [820, 320] Direction right Flipped off LabelPosition south  }
+    Component { Type MosfetWithDiode Name "QA_sup" Show on Position [960, 140] Direction up Flipped off LabelPosition south Parameter { Variable "Ron" Value "Ron_inv" Show off } Parameter { Variable "s_init" Value "0" Show off } }
+    Component { Type MosfetWithDiode Name "QA_inf" Show on Position [960, 280] Direction up Flipped off LabelPosition south Parameter { Variable "Ron" Value "Ron_inv" Show off } Parameter { Variable "s_init" Value "0" Show off } }
+    Component { Type MosfetWithDiode Name "QB_sup" Show on Position [900, 140] Direction up Flipped off LabelPosition south Parameter { Variable "Ron" Value "Ron_inv" Show off } Parameter { Variable "s_init" Value "0" Show off } }
+    Component { Type MosfetWithDiode Name "QB_inf" Show on Position [900, 280] Direction up Flipped off LabelPosition south Parameter { Variable "Ron" Value "Ron_inv" Show off } Parameter { Variable "s_init" Value "0" Show off } }
+    Component { Type Ammeter Name "Am_QA" Show on Position [960, 90] Direction up Flipped off LabelPosition south  }
+    Component { Type Voltmeter Name "Vm_AB" Show on Position [930, 360] Direction right Flipped off LabelPosition south  }
+    Component { Type Ammeter Name "Am_Lo" Show on Position [1010, 210] Direction right Flipped off LabelPosition south  }
+    Component { Type Inductor Name "Lo" Show on Position [1060, 210] Direction right Flipped off LabelPosition south Parameter { Variable "L" Value "Lo" Show off } Parameter { Variable "i_init" Value "0" Show off } }
+    Component { Type Resistor Name "ESR_Co" Show on Position [1110, 250] Direction down Flipped off LabelPosition south Parameter { Variable "R" Value "ESR_Co" Show off } }
+    Component { Type Capacitor Name "Co" Show on Position [1110, 300] Direction down Flipped off LabelPosition south Parameter { Variable "C" Value "Co" Show off } Parameter { Variable "v_init" Value "0" Show off } }
+    Component { Type Voltmeter Name "Vm_o" Show on Position [1150, 270] Direction down Flipped off LabelPosition south  }
+    Component { Type Ammeter Name "Am_o" Show on Position [1190, 210] Direction right Flipped off LabelPosition south  }
+    Component { Type Switch Name "Sw_res" Show on Position [1240, 240] Direction down Flipped off LabelPosition south Parameter { Variable "s_init" Value "0" Show off } }
+    Component { Type Resistor Name "R_res" Show on Position [1240, 300] Direction down Flipped off LabelPosition south Parameter { Variable "R" Value "Rres" Show off } }
+    Component { Type Switch Name "Sw_rl" Show on Position [1300, 240] Direction down Flipped off LabelPosition south Parameter { Variable "s_init" Value "0" Show off } }
+    Component { Type Resistor Name "R_rl" Show on Position [1300, 290] Direction down Flipped off LabelPosition south Parameter { Variable "R" Value "R3k" Show off } }
+    Component { Type Inductor Name "L_rl" Show on Position [1300, 340] Direction down Flipped off LabelPosition south Parameter { Variable "L" Value "L3k" Show off } Parameter { Variable "i_init" Value "0" Show off } }
+    Component { Type Switch Name "Sw_nl" Show on Position [1360, 210] Direction right Flipped off LabelPosition south  }
+    Component { Type Resistor Name "Rs_nl" Show on Position [1410, 210] Direction right Flipped off LabelPosition south Parameter { Variable "R" Value "nl_Rs" Show off } }
+    Component { Type Diode Name "Dn1" Show on Position [1460, 180] Direction up Flipped off LabelPosition south Parameter { Variable "Vf" Value "Vf_rapido" Show off } Parameter { Variable "Ron" Value "Ron_rapido" Show off } }
+    Component { Type Diode Name "Dn3" Show on Position [1510, 180] Direction up Flipped off LabelPosition south Parameter { Variable "Vf" Value "Vf_rapido" Show off } Parameter { Variable "Ron" Value "Ron_rapido" Show off } }
+    Component { Type Diode Name "Dn2" Show on Position [1460, 320] Direction up Flipped off LabelPosition south Parameter { Variable "Vf" Value "Vf_rapido" Show off } Parameter { Variable "Ron" Value "Ron_rapido" Show off } }
+    Component { Type Diode Name "Dn4" Show on Position [1510, 320] Direction up Flipped off LabelPosition south Parameter { Variable "Vf" Value "Vf_rapido" Show off } Parameter { Variable "Ron" Value "Ron_rapido" Show off } }
+    Component { Type Resistor Name "ESR_nl" Show on Position [1570, 230] Direction down Flipped off LabelPosition south Parameter { Variable "R" Value "nl_ESR" Show off } }
+    Component { Type Capacitor Name "C_nl" Show on Position [1570, 280] Direction down Flipped off LabelPosition south Parameter { Variable "C" Value "nl_C" Show off } Parameter { Variable "v_init" Value "VC3_0" Show off } }
+    Component { Type Resistor Name "R_nl" Show on Position [1620, 250] Direction down Flipped off LabelPosition south Parameter { Variable "R" Value "nl_R" Show off } }
+    Component { Type Voltmeter Name "Vm_nl" Show on Position [1660, 250] Direction down Flipped off LabelPosition south  }
+    Component { Type CScript Name "Controle" Show on Position [1200, 700] Direction right Flipped off LabelPosition south Parameter { Variable "NumInputs" Value "1" Show off } Parameter { Variable "NumOutputs" Value "[1 1 1 1 1 1 1 1]" Show off } Parameter { Variable "NumContStates" Value "3" Show off } Parameter { Variable "NumDiscStates" Value "0" Show off } Parameter { Variable "NumZCSignals" Value "6" Show off } Parameter { Variable "DirectFeedthrough" Value "0" Show off } Parameter { Variable "Ts" Value "0" Show off } Parameter { Variable "Parameters" Value "Hv,Kc,wz1,wz2,wp1,wp2,Vref_pk,2*pi*fo,Vsat,tfalta,tretorno,modo_cc,tdet,Db,carga,tcarga" Show off } Parameter { Variable "LangStandard" Value "2" Show off } Parameter { Variable "GnuExtensions" Value "2" Show off } Parameter { Variable "RuntimeCheck" Value "2" Show off } Parameter { Variable "Declarations" Value "#include <math.h>\n/* Compensador Tipo 3 da planilha: Cv(s) = Kc (s+wz1)(s+wz2) / (s (s+wp1)(s+wp2)).\n   Estados em volts: x0 = Kc*integral(e); x1 e x2 = filtros dos dois avancos. */\n#define HV      ParamRealData(0,0)\n#define KC      ParamRealData(1,0)\n#define WZ1     ParamRealData(2,0)\n#define WZ2     ParamRealData(3,0)\n#define WP1     ParamRealData(4,0)\n#define WP2     ParamRealData(5,0)\n#define VREFPK  ParamRealData(6,0)\n#define WO      ParamRealData(7,0)\n#define VSAT    ParamRealData(8,0)\n#define TFALTA  ParamRealData(9,0)\n#define TRET    ParamRealData(10,0)\n#define MODOCC  ParamRealData(11,0)\n#define TDET    ParamRealData(12,0)\n#define DB      ParamRealData(13,0)\n#define CARGA   ParamRealData(14,0)\n#define TCARGA  ParamRealData(15,0)\n#define Y1 (ContState(0))\n#define Y2 (Y1 + (WZ1/WP1 - 1.0)*ContState(1))\n#define Y3 (Y2 + (WZ2/WP2 - 1.0)*ContState(2))\n#define VREF (VREFPK*sin(WO*CurrentTime))\nstatic double limita(double u, double l) { return u > l ? l : (u < -l ? -l : u); }\n" Show off } Parameter { Variable "StartFcn" Value "ContState(0) = 0.0;\nContState(1) = 0.0;\nContState(2) = 0.0;" Show off } Parameter { Variable "OutputFcn" Value "double t = CurrentTime;\ndouble u = Y3;\nint rede = (t < TFALTA) || (t >= TRET);\nint cc = (MODOCC > 0.5) ? 1 : ((t >= TFALTA + TDET) && (t < TRET));\nint liga = (t >= TCARGA);\nOutputSignal(0,0) = limita(u, VSAT);\nOutputSignal(1,0) = VREF;\nOutputSignal(2,0) = rede ? 1.0 : 0.0;\nOutputSignal(3,0) = cc ? DB : -1.0;\nOutputSignal(4,0) = (liga && fabs(CARGA - 1.0) < 0.5) ? 1.0 : 0.0;\nOutputSignal(5,0) = (liga && fabs(CARGA - 2.0) < 0.5) ? 1.0 : 0.0;\nOutputSignal(6,0) = (liga && fabs(CARGA - 3.0) < 0.5) ? 1.0 : 0.0;\nOutputSignal(7,0) = u;\nZCSignal(0) = t - TFALTA;\nZCSignal(1) = t - TRET;\nZCSignal(2) = t - TFALTA - TDET;\nZCSignal(3) = t - TCARGA;\nZCSignal(4) = u - VSAT;\nZCSignal(5) = u + VSAT;" Show off } Parameter { Variable "DerivativeFcn" Value "double e = VREF - HV*InputSignal(0,0);\ndouble u = Y3;\nint trava = (u > VSAT && e > 0.0) || (u < -VSAT && e < 0.0);\nContDeriv(0) = trava ? 0.0 : KC*e;\nContDeriv(1) = WP1*(Y1 - ContState(1));\nContDeriv(2) = WP2*(Y2 - ContState(2));" Show off } Parameter { Variable "UpdateFcn" Value "" Show off } Parameter { Variable "TerminateFcn" Value "" Show off } }
+    Component { Type TriangleGenerator Name "Portadora_A" Show on Position [900, 600] Direction right Flipped off LabelPosition south Parameter { Variable "Min" Value "-Vd" Show off } Parameter { Variable "Max" Value "Vd" Show off } Parameter { Variable "f" Value "fs" Show off } Parameter { Variable "DutyCycle" Value "0.5" Show off } Parameter { Variable "Delay" Value "0" Show off } }
+    Component { Type TriangleGenerator Name "Portadora_B" Show on Position [900, 700] Direction right Flipped off LabelPosition south Parameter { Variable "Min" Value "-Vd" Show off } Parameter { Variable "Max" Value "Vd" Show off } Parameter { Variable "f" Value "fs" Show off } Parameter { Variable "DutyCycle" Value "0.5" Show off } Parameter { Variable "Delay" Value "0.5/fs" Show off } }
+    Component { Type Comparator Name "CMP_A_sup" Show on Position [1000, 580] Direction right Flipped off LabelPosition south  }
+    Component { Type Comparator Name "CMP_A_inf" Show on Position [1000, 620] Direction right Flipped off LabelPosition south  }
+    Component { Type Comparator Name "CMP_B_inf" Show on Position [1000, 680] Direction right Flipped off LabelPosition south  }
+    Component { Type Comparator Name "CMP_B_sup" Show on Position [1000, 720] Direction right Flipped off LabelPosition south  }
+    Component { Type Output Name "v_o_V" Show on Position [1900, 60] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "1" Show off } Parameter { Variable "Width" Value "-1" Show off } }
+    Component { Type Output Name "i_o_A" Show on Position [1900, 90] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "2" Show off } Parameter { Variable "Width" Value "-1" Show off } }
+    Component { Type Output Name "i_Lo_A" Show on Position [1900, 120] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "3" Show off } Parameter { Variable "Width" Value "-1" Show off } }
+    Component { Type Output Name "v_c_V" Show on Position [1900, 150] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "4" Show off } Parameter { Variable "Width" Value "-1" Show off } }
+    Component { Type Output Name "v_ref_V" Show on Position [1900, 180] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "5" Show off } Parameter { Variable "Width" Value "-1" Show off } }
+    Component { Type Output Name "v_c_livre_V" Show on Position [1900, 210] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "6" Show off } Parameter { Variable "Width" Value "-1" Show off } }
+    Component { Type Output Name "v_AB_V" Show on Position [1900, 240] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "7" Show off } Parameter { Variable "Width" Value "-1" Show off } }
+    Component { Type Output Name "i_QA_A" Show on Position [1900, 270] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "8" Show off } Parameter { Variable "Width" Value "-1" Show off } }
+    Component { Type Output Name "v_nl_V" Show on Position [1900, 300] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "9" Show off } Parameter { Variable "Width" Value "-1" Show off } }
+    Component { Type Output Name "v_bus_V" Show on Position [1900, 330] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "10" Show off } Parameter { Variable "Width" Value "-1" Show off } }
+    Component { Type Output Name "rede_on" Show on Position [1900, 360] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "11" Show off } Parameter { Variable "Width" Value "-1" Show off } }
+    Component { Type Output Name "dref_cc" Show on Position [1900, 390] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "12" Show off } Parameter { Variable "Width" Value "-1" Show off } }
+    Connection { Type Wire SrcComponent "Vcc" SrcTerminal 1 Branch { DstComponent "Vm_bus" DstTerminal 1 } Branch { DstComponent "Am_QA" DstTerminal 1 } Branch { DstComponent "QB_sup" DstTerminal 1 } }
+    Connection { Type Wire SrcComponent "Vcc" SrcTerminal 2 Branch { DstComponent "Vm_bus" DstTerminal 2 } Branch { DstComponent "GND_bus" DstTerminal 1 } Branch { DstComponent "QA_inf" DstTerminal 2 } Branch { DstComponent "QB_inf" DstTerminal 2 } }
+    Connection { Type Wire SrcComponent "Am_QA" SrcTerminal 2 DstComponent "QA_sup" DstTerminal 1 }
+    Connection { Type Wire SrcComponent "QA_sup" SrcTerminal 2 Branch { DstComponent "QA_inf" DstTerminal 1 } Branch { DstComponent "Vm_AB" DstTerminal 1 } Branch { DstComponent "Am_Lo" DstTerminal 1 } }
+    Connection { Type Wire SrcComponent "QB_sup" SrcTerminal 2 Branch { DstComponent "QB_inf" DstTerminal 1 } Branch { DstComponent "Vm_AB" DstTerminal 2 } Branch { DstComponent "Co" DstTerminal 2 } Branch { DstComponent "Vm_o" DstTerminal 2 } Branch { DstComponent "R_res" DstTerminal 2 } Branch { DstComponent "L_rl" DstTerminal 2 } Branch { DstComponent "Dn3" DstTerminal 1 } Branch { DstComponent "Dn4" DstTerminal 2 } }
+    Connection { Type Wire SrcComponent "Am_Lo" SrcTerminal 2 DstComponent "Lo" DstTerminal 1 }
+    Connection { Type Wire SrcComponent "Lo" SrcTerminal 2 Branch { DstComponent "ESR_Co" DstTerminal 1 } Branch { DstComponent "Vm_o" DstTerminal 1 } Branch { DstComponent "Am_o" DstTerminal 1 } }
+    Connection { Type Wire SrcComponent "ESR_Co" SrcTerminal 2 DstComponent "Co" DstTerminal 1 }
+    Connection { Type Wire SrcComponent "Am_o" SrcTerminal 2 Branch { DstComponent "Sw_res" DstTerminal 1 } Branch { DstComponent "Sw_nl" DstTerminal 1 } Branch { DstComponent "Sw_rl" DstTerminal 1 } }
+    Connection { Type Wire SrcComponent "Sw_res" SrcTerminal 2 DstComponent "R_res" DstTerminal 1 }
+    Connection { Type Wire SrcComponent "Sw_rl" SrcTerminal 2 DstComponent "R_rl" DstTerminal 1 }
+    Connection { Type Wire SrcComponent "R_rl" SrcTerminal 2 DstComponent "L_rl" DstTerminal 1 }
+    Connection { Type Wire SrcComponent "Sw_nl" SrcTerminal 2 DstComponent "Rs_nl" DstTerminal 1 }
+    Connection { Type Wire SrcComponent "Rs_nl" SrcTerminal 2 Branch { DstComponent "Dn1" DstTerminal 1 } Branch { DstComponent "Dn2" DstTerminal 2 } }
+    Connection { Type Wire SrcComponent "Dn1" SrcTerminal 2 Branch { DstComponent "Dn3" DstTerminal 2 } Branch { DstComponent "ESR_nl" DstTerminal 1 } Branch { DstComponent "R_nl" DstTerminal 1 } Branch { DstComponent "Vm_nl" DstTerminal 1 } }
+    Connection { Type Wire SrcComponent "ESR_nl" SrcTerminal 2 DstComponent "C_nl" DstTerminal 1 }
+    Connection { Type Wire SrcComponent "Dn2" SrcTerminal 1 Branch { DstComponent "Dn4" DstTerminal 1 } Branch { DstComponent "C_nl" DstTerminal 2 } Branch { DstComponent "R_nl" DstTerminal 2 } Branch { DstComponent "Vm_nl" DstTerminal 2 } }
+    Connection { Type Signal SrcComponent "Vm_o" SrcTerminal 3 Branch { DstComponent "Controle" DstTerminal 1 } Branch { DstComponent "v_o_V" DstTerminal 1 } }
+    Connection { Type Signal SrcComponent "Controle" SrcTerminal 6 DstComponent "Sw_res" DstTerminal 3 }
+    Connection { Type Signal SrcComponent "Controle" SrcTerminal 7 DstComponent "Sw_nl" DstTerminal 3 }
+    Connection { Type Signal SrcComponent "Controle" SrcTerminal 8 DstComponent "Sw_rl" DstTerminal 3 }
+    Connection { Type Signal SrcComponent "Controle" SrcTerminal 2 Branch { DstComponent "CMP_A_sup" DstTerminal 1 } Branch { DstComponent "CMP_A_inf" DstTerminal 2 } Branch { DstComponent "CMP_B_inf" DstTerminal 1 } Branch { DstComponent "CMP_B_sup" DstTerminal 2 } Branch { DstComponent "v_c_V" DstTerminal 1 } }
+    Connection { Type Signal SrcComponent "Portadora_A" SrcTerminal 1 Branch { DstComponent "CMP_A_sup" DstTerminal 2 } Branch { DstComponent "CMP_A_inf" DstTerminal 1 } }
+    Connection { Type Signal SrcComponent "Portadora_B" SrcTerminal 1 Branch { DstComponent "CMP_B_inf" DstTerminal 2 } Branch { DstComponent "CMP_B_sup" DstTerminal 1 } }
+    Connection { Type Signal SrcComponent "CMP_A_sup" SrcTerminal 3 DstComponent "QA_sup" DstTerminal 3 }
+    Connection { Type Signal SrcComponent "CMP_A_inf" SrcTerminal 3 DstComponent "QA_inf" DstTerminal 3 }
+    Connection { Type Signal SrcComponent "CMP_B_inf" SrcTerminal 3 DstComponent "QB_inf" DstTerminal 3 }
+    Connection { Type Signal SrcComponent "CMP_B_sup" SrcTerminal 3 DstComponent "QB_sup" DstTerminal 3 }
+    Connection { Type Signal SrcComponent "Am_o" SrcTerminal 3 DstComponent "i_o_A" DstTerminal 1 }
+    Connection { Type Signal SrcComponent "Am_Lo" SrcTerminal 3 DstComponent "i_Lo_A" DstTerminal 1 }
+    Connection { Type Signal SrcComponent "Controle" SrcTerminal 3 DstComponent "v_ref_V" DstTerminal 1 }
+    Connection { Type Signal SrcComponent "Controle" SrcTerminal 9 DstComponent "v_c_livre_V" DstTerminal 1 }
+    Connection { Type Signal SrcComponent "Vm_AB" SrcTerminal 3 DstComponent "v_AB_V" DstTerminal 1 }
+    Connection { Type Signal SrcComponent "Am_QA" SrcTerminal 3 DstComponent "i_QA_A" DstTerminal 1 }
+    Connection { Type Signal SrcComponent "Vm_nl" SrcTerminal 3 DstComponent "v_nl_V" DstTerminal 1 }
+    Connection { Type Signal SrcComponent "Vm_bus" SrcTerminal 3 DstComponent "v_bus_V" DstTerminal 1 }
+    Connection { Type Signal SrcComponent "Controle" SrcTerminal 4 DstComponent "rede_on" DstTerminal 1 }
+    Connection { Type Signal SrcComponent "Controle" SrcTerminal 5 DstComponent "dref_cc" DstTerminal 1 }
+  }
+}
