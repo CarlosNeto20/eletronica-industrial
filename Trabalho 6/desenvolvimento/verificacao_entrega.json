@@ -426,11 +426,11 @@
   }
  ],
  "artigo": {
-  "paginas": 7,
+  "paginas": 8,
   "equacoes_editaveis": 7,
-  "figuras": 11,
-  "docx_sha256": "32438b4f814b3d4e4d30d3f439183fabc724762418c3c15b2d149dc0732eeca9",
-  "pdf_sha256": "ed74ff9d54db89b2dd917b06b04092d647ecff609c96d3a33f1f7fdea433f6a7",
+  "figuras": 15,
+  "docx_sha256": "f1b6788622b1e15240d25c5ced5ec8d49d8298e0de7016a33d610bfafc39307c",
+  "pdf_sha256": "50eb2658329c291f96790448fbdf14524947f6a838a8f4afbed14adbbd009f40",
   "numeros_conferidos": {
    "Ichg": "55,34",
    "C1 mF": "1,796",

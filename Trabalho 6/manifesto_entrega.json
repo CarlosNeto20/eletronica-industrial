@@ -28,8 +28,8 @@
   "sha256": "9b04914b90c98f4729679ce1dbb57939ba4a063f569d95d75ad67f200374d365"
  },
  "desenvolvimento/07-guia-plecs.md": {
-  "bytes": 30049,
-  "sha256": "b65f10d5120a2700c2fc1a1039da631899b83a902ddefb3c69a7bf435db5d6d2"
+  "bytes": 30143,
+  "sha256": "22f80f66aaeb41d70de064de298b2af9634c68f740a147b10845d7792712eab8"
  },
  "desenvolvimento/08-resultados.md": {
   "bytes": 25475,
@@ -121,7 +121,7 @@
  },
  "desenvolvimento/verificacao_entrega.json": {
   "bytes": 8770,
-  "sha256": "daf634a57d47eec899ae0184754d2076a14bcf379c519ea26c36781633c8eb4a"
+  "sha256": "3131743ebfd39d67e70482e3e2d7846f2165e31cc65f9e147a4f7bdc2abea75f"
  },
  "desenvolvimento/verificar_entrega.py": {
   "bytes": 8657,
@@ -1288,8 +1288,8 @@
   "sha256": "66e5b97a9da888ab6c8846a0f53dd02a6e8252af079072f421281a2fe8e9f126"
  },
  "artigo/fonte/conteudo.py": {
-  "bytes": 41651,
-  "sha256": "f25136d13c008ee1e4bd9e7b0abc3b870dd3fed9e9acca83c438d1e798330987"
+  "bytes": 42714,
+  "sha256": "eddf174d389bc900a97d878c4073232978900f80235daf41df22513a878183a6"
  },
  "artigo/fonte/exportar_pdf.ps1": {
   "bytes": 610,
@@ -1300,24 +1300,24 @@
   "sha256": "4c5245bdfedbcad3a26fbb373e77756a53d4504735e548c63bd20d347114b427"
  },
  "artigo/fonte/gerar_artigo.py": {
-  "bytes": 14901,
-  "sha256": "e1860b210b6ac62bccac0e12a48d73c371c3408e26f911419819f62f253961ae"
+  "bytes": 15899,
+  "sha256": "06f8f0c3a82a9501f53931915ed60b79fca2faffe3e4a4a2f0abee67c3f50ecd"
  },
  "artigo/fonte/gerar_figuras_artigo.py": {
   "bytes": 8013,
   "sha256": "ccf7f8bd1283c89d77000414a96b7bcd95374c972cacfbd451688f6d889f5170"
  },
  "artigo/qa/revisao_visual.md": {
-  "bytes": 5923,
-  "sha256": "b9f48e3e294ea11a69cd81ec698757e12ca33ff0890f15bddce61edf3bef0fe1"
+  "bytes": 6536,
+  "sha256": "a2a37518137d67607f22c40adad58b2be632c52486fbe041a6ff6811ee778967"
  },
  "artigo/Trabalho6_NoBreak_3kVA.docx": {
-  "bytes": 1127062,
-  "sha256": "32438b4f814b3d4e4d30d3f439183fabc724762418c3c15b2d149dc0732eeca9"
+  "bytes": 1335313,
+  "sha256": "f1b6788622b1e15240d25c5ced5ec8d49d8298e0de7016a33d610bfafc39307c"
  },
  "artigo/Trabalho6_NoBreak_3kVA.pdf": {
-  "bytes": 1070626,
-  "sha256": "ed74ff9d54db89b2dd917b06b04092d647ecff609c96d3a33f1f7fdea433f6a7"
+  "bytes": 1266793,
+  "sha256": "50eb2658329c291f96790448fbdf14524947f6a838a8f4afbed14adbbd009f40"
  },
  "LEIA-ME-ENTREGA.md": {
   "bytes": 6096,

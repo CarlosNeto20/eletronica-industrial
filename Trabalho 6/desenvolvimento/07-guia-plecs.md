@@ -89,7 +89,7 @@ As capturas abaixo são dos cinco modelos abertos no PLECS 5.0.3, depois da reor
 
 ![Modelo completo, faixa do CC-CC](../artigo/figuras/plecs_nobreak_bot.png)
 
-O que se vê nelas é o resultado do roteamento: fios ortogonais, medidores ao lado do elemento medido, barramento positivo numa linha no alto, negativo embaixo e os sinais verdes correndo por uma faixa própria até a coluna de terminais de saída, sem atravessar o circuito de potência. Elas não entram no corpo do artigo porque, reduzidas à largura de uma coluna do modelo IEEE, nenhum rótulo de componente seria legível; o artigo descreve o arranjo em texto e remete a estas capturas.
+O que se vê nelas é o resultado do roteamento: fios ortogonais, medidores ao lado do elemento medido, barramento positivo numa linha no alto, negativo embaixo e os sinais verdes correndo por uma faixa própria até a coluna de terminais de saída, sem atravessar o circuito de potência. Quatro delas entram no artigo como as Figuras 4 a 7, ocupando a largura das duas colunas, como o modelo IEEE faz com esquemas de circuito; a do retificador isolado ficou só aqui, para o artigo não passar de oito páginas, já que o mesmo estágio de entrada aparece na figura do modelo completo.
 
 ### Conferência das ligações
 

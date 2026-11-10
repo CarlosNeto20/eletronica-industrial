@@ -222,6 +222,7 @@ def secao_resultados():
     sub = lambda x: B.append(('sub', x))
     p = lambda x: B.append(('p', x))
     fig = lambda arq, leg: B.append(('fig', arq, leg))
+    figw = lambda arq, leg: B.append(('figw', arq, leg))
     tab = lambda leg, lin, larg: B.append(('tab', leg, lin, larg))
 
     h('VII. Resultados de Simulação')
@@ -240,8 +241,16 @@ def secao_resultados():
     p('Os blocos ficam em grade, por grupos funcionais e com o fluxo de potência da esquerda para a direita, e cada fio '
       'traz os seus pontos de passagem, de modo que todo segmento é horizontal ou vertical e nenhum passa sobre um bloco. '
       'Os sinais levados aos terminais de saída correm por uma faixa própria, entre o estágio de potência e o conversor '
-      'de baterias, para não atravessar o circuito. As capturas dos cinco esquemas, em tamanho legível, acompanham o '
-      'memorial do trabalho; aqui elas seriam reduzidas a ponto de não se ler nenhum rótulo.')
+      'de baterias, para não atravessar o circuito. As Figs. 4 a 7 mostram os esquemas como o PLECS os carrega. O modelo '
+      'do retificador isolado segue o mesmo arranjo do estágio de entrada da Fig. 6 e está no repositório do trabalho.')
+    figw(FIG / 'plecs_elevador.png', 'Modelo do conversor CC-CC de alto ganho: bateria, L_b, célula de três estados com o '
+                                     'autotransformador, D_{17} e D_{18}, secundário em ponte e C_7 empilhado sobre C_8.')
+    figw(FIG / 'plecs_inversor.png', 'Modelo do inversor em malha fechada com barramento ideal: ponte completa, filtro LC, '
+                                     'as três cargas comutáveis, o C-Script do compensador e o modulador unipolar.')
+    figw(FIG / 'plecs_nobreak_top.png', 'Modelo completo, faixa de potência: rede, SS2, T_1 e ponte à esquerda, barramento '
+                                        'C_4 no centro, inversor, filtro LC e as três cargas à direita.')
+    figw(FIG / 'plecs_nobreak_bot.png', 'Modelo completo, faixa inferior: conversor CC-CC da bateria ligado ao mesmo '
+                                        'barramento, com os amortecedores RC em S_1, S_2 e no secundário de T_{32}.')
 
     # ---------------- retificador ----------------
     if tem('ret_176_anexo', 'ret_176_planilha'):

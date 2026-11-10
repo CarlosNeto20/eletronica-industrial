@@ -28,6 +28,9 @@ NS = {'w': 'http://purl.oclc.org/ooxml/wordprocessingml/main',
       'a': 'http://purl.oclc.org/ooxml/drawingml/main',
       'pic': 'http://purl.oclc.org/ooxml/drawingml/picture'}
 LARGURA_PT = 234.0
+# largura util da pagina (A4 menos as margens do corpo), para as figuras que ocupam as duas
+# colunas, como o modelo IEEE faz com os esquemas de circuito
+LARGURA_TOTAL = 500.0
 
 
 def no(tag, attrs=None, text=None):
@@ -323,6 +326,29 @@ def tabela(linhas, larguras):
     return t
 
 
+def tem_sec(p):
+    pr = p.find('w:pPr', NS)
+    return pr is not None and pr.find('w:sectPr', NS) is not None
+
+
+def secao(p, num_colunas):
+    """Faz a secao terminar neste paragrafo, com o numero de colunas pedido.
+
+    E assim que o Word muda de uma para duas colunas no meio da pagina: o sectPr guardado
+    no pPr de um paragrafo descreve a secao que acaba nele. Uma figura larga fica, portanto,
+    entre um paragrafo que fecha a secao de duas colunas e a sua legenda, que fecha a secao
+    de uma coluna."""
+    sec = deepcopy(sec_corpo)
+    cols = sec.find('w:cols', NS)
+    cols.set('{' + NS['w'] + '}num', str(num_colunas))
+    sec.insert(0, no('w:type', {'w:val': 'continuous'}))
+    pr = p.find('w:pPr', NS)
+    if pr is None:
+        pr = E.Element('{' + NS['w'] + '}pPr')
+        p.insert(0, pr)
+    pr.append(sec)
+
+
 nfig = neq = ntab = 0
 ROMANOS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X']
 for bloco in C.blocos():
@@ -340,6 +366,14 @@ for bloco in C.blocos():
         nfig += 1
         body.append(figura(bloco[1], nfig))
         body.append(para(f'Fig. {nfig}. ' + bloco[2], 'figurecaption', first=0, after=6))
+    elif tipo == 'figw':
+        nfig += 1
+        if len(body) and E.QName(body[-1]).localname == 'p' and not tem_sec(body[-1]):
+            secao(body[-1], 2)
+        body.append(figura(bloco[1], nfig, largura=LARGURA_TOTAL))
+        legenda = para(f'Fig. {nfig}. ' + bloco[2], 'figurecaption', first=0, after=6)
+        secao(legenda, 1)
+        body.append(legenda)
     elif tipo == 'tab':
         ntab += 1
         body.append(para(f'TABELA {ROMANOS[ntab - 1]}', 'tablehead', align='center', keep=True, first=0, after=0))

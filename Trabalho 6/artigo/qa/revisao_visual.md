@@ -43,7 +43,11 @@ Todos os itens abaixo foram vistos nas imagens das páginas e corrigidos antes d
 
 ## Capturas dos esquemas do PLECS
 
-As seis capturas de tela dos modelos, entregues em `resultados PLECS/circuitos-foto/`, foram recortadas e convertidas para fundo branco em `artigo/figuras/plecs_*.png`. Elas chegaram a ser montadas no corpo do artigo como duas figuras do modelo completo e a página foi conferida: a imagem de 2206 px de largura reduzida a uma coluna de 8,8 cm deixa os rótulos dos componentes ilegíveis. Foram retiradas do artigo, que passou a descrever o arranjo em texto, e ficaram em tamanho cheio em `desenvolvimento/07-guia-plecs.md`, que não tem limite de largura. O artigo voltou a ter 11 figuras e 7 páginas.
+As seis capturas de tela dos modelos, entregues em `resultados PLECS/circuitos-foto/`, foram recortadas e convertidas para fundo branco em `artigo/figuras/plecs_*.png`.
+
+Na primeira tentativa elas entraram como figuras de uma coluna e ficaram ilegíveis, porque uma imagem de 2206 px reduzida a 8,8 cm não deixa ler nenhum rótulo. A correção não era tirá-las do artigo, e sim usar o recurso que o próprio modelo IEEE prevê para esquemas: figura que ocupa as duas colunas. O gerador ganhou o tipo de bloco `figw`, que fecha a seção de duas colunas no parágrafo anterior, põe a figura com 500 pt de largura e volta a duas colunas na legenda, pela quebra de seção contínua do Word. As Figs. 4 a 7 são assim e foram conferidas nas imagens das páginas 4 e 5: ocupam a largura útil inteira, a estrutura do circuito se lê e as legendas ficam logo abaixo.
+
+Entraram quatro dos cinco modelos. O do retificador isolado ficou de fora para manter o artigo dentro do limite de oito páginas, já que o mesmo estágio de entrada aparece na figura do modelo completo; ele continua em tamanho cheio em `desenvolvimento/07-guia-plecs.md`, junto das outras cinco capturas. O artigo ficou com 15 figuras e 8 páginas.
 
 ## Referências
 
