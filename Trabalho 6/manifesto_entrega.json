@@ -36,8 +36,8 @@
   "sha256": "869c12d94a11861dcb3f0e5e599e562705f02186a621ce749d18410bd7694877"
  },
  "desenvolvimento/09-componentes-e-melhorias.md": {
-  "bytes": 10528,
-  "sha256": "d485cf0bbcd3abca21aa6364dd63ce3f1f9b12136e504a95587b127bb8b963d9"
+  "bytes": 10893,
+  "sha256": "3ec34924a0e611b0c9f97897fe5cbbe5d80453844a8fd6ab27f636ca8849ef83"
  },
  "desenvolvimento/blocos_biblioteca.json": {
   "bytes": 41898,
@@ -1260,8 +1260,8 @@
   "sha256": "ccf7f8bd1283c89d77000414a96b7bcd95374c972cacfbd451688f6d889f5170"
  },
  "artigo/qa/revisao_visual.md": {
-  "bytes": 5132,
-  "sha256": "5912e625f3b0d07958aa703467b8e6e3abbb9f5e076c0de8170038a7ab397892"
+  "bytes": 5282,
+  "sha256": "2287143b8ecbb68acc14315c2a39deff95017c5221773a837947e1e0fa507804"
  },
  "artigo/Trabalho6_NoBreak_3kVA.docx": {
   "bytes": 1126781,
@@ -1272,8 +1272,8 @@
   "sha256": "c76e8972beb925601738c2c431a90440344ccd04fb6f24a667c6a8e465c68e4e"
  },
  "LEIA-ME-ENTREGA.md": {
-  "bytes": 5849,
-  "sha256": "373e140830e7557b063c110a3e44785e79c66a46a3e0df0851f2f7a5eedc8740"
+  "bytes": 6096,
+  "sha256": "30537230c45039490fd427bab10264a143eb16035683934abc1b615e915f0f8c"
  },
  "README.txt": {
   "bytes": 9486,

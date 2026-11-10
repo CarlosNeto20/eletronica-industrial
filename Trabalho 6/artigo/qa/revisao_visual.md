@@ -41,9 +41,9 @@ Todos os itens abaixo foram vistos nas imagens das páginas e corrigidos antes d
 - Autores e matrículas presentes; nenhum texto remanescente do modelo IEEE.
 - Páginas em A4 com 595,3 x 841,9 pt, dentro da faixa de 6 a 8 páginas.
 
-## Pendência
+## Referências
 
-As duas referências de livro citadas nos slides da disciplina não entraram, porque os títulos não foram informados e não seriam inventados. A lista atual tem onze entradas, todas de fontes efetivamente consultadas, no mesmo estilo IEEE. A mesma pendência está registrada em `desenvolvimento/09-componentes-e-melhorias.md`, junto da dúvida sobre qual obra de Rashid a planilha usa na dedução de L_o.
+A lista tem onze entradas, todas de fontes efetivamente consultadas e no mesmo estilo IEEE. As duas referências de livro citadas nos slides da disciplina não entraram, por decisão de entrega: os títulos não foram informados e não seriam inventados. Acrescentá-las depois é acrescentar duas linhas à lista `REFERENCIAS` de `artigo/fonte/conteudo.py` e regerar o `.docx` e o `.pdf`, sem mexer em mais nada. A dúvida sobre qual obra de Rashid a planilha usa na dedução de L_o continua registrada em `desenvolvimento/09-componentes-e-melhorias.md`.
 
 ## Como refazer as imagens
 

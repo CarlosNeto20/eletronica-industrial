@@ -50,7 +50,7 @@ Modelos sem perdas de comutação e sem tempo morto, indutores lineares, transfo
 
 ## Pendências
 
-- Os títulos dos dois livros citados nos slides da disciplina, para entrarem nas referências do artigo. Eles não foram inventados.
+- Os dois livros citados nos slides da disciplina ficaram fora das referências, por decisão de entrega. Os títulos não foram informados e não seriam inventados; as onze referências do artigo são todas de fontes efetivamente consultadas. Se os títulos vierem depois, basta acrescentá-los à lista `REFERENCIAS` em `artigo/fonte/conteudo.py` e regerar o `.docx` e o `.pdf`.
 - Qual obra de Rashid a planilha usa na dedução de L_o.
 - O código do fabricante do MOSFET de 200 V do CC-CC, depois da correção da tensão de bloqueio descrita em [08](desenvolvimento/08-resultados.md).
 

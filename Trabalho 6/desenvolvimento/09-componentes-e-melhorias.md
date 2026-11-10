@@ -59,6 +59,8 @@ As referências usadas no artigo foram conferidas quanto à existência, aos aut
 - M. F. Apolinário, Nobreak dupla conversão monofásico isolado em alta frequência com tensão de entrada bivolt e potência de 1 kVA, baseado no conceito de circuito multi-portas, dissertação de mestrado, UFC, 2017 (repositório da UFC e resumo).
 - Plexim, documentação do PLECS 5.0 instalada com o programa (consultada para sintaxe de blocos, ModelVars e interface RPC).
 
-Pendências para o usuário: informar os dois livros citados nos slides da disciplina, para que sejam incluídos no artigo, e confirmar qual obra de Rashid a planilha usa na dedução de Lo.
+Os dois livros citados nos slides da disciplina não entraram nas referências do artigo. Os títulos não foram informados, não seriam inventados e a entrega foi fechada assim, por decisão. Acrescentá-los depois é acrescentar duas linhas à lista `REFERENCIAS` de `artigo/fonte/conteudo.py` e regerar o artigo.
+
+Pendências para o usuário: confirmar qual obra de Rashid a planilha usa na dedução de Lo e escolher o código do fabricante do MOSFET de 200 V do CC-CC, depois da correção da tensão de bloqueio descrita em [08](08-resultados.md).
 
 Próximo arquivo: volta ao [índice](00-indice-do-projeto.md).
