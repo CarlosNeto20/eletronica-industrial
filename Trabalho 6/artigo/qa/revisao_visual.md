@@ -41,6 +41,10 @@ Todos os itens abaixo foram vistos nas imagens das páginas e corrigidos antes d
 - Autores e matrículas presentes; nenhum texto remanescente do modelo IEEE.
 - Páginas em A4 com 595,3 x 841,9 pt, dentro da faixa de 6 a 8 páginas.
 
+## Capturas dos esquemas do PLECS
+
+As seis capturas de tela dos modelos, entregues em `resultados PLECS/circuitos-foto/`, foram recortadas e convertidas para fundo branco em `artigo/figuras/plecs_*.png`. Elas chegaram a ser montadas no corpo do artigo como duas figuras do modelo completo e a página foi conferida: a imagem de 2206 px de largura reduzida a uma coluna de 8,8 cm deixa os rótulos dos componentes ilegíveis. Foram retiradas do artigo, que passou a descrever o arranjo em texto, e ficaram em tamanho cheio em `desenvolvimento/07-guia-plecs.md`, que não tem limite de largura. O artigo voltou a ter 11 figuras e 7 páginas.
+
 ## Referências
 
 A lista tem onze entradas, todas de fontes efetivamente consultadas e no mesmo estilo IEEE. As duas referências de livro citadas nos slides da disciplina não entraram, por decisão de entrega: os títulos não foram informados e não seriam inventados. Acrescentá-las depois é acrescentar duas linhas à lista `REFERENCIAS` de `artigo/fonte/conteudo.py` e regerar o `.docx` e o `.pdf`, sem mexer em mais nada. A dúvida sobre qual obra de Rashid a planilha usa na dedução de L_o continua registrada em `desenvolvimento/09-componentes-e-melhorias.md`.

@@ -237,6 +237,11 @@ def secao_resultados():
       f"ensaio grava o CSV, o retorno nativo e um registro com o resumo criptográfico do modelo, as opções do solver, a "
       f"duração e o número de amostras, de modo que todo valor desta seção pode ser refeito. Foram analisados {n_ok} ensaios "
       'além das curvas de regulação. As janelas de regime têm número inteiro de ciclos de 60 Hz e as integrais são trapezoidais.')
+    p('Os blocos ficam em grade, por grupos funcionais e com o fluxo de potência da esquerda para a direita, e cada fio '
+      'traz os seus pontos de passagem, de modo que todo segmento é horizontal ou vertical e nenhum passa sobre um bloco. '
+      'Os sinais levados aos terminais de saída correm por uma faixa própria, entre o estágio de potência e o conversor '
+      'de baterias, para não atravessar o circuito. As capturas dos cinco esquemas, em tamanho legível, acompanham o '
+      'memorial do trabalho; aqui elas seriam reduzidas a ponto de não se ler nenhum rótulo.')
 
     # ---------------- retificador ----------------
     if tem('ret_176_anexo', 'ret_176_planilha'):

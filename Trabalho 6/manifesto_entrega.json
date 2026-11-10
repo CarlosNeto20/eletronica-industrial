@@ -28,8 +28,8 @@
   "sha256": "9b04914b90c98f4729679ce1dbb57939ba4a063f569d95d75ad67f200374d365"
  },
  "desenvolvimento/07-guia-plecs.md": {
-  "bytes": 28235,
-  "sha256": "f03aa4b66b839a84962813ad06c2e0339d49937f5a70ee65fa187ce1ef958418"
+  "bytes": 30049,
+  "sha256": "b65f10d5120a2700c2fc1a1039da631899b83a902ddefb3c69a7bf435db5d6d2"
  },
  "desenvolvimento/08-resultados.md": {
   "bytes": 25475,
@@ -121,11 +121,11 @@
  },
  "desenvolvimento/verificacao_entrega.json": {
   "bytes": 8770,
-  "sha256": "af51106782c22f9d4ebdc8a4e97ff6981b4771470e83e53f9539131f89eba577"
+  "sha256": "daf634a57d47eec899ae0184754d2076a14bcf379c519ea26c36781633c8eb4a"
  },
  "desenvolvimento/verificar_entrega.py": {
-  "bytes": 8486,
-  "sha256": "b4f0c5c24e9f0e2087cf9aef36ff80a1d7988f4484c1505d4b9bb71a38ce5b0e"
+  "bytes": 8657,
+  "sha256": "bb2b8bc7e3d3f5026903dc299216ab90d9a9233dc24db508cdba08578ef42598"
  },
  "simulação PLECS/arquivo_exemplo.plecs": {
   "bytes": 2603,
@@ -186,6 +186,30 @@
  "resultados PLECS/analisar_resultados.py": {
   "bytes": 29292,
   "sha256": "0deffa00cde676c1b9306d2b0d2de2457232400f9572bb2f1d2d835b58da67e7"
+ },
+ "resultados PLECS/circuitos-foto/elevador bateria.png": {
+  "bytes": 73988,
+  "sha256": "469228fc175a14e758393b57e108645ecfdd53bab8980e10f1232bd20363c9a5"
+ },
+ "resultados PLECS/circuitos-foto/elevador sem amortecedor.png": {
+  "bytes": 81649,
+  "sha256": "4e80524aa2b8e614bb17033771ade00b7ba782d9b44f3233d10445edc21ffca3"
+ },
+ "resultados PLECS/circuitos-foto/inversor malha fechada.png": {
+  "bytes": 89095,
+  "sha256": "51c0530daa944c34eb8ff6a3f71a1fdb38eb22b524520d4035b31645fd81a984"
+ },
+ "resultados PLECS/circuitos-foto/no break completo bot.png": {
+  "bytes": 64890,
+  "sha256": "764ed72b2d4c9d47dad78a11b7ee1a6d21c3eef0e908294a5c775eb669ec8f17"
+ },
+ "resultados PLECS/circuitos-foto/no break completo top.png": {
+  "bytes": 77168,
+  "sha256": "edd56a238ac4f57b1bd2b8a08f7c0cae006315bf70efe3064a95ac1d9b6222b1"
+ },
+ "resultados PLECS/circuitos-foto/retificador barramento.png": {
+  "bytes": 56999,
+  "sha256": "03bbeb97a98d6574701cf7ed2ea7ee63a978f4fde3743bce429414bdf23109fb"
  },
  "resultados PLECS/conv_176_nl.csv": {
   "bytes": 5465850,
@@ -1207,6 +1231,30 @@
   "bytes": 282508,
   "sha256": "2154496d729da0706790b79511bda52e4168ddcbf949e4ff6131009683eb00be"
  },
+ "artigo/figuras/plecs_elevador.png": {
+  "bytes": 54568,
+  "sha256": "3a22b58321a34f8b741ba98b73ebffbee18f4fbd1f0ffcac6093ef0fb39cd6a3"
+ },
+ "artigo/figuras/plecs_elevador_sem_amort.png": {
+  "bytes": 60173,
+  "sha256": "176104e70eff7906dcce2845085488b7304099c6630f61a4e97d32228a9b53a4"
+ },
+ "artigo/figuras/plecs_inversor.png": {
+  "bytes": 62934,
+  "sha256": "9b15cd4e9685764fdc58c07c08dabfc4f79b431cb130be46e81ba4d9a10e9956"
+ },
+ "artigo/figuras/plecs_nobreak_bot.png": {
+  "bytes": 47072,
+  "sha256": "70383deee6dba12b7a744d47ac1705ef9212c3f92edfe2d4bc6437ae1fb94264"
+ },
+ "artigo/figuras/plecs_nobreak_top.png": {
+  "bytes": 57391,
+  "sha256": "fdaec189faf037f2ade3671259cc3cf4302e7f42124568a12fd58aab1f437bcf"
+ },
+ "artigo/figuras/plecs_retificador.png": {
+  "bytes": 42983,
+  "sha256": "5e73842807182a8b6ac3acd70b89b6260a57d9b12bc1942d8554979fa6c17036"
+ },
  "artigo/figuras/regulacao.pdf": {
   "bytes": 17920,
   "sha256": "e98534fe97936e4b362378ee19a65a80ddc4d4a0dea03aaaa6b1b5537b88ecb0"
@@ -1240,8 +1288,8 @@
   "sha256": "66e5b97a9da888ab6c8846a0f53dd02a6e8252af079072f421281a2fe8e9f126"
  },
  "artigo/fonte/conteudo.py": {
-  "bytes": 41054,
-  "sha256": "9a51d8a1538cee216007560187d1fb2c8f98b50ffc46b558d0538502939d6f98"
+  "bytes": 41651,
+  "sha256": "f25136d13c008ee1e4bd9e7b0abc3b870dd3fed9e9acca83c438d1e798330987"
  },
  "artigo/fonte/exportar_pdf.ps1": {
   "bytes": 610,
@@ -1260,16 +1308,16 @@
   "sha256": "ccf7f8bd1283c89d77000414a96b7bcd95374c972cacfbd451688f6d889f5170"
  },
  "artigo/qa/revisao_visual.md": {
-  "bytes": 5282,
-  "sha256": "2287143b8ecbb68acc14315c2a39deff95017c5221773a837947e1e0fa507804"
+  "bytes": 5923,
+  "sha256": "b9f48e3e294ea11a69cd81ec698757e12ca33ff0890f15bddce61edf3bef0fe1"
  },
  "artigo/Trabalho6_NoBreak_3kVA.docx": {
-  "bytes": 1126781,
-  "sha256": "c9e37ca6c5ebba3893fbc234a960fac325f10ae73ca6e98f08b3a22ba1b63981"
+  "bytes": 1127062,
+  "sha256": "32438b4f814b3d4e4d30d3f439183fabc724762418c3c15b2d149dc0732eeca9"
  },
  "artigo/Trabalho6_NoBreak_3kVA.pdf": {
-  "bytes": 1069703,
-  "sha256": "c76e8972beb925601738c2c431a90440344ccd04fb6f24a667c6a8e465c68e4e"
+  "bytes": 1070626,
+  "sha256": "ed74ff9d54db89b2dd917b06b04092d647ecff609c96d3a33f1f7fdea433f6a7"
  },
  "LEIA-ME-ENTREGA.md": {
   "bytes": 6096,

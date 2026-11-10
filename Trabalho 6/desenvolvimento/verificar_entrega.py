@@ -115,7 +115,10 @@ if checa(docx.exists() and pdf.exists(), 'artigo .docx/.pdf ausente'):
                 esperados[f'RV {V}'] = fm(ent['RV_pct'], 2)
         figs_res = set(M.get('_figuras', []))
         usadas = {Path(b[1]).stem for b in C.blocos() if b[0] == 'fig'}
-        for fnome in usadas - {'arquitetura', 'circuito_cc', 'bode_laco', 'bode_planta', 'bode_compensador'}:
+        # figuras autorais e capturas de tela dos esquemas nao vem de CSV
+        proprias = {'arquitetura', 'circuito_cc', 'bode_laco', 'bode_planta', 'bode_compensador'}
+        proprias |= {n for n in usadas if n.startswith('plecs_')}
+        for fnome in usadas - proprias:
             checa(fnome in figs_res, f'figura {fnome} sem origem registrada em metricas.json')
     for k, v in esperados.items():
         checa(v in txt, f'numero {k} = {v} ausente do texto do artigo')

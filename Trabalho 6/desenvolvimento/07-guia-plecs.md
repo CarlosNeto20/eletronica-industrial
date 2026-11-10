@@ -66,6 +66,31 @@ Com essa geometria, `gerar_modelos.py` posiciona os blocos em grade de 10, por g
 
 Os `Points` são calculados por `simulação PLECS/roteador.py`. Cada terminal ganha um trecho inicial no sentido em que aponta, com comprimento tal que o fim do trecho caia na grade de roteamento; o miolo do caminho é procurado por A\* com custo 1 por passo, 4 por mudança de direção e 8 por andar junto de um fio de outra rede, tendo as caixas dos blocos como obstáculos. Num nó com mais de dois terminais os terminais entram um a um, partindo de todos os pontos já ligados ao nó com custo zero, o que produz uma árvore com tronco comum em vez de uma estrela; os caminhos são depois fundidos por prefixo comum e viram a árvore `Connection`/`Branch` do arquivo. Nenhum bloco Goto, From ou novo foi acrescentado, porque isso mudaria a lista de componentes.
 
+### Os esquemas como o PLECS os desenha
+
+As capturas abaixo são dos cinco modelos abertos no PLECS 5.0.3, depois da reorganização. Os arquivos originais estão em `resultados PLECS/circuitos-foto/` e as versões recortadas, usadas no artigo, em `artigo/figuras/plecs_*.png`.
+
+| Modelo | Captura |
+|---|---|
+| `retificador_barramento` | [plecs_retificador.png](../artigo/figuras/plecs_retificador.png) |
+| `elevador_bateria` | [plecs_elevador.png](../artigo/figuras/plecs_elevador.png) |
+| `elevador_sem_amortecedor` | [plecs_elevador_sem_amort.png](../artigo/figuras/plecs_elevador_sem_amort.png) |
+| `inversor_malha_fechada` | [plecs_inversor.png](../artigo/figuras/plecs_inversor.png) |
+| `nobreak_completo`, faixa de potência | [plecs_nobreak_top.png](../artigo/figuras/plecs_nobreak_top.png) |
+| `nobreak_completo`, faixa do CC-CC | [plecs_nobreak_bot.png](../artigo/figuras/plecs_nobreak_bot.png) |
+
+![Retificador e barramento no PLECS](../artigo/figuras/plecs_retificador.png)
+
+![Elevador de bateria no PLECS](../artigo/figuras/plecs_elevador.png)
+
+![Inversor em malha fechada no PLECS](../artigo/figuras/plecs_inversor.png)
+
+![Modelo completo, faixa de potência](../artigo/figuras/plecs_nobreak_top.png)
+
+![Modelo completo, faixa do CC-CC](../artigo/figuras/plecs_nobreak_bot.png)
+
+O que se vê nelas é o resultado do roteamento: fios ortogonais, medidores ao lado do elemento medido, barramento positivo numa linha no alto, negativo embaixo e os sinais verdes correndo por uma faixa própria até a coluna de terminais de saída, sem atravessar o circuito de potência. Elas não entram no corpo do artigo porque, reduzidas à largura de uma coluna do modelo IEEE, nenhum rótulo de componente seria legível; o artigo descreve o arranjo em texto e remete a estas capturas.
+
 ### Conferência das ligações
 
 Os cinco arquivos anteriores à reorganização estão em `simulação PLECS/layout_anterior/`, fora do manifesto, só como referência. `simulação PLECS/conferir_conexoes.py` compara cada modelo novo com o antigo e falha se houver qualquer diferença em:
