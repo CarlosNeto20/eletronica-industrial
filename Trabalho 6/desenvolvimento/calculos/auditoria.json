@@ -460,6 +460,16 @@
   "justificativa": "Confere."
  },
  {
+  "local": "p.16, sec. 5",
+  "item": "Tensao de bloqueio de S1 e S2",
+  "unidade": "V",
+  "impresso": 70,
+  "recalculado": 140.0,
+  "desvio_pct": 100.0,
+  "decisao": "Corrigido",
+  "justificativa": "Os 70 V sao a tensao sobre cada enrolamento do primario, nao a das chaves. Na etapa em que so uma chave conduz, o dreno da chave aberta e grampeado em VC8 pelo seu proprio diodo, logo ela bloqueia VC8 = 140 V. O PLECS mede 142 V de pico sobre S1 no ensaio elev_42."
+ },
+ {
   "local": "p.17",
   "item": "a = VSec/VNp",
   "unidade": "",

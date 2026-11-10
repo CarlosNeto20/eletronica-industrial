@@ -168,8 +168,9 @@ def painel_nobreak(casos, nome, t0=0.05, t1=0.2, tfalta=0.1):
     ax[-1].set_xlabel('Tempo (ms)')
     if len(casos) > 1:
         ax[0].legend(loc='upper right', ncol=len(casos), frameon=False, fontsize=7)
+    # as letras vao como titulo a esquerda, fora do eixo, para nao cair sobre o rotulo do eixo y
     for a, letra in zip(ax[::2], 'abc'):
-        a.text(-0.2, 1.02, f'({letra})', transform=a.transAxes, fontsize=8.5, va='bottom')
+        a.set_title(f'({letra})', loc='left', fontsize=8.5, pad=2)
     return salvar(fig, nome)
 
 
@@ -450,7 +451,9 @@ def main():
             ax.plot(xs, ys, marker=mk[V], ms=3.5, lw=1, color=COR[j], label=rot[V])
         ax.set_xlabel('Potência de saída nominal (W)')
         ax.set_ylabel('$V_o$ eficaz (V)')
-        ax.legend(frameon=False, fontsize=7, loc='best')
+        # legenda numa linha acima do eixo, porque as quatro curvas ocupam toda a area util
+        ax.legend(frameon=False, fontsize=7, ncol=4, loc='lower center', bbox_to_anchor=(0.5, 1.0),
+                  columnspacing=1.2, handlelength=1.6)
         virgula(ax.yaxis)
         figs.append(salvar(fig, 'regulacao'))
     if tem('ret_176_planilha', 'ret_176_anexo'):
@@ -479,6 +482,9 @@ def main():
         ax[0].set_ylabel('Gate S1')
         ax[1].plot(tt, d['i_bat_A'][m], color=COR[1], lw=.8, label='$L_b$')
         ax[1].plot(tt, d['i_S1_A'][m], color=COR[2], lw=.8, label='$S_1$')
+        # folga no topo para que a legenda nao caia sobre a corrente de Lb
+        alto = max(float(np.max(d['i_bat_A'][m])), float(np.max(d['i_S1_A'][m])))
+        ax[1].set_ylim(top=alto * 1.45)
         ax[1].legend(frameon=False, fontsize=7, ncol=2, loc='upper right')
         ax[1].set_ylabel('Corrente (A)')
         ax[2].plot(tt, d['v_S1_V'][m], color=COR[3], lw=.8)

@@ -1,0 +1,452 @@
+{
+ "ensaios_executados": 70,
+ "ensaios_pendentes": [
+  "diag_cc_sem_20ms"
+ ],
+ "ensaios": [
+  {
+   "ensaio": "diag_cc_sem_5ms",
+   "modelo": "elevador_sem_amortecedor",
+   "amostras": 501,
+   "ok": true
+  },
+  {
+   "ensaio": "diag_cc_sem_partida_5ms",
+   "modelo": "elevador_sem_amortecedor",
+   "amostras": 501,
+   "ok": true
+  },
+  {
+   "ensaio": "diag_cc_amort_20ms",
+   "modelo": "elevador_bateria",
+   "amostras": 2001,
+   "ok": true
+  },
+  {
+   "ensaio": "diag_cc_amort_partida_5ms",
+   "modelo": "elevador_bateria",
+   "amostras": 501,
+   "ok": true
+  },
+  {
+   "ensaio": "ret_176_planilha",
+   "modelo": "retificador_barramento",
+   "amostras": 19001,
+   "ok": true
+  },
+  {
+   "ensaio": "ret_176_anexo",
+   "modelo": "retificador_barramento",
+   "amostras": 19001,
+   "ok": true
+  },
+  {
+   "ensaio": "ret_264_anexo",
+   "modelo": "retificador_barramento",
+   "amostras": 19001,
+   "ok": true
+  },
+  {
+   "ensaio": "elev_42",
+   "modelo": "elevador_bateria",
+   "amostras": 17801,
+   "ok": true
+  },
+  {
+   "ensaio": "elev_56",
+   "modelo": "elevador_bateria",
+   "amostras": 17801,
+   "ok": true
+  },
+  {
+   "ensaio": "inv_373_res",
+   "modelo": "inversor_malha_fechada",
+   "amostras": 17801,
+   "ok": true
+  },
+  {
+   "ensaio": "inv_2116_res",
+   "modelo": "inversor_malha_fechada",
+   "amostras": 17801,
+   "ok": true
+  },
+  {
+   "ensaio": "inv_373_vazio",
+   "modelo": "inversor_malha_fechada",
+   "amostras": 17801,
+   "ok": true
+  },
+  {
+   "ensaio": "inv_2116_vazio",
+   "modelo": "inversor_malha_fechada",
+   "amostras": 17801,
+   "ok": true
+  },
+  {
+   "ensaio": "inv_2116_nl",
+   "modelo": "inversor_malha_fechada",
+   "amostras": 17801,
+   "ok": true
+  },
+  {
+   "ensaio": "inv_degrau_2116",
+   "modelo": "inversor_malha_fechada",
+   "amostras": 15002,
+   "ok": true
+  },
+  {
+   "ensaio": "nb_176_nl",
+   "modelo": "nobreak_completo",
+   "amostras": 22551,
+   "ok": true
+  },
+  {
+   "ensaio": "nb_264_lin",
+   "modelo": "nobreak_completo",
+   "amostras": 22551,
+   "ok": true
+  },
+  {
+   "ensaio": "nb_264_nl",
+   "modelo": "nobreak_completo",
+   "amostras": 22551,
+   "ok": true
+  },
+  {
+   "ensaio": "nb_220_lin",
+   "modelo": "nobreak_completo",
+   "amostras": 22551,
+   "ok": true
+  },
+  {
+   "ensaio": "nb_220_nl",
+   "modelo": "nobreak_completo",
+   "amostras": 22551,
+   "ok": true
+  },
+  {
+   "ensaio": "nb_176_lin",
+   "modelo": "nobreak_completo",
+   "amostras": 22551,
+   "ok": true
+  },
+  {
+   "ensaio": "nb_220_rl3k",
+   "modelo": "nobreak_completo",
+   "amostras": 22551,
+   "ok": true
+  },
+  {
+   "ensaio": "nb_176_nl_anexo",
+   "modelo": "nobreak_completo",
+   "amostras": 22551,
+   "ok": true
+  },
+  {
+   "ensaio": "nb_176_nl_pico",
+   "modelo": "nobreak_completo",
+   "amostras": 18902,
+   "ok": true
+  },
+  {
+   "ensaio": "nb_220_retorno",
+   "modelo": "nobreak_completo",
+   "amostras": 25451,
+   "ok": true
+  },
+  {
+   "ensaio": "conv_176_nl",
+   "modelo": "nobreak_completo",
+   "amostras": 22551,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_176_0000",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_176_0210",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_176_0420",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_176_0630",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_176_0840",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_176_1050",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_176_1260",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_176_1470",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_176_1680",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_176_1890",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_176_2100",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_220_0000",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_220_0210",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_220_0420",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_220_0630",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_220_0840",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_220_1050",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_220_1260",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_220_1470",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_220_1680",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_220_1890",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_220_2100",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_264_0000",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_264_0210",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_264_0420",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_264_0630",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_264_0840",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_264_1050",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_264_1260",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_264_1470",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_264_1680",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_264_1890",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_264_2100",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_bat_0000",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_bat_0210",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_bat_0420",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_bat_0630",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_bat_0840",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_bat_1050",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_bat_1260",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_bat_1470",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_bat_1680",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_bat_1890",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  },
+  {
+   "ensaio": "reg_bat_2100",
+   "modelo": "nobreak_completo",
+   "amostras": 2501,
+   "ok": true
+  }
+ ],
+ "artigo": {
+  "paginas": 7,
+  "equacoes_editaveis": 7,
+  "figuras": 11,
+  "docx_sha256": "c9e37ca6c5ebba3893fbc234a960fac325f10ae73ca6e98f08b3a22ba1b63981",
+  "pdf_sha256": "c76e8972beb925601738c2c431a90440344ccd04fb6f24a667c6a8e465c68e4e",
+  "numeros_conferidos": {
+   "Ichg": "55,34",
+   "C1 mF": "1,796",
+   "Lo": "365,6",
+   "dILo": "6,27",
+   "MF": "60,5",
+   "Av": "26,22",
+   "VC8": "140",
+   "f0": "1075",
+   "RV 176": "−0,04",
+   "RV 220": "−0,03",
+   "RV 264": "−0,02",
+   "RV bat": "0,08"
+  }
+ },
+ "falhas": [],
+ "avisos": [],
+ "nota": "Conferencia automatica de rastreabilidade e integridade; a revisao visual fica em artigo/qa/revisao_visual.md. Nao certifica hardware."
+}

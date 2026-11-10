@@ -1,6 +1,6 @@
 # 02. Auditoria do documento do professor
 
-Antes de reproduzir qualquer número, toda a planilha foi reconstruída em `calculos.py`. Cada valor impresso foi comparado com o recalculado, e a decisão tomada para cada um está em `calculos/auditoria.csv` (49 itens, com local, valor impresso, valor recalculado, desvio, decisão e justificativa). Este arquivo resume a tabela e discute os pontos que exigiam verificação. A regra geral foi manter os valores centrais do professor e revisar só o que é inconsistente, sempre dizendo por quê.
+Antes de reproduzir qualquer número, toda a planilha foi reconstruída em `calculos.py`. Cada valor impresso foi comparado com o recalculado, e a decisão tomada para cada um está em `calculos/auditoria.csv` (50 itens, com local, valor impresso, valor recalculado, desvio, decisão e justificativa). Este arquivo resume a tabela e discute os pontos que exigiam verificação. A regra geral foi manter os valores centrais do professor e revisar só o que é inconsistente, sempre dizendo por quê.
 
 ## 1. Resultado global
 

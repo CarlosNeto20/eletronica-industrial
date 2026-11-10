@@ -1,0 +1,102 @@
+{
+ "ensaio": "reg_264_1050",
+ "descricao": "Regulacao: rede 264 V, carga resistiva nominal de 1050 W",
+ "grupo": "regulacao",
+ "modelo": "nobreak_completo",
+ "sha256_modelo": "3bacaebd645529b57244c6e942b2677908c3174dd282875859b0618549fdb4ae",
+ "inicio": "2026-11-09T23:12:54-03:00",
+ "PLECS": "PLECS Standalone 5.0 (64 bit), formato 5.0; 5.0.6 segundo o registro do Trabalho 4",
+ "opcoes": {
+  "ModelVars": {
+   "Vrms": 264.0,
+   "phi_rede": 0,
+   "carga": 1,
+   "Rres": 12.595238,
+   "tcarga": 0,
+   "tfalta": 100,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 371.7524,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 247.8349,
+   "VC7_0": 123.9175,
+   "Tstop": 0.2
+  },
+  "SolverOpts": {
+   "TimeSpan": 0.2,
+   "Solver": "radau",
+   "MaxStep": 5e-06,
+   "RelTol": 1e-06,
+   "AbsTol": 1e-08,
+   "OutputTimesOption": "specified",
+   "Timeout": 1200.0,
+   "OutputTimes_n": 2501
+  }
+ },
+ "assinatura_opcoes": "006452b1381c394d00e399644ed4140156baedeef5c69465587af036953231b3",
+ "grade_saida": [
+  [
+   0.1,
+   0.2,
+   4e-05
+  ]
+ ],
+ "janelas": {
+  "regime": [
+   0.1,
+   0.2
+  ]
+ },
+ "status": "executado",
+ "duracao_real_s": 25.693,
+ "lote_paralelo": [
+  "reg_264_0000",
+  "reg_264_0210",
+  "reg_264_0420",
+  "reg_264_0630",
+  "reg_264_0840",
+  "reg_264_1050",
+  "reg_264_1260",
+  "reg_264_1470",
+  "reg_264_1680",
+  "reg_264_1890",
+  "reg_264_2100"
+ ],
+ "amostras": 2501,
+ "colunas": [
+  "tempo_s",
+  "v_rede_V",
+  "i_rede_A",
+  "i_D1_A",
+  "i_ponte_A",
+  "i_C4_A",
+  "v_bus_V",
+  "i_bat_A",
+  "v_C8_V",
+  "v_C7_V",
+  "i_S1_A",
+  "v_S1_V",
+  "v_o_V",
+  "i_o_A",
+  "i_Lo_A",
+  "v_c_V",
+  "v_ref_V",
+  "v_c_livre_V",
+  "rede_on",
+  "dref_cc",
+  "v_nl_V",
+  "i_QA_A",
+  "i_S2_A",
+  "i_D17_A",
+  "i_sec_A",
+  "v_AB_V"
+ ],
+ "sha256_csv": "2dca246203f7b6ed7cce9d6ea5428c96f6809e408187fa54c04712c4a5d22153",
+ "tempo_inicial_s": 0.1,
+ "tempo_final_s": 0.2,
+ "fim": "2026-11-09T23:13:21-03:00"
+}

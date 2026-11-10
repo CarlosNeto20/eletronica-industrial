@@ -1,33 +1,10 @@
 {
- "data": "2026-11-09T19:03:51-03:00",
+ "data": "2026-11-09T23:25:55-03:00",
  "solicitados": [
-  "diag_cc_sem_5ms",
-  "diag_cc_sem_20ms",
-  "diag_cc_sem_partida_5ms",
-  "diag_cc_amort_20ms",
-  "diag_cc_amort_partida_5ms",
-  "ret_176_planilha",
-  "ret_176_anexo",
-  "ret_264_anexo",
-  "elev_42",
-  "elev_56",
-  "inv_373_res",
-  "inv_2116_res",
-  "inv_373_vazio",
-  "inv_2116_vazio",
-  "inv_2116_nl",
   "inv_degrau_2116"
  ],
  "executados_agora": [
-  "diag_cc_sem_partida_5ms",
-  "elev_42",
-  "elev_56",
-  "inv_373_vazio",
-  "inv_2116_vazio",
-  "inv_2116_nl",
   "inv_degrau_2116"
  ],
- "falhas": [
-  "diag_cc_sem_20ms"
- ]
+ "falhas": []
 }

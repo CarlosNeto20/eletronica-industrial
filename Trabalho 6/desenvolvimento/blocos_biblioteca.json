@@ -1,157 +1,1878 @@
 {
- "DCVoltageSource": {
-  "fonte": "demos/boost_converter/boost_converter.plecs",
-  "parametros": [
-   "V"
-  ],
-  "bloco": "Component {\n      Type          DCVoltageSource\n      Name          \"V_dc\"\n      Show          off\n      Position      [40, 140]\n      Direction     down\n      Flipped       on\n      LabelPosition east\n      Parameter {\n        Variable      \"V\"\n        Value         \"10\"\n        Show          on\n      }\n    }"
+ "instalacao": "C:\\Users\\josem\\OneDrive - L2M Power Electronics\\Documentos\\Plexim\\PLECS 5.0 (64 bit)",
+ "arquivos_lidos": 238,
+ "metodo": "Deslocamento de cada terminal no referencial do bloco (Direction right, Flipped off), medido pela ortogonalidade das polilinhas dos arquivos .plecs da instalacao. Transformer e CScript aparecem por valor de Windings e de NumInputs/NumOutputs, porque mudam de tamanho com esses parametros.",
+ "blocos": {
+  "DCVoltageSource": {
+   "fonte": "demos/boost_converter/boost_converter.plecs",
+   "parametros": [
+    "V"
+   ],
+   "bloco": "Component {\n      Type          DCVoltageSource\n      Name          \"V_dc\"\n      Show          off\n      Position      [40, 140]\n      Direction     down\n      Flipped       on\n      LabelPosition east\n      Parameter {\n        Variable      \"V\"\n        Value         \"10\"\n        Show          on\n      }\n    }"
+  },
+  "Diode": {
+   "fonte": "demos/boost_converter/boost_converter.plecs",
+   "parametros": [
+    "Vf",
+    "Ron",
+    "thermal",
+    "Rth",
+    "T_init"
+   ],
+   "bloco": "Component {\n      Type          Diode\n      Name          \"D1\"\n      Show          off\n      Position      [240, 95]\n      Direction     right\n      Flipped       on\n      LabelPosition north\n      Parameter {\n        Variable      \"Vf\"\n        Value         \"0\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"Ron\"\n        Value         \"0\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"thermal\"\n        Value         \"\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"Rth\"\n        Value         \"0\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"T_init\"\n        Value         \"0\"\n        Show          off\n      }\n    }"
+  },
+  "Inductor": {
+   "fonte": "demos/boost_converter/boost_converter.plecs",
+   "parametros": [
+    "L",
+    "i_init"
+   ],
+   "bloco": "Component {\n      Type          Inductor\n      Name          \"L1\"\n      Show          off\n      Position      [100, 95]\n      Direction     left\n      Flipped       off\n      LabelPosition north\n      Parameter {\n        Variable      \"L\"\n        Value         \"0.0001\"\n        Show          on\n      }\n      Parameter {\n        Variable      \"i_init\"\n        Value         \"0\"\n        Show          off\n      }\n    }"
+  },
+  "Resistor": {
+   "fonte": "demos/boost_converter/boost_converter.plecs",
+   "parametros": [
+    "R"
+   ],
+   "bloco": "Component {\n      Type          Resistor\n      Name          \"R1\"\n      Show          off\n      Position      [340, 140]\n      Direction     down\n      Flipped       off\n      LabelPosition west\n      Parameter {\n        Variable      \"R\"\n        Value         \"4\"\n        Show          on\n      }\n    }"
+  },
+  "Capacitor": {
+   "fonte": "demos/boost_converter/boost_converter.plecs",
+   "parametros": [
+    "C",
+    "v_init"
+   ],
+   "bloco": "Component {\n      Type          Capacitor\n      Name          \"C1\"\n      Show          off\n      Position      [285, 140]\n      Direction     down\n      Flipped       on\n      LabelPosition west\n      Parameter {\n        Variable      \"C\"\n        Value         \"200e-6\"\n        Show          on\n      }\n      Parameter {\n        Variable      \"v_init\"\n        Value         \"0\"\n        Show          off\n      }\n    }"
+  },
+  "Ammeter": {
+   "fonte": "demos/boost_converter/boost_converter.plecs",
+   "parametros": [],
+   "bloco": "Component {\n      Type          Ammeter\n      Name          \"Am1\"\n      Show          off\n      Position      [155, 95]\n      Direction     left\n      Flipped       off\n      LabelPosition south\n    }"
+  },
+  "Voltmeter": {
+   "fonte": "demos/boost_converter/boost_converter.plecs",
+   "parametros": [],
+   "bloco": "Component {\n      Type          Voltmeter\n      Name          \"Vm1\"\n      Show          off\n      Position      [380, 140]\n      Direction     up\n      Flipped       off\n      LabelPosition west\n    }"
+  },
+  "Output": {
+   "fonte": "demos/boost_converter_with_pfc_and_thermal_model/boost_converter_with_pfc_and_thermal_model.plecs",
+   "parametros": [
+    "Index",
+    "Width"
+   ],
+   "bloco": "Component {\n              Type          Output\n              Name          \"Vicomp\"\n              Show          on\n              Position      [330, 50]\n              Direction     right\n              Flipped       off\n              LabelPosition south\n              Parameter {\n                Variable      \"Index\"\n                Value         \"3\"\n                Show          on\n              }\n              Parameter {\n                Variable      \"Width\"\n                Value         \"-1\"\n                Show          off\n              }\n            }"
+  },
+  "Constant": {
+   "fonte": "demos/boost_converter_with_pfc_and_thermal_model/boost_converter_with_pfc_and_thermal_model.plecs",
+   "parametros": [
+    "Value",
+    "DataType"
+   ],
+   "bloco": "Component {\n              Type          Constant\n              Name          \"Vref\"\n              Show          on\n              Position      [40, 130]\n              Direction     right\n              Flipped       off\n              LabelPosition south\n              Frame         [-10, -10; 10, 10]\n              Parameter {\n                Variable      \"Value\"\n                Value         \"5\"\n                Show          off\n              }\n              Parameter {\n                Variable      \"DataType\"\n                Value         \"10\"\n                Show          off\n              }\n            }"
+  },
+  "ACVoltageSource": {
+   "fonte": "demos/boost_converter_with_pfc_and_thermal_model/boost_converter_with_pfc_and_thermal_model.plecs",
+   "parametros": [
+    "V",
+    "w",
+    "phi"
+   ],
+   "bloco": "Component {\n      Type          ACVoltageSource\n      Name          \"V_ac\"\n      Show          on\n      Position      [15, 165]\n      Direction     down\n      Flipped       on\n      LabelPosition east\n      Parameter {\n        Variable      \"V\"\n        Value         \"85*sqrt(2)\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"w\"\n        Value         \"2*pi*50\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"phi\"\n        Value         \"0\"\n        Show          off\n      }\n    }"
+  },
+  "CScript": {
+   "fonte": "demos/boosted_motor_drive/boosted_motor_drive.plecs",
+   "parametros": [
+    "DialogGeometry",
+    "NumInputs",
+    "NumOutputs",
+    "NumContStates",
+    "NumDiscStates",
+    "NumZCSignals",
+    "DirectFeedthrough",
+    "Ts",
+    "Parameters",
+    "LangStandard",
+    "GnuExtensions",
+    "RuntimeCheck",
+    "Declarations",
+    "StartFcn",
+    "OutputFcn",
+    "UpdateFcn",
+    "DerivativeFcn",
+    "TerminateFcn",
+    "StoreCustomStateFcn",
+    "RestoreCustomStateFcn"
+   ],
+   "bloco": "Component {\n                  Type          CScript\n                  Name          \"C-Script1\"\n                  Show          on\n                  Position      [210, 110]\n                  Direction     up\n                  Flipped       off\n                  LabelPosition south\n                  Parameter {\n                    Variable      \"DialogGeometry\"\n                    Value         \"\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"NumInputs\"\n                    Value         \"7\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"NumOutputs\"\n                    Value         \"2\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"NumContStates\"\n                    Value         \"0\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"NumDiscStates\"\n                    Value         \"2\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"NumZCSignals\"\n                    Value         \"0\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"DirectFeedthrough\"\n                    Value         \"[1 1 1 0 0 1 1]\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"Ts\"\n                    Value         \"Ts\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"Parameters\"\n                    Value         \"Ts, Kpzd, Kizd, Kpzq, Kizq, Ra, Vd0, Vq0\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"LangStandard\"\n                    Value         \"2\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"GnuExtensions\"\n                    Value         \"2\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"RuntimeCheck\"\n                    Value         \"2\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"Declarations\"\n                    Value         \"/*\\t\\n\"\n\"\\tReference:\\n\"\n\"\\t\\n\"\n\"\\t\\\"Current and Flux Regulation in Field-Weakening Operation\\\", \\n\"\n\"\\tFernando Briz, Alberto Diez, Michael W. Degner, Robert D. Lorenz\\n\"\n\"\\t\\n\"\n\"*/\\n\"\n\"\\n\"\n\"\\n\"\n\"#define\\tIN_e_d\\t\\tInput(0)\\n\"\n\"#define\\tIN_e_q\\t\\tInput(1)\\n\"\n\"#define\\tIN_ws\\t\\tInput(2)\\n\"\n\"#define\\tIN_y_d\\t\\tInput(3)\\n\"\n\"#define\\tIN_y_q\\t\\tInput(4)\\n\"\n\"#define\\tIN_yff_d\\tInput(5)\\n\"\n\"#define\\tIN_yff_q\\tInput(6)\\n\"\n\"\\n\"\n\"#define\\tOUT_yset_d\\tOutput(0)\\n\"\n\"#define\\tOUT_yset_q\\tOutput(1)\\n\"\n\"\\n\"\n\"#define DS_Int_d DiscState(0)\\n\"\n\"#define DS_Int_q DiscState(1)\\n\"\n\"\\n\"\n\"struct Parameters {\\n\"\n\"\\tdouble Ts;\\n\"\n\"\\tdouble Kp_d;\\n\"\n\"\\tdouble Ki_d;\\n\"\n\"\\tdouble Kp_q;\\n\"\n\"\\tdouble Ki_q;\\n\"\n\"\\tdouble Ra;\\n\"\n\"};\\n\"\n\"\\n\"\n\"struct Constants {\\n\"\n\"\\tdouble Kpi_d;\\n\"\n\"\\tdouble Kpi_q;\\n\"\n\"    \\n\"\n\"\\tdouble KpD_KpiD; \\n\"\n\"\\tdouble KpQ_KpiQ;\\n\"\n\"};\\n\"\n\"\\n\"\n\"static struct Parameters P;\\n\"\n\"static struct Constants C;\\n\"\n\"\\n\"\n\"/* values passed from output to update call */\\n\"\n\"static double we, y_d, y_q;\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"StartFcn\"\n                    Value         \"if (NumParameters != 8){\\n\"\n\"   SetErrorMessage(\\\"Number of parameters does not match.\\\");\\n\"\n\"   return;\\n\"\n\"}\\n\"\n\"\\n\"\n\"P.Ts = ParamRealData(0, 0);\\n\"\n\"P.Kp_d = ParamRealData(1, 0);\\n\"\n\"P.Ki_d = ParamRealData(2, 0);\\n\"\n\"P.Kp_q = ParamRealData(3, 0);\\n\"\n\"P.Ki_q = ParamRealData(4, 0);\\n\"\n\"P.Ra = ParamRealData(5, 0);\\n\"\n\"\\n\"\n\"C.Kpi_d = P.Kp_d + P.Ki_d;\\n\"\n\"C.Kpi_q = P.Kp_q + P.Ki_q;\\n\"\n\"    \\n\"\n\"C.KpD_KpiD = P.Kp_d / C.Kpi_d; // good fixed-point quantity < 1\\n\"\n\"C.KpQ_KpiQ = P.Kp_q / C.Kpi_q; // good fixed-point quantity < 1\\n\"\n\"\\n\"\n\"DS_Int_d = ParamRealData(6, 0);\\n\"\n\"DS_Int_q = ParamRealData(7, 0);\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"OutputFcn\"\n                    Value         \"double Kw_d, Kw_q;\\n\"\n\"\\n\"\n\"we = IN_ws * P.Ts;\\n\"\n\"\\n\"\n\"Kw_d = P.Kp_d * we;\\n\"\n\"Kw_q = P.Kp_q * we;\\n\"\n\"\\t\\n\"\n\"y_d = IN_e_d * C.Kpi_d - IN_e_q * Kw_q + DS_Int_d;\\n\"\n\"y_q = IN_e_q * C.Kpi_q + IN_e_d * Kw_d + DS_Int_q;\\n\"\n\"\\n\"\n\"OUT_yset_d = y_d - P.Ra * IN_e_d;\\n\"\n\"OUT_yset_q = y_q - P.Ra * IN_e_q;\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"UpdateFcn\"\n                    Value         \"#if 1\\n\"\n\"/* determine realizable references */\\n\"\n\"double den = we * we * C.KpD_KpiD * C.KpQ_KpiQ + 1;\\n\"\n\"\\n\"\n\"double Kc1_d = -we * C.KpD_KpiD * C.KpQ_KpiQ / den;\\n\"\n\"double Kc1_q = -Kc1_d;\\n\"\n\"\\t\\n\"\n\"double Kc2_d = -C.KpD_KpiD / den;\\n\"\n\"double Kc2_q = -C.KpQ_KpiQ / den;\\n\"\n\"\\n\"\n\"double Kpep_d = Kc1_d*(IN_y_q - DS_Int_q) + Kc2_d*(IN_y_d - DS_Int_d);\\n\"\n\"double Kpep_q = Kc1_q*(IN_y_d - DS_Int_d) + Kc2_q*(IN_y_q - DS_Int_q);\\n\"\n\"\\t\\n\"\n\"/* update integrators */\\t\\n\"\n\"DS_Int_d = IN_y_d + Kpep_d;\\n\"\n\"DS_Int_q = IN_y_q + Kpep_q;\\t\\n\"\n\"\\n\"\n\"#else \\n\"\n\"/* implementation w/o anti-windup */\\n\"\n\"we = IN_ws * P.Ts;\\n\"\n\"\\n\"\n\"double Kw_d = P.Kp_d * we;\\n\"\n\"double Kw_q = P.Kp_q * we;\\n\"\n\"\\n\"\n\"DS_Int_d += (P.Ki_d * IN_e_d - Kw_q * IN_e_q);\\n\"\n\"DS_Int_q += (P.Ki_q * IN_e_q + Kw_d * IN_e_d);\\n\"\n\"\\n\"\n\"#endif\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"DerivativeFcn\"\n                    Value         \"\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"TerminateFcn\"\n                    Value         \"\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"StoreCustomStateFcn\"\n                    Value         \"\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"RestoreCustomStateFcn\"\n                    Value         \"\"\n                    Show          off\n                  }\n                }"
+  },
+  "TriangleGenerator": {
+   "fonte": "demos/boosted_motor_drive/boosted_motor_drive.plecs",
+   "parametros": [
+    "Min",
+    "Max",
+    "f",
+    "DutyCycle",
+    "Delay"
+   ],
+   "bloco": "Component {\n      Type          TriangleGenerator\n      Name          \"Speed Setpoint\"\n      Show          on\n      Position      [55, 255]\n      Direction     right\n      Flipped       off\n      LabelPosition south\n      Parameter {\n        Variable      \"Min\"\n        Value         \"0\"\n        Show          on\n      }\n      Parameter {\n        Variable      \"Max\"\n        Value         \"400\"\n        Show          on\n      }\n      Parameter {\n        Variable      \"f\"\n        Value         \"10\"\n        Show          on\n      }\n      Parameter {\n        Variable      \"DutyCycle\"\n        Value         \"0.5\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"Delay\"\n        Value         \"0\"\n        Show          off\n      }\n    }"
+  },
+  "Switch": {
+   "fonte": "demos/buck_converter_bcm/buck_converter_bcm.plecs",
+   "parametros": [
+    "s_init",
+    "SwitchModel",
+    "f_grid"
+   ],
+   "bloco": "Component {\n      Type          Switch\n      Name          \"Sw\"\n      Show          on\n      Position      [450, 205]\n      Direction     down\n      Flipped       off\n      LabelPosition east\n      Parameter {\n        Variable      \"s_init\"\n        Value         \"0\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"SwitchModel\"\n        Value         \"1\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"f_grid\"\n        Value         \"0\"\n        Show          off\n      }\n    }"
+  },
+  "MosfetWithDiode": {
+   "fonte": "demos/buck_converter_with_analysis_tools/buck_converter_with_analysis_tools.plecs",
+   "parametros": [
+    "Ron",
+    "s_init",
+    "thermal",
+    "Rth",
+    "Np",
+    "T_init"
+   ],
+   "bloco": "Component {\n      Type          MosfetWithDiode\n      Name          \"FET\"\n      Show          on\n      Position      [200, 165]\n      Direction     right\n      Flipped       on\n      LabelPosition south\n      Parameter {\n        Variable      \"Ron\"\n        Value         \"0\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"s_init\"\n        Value         \"0\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"thermal\"\n        Value         \"\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"Rth\"\n        Value         \"0\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"Np\"\n        Value         \"1\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"T_init\"\n        Value         \"0\"\n        Show          off\n      }\n    }"
+  },
+  "Ground": {
+   "fonte": "demos/buck_converter_with_parameter_sweep/buck_converter_with_parameter_sweep.plecs",
+   "parametros": [],
+   "bloco": "Component {\n      Type          Ground\n      Name          \"Ground1\"\n      Show          off\n      Position      [390, 435]\n      Direction     up\n      Flipped       off\n      LabelPosition east\n    }"
+  },
+  "Comparator": {
+   "fonte": "demos/cascaded_multilevel_inverter/cascaded_multilevel_inverter.plecs",
+   "parametros": [],
+   "bloco": "Component {\n          Type          Comparator\n          Name          \"Comparator12\"\n          Show          off\n          Position      [165, 55]\n          Direction     right\n          Flipped       off\n          LabelPosition south\n        }"
+  },
+  "Transformer": {
+   "fonte": "demos/dual_active_bridge_converter/dual_active_bridge_converter.plecs",
+   "parametros": [
+    "Windings",
+    "n",
+    "Polarity",
+    "Lm",
+    "im0"
+   ],
+   "bloco": "Component {\n            Type          Transformer\n            Name          \"Tr2\"\n            Show          off\n            Position      [165, 90]\n            Direction     right\n            Flipped       on\n            LabelPosition south\n            Parameter {\n              Variable      \"Windings\"\n              Value         \"[1 1]\"\n              Show          off\n            }\n            Parameter {\n              Variable      \"n\"\n              Value         \"[n_pri n_sec]\"\n              Show          off\n            }\n            Parameter {\n              Variable      \"Polarity\"\n              Value         \"+\"\n              Show          off\n            }\n            Parameter {\n              Variable      \"Lm\"\n              Value         \"inf\"\n              Show          off\n            }\n            Parameter {\n              Variable      \"im0\"\n              Value         \"0\"\n              Show          off\n            }\n          }"
+  }
  },
- "Diode": {
-  "fonte": "demos/boost_converter/boost_converter.plecs",
-  "parametros": [
-   "Vf",
-   "Ron",
-   "thermal",
-   "Rth",
-   "T_init"
-  ],
-  "bloco": "Component {\n      Type          Diode\n      Name          \"D1\"\n      Show          off\n      Position      [240, 95]\n      Direction     right\n      Flipped       on\n      LabelPosition north\n      Parameter {\n        Variable      \"Vf\"\n        Value         \"0\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"Ron\"\n        Value         \"0\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"thermal\"\n        Value         \"\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"Rth\"\n        Value         \"0\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"T_init\"\n        Value         \"0\"\n        Show          off\n      }\n    }"
+ "geometria_dos_terminais": {
+  "ACVoltageSource": {
+   "t1": {
+    "deslocamento": [
+     20,
+     0
+    ],
+    "candidatos": [
+     [
+      20,
+      0
+     ]
+    ],
+    "restricoes": 40,
+    "satisfeitas": 39,
+    "lado_do_eixo": "+x",
+    "votos_do_lado": {
+     "mais": 40,
+     "menos": 0
+    }
+   },
+   "t2": {
+    "deslocamento": [
+     -35,
+     0
+    ],
+    "candidatos": [
+     [
+      -35,
+      0
+     ]
+    ],
+    "restricoes": 52,
+    "satisfeitas": 49,
+    "lado_do_eixo": "-x",
+    "votos_do_lado": {
+     "mais": 0,
+     "menos": 52
+    }
+   }
+  },
+  "Ammeter": {
+   "t1": {
+    "deslocamento": [
+     20,
+     0
+    ],
+    "candidatos": [
+     [
+      20,
+      0
+     ]
+    ],
+    "restricoes": 245,
+    "satisfeitas": 239,
+    "lado_do_eixo": "+x",
+    "votos_do_lado": {
+     "mais": 241,
+     "menos": 4
+    }
+   },
+   "t2": {
+    "deslocamento": [
+     -20,
+     0
+    ],
+    "candidatos": [
+     [
+      -20,
+      0
+     ]
+    ],
+    "restricoes": 367,
+    "satisfeitas": 356,
+    "lado_do_eixo": "-x",
+    "votos_do_lado": {
+     "mais": 4,
+     "menos": 362
+    }
+   },
+   "t3": {
+    "deslocamento": [
+     0,
+     15
+    ],
+    "candidatos": [
+     [
+      0,
+      15
+     ]
+    ],
+    "restricoes": 252,
+    "satisfeitas": 252,
+    "lado_do_eixo": "-x",
+    "votos_do_lado": {
+     "mais": 2,
+     "menos": 3
+    }
+   }
+  },
+  "Capacitor": {
+   "t1": {
+    "deslocamento": [
+     20,
+     0
+    ],
+    "candidatos": [
+     [
+      20,
+      0
+     ]
+    ],
+    "restricoes": 485,
+    "satisfeitas": 477,
+    "lado_do_eixo": "+x",
+    "votos_do_lado": {
+     "mais": 485,
+     "menos": 0
+    }
+   },
+   "t2": {
+    "deslocamento": [
+     -20,
+     0
+    ],
+    "candidatos": [
+     [
+      -20,
+      0
+     ]
+    ],
+    "restricoes": 553,
+    "satisfeitas": 545,
+    "lado_do_eixo": "-x",
+    "votos_do_lado": {
+     "mais": 0,
+     "menos": 553
+    }
+   }
+  },
+  "Comparator": {
+   "t1": {
+    "deslocamento": null,
+    "candidatos": [
+     [
+      -80,
+      -5
+     ],
+     [
+      -75,
+      -5
+     ],
+     [
+      -70,
+      -5
+     ],
+     [
+      -65,
+      -5
+     ]
+    ],
+    "restricoes": 13,
+    "satisfeitas": 13,
+    "lado_do_eixo": "-x",
+    "votos_do_lado": {
+     "mais": 0,
+     "menos": 13
+    }
+   },
+   "t2": {
+    "deslocamento": null,
+    "candidatos": [
+     [
+      -80,
+      5
+     ],
+     [
+      -75,
+      5
+     ],
+     [
+      -70,
+      5
+     ],
+     [
+      -65,
+      5
+     ]
+    ],
+    "restricoes": 40,
+    "satisfeitas": 40,
+    "lado_do_eixo": "-x",
+    "votos_do_lado": {
+     "mais": 0,
+     "menos": 40
+    }
+   },
+   "t3": {
+    "deslocamento": null,
+    "candidatos": [
+     [
+      -80,
+      0
+     ],
+     [
+      -75,
+      0
+     ],
+     [
+      -70,
+      0
+     ],
+     [
+      -65,
+      0
+     ]
+    ],
+    "restricoes": 60,
+    "satisfeitas": 60,
+    "lado_do_eixo": "+x",
+    "votos_do_lado": {
+     "mais": 60,
+     "menos": 0
+    }
+   }
+  },
+  "Constant": {
+   "t1": {
+    "deslocamento": [
+     15,
+     0
+    ],
+    "candidatos": [
+     [
+      15,
+      0
+     ]
+    ],
+    "restricoes": 518,
+    "satisfeitas": 497,
+    "lado_do_eixo": "+x",
+    "votos_do_lado": {
+     "mais": 514,
+     "menos": 4
+    }
+   }
+  },
+  "DCVoltageSource": {
+   "t1": {
+    "deslocamento": null,
+    "candidatos": [
+     [
+      60,
+      0
+     ],
+     [
+      65,
+      0
+     ],
+     [
+      75,
+      0
+     ]
+    ],
+    "restricoes": 220,
+    "satisfeitas": 214,
+    "lado_do_eixo": "+x",
+    "votos_do_lado": {
+     "mais": 220,
+     "menos": 0
+    }
+   },
+   "t2": {
+    "deslocamento": [
+     -40,
+     0
+    ],
+    "candidatos": [
+     [
+      -40,
+      0
+     ]
+    ],
+    "restricoes": 336,
+    "satisfeitas": 313,
+    "lado_do_eixo": "-x",
+    "votos_do_lado": {
+     "mais": 0,
+     "menos": 336
+    }
+   }
+  },
+  "Diode": {
+   "t1": {
+    "deslocamento": [
+     15,
+     0
+    ],
+    "candidatos": [
+     [
+      15,
+      0
+     ]
+    ],
+    "restricoes": 615,
+    "satisfeitas": 602,
+    "lado_do_eixo": "+x",
+    "votos_do_lado": {
+     "mais": 614,
+     "menos": 1
+    }
+   },
+   "t2": {
+    "deslocamento": [
+     -20,
+     0
+    ],
+    "candidatos": [
+     [
+      -20,
+      0
+     ]
+    ],
+    "restricoes": 589,
+    "satisfeitas": 574,
+    "lado_do_eixo": "-x",
+    "votos_do_lado": {
+     "mais": 0,
+     "menos": 589
+    }
+   }
+  },
+  "Ground": {
+   "t1": {
+    "deslocamento": [
+     20,
+     0
+    ],
+    "candidatos": [
+     [
+      20,
+      0
+     ]
+    ],
+    "restricoes": 98,
+    "satisfeitas": 98,
+    "lado_do_eixo": "+x",
+    "votos_do_lado": {
+     "mais": 98,
+     "menos": 0
+    }
+   }
+  },
+  "Inductor": {
+   "t1": {
+    "deslocamento": [
+     40,
+     0
+    ],
+    "candidatos": [
+     [
+      40,
+      0
+     ]
+    ],
+    "restricoes": 321,
+    "satisfeitas": 320,
+    "lado_do_eixo": "+x",
+    "votos_do_lado": {
+     "mais": 320,
+     "menos": 1
+    }
+   },
+   "t2": {
+    "deslocamento": null,
+    "candidatos": [
+     [
+      -40,
+      0
+     ],
+     [
+      -35,
+      0
+     ],
+     [
+      -25,
+      0
+     ]
+    ],
+    "restricoes": 294,
+    "satisfeitas": 286,
+    "lado_do_eixo": "-x",
+    "votos_do_lado": {
+     "mais": 0,
+     "menos": 294
+    }
+   }
+  },
+  "MosfetWithDiode": {
+   "t1": {
+    "deslocamento": [
+     35,
+     0
+    ],
+    "candidatos": [
+     [
+      35,
+      0
+     ]
+    ],
+    "restricoes": 154,
+    "satisfeitas": 153,
+    "lado_do_eixo": "+x",
+    "votos_do_lado": {
+     "mais": 154,
+     "menos": 0
+    }
+   },
+   "t2": {
+    "deslocamento": [
+     -30,
+     0
+    ],
+    "candidatos": [
+     [
+      -30,
+      0
+     ]
+    ],
+    "restricoes": 190,
+    "satisfeitas": 184,
+    "lado_do_eixo": "-x",
+    "votos_do_lado": {
+     "mais": 0,
+     "menos": 190
+    }
+   },
+   "t3": {
+    "deslocamento": [
+     0,
+     -35
+    ],
+    "candidatos": [
+     [
+      0,
+      -35
+     ]
+    ],
+    "restricoes": 127,
+    "satisfeitas": 125,
+    "lado_do_eixo": "+x",
+    "votos_do_lado": {
+     "mais": 15,
+     "menos": 5
+    }
+   }
+  },
+  "Output": {
+   "t1": {
+    "deslocamento": [
+     -10,
+     0
+    ],
+    "candidatos": [
+     [
+      -10,
+      0
+     ]
+    ],
+    "restricoes": 481,
+    "satisfeitas": 462,
+    "lado_do_eixo": "-x",
+    "votos_do_lado": {
+     "mais": 0,
+     "menos": 481
+    }
+   }
+  },
+  "Resistor": {
+   "t1": {
+    "deslocamento": [
+     20,
+     0
+    ],
+    "candidatos": [
+     [
+      20,
+      0
+     ]
+    ],
+    "restricoes": 798,
+    "satisfeitas": 769,
+    "lado_do_eixo": "+x",
+    "votos_do_lado": {
+     "mais": 798,
+     "menos": 0
+    }
+   },
+   "t2": {
+    "deslocamento": [
+     -20,
+     0
+    ],
+    "candidatos": [
+     [
+      -20,
+      0
+     ]
+    ],
+    "restricoes": 849,
+    "satisfeitas": 827,
+    "lado_do_eixo": "-x",
+    "votos_do_lado": {
+     "mais": 0,
+     "menos": 849
+    }
+   }
+  },
+  "Switch": {
+   "t1": {
+    "deslocamento": null,
+    "candidatos": [
+     [
+      -80,
+      0
+     ],
+     [
+      -75,
+      0
+     ],
+     [
+      -70,
+      0
+     ],
+     [
+      -65,
+      0
+     ]
+    ],
+    "restricoes": 44,
+    "satisfeitas": 44,
+    "lado_do_eixo": "+x",
+    "votos_do_lado": {
+     "mais": 44,
+     "menos": 0
+    }
+   },
+   "t2": {
+    "deslocamento": [
+     -20,
+     0
+    ],
+    "candidatos": [
+     [
+      -20,
+      0
+     ]
+    ],
+    "restricoes": 31,
+    "satisfeitas": 31,
+    "lado_do_eixo": "-x",
+    "votos_do_lado": {
+     "mais": 0,
+     "menos": 31
+    }
+   },
+   "t3": {
+    "deslocamento": [
+     0,
+     20
+    ],
+    "candidatos": [
+     [
+      0,
+      20
+     ]
+    ],
+    "restricoes": 23,
+    "satisfeitas": 22,
+    "lado_do_eixo": "+x",
+    "votos_do_lado": {
+     "mais": 7,
+     "menos": 1
+    }
+   }
+  },
+  "TriangleGenerator": {
+   "t1": {
+    "deslocamento": null,
+    "candidatos": [
+     [
+      -80,
+      0
+     ],
+     [
+      -75,
+      0
+     ],
+     [
+      -70,
+      0
+     ],
+     [
+      -65,
+      0
+     ]
+    ],
+    "restricoes": 59,
+    "satisfeitas": 59,
+    "lado_do_eixo": "+x",
+    "votos_do_lado": {
+     "mais": 59,
+     "menos": 0
+    }
+   }
+  },
+  "Voltmeter": {
+   "t1": {
+    "deslocamento": [
+     20,
+     0
+    ],
+    "candidatos": [
+     [
+      20,
+      0
+     ]
+    ],
+    "restricoes": 756,
+    "satisfeitas": 718,
+    "lado_do_eixo": "+x",
+    "votos_do_lado": {
+     "mais": 755,
+     "menos": 1
+    }
+   },
+   "t2": {
+    "deslocamento": [
+     -20,
+     0
+    ],
+    "candidatos": [
+     [
+      -20,
+      0
+     ]
+    ],
+    "restricoes": 755,
+    "satisfeitas": 692,
+    "lado_do_eixo": "-x",
+    "votos_do_lado": {
+     "mais": 2,
+     "menos": 752
+    }
+   },
+   "t3": {
+    "deslocamento": [
+     0,
+     15
+    ],
+    "candidatos": [
+     [
+      0,
+      15
+     ]
+    ],
+    "restricoes": 286,
+    "satisfeitas": 286,
+    "lado_do_eixo": "+x",
+    "votos_do_lado": {
+     "mais": 22,
+     "menos": 12
+    }
+   }
+  }
  },
- "Inductor": {
-  "fonte": "demos/boost_converter/boost_converter.plecs",
-  "parametros": [
-   "L",
-   "i_init"
-  ],
-  "bloco": "Component {\n      Type          Inductor\n      Name          \"L1\"\n      Show          off\n      Position      [100, 95]\n      Direction     left\n      Flipped       off\n      LabelPosition north\n      Parameter {\n        Variable      \"L\"\n        Value         \"0.0001\"\n        Show          on\n      }\n      Parameter {\n        Variable      \"i_init\"\n        Value         \"0\"\n        Show          off\n      }\n    }"
- },
- "Resistor": {
-  "fonte": "demos/boost_converter/boost_converter.plecs",
-  "parametros": [
-   "R"
-  ],
-  "bloco": "Component {\n      Type          Resistor\n      Name          \"R1\"\n      Show          off\n      Position      [340, 140]\n      Direction     down\n      Flipped       off\n      LabelPosition west\n      Parameter {\n        Variable      \"R\"\n        Value         \"4\"\n        Show          on\n      }\n    }"
- },
- "Capacitor": {
-  "fonte": "demos/boost_converter/boost_converter.plecs",
-  "parametros": [
-   "C",
-   "v_init"
-  ],
-  "bloco": "Component {\n      Type          Capacitor\n      Name          \"C1\"\n      Show          off\n      Position      [285, 140]\n      Direction     down\n      Flipped       on\n      LabelPosition west\n      Parameter {\n        Variable      \"C\"\n        Value         \"200e-6\"\n        Show          on\n      }\n      Parameter {\n        Variable      \"v_init\"\n        Value         \"0\"\n        Show          off\n      }\n    }"
- },
- "Ammeter": {
-  "fonte": "demos/boost_converter/boost_converter.plecs",
-  "parametros": [],
-  "bloco": "Component {\n      Type          Ammeter\n      Name          \"Am1\"\n      Show          off\n      Position      [155, 95]\n      Direction     left\n      Flipped       off\n      LabelPosition south\n    }"
- },
- "Voltmeter": {
-  "fonte": "demos/boost_converter/boost_converter.plecs",
-  "parametros": [],
-  "bloco": "Component {\n      Type          Voltmeter\n      Name          \"Vm1\"\n      Show          off\n      Position      [380, 140]\n      Direction     up\n      Flipped       off\n      LabelPosition west\n    }"
- },
- "Output": {
-  "fonte": "demos/boost_converter_with_pfc_and_thermal_model/boost_converter_with_pfc_and_thermal_model.plecs",
-  "parametros": [
-   "Index",
-   "Width"
-  ],
-  "bloco": "Component {\n              Type          Output\n              Name          \"Vicomp\"\n              Show          on\n              Position      [330, 50]\n              Direction     right\n              Flipped       off\n              LabelPosition south\n              Parameter {\n                Variable      \"Index\"\n                Value         \"3\"\n                Show          on\n              }\n              Parameter {\n                Variable      \"Width\"\n                Value         \"-1\"\n                Show          off\n              }\n            }"
- },
- "Constant": {
-  "fonte": "demos/boost_converter_with_pfc_and_thermal_model/boost_converter_with_pfc_and_thermal_model.plecs",
-  "parametros": [
-   "Value",
-   "DataType"
-  ],
-  "bloco": "Component {\n              Type          Constant\n              Name          \"Vref\"\n              Show          on\n              Position      [40, 130]\n              Direction     right\n              Flipped       off\n              LabelPosition south\n              Frame         [-10, -10; 10, 10]\n              Parameter {\n                Variable      \"Value\"\n                Value         \"5\"\n                Show          off\n              }\n              Parameter {\n                Variable      \"DataType\"\n                Value         \"10\"\n                Show          off\n              }\n            }"
- },
- "ACVoltageSource": {
-  "fonte": "demos/boost_converter_with_pfc_and_thermal_model/boost_converter_with_pfc_and_thermal_model.plecs",
-  "parametros": [
-   "V",
-   "w",
-   "phi"
-  ],
-  "bloco": "Component {\n      Type          ACVoltageSource\n      Name          \"V_ac\"\n      Show          on\n      Position      [15, 165]\n      Direction     down\n      Flipped       on\n      LabelPosition east\n      Parameter {\n        Variable      \"V\"\n        Value         \"85*sqrt(2)\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"w\"\n        Value         \"2*pi*50\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"phi\"\n        Value         \"0\"\n        Show          off\n      }\n    }"
- },
- "CScript": {
-  "fonte": "demos/boosted_motor_drive/boosted_motor_drive.plecs",
-  "parametros": [
-   "DialogGeometry",
-   "NumInputs",
-   "NumOutputs",
-   "NumContStates",
-   "NumDiscStates",
-   "NumZCSignals",
-   "DirectFeedthrough",
-   "Ts",
-   "Parameters",
-   "LangStandard",
-   "GnuExtensions",
-   "RuntimeCheck",
-   "Declarations",
-   "StartFcn",
-   "OutputFcn",
-   "UpdateFcn",
-   "DerivativeFcn",
-   "TerminateFcn",
-   "StoreCustomStateFcn",
-   "RestoreCustomStateFcn"
-  ],
-  "bloco": "Component {\n                  Type          CScript\n                  Name          \"C-Script1\"\n                  Show          on\n                  Position      [210, 110]\n                  Direction     up\n                  Flipped       off\n                  LabelPosition south\n                  Parameter {\n                    Variable      \"DialogGeometry\"\n                    Value         \"\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"NumInputs\"\n                    Value         \"7\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"NumOutputs\"\n                    Value         \"2\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"NumContStates\"\n                    Value         \"0\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"NumDiscStates\"\n                    Value         \"2\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"NumZCSignals\"\n                    Value         \"0\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"DirectFeedthrough\"\n                    Value         \"[1 1 1 0 0 1 1]\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"Ts\"\n                    Value         \"Ts\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"Parameters\"\n                    Value         \"Ts, Kpzd, Kizd, Kpzq, Kizq, Ra, Vd0, Vq0\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"LangStandard\"\n                    Value         \"2\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"GnuExtensions\"\n                    Value         \"2\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"RuntimeCheck\"\n                    Value         \"2\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"Declarations\"\n                    Value         \"/*\\t\\n\"\n\"\\tReference:\\n\"\n\"\\t\\n\"\n\"\\t\\\"Current and Flux Regulation in Field-Weakening Operation\\\", \\n\"\n\"\\tFernando Briz, Alberto Diez, Michael W. Degner, Robert D. Lorenz\\n\"\n\"\\t\\n\"\n\"*/\\n\"\n\"\\n\"\n\"\\n\"\n\"#define\\tIN_e_d\\t\\tInput(0)\\n\"\n\"#define\\tIN_e_q\\t\\tInput(1)\\n\"\n\"#define\\tIN_ws\\t\\tInput(2)\\n\"\n\"#define\\tIN_y_d\\t\\tInput(3)\\n\"\n\"#define\\tIN_y_q\\t\\tInput(4)\\n\"\n\"#define\\tIN_yff_d\\tInput(5)\\n\"\n\"#define\\tIN_yff_q\\tInput(6)\\n\"\n\"\\n\"\n\"#define\\tOUT_yset_d\\tOutput(0)\\n\"\n\"#define\\tOUT_yset_q\\tOutput(1)\\n\"\n\"\\n\"\n\"#define DS_Int_d DiscState(0)\\n\"\n\"#define DS_Int_q DiscState(1)\\n\"\n\"\\n\"\n\"struct Parameters {\\n\"\n\"\\tdouble Ts;\\n\"\n\"\\tdouble Kp_d;\\n\"\n\"\\tdouble Ki_d;\\n\"\n\"\\tdouble Kp_q;\\n\"\n\"\\tdouble Ki_q;\\n\"\n\"\\tdouble Ra;\\n\"\n\"};\\n\"\n\"\\n\"\n\"struct Constants {\\n\"\n\"\\tdouble Kpi_d;\\n\"\n\"\\tdouble Kpi_q;\\n\"\n\"    \\n\"\n\"\\tdouble KpD_KpiD; \\n\"\n\"\\tdouble KpQ_KpiQ;\\n\"\n\"};\\n\"\n\"\\n\"\n\"static struct Parameters P;\\n\"\n\"static struct Constants C;\\n\"\n\"\\n\"\n\"/* values passed from output to update call */\\n\"\n\"static double we, y_d, y_q;\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"StartFcn\"\n                    Value         \"if (NumParameters != 8){\\n\"\n\"   SetErrorMessage(\\\"Number of parameters does not match.\\\");\\n\"\n\"   return;\\n\"\n\"}\\n\"\n\"\\n\"\n\"P.Ts = ParamRealData(0, 0);\\n\"\n\"P.Kp_d = ParamRealData(1, 0);\\n\"\n\"P.Ki_d = ParamRealData(2, 0);\\n\"\n\"P.Kp_q = ParamRealData(3, 0);\\n\"\n\"P.Ki_q = ParamRealData(4, 0);\\n\"\n\"P.Ra = ParamRealData(5, 0);\\n\"\n\"\\n\"\n\"C.Kpi_d = P.Kp_d + P.Ki_d;\\n\"\n\"C.Kpi_q = P.Kp_q + P.Ki_q;\\n\"\n\"    \\n\"\n\"C.KpD_KpiD = P.Kp_d / C.Kpi_d; // good fixed-point quantity < 1\\n\"\n\"C.KpQ_KpiQ = P.Kp_q / C.Kpi_q; // good fixed-point quantity < 1\\n\"\n\"\\n\"\n\"DS_Int_d = ParamRealData(6, 0);\\n\"\n\"DS_Int_q = ParamRealData(7, 0);\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"OutputFcn\"\n                    Value         \"double Kw_d, Kw_q;\\n\"\n\"\\n\"\n\"we = IN_ws * P.Ts;\\n\"\n\"\\n\"\n\"Kw_d = P.Kp_d * we;\\n\"\n\"Kw_q = P.Kp_q * we;\\n\"\n\"\\t\\n\"\n\"y_d = IN_e_d * C.Kpi_d - IN_e_q * Kw_q + DS_Int_d;\\n\"\n\"y_q = IN_e_q * C.Kpi_q + IN_e_d * Kw_d + DS_Int_q;\\n\"\n\"\\n\"\n\"OUT_yset_d = y_d - P.Ra * IN_e_d;\\n\"\n\"OUT_yset_q = y_q - P.Ra * IN_e_q;\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"UpdateFcn\"\n                    Value         \"#if 1\\n\"\n\"/* determine realizable references */\\n\"\n\"double den = we * we * C.KpD_KpiD * C.KpQ_KpiQ + 1;\\n\"\n\"\\n\"\n\"double Kc1_d = -we * C.KpD_KpiD * C.KpQ_KpiQ / den;\\n\"\n\"double Kc1_q = -Kc1_d;\\n\"\n\"\\t\\n\"\n\"double Kc2_d = -C.KpD_KpiD / den;\\n\"\n\"double Kc2_q = -C.KpQ_KpiQ / den;\\n\"\n\"\\n\"\n\"double Kpep_d = Kc1_d*(IN_y_q - DS_Int_q) + Kc2_d*(IN_y_d - DS_Int_d);\\n\"\n\"double Kpep_q = Kc1_q*(IN_y_d - DS_Int_d) + Kc2_q*(IN_y_q - DS_Int_q);\\n\"\n\"\\t\\n\"\n\"/* update integrators */\\t\\n\"\n\"DS_Int_d = IN_y_d + Kpep_d;\\n\"\n\"DS_Int_q = IN_y_q + Kpep_q;\\t\\n\"\n\"\\n\"\n\"#else \\n\"\n\"/* implementation w/o anti-windup */\\n\"\n\"we = IN_ws * P.Ts;\\n\"\n\"\\n\"\n\"double Kw_d = P.Kp_d * we;\\n\"\n\"double Kw_q = P.Kp_q * we;\\n\"\n\"\\n\"\n\"DS_Int_d += (P.Ki_d * IN_e_d - Kw_q * IN_e_q);\\n\"\n\"DS_Int_q += (P.Ki_q * IN_e_q + Kw_d * IN_e_d);\\n\"\n\"\\n\"\n\"#endif\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"DerivativeFcn\"\n                    Value         \"\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"TerminateFcn\"\n                    Value         \"\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"StoreCustomStateFcn\"\n                    Value         \"\"\n                    Show          off\n                  }\n                  Parameter {\n                    Variable      \"RestoreCustomStateFcn\"\n                    Value         \"\"\n                    Show          off\n                  }\n                }"
- },
- "TriangleGenerator": {
-  "fonte": "demos/boosted_motor_drive/boosted_motor_drive.plecs",
-  "parametros": [
-   "Min",
-   "Max",
-   "f",
-   "DutyCycle",
-   "Delay"
-  ],
-  "bloco": "Component {\n      Type          TriangleGenerator\n      Name          \"Speed Setpoint\"\n      Show          on\n      Position      [55, 255]\n      Direction     right\n      Flipped       off\n      LabelPosition south\n      Parameter {\n        Variable      \"Min\"\n        Value         \"0\"\n        Show          on\n      }\n      Parameter {\n        Variable      \"Max\"\n        Value         \"400\"\n        Show          on\n      }\n      Parameter {\n        Variable      \"f\"\n        Value         \"10\"\n        Show          on\n      }\n      Parameter {\n        Variable      \"DutyCycle\"\n        Value         \"0.5\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"Delay\"\n        Value         \"0\"\n        Show          off\n      }\n    }"
- },
- "Switch": {
-  "fonte": "demos/buck_converter_bcm/buck_converter_bcm.plecs",
-  "parametros": [
-   "s_init",
-   "SwitchModel",
-   "f_grid"
-  ],
-  "bloco": "Component {\n      Type          Switch\n      Name          \"Sw\"\n      Show          on\n      Position      [450, 205]\n      Direction     down\n      Flipped       off\n      LabelPosition east\n      Parameter {\n        Variable      \"s_init\"\n        Value         \"0\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"SwitchModel\"\n        Value         \"1\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"f_grid\"\n        Value         \"0\"\n        Show          off\n      }\n    }"
- },
- "MosfetWithDiode": {
-  "fonte": "demos/buck_converter_with_analysis_tools/buck_converter_with_analysis_tools.plecs",
-  "parametros": [
-   "Ron",
-   "s_init",
-   "thermal",
-   "Rth",
-   "Np",
-   "T_init"
-  ],
-  "bloco": "Component {\n      Type          MosfetWithDiode\n      Name          \"FET\"\n      Show          on\n      Position      [200, 165]\n      Direction     right\n      Flipped       on\n      LabelPosition south\n      Parameter {\n        Variable      \"Ron\"\n        Value         \"0\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"s_init\"\n        Value         \"0\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"thermal\"\n        Value         \"\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"Rth\"\n        Value         \"0\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"Np\"\n        Value         \"1\"\n        Show          off\n      }\n      Parameter {\n        Variable      \"T_init\"\n        Value         \"0\"\n        Show          off\n      }\n    }"
- },
- "Ground": {
-  "fonte": "demos/buck_converter_with_parameter_sweep/buck_converter_with_parameter_sweep.plecs",
-  "parametros": [],
-  "bloco": "Component {\n      Type          Ground\n      Name          \"Ground1\"\n      Show          off\n      Position      [390, 435]\n      Direction     up\n      Flipped       off\n      LabelPosition east\n    }"
- },
- "Comparator": {
-  "fonte": "demos/cascaded_multilevel_inverter/cascaded_multilevel_inverter.plecs",
-  "parametros": [],
-  "bloco": "Component {\n          Type          Comparator\n          Name          \"Comparator12\"\n          Show          off\n          Position      [165, 55]\n          Direction     right\n          Flipped       off\n          LabelPosition south\n        }"
- },
- "Transformer": {
-  "fonte": "demos/dual_active_bridge_converter/dual_active_bridge_converter.plecs",
-  "parametros": [
-   "Windings",
-   "n",
-   "Polarity",
-   "Lm",
-   "im0"
-  ],
-  "bloco": "Component {\n            Type          Transformer\n            Name          \"Tr2\"\n            Show          off\n            Position      [165, 90]\n            Direction     right\n            Flipped       on\n            LabelPosition south\n            Parameter {\n              Variable      \"Windings\"\n              Value         \"[1 1]\"\n              Show          off\n            }\n            Parameter {\n              Variable      \"n\"\n              Value         \"[n_pri n_sec]\"\n              Show          off\n            }\n            Parameter {\n              Variable      \"Polarity\"\n              Value         \"+\"\n              Show          off\n            }\n            Parameter {\n              Variable      \"Lm\"\n              Value         \"inf\"\n              Show          off\n            }\n            Parameter {\n              Variable      \"im0\"\n              Value         \"0\"\n              Show          off\n            }\n          }"
+ "geometria_por_parametro": {
+  "CScript": {
+   "1/1": {
+    "t1": {
+     "candidatos": [
+      [
+       0,
+       -80
+      ],
+      [
+       0,
+       -75
+      ],
+      [
+       0,
+       -70
+      ],
+      [
+       0,
+       -65
+      ]
+     ],
+     "restricoes": 10,
+     "satisfeitas": 10
+    },
+    "t2": {
+     "candidatos": [
+      [
+       0,
+       -80
+      ],
+      [
+       0,
+       -75
+      ],
+      [
+       0,
+       -70
+      ],
+      [
+       0,
+       -65
+      ]
+     ],
+     "restricoes": 7,
+     "satisfeitas": 7
+    }
+   },
+   "1/5": {
+    "t1": {
+     "candidatos": [
+      [
+       0,
+       -80
+      ],
+      [
+       0,
+       -75
+      ],
+      [
+       0,
+       -70
+      ],
+      [
+       0,
+       -65
+      ]
+     ],
+     "restricoes": 4,
+     "satisfeitas": 4
+    },
+    "t2": {
+     "candidatos": [
+      [
+       -80,
+       40
+      ],
+      [
+       -75,
+       40
+      ],
+      [
+       -70,
+       40
+      ],
+      [
+       -65,
+       40
+      ]
+     ],
+     "restricoes": 8,
+     "satisfeitas": 8
+    }
+   },
+   "1/[1 1 1 1]": {
+    "t5": {
+     "candidatos": [
+      [
+       -15,
+       -80
+      ],
+      [
+       -15,
+       -75
+      ],
+      [
+       -15,
+       -70
+      ],
+      [
+       -15,
+       -65
+      ]
+     ],
+     "restricoes": 10,
+     "satisfeitas": 10
+    }
+   },
+   "7/6": {
+    "t2": {
+     "candidatos": [
+      [
+       0,
+       -80
+      ],
+      [
+       0,
+       -75
+      ],
+      [
+       0,
+       -70
+      ],
+      [
+       0,
+       -65
+      ]
+     ],
+     "restricoes": 15,
+     "satisfeitas": 15
+    }
+   },
+   "[3 2]/3": {
+    "t1": {
+     "candidatos": [
+      [
+       5,
+       -45
+      ]
+     ],
+     "restricoes": 6,
+     "satisfeitas": 6
+    },
+    "t2": {
+     "candidatos": [
+      [
+       -5,
+       -60
+      ],
+      [
+       -5,
+       -55
+      ]
+     ],
+     "restricoes": 9,
+     "satisfeitas": 8
+    },
+    "t3": {
+     "candidatos": [
+      [
+       -80,
+       50
+      ],
+      [
+       -75,
+       50
+      ],
+      [
+       -70,
+       50
+      ],
+      [
+       -65,
+       50
+      ]
+     ],
+     "restricoes": 18,
+     "satisfeitas": 18
+    }
+   },
+   "[4, 1]/[4 4]": {
+    "t3": {
+     "candidatos": [
+      [
+       -80,
+       35
+      ],
+      [
+       -75,
+       35
+      ],
+      [
+       -70,
+       35
+      ],
+      [
+       -65,
+       35
+      ]
+     ],
+     "restricoes": 4,
+     "satisfeitas": 4
+    }
+   },
+   "[6, 1]/[6, 6]": {
+    "t3": {
+     "candidatos": [
+      [
+       -80,
+       35
+      ],
+      [
+       -75,
+       35
+      ],
+      [
+       -70,
+       35
+      ],
+      [
+       -65,
+       35
+      ]
+     ],
+     "restricoes": 8,
+     "satisfeitas": 8
+    }
+   },
+   "[8 1 3]/[3 1]": {
+    "t4": {
+     "candidatos": [
+      [
+       5,
+       -80
+      ],
+      [
+       5,
+       -75
+      ],
+      [
+       5,
+       -70
+      ],
+      [
+       5,
+       -65
+      ]
+     ],
+     "restricoes": 9,
+     "satisfeitas": 9
+    }
+   }
+  },
+  "Transformer": {
+   "[1 1]": {
+    "t1": {
+     "candidatos": [
+      [
+       10,
+       -15
+      ]
+     ],
+     "restricoes": 46,
+     "satisfeitas": 41
+    },
+    "t2": {
+     "candidatos": [
+      [
+       10,
+       15
+      ]
+     ],
+     "restricoes": 60,
+     "satisfeitas": 53
+    },
+    "t3": {
+     "candidatos": [
+      [
+       -10,
+       -15
+      ]
+     ],
+     "restricoes": 49,
+     "satisfeitas": 44
+    },
+    "t4": {
+     "candidatos": [
+      [
+       -10,
+       15
+      ]
+     ],
+     "restricoes": 55,
+     "satisfeitas": 47
+    }
+   },
+   "[1 2]": {
+    "t1": {
+     "candidatos": [
+      [
+       10,
+       -15
+      ]
+     ],
+     "restricoes": 16,
+     "satisfeitas": 16
+    },
+    "t2": {
+     "candidatos": [
+      [
+       25,
+       15
+      ]
+     ],
+     "restricoes": 35,
+     "satisfeitas": 32
+    },
+    "t3": {
+     "candidatos": [
+      [
+       -25,
+       -40
+      ],
+      [
+       -10,
+       -35
+      ]
+     ],
+     "restricoes": 22,
+     "satisfeitas": 17
+    },
+    "t4": {
+     "candidatos": [
+      [
+       -20,
+       -5
+      ],
+      [
+       -10,
+       -5
+      ]
+     ],
+     "restricoes": 35,
+     "satisfeitas": 24
+    },
+    "t5": {
+     "candidatos": [
+      [
+       -60,
+       0
+      ],
+      [
+       -50,
+       0
+      ],
+      [
+       -25,
+       0
+      ],
+      [
+       -20,
+       0
+      ]
+     ],
+     "restricoes": 31,
+     "satisfeitas": 23
+    },
+    "t6": {
+     "candidatos": [
+      [
+       -10,
+       35
+      ]
+     ],
+     "restricoes": 18,
+     "satisfeitas": 13
+    }
+   },
+   "[1 3]": {
+    "t3": {
+     "candidatos": [
+      [
+       -25,
+       -80
+      ],
+      [
+       -25,
+       -75
+      ],
+      [
+       -25,
+       -70
+      ],
+      [
+       -25,
+       -65
+      ]
+     ],
+     "restricoes": 5,
+     "satisfeitas": 4
+    },
+    "t4": {
+     "candidatos": [
+      [
+       -35,
+       -25
+      ],
+      [
+       -25,
+       -25
+      ]
+     ],
+     "restricoes": 5,
+     "satisfeitas": 4
+    },
+    "t5": {
+     "candidatos": [
+      [
+       -50,
+       -25
+      ],
+      [
+       -10,
+       -20
+      ],
+      [
+       -10,
+       -15
+      ]
+     ],
+     "restricoes": 14,
+     "satisfeitas": 12
+    },
+    "t6": {
+     "candidatos": [
+      [
+       -50,
+       10
+      ],
+      [
+       -50,
+       15
+      ]
+     ],
+     "restricoes": 4,
+     "satisfeitas": 3
+    },
+    "t7": {
+     "candidatos": [
+      [
+       -65,
+       20
+      ]
+     ],
+     "restricoes": 5,
+     "satisfeitas": 5
+    },
+    "t8": {
+     "candidatos": [
+      [
+       -65,
+       50
+      ],
+      [
+       -65,
+       55
+      ],
+      [
+       -65,
+       80
+      ],
+      [
+       -35,
+       50
+      ]
+     ],
+     "restricoes": 5,
+     "satisfeitas": 3
+    }
+   },
+   "[2 3]": {
+    "t1": {
+     "candidatos": [
+      [
+       -80,
+       -35
+      ],
+      [
+       -75,
+       -35
+      ],
+      [
+       -70,
+       -35
+      ],
+      [
+       -65,
+       -35
+      ]
+     ],
+     "restricoes": 36,
+     "satisfeitas": 36
+    },
+    "t2": {
+     "candidatos": [
+      [
+       55,
+       25
+      ]
+     ],
+     "restricoes": 26,
+     "satisfeitas": 26
+    },
+    "t3": {
+     "candidatos": [
+      [
+       -80,
+       5
+      ],
+      [
+       -75,
+       5
+      ],
+      [
+       -70,
+       5
+      ],
+      [
+       -65,
+       5
+      ]
+     ],
+     "restricoes": 18,
+     "satisfeitas": 18
+    },
+    "t4": {
+     "candidatos": [
+      [
+       10,
+       35
+      ],
+      [
+       20,
+       55
+      ]
+     ],
+     "restricoes": 18,
+     "satisfeitas": 18
+    },
+    "t5": {
+     "candidatos": [
+      [
+       -80,
+       -55
+      ],
+      [
+       -75,
+       -55
+      ],
+      [
+       -70,
+       -55
+      ],
+      [
+       -65,
+       -55
+      ]
+     ],
+     "restricoes": 12,
+     "satisfeitas": 12
+    },
+    "t6": {
+     "candidatos": [
+      [
+       -80,
+       -25
+      ],
+      [
+       -75,
+       -25
+      ],
+      [
+       -70,
+       -25
+      ],
+      [
+       -65,
+       -25
+      ]
+     ],
+     "restricoes": 18,
+     "satisfeitas": 18
+    },
+    "t7": {
+     "candidatos": [
+      [
+       -80,
+       -15
+      ],
+      [
+       -75,
+       -15
+      ],
+      [
+       -70,
+       -15
+      ],
+      [
+       -65,
+       -15
+      ]
+     ],
+     "restricoes": 12,
+     "satisfeitas": 12
+    },
+    "t8": {
+     "candidatos": [
+      [
+       -80,
+       15
+      ],
+      [
+       -75,
+       15
+      ],
+      [
+       -70,
+       15
+      ],
+      [
+       -65,
+       15
+      ]
+     ],
+     "restricoes": 32,
+     "satisfeitas": 32
+    },
+    "t9": {
+     "candidatos": [
+      [
+       -80,
+       25
+      ],
+      [
+       -75,
+       25
+      ],
+      [
+       -70,
+       25
+      ],
+      [
+       -65,
+       25
+      ]
+     ],
+     "restricoes": 12,
+     "satisfeitas": 12
+    },
+    "t10": {
+     "candidatos": [
+      [
+       -80,
+       55
+      ],
+      [
+       -75,
+       55
+      ],
+      [
+       -70,
+       55
+      ],
+      [
+       -65,
+       55
+      ]
+     ],
+     "restricoes": 20,
+     "satisfeitas": 20
+    }
+   },
+   "[2 6]": {
+    "t1": {
+     "candidatos": [
+      [
+       -80,
+       -35
+      ],
+      [
+       -75,
+       -35
+      ],
+      [
+       -70,
+       -35
+      ],
+      [
+       -65,
+       -35
+      ]
+     ],
+     "restricoes": 8,
+     "satisfeitas": 8
+    },
+    "t2": {
+     "candidatos": [
+      [
+       -80,
+       -5
+      ],
+      [
+       -75,
+       -5
+      ],
+      [
+       -70,
+       -5
+      ],
+      [
+       -65,
+       -5
+      ]
+     ],
+     "restricoes": 6,
+     "satisfeitas": 6
+    },
+    "t3": {
+     "candidatos": [
+      [
+       -80,
+       5
+      ],
+      [
+       -75,
+       5
+      ],
+      [
+       -70,
+       5
+      ],
+      [
+       -65,
+       5
+      ]
+     ],
+     "restricoes": 6,
+     "satisfeitas": 6
+    },
+    "t4": {
+     "candidatos": [
+      [
+       10,
+       35
+      ],
+      [
+       20,
+       55
+      ]
+     ],
+     "restricoes": 6,
+     "satisfeitas": 6
+    },
+    "t5": {
+     "candidatos": [
+      [
+       -20,
+       -80
+      ],
+      [
+       -20,
+       -75
+      ],
+      [
+       -20,
+       -70
+      ],
+      [
+       -20,
+       -65
+      ]
+     ],
+     "restricoes": 4,
+     "satisfeitas": 4
+    },
+    "t6": {
+     "candidatos": [
+      [
+       -20,
+       -80
+      ],
+      [
+       -20,
+       -75
+      ],
+      [
+       -20,
+       -70
+      ],
+      [
+       -20,
+       -65
+      ]
+     ],
+     "restricoes": 6,
+     "satisfeitas": 4
+    },
+    "t7": {
+     "candidatos": [
+      [
+       -80,
+       -75
+      ],
+      [
+       -75,
+       -75
+      ],
+      [
+       -70,
+       -75
+      ],
+      [
+       -65,
+       -75
+      ]
+     ],
+     "restricoes": 4,
+     "satisfeitas": 4
+    },
+    "t8": {
+     "candidatos": [
+      [
+       -80,
+       -45
+      ],
+      [
+       -75,
+       -45
+      ],
+      [
+       -70,
+       -45
+      ],
+      [
+       -65,
+       -45
+      ]
+     ],
+     "restricoes": 8,
+     "satisfeitas": 8
+    },
+    "t9": {
+     "candidatos": [
+      [
+       -80,
+       -35
+      ],
+      [
+       -75,
+       -35
+      ],
+      [
+       -70,
+       -35
+      ],
+      [
+       -65,
+       -35
+      ]
+     ],
+     "restricoes": 4,
+     "satisfeitas": 4
+    },
+    "t10": {
+     "candidatos": [
+      [
+       -80,
+       -5
+      ],
+      [
+       -75,
+       -5
+      ],
+      [
+       -70,
+       -5
+      ],
+      [
+       -65,
+       -5
+      ]
+     ],
+     "restricoes": 6,
+     "satisfeitas": 6
+    },
+    "t11": {
+     "candidatos": [
+      [
+       -80,
+       5
+      ],
+      [
+       -75,
+       5
+      ],
+      [
+       -70,
+       5
+      ],
+      [
+       -65,
+       5
+      ]
+     ],
+     "restricoes": 4,
+     "satisfeitas": 4
+    },
+    "t12": {
+     "candidatos": [
+      [
+       -80,
+       35
+      ],
+      [
+       -75,
+       35
+      ],
+      [
+       -70,
+       35
+      ],
+      [
+       -65,
+       35
+      ]
+     ],
+     "restricoes": 6,
+     "satisfeitas": 6
+    },
+    "t13": {
+     "candidatos": [
+      [
+       -80,
+       45
+      ],
+      [
+       -75,
+       45
+      ],
+      [
+       -70,
+       45
+      ],
+      [
+       -65,
+       45
+      ]
+     ],
+     "restricoes": 4,
+     "satisfeitas": 4
+    },
+    "t14": {
+     "candidatos": [
+      [
+       -80,
+       75
+      ],
+      [
+       -75,
+       75
+      ],
+      [
+       -70,
+       75
+      ],
+      [
+       -65,
+       75
+      ]
+     ],
+     "restricoes": 12,
+     "satisfeitas": 12
+    },
+    "t15": {
+     "candidatos": [
+      [
+       -80,
+       -80
+      ],
+      [
+       -80,
+       -75
+      ],
+      [
+       -80,
+       -70
+      ],
+      [
+       -80,
+       -65
+      ]
+     ],
+     "restricoes": 4,
+     "satisfeitas": 0
+    },
+    "t16": {
+     "candidatos": [
+      [
+       -25,
+       -80
+      ],
+      [
+       -25,
+       -75
+      ],
+      [
+       -25,
+       -70
+      ],
+      [
+       -25,
+       -65
+      ]
+     ],
+     "restricoes": 8,
+     "satisfeitas": 4
+    }
+   }
+  }
  }
 }

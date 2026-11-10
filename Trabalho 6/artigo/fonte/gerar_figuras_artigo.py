@@ -67,52 +67,72 @@ def arquitetura():
 
 
 def circuito_cc():
-    """Celula de tres estados com autotransformador, secundario em ponte e C7 empilhado sobre C8."""
+    """Celula de tres estados com autotransformador, secundario em ponte e C7 empilhado sobre C8.
+
+    O acoplamento entre os dois enrolamentos do primario e o secundario e desenhado com as duas
+    barras do nucleo, e a ponte do secundario traz os quatro diodos. Os dois condutores do
+    secundario cruzam a coluna de D18 sem no, como e usual em esquemas deste conversor."""
     import schemdraw
     import schemdraw.elements as elm
     schemdraw.config(fontsize=9, lw=1.1, font='serif', bgcolor='white')
-    yb, yw, yM, yT = 0.0, 4.4, 6.6, 8.8
-    xA, xT, xB, xM, xo = 1.0, 3.2, 5.4, 7.6, 9.0
+    yb, yw, yn1, yn2, ys, yM, yT = 0.0, 3.4, 4.05, 4.25, 4.9, 6.8, 9.6
+    xA, xT, xB, xa, xbb, xM, xo = 1.0, 3.2, 5.4, 7.0, 8.6, 10.4, 11.8
     with schemdraw.Drawing(show=False) as d:
-        d.add(elm.Battery().reverse().at((xT, yb)).to((xT, 1.6)).label('$V_{bat}$', loc='bottom', ofst=0.15))
-        d.add(elm.Inductor2(loops=3).at((xT, 1.6)).to((xT, yw - 0.05)).label('$L_b$', loc='bottom', ofst=0.15))
+        # bateria, Lb e derivacao central
+        d.add(elm.Battery().reverse().at((xT, yb)).to((xT, 1.3)).label('$V_{bat}$', loc='bottom', ofst=0.15))
+        d.add(elm.Inductor2(loops=3).at((xT, 1.3)).to((xT, yw - 0.05)).label('$L_b$', loc='bottom', ofst=0.15))
         d.add(elm.Dot().at((xT, yw)))
-        d.add(elm.Inductor2(loops=2).at((xA, yw)).to((xT, yw)).label('$N_p$', loc='top'))
-        d.add(elm.Inductor2(loops=2).at((xT, yw)).to((xB, yw)).label('$N_p$', loc='top'))
+        # autotransformador: dois enrolamentos do primario, nucleo e secundario
+        d.add(elm.Inductor2(loops=2).at((xA, yw)).to((xT, yw)).label('$N_p$', loc='bottom', ofst=0.2))
+        d.add(elm.Inductor2(loops=2).at((xT, yw)).to((xB, yw)).label('$N_p$', loc='bottom', ofst=0.2))
         d.add(elm.Dot().at((xA, yw)))
         d.add(elm.Dot().at((xB, yw)))
+        for yc in (yn1, yn2):
+            d.add(elm.Line().at((xA + 0.3, yc)).to((xB - 0.3, yc)))
+        d.add(elm.Inductor2(loops=2).at((xA + 0.6, ys)).to((xB - 0.6, ys)).label('$N_s$', loc='top', ofst=0.2))
+        # chaves e diodos da celula
         f1 = d.add(elm.NFet(bulk=False).theta(0).reverse().anchor('drain').at((xA, yw)))
         d.add(elm.Line().at(f1.source).to((xA, yb)))
         d.add(elm.Label().at((f1.gate[0] - 0.1, f1.gate[1] + 0.45)).label('$S_1$'))
         f2 = d.add(elm.NFet(bulk=False).theta(0).anchor('drain').at((xB, yw)))
         d.add(elm.Line().at(f2.source).to((xB, yb)))
         d.add(elm.Label().at((f2.gate[0] + 0.1, f2.gate[1] + 0.45)).label('$S_2$'))
-        d.add(elm.Diode().at((xA, yw)).to((xA, yM)).label('$D_{17}$', loc='bottom'))
-        d.add(elm.Diode().at((xB, yw)).to((xB, yM)).label('$D_{18}$', loc='top'))
+        d.add(elm.Diode().at((xA, yw)).to((xA, yM)))
+        d.add(elm.Label().at((xA - 0.6, (yw + yM) / 2)).label('$D_{17}$'))
+        d.add(elm.Diode().at((xB, yw)).to((xB, yM)))
+        d.add(elm.Label().at((xB + 0.6, (yw + yM) / 2)).label('$D_{18}$'))
+        # condutores do secundario ate os nos de alternada da ponte, acima do corpo de D17 e
+        # D18 e abaixo do no M; os cruzamentos sem no sao os de D18 e os do proprio no M
+        ya, yn = yM + 1.4, yM - 0.35
+        for x0, xv, yh in ((xA + 0.6, xa - 0.8, yn), (xB - 0.6, xbb - 0.8, yn - 0.25)):
+            d.add(elm.Line().at((x0, ys)).to((x0, yh)))
+            d.add(elm.Line().at((x0, yh)).to((xv, yh)))
+            d.add(elm.Line().at((xv, yh)).to((xv, ya)))
+        d.add(elm.Line().at((xa - 0.8, ya)).to((xa, ya)))
+        d.add(elm.Line().at((xbb - 0.8, ya)).to((xbb, ya)))
+        # ponte do secundario: M -> D15/D16 -> no de alternada -> D13/D14 -> +Vbus
+        for x, dbaixo, dcima in ((xa, '$D_{15}$', '$D_{13}$'), (xbb, '$D_{16}$', '$D_{14}$')):
+            d.add(elm.Diode().at((x, yM)).to((x, ya)))
+            d.add(elm.Label().at((x + 0.6, (yM + ya) / 2)).label(dbaixo))
+            d.add(elm.Dot().at((x, ya)))
+            d.add(elm.Diode().at((x, ya)).to((x, yT)))
+            d.add(elm.Label().at((x + 0.6, (ya + yT) / 2)).label(dcima))
+        # barramentos
         d.add(elm.Line().at((xA, yM)).to((xM, yM)))
+        d.add(elm.Dot().at((xa, yM)))
+        d.add(elm.Dot().at((xbb, yM)))
         d.add(elm.Dot().at((xM, yM)).label('M', loc='right', ofst=0.1))
         d.add(elm.Capacitor().at((xM, yM)).to((xM, yb)).label('$C_8$', loc='bottom'))
         d.add(elm.Capacitor().at((xM, yM)).to((xM, yT)).label('$C_7$', loc='bottom'))
+        d.add(elm.Line().at((xa, yT)).to((xo, yT)))
+        d.add(elm.Dot().at((xbb, yT)))
+        d.add(elm.Dot().at((xM, yT)))
+        d.add(elm.Dot(open=True).at((xo, yT)).label('$+V_{bus}$', loc='right'))
         d.add(elm.Line().at((xA, yb)).to((xo, yb)))
         d.add(elm.Dot().at((xM, yb)))
         d.add(elm.Dot().at((xT, yb)))
         d.add(elm.Dot().at((xB, yb)))
         d.add(elm.Dot(open=True).at((xo, yb)).label('$-$', loc='right'))
-        # secundario e ponte D13-D16
-        d.add(elm.Inductor2(loops=2).at((2.6, 7.2)).to((2.6, 8.4)).label('$N_s$', loc='bottom'))
-        d.add(elm.Line().at((2.6, 8.4)).to((3.3, 8.4)))
-        d.add(elm.Line().at((2.6, 7.2)).to((3.3, 7.2)))
-        ponte = d.add(elm.Ic(pins=[elm.IcPin(side='L', anchorname='a1', slot='2/2'), elm.IcPin(side='L', anchorname='a2', slot='1/2'),
-                                   elm.IcPin(side='R', anchorname='p', slot='2/2'), elm.IcPin(side='R', anchorname='n', slot='1/2')],
-                                   size=(1.6, 1.2), label='D13 a D16', lblsize=8, pinspacing=1.2).anchor('a1').at((3.3, 8.4)))
-        d.add(elm.Line().at(ponte.p).to((ponte.p[0] + 0.4, ponte.p[1])))
-        d.add(elm.Line().at((ponte.p[0] + 0.4, ponte.p[1])).to((ponte.p[0] + 0.4, yT)))
-        d.add(elm.Line().at((ponte.p[0] + 0.4, yT)).to((xo, yT)))
-        d.add(elm.Dot().at((xM, yT)))
-        d.add(elm.Dot(open=True).at((xo, yT)).label('$+V_{bus}$', loc='right'))
-        d.add(elm.Line().at(ponte.n).to((ponte.n[0] + 0.4, ponte.n[1])))
-        d.add(elm.Line().at((ponte.n[0] + 0.4, ponte.n[1])).to((ponte.n[0] + 0.4, yM)))
-        d.add(elm.Dot().at((ponte.n[0] + 0.4, yM)))
         d.save(str(FIG / 'circuito_cc.svg'))
         d.save(str(FIG / 'circuito_cc.png'), dpi=300)
 

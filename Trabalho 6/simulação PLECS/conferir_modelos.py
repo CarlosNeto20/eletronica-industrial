@@ -16,7 +16,7 @@ import re, json, shutil, subprocess, tempfile, sys
 
 SIM = Path(__file__).resolve().parent
 ROOT = SIM.parent
-BIB = json.loads((ROOT / 'desenvolvimento/blocos_biblioteca.json').read_text(encoding='utf-8'))
+BIB = json.loads((ROOT / 'desenvolvimento/blocos_biblioteca.json').read_text(encoding='utf-8'))['blocos']
 MOD = json.loads((SIM / 'modelos.json').read_text(encoding='utf-8'))
 ENS = json.loads((SIM / 'ensaios.json').read_text(encoding='utf-8'))
 ELETRICO = {'Resistor': 2, 'Inductor': 2, 'Capacitor': 2, 'Diode': 2, 'DCVoltageSource': 2, 'ACVoltageSource': 2,

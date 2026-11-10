@@ -1,0 +1,120 @@
+{
+ "ensaio": "nb_220_rl3k",
+ "descricao": "Rede de 220 V com carga RL de 3 kVA com FP 0,7; falta da rede em 0,1 s (cruzamento por zero)",
+ "grupo": "secao_6",
+ "modelo": "nobreak_completo",
+ "sha256_modelo": "3bacaebd645529b57244c6e942b2677908c3174dd282875859b0618549fdb4ae",
+ "inicio": "2026-11-09T23:06:35-03:00",
+ "PLECS": "PLECS Standalone 5.0 (64 bit), formato 5.0; 5.0.6 segundo o registro do Trabalho 4",
+ "opcoes": {
+  "ModelVars": {
+   "Vrms": 220.0,
+   "phi_rede": 0,
+   "carga": 3,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "tfalta": 0.1,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 309.527,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 206.3513,
+   "VC7_0": 103.1757,
+   "Tstop": 0.2
+  },
+  "SolverOpts": {
+   "TimeSpan": 0.2,
+   "Solver": "radau",
+   "MaxStep": 5e-06,
+   "RelTol": 1e-06,
+   "AbsTol": 1e-08,
+   "OutputTimesOption": "specified",
+   "Timeout": 1200.0,
+   "OutputTimes_n": 22551
+  }
+ },
+ "assinatura_opcoes": "93ffcfb1796abca1cd61c5f300e3cc6dcd4dc500b303ec292bf2726518fb8acc",
+ "grade_saida": [
+  [
+   0.0,
+   0.2,
+   2e-05
+  ],
+  [
+   0.0865,
+   0.0885,
+   5e-07
+  ],
+  [
+   0.1865,
+   0.1885,
+   5e-07
+  ],
+  [
+   0.099,
+   0.104,
+   1e-06
+  ]
+ ],
+ "janelas": {
+  "rede": [
+   0.06666666666666667,
+   0.1
+  ],
+  "bateria": [
+   0.16666666666666666,
+   0.2
+  ],
+  "transferencia": [
+   0.095,
+   0.12000000000000001
+  ],
+  "detalhe_rede": [
+   0.0865,
+   0.0885
+  ],
+  "detalhe_bateria": [
+   0.1865,
+   0.1885
+  ]
+ },
+ "status": "executado",
+ "duracao_real_s": 50.235,
+ "amostras": 22551,
+ "colunas": [
+  "tempo_s",
+  "v_rede_V",
+  "i_rede_A",
+  "i_D1_A",
+  "i_ponte_A",
+  "i_C4_A",
+  "v_bus_V",
+  "i_bat_A",
+  "v_C8_V",
+  "v_C7_V",
+  "i_S1_A",
+  "v_S1_V",
+  "v_o_V",
+  "i_o_A",
+  "i_Lo_A",
+  "v_c_V",
+  "v_ref_V",
+  "v_c_livre_V",
+  "rede_on",
+  "dref_cc",
+  "v_nl_V",
+  "i_QA_A",
+  "i_S2_A",
+  "i_D17_A",
+  "i_sec_A",
+  "v_AB_V"
+ ],
+ "sha256_csv": "92beb5a3c75fac10130ac2ddb3a763603b5fab7d9a32418eea0b9f32815e5963",
+ "tempo_inicial_s": 0.0,
+ "tempo_final_s": 0.2,
+ "fim": "2026-11-09T23:07:28-03:00"
+}

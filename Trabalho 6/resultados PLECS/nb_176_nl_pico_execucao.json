@@ -1,0 +1,115 @@
+{
+ "ensaio": "nb_176_nl_pico",
+ "descricao": "Como nb_176_nl, com a falta no pico positivo da tensao da rede",
+ "grupo": "secao_6",
+ "modelo": "nobreak_completo",
+ "sha256_modelo": "3bacaebd645529b57244c6e942b2677908c3174dd282875859b0618549fdb4ae",
+ "inicio": "2026-11-09T23:09:13-03:00",
+ "PLECS": "PLECS Standalone 5.0 (64 bit), formato 5.0; 5.0.6 segundo o registro do Trabalho 4",
+ "opcoes": {
+  "ModelVars": {
+   "Vrms": 176.0,
+   "phi_rede": 0,
+   "carga": 2,
+   "Rres": 6.297619,
+   "tcarga": 0,
+   "tfalta": 0.1041667,
+   "tretorno": 100,
+   "tdet": 0,
+   "modo_cc": 0,
+   "Vbat": 42.0,
+   "Db": 0.7,
+   "Vbus0": 247.3016,
+   "ILb0": 0,
+   "VC3_0": 140.0,
+   "VC8_0": 164.8677,
+   "VC7_0": 82.4339,
+   "Tstop": 0.2
+  },
+  "SolverOpts": {
+   "TimeSpan": 0.2,
+   "Solver": "radau",
+   "MaxStep": 5e-06,
+   "RelTol": 1e-06,
+   "AbsTol": 1e-08,
+   "OutputTimesOption": "specified",
+   "Timeout": 1200.0,
+   "OutputTimes_n": 18902
+  }
+ },
+ "assinatura_opcoes": "bbbe5f6757cab4180dd51e37e68ffa2a197a7646794af23dbf04c7e9871857ea",
+ "grade_saida": [
+  [
+   0.0,
+   0.2,
+   2e-05
+  ],
+  [
+   0.103166667,
+   0.108166667,
+   1e-06
+  ],
+  [
+   0.1865,
+   0.1885,
+   5e-07
+  ]
+ ],
+ "janelas": {
+  "rede": [
+   0.06666666666666667,
+   0.1
+  ],
+  "bateria": [
+   0.16666666666666666,
+   0.2
+  ],
+  "transferencia": [
+   0.09916666666666667,
+   0.12416666666666668
+  ],
+  "detalhe_rede": [
+   0.0865,
+   0.0885
+  ],
+  "detalhe_bateria": [
+   0.1865,
+   0.1885
+  ]
+ },
+ "status": "executado",
+ "duracao_real_s": 48.738,
+ "amostras": 18902,
+ "colunas": [
+  "tempo_s",
+  "v_rede_V",
+  "i_rede_A",
+  "i_D1_A",
+  "i_ponte_A",
+  "i_C4_A",
+  "v_bus_V",
+  "i_bat_A",
+  "v_C8_V",
+  "v_C7_V",
+  "i_S1_A",
+  "v_S1_V",
+  "v_o_V",
+  "i_o_A",
+  "i_Lo_A",
+  "v_c_V",
+  "v_ref_V",
+  "v_c_livre_V",
+  "rede_on",
+  "dref_cc",
+  "v_nl_V",
+  "i_QA_A",
+  "i_S2_A",
+  "i_D17_A",
+  "i_sec_A",
+  "v_AB_V"
+ ],
+ "sha256_csv": "8222cdde9b564d8b802db47f137c4e2a850ba94a5f9b3a944b9a0a58dc6439c3",
+ "tempo_inicial_s": 0.0,
+ "tempo_final_s": 0.2,
+ "fim": "2026-11-09T23:10:03-03:00"
+}

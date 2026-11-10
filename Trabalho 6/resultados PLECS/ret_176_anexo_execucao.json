@@ -3,8 +3,8 @@
  "descricao": "Retificador com 1880 uF, ESR, 0,1 ohm e diodos reais a 176 V, carga equivalente a 2250 W",
  "grupo": "submodelo",
  "modelo": "retificador_barramento",
- "sha256_modelo": "dc9c48d395d39e52d8998e20b2b1da4c39c50a13ef3bfe353cde7bb4f9af630f",
- "inicio": "2026-11-09T18:29:16-03:00",
+ "sha256_modelo": "892930d0d87602888a0bcb71fbc9cb73239d8aee33f13a51a03f5a2242a07b04",
+ "inicio": "2026-11-09T23:00:15-03:00",
  "PLECS": "PLECS Standalone 5.0 (64 bit), formato 5.0; 5.0.6 segundo o registro do Trabalho 4",
  "opcoes": {
   "ModelVars": {
@@ -20,6 +20,7 @@
    "RelTol": 1e-06,
    "AbsTol": 1e-08,
    "OutputTimesOption": "specified",
+   "Timeout": 300.0,
    "OutputTimes_n": 19001
   }
  },
@@ -43,7 +44,7 @@
   ]
  },
  "status": "executado",
- "duracao_real_s": 0.406,
+ "duracao_real_s": 0.538,
  "amostras": 19001,
  "colunas": [
   "tempo_s",
@@ -57,5 +58,5 @@
  "sha256_csv": "dc9f8540a55f84e5542521c7e99ed035ff8e7626a3e4438ba28de2f64c072f53",
  "tempo_inicial_s": 0.0,
  "tempo_final_s": 0.15,
- "fim": "2026-11-09T18:29:17-03:00"
+ "fim": "2026-11-09T23:00:16-03:00"
 }

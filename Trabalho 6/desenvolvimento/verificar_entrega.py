@@ -128,11 +128,15 @@ rel = dict(ensaios_executados=len([e for e in ensaios if e['ok']]), ensaios_pend
 (ROOT / 'desenvolvimento' / 'verificacao_entrega.json').write_text(json.dumps(rel, indent=1, ensure_ascii=False), encoding='utf-8')
 
 # 4. Manifesto ----------------------------------------------------------------
-restritos = {'qa', 'qa_fonte', '__pycache__', 'testes'}
+# 'layout_anterior' guarda os .plecs antes da reorganizacao do desenho, so como referencia
+# de conferencia; 'qa' e 'qa_fonte' tem material restrito, do qual so a revisao visual entra.
+restritos = {'qa', 'qa_fonte', '__pycache__', 'testes', 'layout_anterior'}
 manifesto = {}
 for pasta in ('desenvolvimento', 'simulação PLECS', 'resultados PLECS', 'artigo'):
     for p in sorted((ROOT / pasta).rglob('*')):
-        if not p.is_file() or restritos & set(p.parts) or p.name in ('extracao_restrita.txt',):
+        if not p.is_file() or p.name in ('extracao_restrita.txt',):
+            continue
+        if restritos & set(p.parts) and p.name != 'revisao_visual.md':
             continue
         manifesto[str(p.relative_to(ROOT)).replace('\\', '/')] = dict(bytes=p.stat().st_size, sha256=sha(p))
 for extra in ('LEIA-ME-ENTREGA.md', 'README.txt', '.gitignore'):

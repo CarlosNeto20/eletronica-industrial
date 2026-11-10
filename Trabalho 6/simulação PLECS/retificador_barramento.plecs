@@ -76,54 +76,54 @@ Plecs {
   Terminal { Type Output Index "4" }
   Terminal { Type Output Index "5" }
   Terminal { Type Output Index "6" }
-  Schematic { Location [40, 40; 1600, 900] ZoomFactor 0.7 SliderPosition [0, 0] ShowBrowser off BrowserWidth 100
-    Component { Type ACVoltageSource Name "Vrede" Show on Position [40, 260] Direction down Flipped off LabelPosition south Parameter { Variable "V" Value "sqrt(2)*Vrms" Show off } Parameter { Variable "w" Value "2*pi*fr" Show off } Parameter { Variable "phi" Value "phi_rede" Show off } }
-    Component { Type Voltmeter Name "Vm_rede" Show on Position [10, 260] Direction down Flipped off LabelPosition south  }
-    Component { Type Ground Name "GND_rede" Show on Position [40, 340] Direction right Flipped off LabelPosition south  }
-    Component { Type Switch Name "SS2" Show on Position [100, 200] Direction right Flipped off LabelPosition south Parameter { Variable "s_init" Value "1" Show off } }
-    Component { Type Ammeter Name "Am_rede" Show on Position [150, 200] Direction right Flipped off LabelPosition south  }
-    Component { Type Resistor Name "R_T1" Show on Position [190, 200] Direction right Flipped off LabelPosition south Parameter { Variable "R" Value "R_T1" Show off } }
-    Component { Type Transformer Name "T1" Show on Position [240, 260] Direction right Flipped off LabelPosition south Parameter { Variable "Windings" Value "[1 1]" Show off } Parameter { Variable "n" Value "[1 1]" Show off } Parameter { Variable "Polarity" Value "+" Show off } Parameter { Variable "Lm" Value "inf" Show off } Parameter { Variable "im0" Value "0" Show off } }
-    Component { Type Ammeter Name "Am_D1" Show on Position [320, 180] Direction up Flipped off LabelPosition south  }
-    Component { Type Diode Name "D1" Show on Position [320, 140] Direction up Flipped off LabelPosition south Parameter { Variable "Vf" Value "Vf_ponte" Show off } Parameter { Variable "Ron" Value "Ron_ponte" Show off } }
-    Component { Type Diode Name "D3" Show on Position [370, 140] Direction up Flipped off LabelPosition south Parameter { Variable "Vf" Value "Vf_ponte" Show off } Parameter { Variable "Ron" Value "Ron_ponte" Show off } }
-    Component { Type Diode Name "D2" Show on Position [320, 320] Direction up Flipped off LabelPosition south Parameter { Variable "Vf" Value "Vf_ponte" Show off } Parameter { Variable "Ron" Value "Ron_ponte" Show off } }
-    Component { Type Diode Name "D4" Show on Position [370, 320] Direction up Flipped off LabelPosition south Parameter { Variable "Vf" Value "Vf_ponte" Show off } Parameter { Variable "Ron" Value "Ron_ponte" Show off } }
-    Component { Type Ammeter Name "Am_ponte" Show on Position [420, 100] Direction right Flipped off LabelPosition south  }
-    Component { Type Resistor Name "Rbus" Show on Position [460, 100] Direction right Flipped off LabelPosition south Parameter { Variable "R" Value "Rbus" Show off } }
-    Component { Type Ammeter Name "Am_C4" Show on Position [510, 160] Direction down Flipped off LabelPosition south  }
-    Component { Type Resistor Name "ESR_C4" Show on Position [510, 210] Direction down Flipped off LabelPosition south Parameter { Variable "R" Value "ESR_C4" Show off } }
-    Component { Type Capacitor Name "C4" Show on Position [510, 260] Direction down Flipped off LabelPosition south Parameter { Variable "C" Value "C4" Show off } Parameter { Variable "v_init" Value "Vbus0" Show off } }
-    Component { Type Voltmeter Name "Vm_bus" Show on Position [550, 220] Direction down Flipped off LabelPosition south  }
-    Component { Type Ground Name "GND_bus" Show on Position [530, 340] Direction right Flipped off LabelPosition south  }
-    Component { Type Resistor Name "R_eq" Show on Position [620, 260] Direction down Flipped off LabelPosition south Parameter { Variable "R" Value "Rcarga" Show off } }
-    Component { Type Constant Name "SS2_fechada" Show on Position [40, 120] Direction right Flipped off LabelPosition south Parameter { Variable "Value" Value "1" Show off } Parameter { Variable "DataType" Value "10" Show off } }
-    Component { Type Output Name "v_rede_V" Show on Position [1500, 60] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "1" Show off } Parameter { Variable "Width" Value "-1" Show off } }
-    Component { Type Output Name "i_rede_A" Show on Position [1500, 90] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "2" Show off } Parameter { Variable "Width" Value "-1" Show off } }
-    Component { Type Output Name "i_D1_A" Show on Position [1500, 120] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "3" Show off } Parameter { Variable "Width" Value "-1" Show off } }
-    Component { Type Output Name "i_ponte_A" Show on Position [1500, 150] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "4" Show off } Parameter { Variable "Width" Value "-1" Show off } }
-    Component { Type Output Name "i_C4_A" Show on Position [1500, 180] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "5" Show off } Parameter { Variable "Width" Value "-1" Show off } }
-    Component { Type Output Name "v_bus_V" Show on Position [1500, 210] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "6" Show off } Parameter { Variable "Width" Value "-1" Show off } }
-    Connection { Type Wire SrcComponent "Vrede" SrcTerminal 1 Branch { DstComponent "Vm_rede" DstTerminal 1 } Branch { DstComponent "SS2" DstTerminal 1 } }
-    Connection { Type Wire SrcComponent "Vrede" SrcTerminal 2 Branch { DstComponent "Vm_rede" DstTerminal 2 } Branch { DstComponent "GND_rede" DstTerminal 1 } Branch { DstComponent "T1" DstTerminal 2 } }
-    Connection { Type Wire SrcComponent "SS2" SrcTerminal 2 DstComponent "Am_rede" DstTerminal 1 }
-    Connection { Type Wire SrcComponent "Am_rede" SrcTerminal 2 DstComponent "R_T1" DstTerminal 1 }
-    Connection { Type Wire SrcComponent "R_T1" SrcTerminal 2 DstComponent "T1" DstTerminal 1 }
-    Connection { Type Wire SrcComponent "T1" SrcTerminal 3 Branch { DstComponent "Am_D1" DstTerminal 1 } Branch { DstComponent "D2" DstTerminal 2 } }
-    Connection { Type Wire SrcComponent "Am_D1" SrcTerminal 2 DstComponent "D1" DstTerminal 1 }
-    Connection { Type Wire SrcComponent "T1" SrcTerminal 4 Branch { DstComponent "D3" DstTerminal 1 } Branch { DstComponent "D4" DstTerminal 2 } }
-    Connection { Type Wire SrcComponent "D1" SrcTerminal 2 Branch { DstComponent "D3" DstTerminal 2 } Branch { DstComponent "Am_ponte" DstTerminal 1 } }
-    Connection { Type Wire SrcComponent "D2" SrcTerminal 1 Branch { DstComponent "D4" DstTerminal 1 } Branch { DstComponent "C4" DstTerminal 2 } Branch { DstComponent "Vm_bus" DstTerminal 2 } Branch { DstComponent "GND_bus" DstTerminal 1 } Branch { DstComponent "R_eq" DstTerminal 2 } }
-    Connection { Type Wire SrcComponent "Am_ponte" SrcTerminal 2 DstComponent "Rbus" DstTerminal 1 }
-    Connection { Type Wire SrcComponent "Rbus" SrcTerminal 2 Branch { DstComponent "Am_C4" DstTerminal 1 } Branch { DstComponent "Vm_bus" DstTerminal 1 } Branch { DstComponent "R_eq" DstTerminal 1 } }
-    Connection { Type Wire SrcComponent "Am_C4" SrcTerminal 2 DstComponent "ESR_C4" DstTerminal 1 }
-    Connection { Type Wire SrcComponent "ESR_C4" SrcTerminal 2 DstComponent "C4" DstTerminal 1 }
-    Connection { Type Signal SrcComponent "SS2_fechada" SrcTerminal 1 DstComponent "SS2" DstTerminal 3 }
-    Connection { Type Signal SrcComponent "Vm_rede" SrcTerminal 3 DstComponent "v_rede_V" DstTerminal 1 }
-    Connection { Type Signal SrcComponent "Am_rede" SrcTerminal 3 DstComponent "i_rede_A" DstTerminal 1 }
-    Connection { Type Signal SrcComponent "Am_D1" SrcTerminal 3 DstComponent "i_D1_A" DstTerminal 1 }
-    Connection { Type Signal SrcComponent "Am_ponte" SrcTerminal 3 DstComponent "i_ponte_A" DstTerminal 1 }
-    Connection { Type Signal SrcComponent "Am_C4" SrcTerminal 3 DstComponent "i_C4_A" DstTerminal 1 }
-    Connection { Type Signal SrcComponent "Vm_bus" SrcTerminal 3 DstComponent "v_bus_V" DstTerminal 1 }
+  Schematic { Location [40, 40; 1600, 900] ZoomFactor 0.745 SliderPosition [0, 0] ShowBrowser off BrowserWidth 100
+    Component { Type Voltmeter Name "Vm_rede" Show on Position [60, 340] Direction up Flipped off LabelPosition south  }
+    Component { Type ACVoltageSource Name "Vrede" Show on Position [140, 340] Direction up Flipped off LabelPosition south Parameter { Variable "V" Value "sqrt(2)*Vrms" Show off } Parameter { Variable "w" Value "2*pi*fr" Show off } Parameter { Variable "phi" Value "phi_rede" Show off } }
+    Component { Type Ground Name "GND_rede" Show on Position [140, 520] Direction up Flipped off LabelPosition south  }
+    Component { Type Switch Name "SS2" Show on Position [250, 220] Direction right Flipped on LabelPosition south Parameter { Variable "s_init" Value "1" Show off } }
+    Component { Type Ammeter Name "Am_rede" Show on Position [360, 220] Direction right Flipped on LabelPosition south  }
+    Component { Type Resistor Name "R_T1" Show on Position [470, 220] Direction right Flipped on LabelPosition south Parameter { Variable "R" Value "R_T1" Show off } }
+    Component { Type Transformer Name "T1" Show on Position [580, 340] Direction right Flipped on LabelPosition south Parameter { Variable "Windings" Value "[1 1]" Show off } Parameter { Variable "n" Value "[1 1]" Show off } Parameter { Variable "Polarity" Value "+" Show off } Parameter { Variable "Lm" Value "inf" Show off } Parameter { Variable "im0" Value "0" Show off } }
+    Component { Type Ammeter Name "Am_D1" Show on Position [720, 340] Direction down Flipped off LabelPosition south  }
+    Component { Type Diode Name "D1" Show on Position [720, 170] Direction down Flipped off LabelPosition south Parameter { Variable "Vf" Value "Vf_ponte" Show off } Parameter { Variable "Ron" Value "Ron_ponte" Show off } }
+    Component { Type Diode Name "D3" Show on Position [900, 170] Direction down Flipped off LabelPosition south Parameter { Variable "Vf" Value "Vf_ponte" Show off } Parameter { Variable "Ron" Value "Ron_ponte" Show off } }
+    Component { Type Diode Name "D2" Show on Position [720, 500] Direction down Flipped off LabelPosition south Parameter { Variable "Vf" Value "Vf_ponte" Show off } Parameter { Variable "Ron" Value "Ron_ponte" Show off } }
+    Component { Type Diode Name "D4" Show on Position [900, 500] Direction down Flipped off LabelPosition south Parameter { Variable "Vf" Value "Vf_ponte" Show off } Parameter { Variable "Ron" Value "Ron_ponte" Show off } }
+    Component { Type Ammeter Name "Am_ponte" Show on Position [1010, 110] Direction right Flipped on LabelPosition south  }
+    Component { Type Resistor Name "Rbus" Show on Position [1110, 110] Direction right Flipped on LabelPosition south Parameter { Variable "R" Value "Rbus" Show off } }
+    Component { Type Ammeter Name "Am_C4" Show on Position [1220, 160] Direction up Flipped off LabelPosition south  }
+    Component { Type Resistor Name "ESR_C4" Show on Position [1220, 280] Direction up Flipped off LabelPosition south Parameter { Variable "R" Value "ESR_C4" Show off } }
+    Component { Type Capacitor Name "C4" Show on Position [1220, 400] Direction up Flipped off LabelPosition south Parameter { Variable "C" Value "C4" Show off } Parameter { Variable "v_init" Value "Vbus0" Show off } }
+    Component { Type Voltmeter Name "Vm_bus" Show on Position [1320, 340] Direction up Flipped off LabelPosition south  }
+    Component { Type Ground Name "GND_bus" Show on Position [1320, 720] Direction up Flipped off LabelPosition south  }
+    Component { Type Resistor Name "R_eq" Show on Position [1420, 340] Direction up Flipped off LabelPosition south Parameter { Variable "R" Value "Rcarga" Show off } }
+    Component { Type Constant Name "SS2_fechada" Show on Position [250, 60] Direction right Flipped off LabelPosition south Parameter { Variable "Value" Value "1" Show off } Parameter { Variable "DataType" Value "10" Show off } }
+    Component { Type Output Name "v_rede_V" Show on Position [1700, 780] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "1" Show off } Parameter { Variable "Width" Value "-1" Show off } }
+    Component { Type Output Name "i_rede_A" Show on Position [1700, 820] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "2" Show off } Parameter { Variable "Width" Value "-1" Show off } }
+    Component { Type Output Name "i_D1_A" Show on Position [1700, 860] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "3" Show off } Parameter { Variable "Width" Value "-1" Show off } }
+    Component { Type Output Name "i_ponte_A" Show on Position [1700, 900] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "4" Show off } Parameter { Variable "Width" Value "-1" Show off } }
+    Component { Type Output Name "i_C4_A" Show on Position [1700, 940] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "5" Show off } Parameter { Variable "Width" Value "-1" Show off } }
+    Component { Type Output Name "v_bus_V" Show on Position [1700, 980] Direction right Flipped off LabelPosition south Parameter { Variable "Index" Value "6" Show off } Parameter { Variable "Width" Value "-1" Show off } }
+    Connection { Type Wire SrcComponent "Vrede" SrcTerminal 1 Points [140, 300] Branch { Points [60, 300] DstComponent "Vm_rede" DstTerminal 1 } Branch { Points [140, 220; 210, 220] DstComponent "SS2" DstTerminal 1 } }
+    Connection { Type Wire SrcComponent "Vrede" SrcTerminal 2 Points [140, 380] Branch { Points [60, 380] DstComponent "Vm_rede" DstTerminal 2 } Branch { Points [140, 480] DstComponent "GND_rede" DstTerminal 1 } Branch { Points [550, 380; 550, 355] DstComponent "T1" DstTerminal 2 } }
+    Connection { Type Wire SrcComponent "SS2" SrcTerminal 2 Points [290, 220; 320, 220] DstComponent "Am_rede" DstTerminal 1 }
+    Connection { Type Wire SrcComponent "Am_rede" SrcTerminal 2 Points [400, 220; 430, 220] DstComponent "R_T1" DstTerminal 1 }
+    Connection { Type Wire SrcComponent "R_T1" SrcTerminal 2 Points [510, 220; 510, 330; 550, 330; 550, 325] DstComponent "T1" DstTerminal 1 }
+    Connection { Type Wire SrcComponent "T1" SrcTerminal 3 Points [610, 325; 610, 380; 720, 380] Branch { DstComponent "Am_D1" DstTerminal 1 } Branch { Points [720, 460] DstComponent "D2" DstTerminal 2 } }
+    Connection { Type Wire SrcComponent "Am_D1" SrcTerminal 2 Points [720, 300; 720, 210] DstComponent "D1" DstTerminal 1 }
+    Connection { Type Wire SrcComponent "T1" SrcTerminal 4 Points [610, 355; 610, 350; 700, 350; 700, 210; 900, 210] Branch { DstComponent "D3" DstTerminal 1 } Branch { Points [900, 460] DstComponent "D4" DstTerminal 2 } }
+    Connection { Type Wire SrcComponent "D1" SrcTerminal 2 Points [720, 130; 900, 130] Branch { DstComponent "D3" DstTerminal 2 } Branch { Points [900, 110; 970, 110] DstComponent "Am_ponte" DstTerminal 1 } }
+    Connection { Type Wire SrcComponent "D2" SrcTerminal 1 Points [720, 540] Branch { Points [900, 540] DstComponent "D4" DstTerminal 1 } Branch { Points [1220, 540; 1220, 440] Branch { DstComponent "C4" DstTerminal 2 } Branch { Points [1320, 440] Branch { Points [1320, 380] Branch { DstComponent "Vm_bus" DstTerminal 2 } Branch { Points [1420, 380] DstComponent "R_eq" DstTerminal 2 } } Branch { Points [1320, 680] DstComponent "GND_bus" DstTerminal 1 } } } }
+    Connection { Type Wire SrcComponent "Am_ponte" SrcTerminal 2 Points [1050, 110; 1070, 110] DstComponent "Rbus" DstTerminal 1 }
+    Connection { Type Wire SrcComponent "Rbus" SrcTerminal 2 Points [1150, 110; 1150, 120] Branch { Points [1220, 120] DstComponent "Am_C4" DstTerminal 1 } Branch { Points [1320, 120; 1320, 300] Branch { DstComponent "Vm_bus" DstTerminal 1 } Branch { Points [1420, 300] DstComponent "R_eq" DstTerminal 1 } } }
+    Connection { Type Wire SrcComponent "Am_C4" SrcTerminal 2 Points [1220, 200; 1220, 240] DstComponent "ESR_C4" DstTerminal 1 }
+    Connection { Type Wire SrcComponent "ESR_C4" SrcTerminal 2 Points [1220, 320; 1220, 360] DstComponent "C4" DstTerminal 1 }
+    Connection { Type Signal SrcComponent "SS2_fechada" SrcTerminal 1 Points [290, 60; 290, 260; 250, 260] DstComponent "SS2" DstTerminal 3 }
+    Connection { Type Signal SrcComponent "Vm_rede" SrcTerminal 3 Points [100, 340; 100, 780; 1670, 780] DstComponent "v_rede_V" DstTerminal 1 }
+    Connection { Type Signal SrcComponent "Am_rede" SrcTerminal 3 Points [360, 260; 360, 820; 1670, 820] DstComponent "i_rede_A" DstTerminal 1 }
+    Connection { Type Signal SrcComponent "Am_D1" SrcTerminal 3 Points [680, 340; 680, 860; 1670, 860] DstComponent "i_D1_A" DstTerminal 1 }
+    Connection { Type Signal SrcComponent "Am_ponte" SrcTerminal 3 Points [1010, 150; 1010, 900; 1670, 900] DstComponent "i_ponte_A" DstTerminal 1 }
+    Connection { Type Signal SrcComponent "Am_C4" SrcTerminal 3 Points [1260, 160; 1260, 940; 1670, 940] DstComponent "i_C4_A" DstTerminal 1 }
+    Connection { Type Signal SrcComponent "Vm_bus" SrcTerminal 3 Points [1360, 340; 1360, 980; 1670, 980] DstComponent "v_bus_V" DstTerminal 1 }
   }
 }

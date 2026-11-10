@@ -22,11 +22,13 @@ Cada arquivo termina apontando o seguinte.
 |---|---|
 | `calculos.py` | Refaz toda a planilha, a auditoria e os Bodes, sem simular a dinâmica dos conversores |
 | `calculos/parametros.json` | Fonte numérica única para os modelos e o artigo |
-| `calculos/auditoria.csv` e `.json` | 49 itens auditados (local, impresso, recalculado, decisão, justificativa) |
+| `calculos/auditoria.csv` e `.json` | 50 itens auditados (local, impresso, recalculado, decisão, justificativa) |
 | `calculos/figuras/` | Bodes da planta, do compensador e do laço; α(K); ondulação de Lo; ganho do CC-CC |
-| `inspecionar_biblioteca.py`, `blocos_biblioteca.json` | Sintaxe literal dos blocos do PLECS 5.0 instalado |
-| `../simulação PLECS/gerar_modelos.py` | Escreve os quatro modelos `.plecs`, `modelos.json` e `ensaios.json` |
+| `inspecionar_biblioteca.py`, `blocos_biblioteca.json` | Sintaxe literal e geometria dos terminais dos blocos do PLECS 5.0 instalado |
+| `../simulação PLECS/gerar_modelos.py` | Escreve os cinco modelos `.plecs`, `modelos.json` e `ensaios.json` |
+| `../simulação PLECS/roteador.py` | Calcula os `Points` de cada fio, ortogonais e sem passar sobre blocos |
 | `../simulação PLECS/conferir_modelos.py` | Conferência estrutural dos modelos e do C-Script, sem PLECS |
+| `../simulação PLECS/conferir_conexoes.py` | Compara o layout novo com `layout_anterior/`: componentes, nós e geometria |
 | `../resultados PLECS/executar_ensaios.py` | Executor por XML-RPC, só biblioteca padrão |
 | `../resultados PLECS/analisar_resultados.py` | Métricas, comparação com os valores analíticos e gráficos |
 | `verificar_entrega.py` | Conferência final de hashes, figuras, formato do artigo e números |

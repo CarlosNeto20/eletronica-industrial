@@ -416,10 +416,12 @@ for Vi in (42.0, 56.0):
     D = D_para(Vi)
     Ii = cc['Pob'] / Vi
     dI = Vi * (2 * D - 1) / (2 * cc['fsb'] * cc['Lb_adot'])
+    # A chave aberta tem o dreno grampeado em VC8 pelo seu proprio diodo (D17 ou D18), de modo
+    # que bloqueia VC8 e nao VC8/2; os VC8/2 sao a tensao sobre cada enrolamento do primario.
     pontos_cc[str(int(Vi))] = dict(D=D, VC8=Vi / (1 - D), VC7=n * Vi / (2 * (1 - D)), Vbus=ganho(D) * Vi,
                                    Iib=Ii, Iib_com_eta095=Ii / eta_cc_H, dILb_pp=dI, ILb_pico=Ii + dI / 2,
-                                   V_chave=Vi / (2 * (1 - D)), V_D17_D18=Vi / (1 - D), V_ponte_sec=n * Vi / (2 * (1 - D)),
-                                   I_chave_media=Ii / 2)
+                                   V_chave=Vi / (1 - D), V_Np=Vi / (2 * (1 - D)), V_D17_D18=Vi / (1 - D),
+                                   V_ponte_sec=n * Vi / (2 * (1 - D)), I_chave_media=Ii / 2)
 ripple_bus_bat = cc['Pob'] / (2 * pi * E['fo'] * C1_adot * cc['Vob'])
 log('CC-CC:', {k: r(v) for k, v in cc.items()})
 log('CC-CC pontos:', {k: {a: r(b) for a, b in v.items()} for k, v in pontos_cc.items()})
@@ -429,6 +431,10 @@ aud('p.16', 'dIibmax = 0,2*Iibmax', 10.714, cc['dIibmax'], 'Mantido', 'Confere.'
 aud('p.16, sec. 5.3', 'Lb = Vib(2D-1)/(2 fsb dI)', 3.92e-5, cc['Lb'], 'Mantido', 'Confere; indutor ve 2fsb na regiao D > 0,5 da celula de tres estados.', 'H')
 aud('p.16', 'VC1 = Vib/(1-D) (capacitor inferior)', 140, cc['VC1'], 'Mantido', 'Confere; e o C8 do Anexo 01.', 'V')
 aud('p.16', 'VNp = VC1/2', 70, cc['VNp'], 'Mantido', 'Confere.', 'V')
+aud('p.16, sec. 5', 'Tensao de bloqueio de S1 e S2', 70, pontos_cc['42']['V_chave'], 'Corrigido',
+    'Os 70 V sao a tensao sobre cada enrolamento do primario, nao a das chaves. Na etapa em que so uma chave '
+    'conduz, o dreno da chave aberta e grampeado em VC8 pelo seu proprio diodo, logo ela bloqueia VC8 = 140 V. '
+    'O PLECS mede 142 V de pico sobre S1 no ensaio elev_42.', 'V')
 aud('p.17', 'a = VSec/VNp', 1, cc['a'], 'Mantido', 'Vob = VC8 + VC7 = 140 + 70 = 210 V: o retificador do secundario empilha C7 sobre C8.', '')
 aud('p.16', 'Razao ciclica a 56 V', 'nao calculada', cc['D_56'], 'Complementado', 'D = 1 - 1,5*56/210 = 0,60, ainda acima de 0,5.', '')
 aud('p.16 e p.6', 'Vob = 210 V frente ao vale do retificador', 210, Vimin_cc, 'Registrado',

@@ -1,0 +1,50 @@
+{
+ "referencia": "layout_anterior",
+ "modelos": {
+  "retificador_barramento": {
+   "componentes": 27,
+   "nos_eletricos": 14,
+   "nos_de_sinal": 7,
+   "saidas": 6,
+   "diferencas": {},
+   "segmentos_em_diagonal": [],
+   "segmentos_sobre_bloco": []
+  },
+  "elevador_bateria": {
+   "componentes": 55,
+   "nos_eletricos": 25,
+   "nos_de_sinal": 15,
+   "saidas": 11,
+   "diferencas": {},
+   "segmentos_em_diagonal": [],
+   "segmentos_sobre_bloco": []
+  },
+  "elevador_sem_amortecedor": {
+   "componentes": 49,
+   "nos_eletricos": 22,
+   "nos_de_sinal": 15,
+   "saidas": 11,
+   "diferencas": {},
+   "segmentos_em_diagonal": [],
+   "segmentos_sobre_bloco": []
+  },
+  "inversor_malha_fechada": {
+   "componentes": 49,
+   "nos_eletricos": 17,
+   "nos_de_sinal": 21,
+   "saidas": 12,
+   "diferencas": {},
+   "segmentos_em_diagonal": [],
+   "segmentos_sobre_bloco": []
+  },
+  "nobreak_completo": {
+   "componentes": 115,
+   "nos_eletricos": 50,
+   "nos_de_sinal": 38,
+   "saidas": 25,
+   "diferencas": {},
+   "segmentos_em_diagonal": [],
+   "segmentos_sobre_bloco": []
+  }
+ }
+}

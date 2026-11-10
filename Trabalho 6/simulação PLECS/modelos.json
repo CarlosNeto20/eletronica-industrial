@@ -19,7 +19,10 @@
    ],
    "componentes": 27,
    "fios": 14,
-   "sinais": 7
+   "sinais": 7,
+   "largura": 1820,
+   "altura": 1100,
+   "zoom": 0.745
   },
   "elevador_bateria": {
    "arquivo": "elevador_bateria.plecs",
@@ -39,7 +42,10 @@
    ],
    "componentes": 55,
    "fios": 25,
-   "sinais": 15
+   "sinais": 15,
+   "largura": 2660,
+   "altura": 1880,
+   "zoom": 0.436
   },
   "elevador_sem_amortecedor": {
    "arquivo": "elevador_sem_amortecedor.plecs",
@@ -59,7 +65,10 @@
    ],
    "componentes": 49,
    "fios": 22,
-   "sinais": 15
+   "sinais": 15,
+   "largura": 2660,
+   "altura": 1880,
+   "zoom": 0.436
   },
   "inversor_malha_fechada": {
    "arquivo": "inversor_malha_fechada.plecs",
@@ -80,7 +89,10 @@
    ],
    "componentes": 49,
    "fios": 17,
-   "sinais": 21
+   "sinais": 21,
+   "largura": 2340,
+   "altura": 1890,
+   "zoom": 0.434
   },
   "nobreak_completo": {
    "arquivo": "nobreak_completo.plecs",
@@ -114,7 +126,10 @@
    ],
    "componentes": 115,
    "fios": 50,
-   "sinais": 38
+   "sinais": 38,
+   "largura": 3920,
+   "altura": 3460,
+   "zoom": 0.237
   }
  }
 }

@@ -4,7 +4,7 @@ Este guia permite refazer do zero todos os modelos e ensaios. Ele descreve o amb
 
 ## 1. Ambiente e versão
 
-O arquivo-base `simulação PLECS/arquivo_exemplo.plecs` declara o formato `Version "5.0"` e permanece intacto (SHA-256 13c61562adcebe923f7799adee904e8f76fc7c3670352634d84cefb713cb2f9a). A instalação usada é o PLECS Standalone 5.0 de 64 bits em `C:\Users\Carlos Neto\Documents\Plexim\PLECS 5.0 (64 bit)`; o Trabalho 4 registrou a versão 5.0.6 nessa mesma instalação. Não é preciso MATLAB nem PSIM.
+O arquivo-base `simulação PLECS/arquivo_exemplo.plecs` declara o formato `Version "5.0"` e permanece intacto (SHA-256 13c61562adcebe923f7799adee904e8f76fc7c3670352634d84cefb713cb2f9a). Os modelos foram gerados e executados no PLECS Standalone 5.0.3 de 64 bits instalado em `C:\Users\josem\OneDrive - L2M Power Electronics\Documentos\Plexim\PLECS 5.0 (64 bit)`; a primeira rodada de 9 de novembro usou a mesma versão 5.0 numa segunda máquina, em `C:\Users\Carlos Neto\Documents\Plexim\PLECS 5.0 (64 bit)`. O caminho da instalação entra em `desenvolvimento/inspecionar_biblioteca.py` e em nenhum outro lugar. Não é preciso MATLAB nem PSIM.
 
 O Python tem três papéis, nenhum deles de simulador. Ele gera os arquivos `.plecs` como texto, chama o solver do PLECS pela interface XML-RPC e pós-processa os CSVs retornados. O executor usa só a biblioteca padrão; o gerador e o analisador precisam de numpy e matplotlib.
 
@@ -13,10 +13,12 @@ O Python tem três papéis, nenhum deles de simulador. Ele gera os arquivos `.pl
 Todos os comandos são executados na pasta Trabalho 6. No PowerShell, `$taskPython` pode ser o Python usado no Trabalho 4 ou qualquer Python 3.
 
 ```powershell
-$taskPython = 'C:\Users\Carlos Neto\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
+$taskPython = 'python'
+& $taskPython 'desenvolvimento\inspecionar_biblioteca.py'        # sintaxe e geometria dos blocos do PLECS
 & $taskPython 'desenvolvimento\calculos.py'                      # parametros.json, auditoria e Bodes
 & $taskPython 'simulação PLECS\gerar_modelos.py'                 # cinco modelos, modelos.json e ensaios.json
 & $taskPython 'simulação PLECS\conferir_modelos.py'              # conferência estrutural, sem PLECS
+& $taskPython 'simulação PLECS\conferir_conexoes.py'             # layout novo contra layout_anterior
 & $taskPython 'resultados PLECS\executar_ensaios.py' --teste     # carrega cada modelo e simula 2 ms
 & $taskPython 'resultados PLECS\executar_ensaios.py' --grupo diagnostico --grupo submodelo
 & $taskPython 'resultados PLECS\executar_ensaios.py' --todos     # matriz completa
@@ -51,6 +53,28 @@ Tipos nativos usados (biblioteca do PLECS 5.0): ACVoltageSource, DCVoltageSource
 - **CC-CC.** Bateria ideal Vbat, amperímetro, Lb e derivação central de T_32 (Transformer [2 1], relação [1 1 1], magnetização de 10 mH). O primeiro enrolamento tem o ponto do lado de S1 e o segundo tem o ponto na derivação, em série aditiva; cada enrolamento tem 1 µH e 1 mΩ em série. S1 e S2 (MosfetWithDiode, 10 mΩ) vão ao negativo comum; D17 e D18 levam as extremidades ao ponto médio entre C8 (embaixo) e C7 (em cima). O terceiro enrolamento alimenta a ponte D13 a D16, com anodos de D15 e D16 no ponto médio e catodos de D13 e D14 no barramento positivo. Os comandos vêm de duas dentes de serra de 0 a 1 em fsb, a segunda atrasada de meio período, comparadas com a razão cíclica (ou com −1 quando o conversor está desabilitado). Em paralelo com S1, com S2 e com o secundário de T_32 há um ramo RC de 33 Ω e 1 nF (seção 5).
 - **Inversor.** Quatro MosfetWithDiode de 50 mΩ. O braço A alimenta Lo por um amperímetro; Co com 5 mΩ, o voltímetro de saída e as cargas voltam ao braço B. Um amperímetro de saída antecede três ramos com chaves: resistivo (Rres), RL de 3 kVA (3,086 Ω e 8,351 mH) e não linear (0,2 Ω, ponte de diodos, 1880 µF com 0,05 Ω e 9,5 Ω).
 - **Controle.** O C-Script `Controle` recebe vo e produz, nesta ordem, vc limitado a ±5 V, vref, o comando de SS2, a razão cíclica do CC-CC (Db ou −1), os comandos das três cargas e vc sem limite. O modulador compara vc com as portadoras A e B (−5 V a +5 V, 20 kHz, a segunda atrasada de 25 µs). QA_sup liga quando vc > portadora A, QA_inf no complemento, QB_inf liga quando vc > portadora B e QB_sup no complemento.
+
+### Layout dos esquemas
+
+Até a primeira rodada o gerador escrevia cada `Connection` apenas com origem, destino e `Branch`, sem pontos de passagem, e posicionava os blocos com coordenadas soltas. Sem pontos de passagem o PLECS liga os dois terminais por uma reta, o que produzia fios diagonais cruzando o desenho e passando sobre blocos. O layout foi refeito, sem mexer em nenhuma ligação.
+
+A geometria de cada tipo de bloco foi medida na própria instalação do PLECS por `desenvolvimento/inspecionar_biblioteca.py`, que lê os 238 arquivos `.plecs` de `demos`, `examples`, `components.plecs` e afins. Num arquivo gravado pelo PLECS, cada conexão é uma polilinha formada pelo terminal de origem, pelos `Points` e pelo terminal de destino, com todos os segmentos ortogonais; os `Points` estão no arquivo e os dois extremos não. Cada extremo impõe então, contra o ponto vizinho p, que `posição.x + deslocamento.x = p.x` ou que `posição.y + deslocamento.y = p.y`. Levando cada medida ao referencial do bloco (`Direction` gira, `Flipped` espelha ao longo do eixo do bloco e troca as duas pontas), as quatro direções somam evidência sobre o mesmo deslocamento e sobra um único candidato. O lado de cada terminal sai de uma votação à parte: num esquema limpo o fio não atravessa o corpo do bloco, de modo que o ponto vizinho está do mesmo lado que o terminal. O resultado, com o número de restrições e de votos de cada terminal, fica em `desenvolvimento/blocos_biblioteca.json`.
+
+A medida mostra que, no referencial do bloco, todo bipolo tem o terminal 1 em +20 e o terminal 2 em −20 ao longo do eixo; a saída de sinal de amperímetro e voltímetro fica em (0, 15); o gate do MOSFET em (0, −35) e o da chave em (0, 20); o terminal do Ground em (20, 0); a saída do Constant em (15, 0) e a entrada do Output em (−10, 0); o comparador tem as entradas em y = −5 e y = +5 e a saída em y = 0. O transformador e o C-Script mudam de tamanho com os parâmetros: num lado com n enrolamentos, o enrolamento k tem centro em y = (k − (n+1)/2)·40 e terminais em centro ∓15, com o lado 1 em x = +10 e o lado 2 em x = −10; as portas do C-Script ficam com passo de 20, centradas, entradas à esquerda e saídas à direita.
+
+Com essa geometria, `gerar_modelos.py` posiciona os blocos em grade de 10, por grupos funcionais e com o fluxo de potência da esquerda para a direita: rede, SS2, T1 e ponte à esquerda; barramento C4 no centro; inversor, filtro LC e cargas à direita; CC-CC da bateria numa faixa abaixo; modulação, PWM e C-Script numa faixa inferior separada; terminais Output numa coluna à direita, com as ordenadas numa faixa livre entre o circuito de potência e o CC-CC, de modo que os sinais não atravessem o circuito. O barramento positivo ocupa uma linha horizontal no alto e o negativo uma linha embaixo; os medidores ficam ao lado do elemento medido e os ramos em derivação são verticais. A escolha de `Direction` e de `Flipped` de cada bloco segue o papel dos seus terminais no circuito, para que o terminal a montante seja desenhado do lado de onde vem o fio.
+
+Os `Points` são calculados por `simulação PLECS/roteador.py`. Cada terminal ganha um trecho inicial no sentido em que aponta, com comprimento tal que o fim do trecho caia na grade de roteamento; o miolo do caminho é procurado por A\* com custo 1 por passo, 4 por mudança de direção e 8 por andar junto de um fio de outra rede, tendo as caixas dos blocos como obstáculos. Num nó com mais de dois terminais os terminais entram um a um, partindo de todos os pontos já ligados ao nó com custo zero, o que produz uma árvore com tronco comum em vez de uma estrela; os caminhos são depois fundidos por prefixo comum e viram a árvore `Connection`/`Branch` do arquivo. Nenhum bloco Goto, From ou novo foi acrescentado, porque isso mudaria a lista de componentes.
+
+### Conferência das ligações
+
+Os cinco arquivos anteriores à reorganização estão em `simulação PLECS/layout_anterior/`, fora do manifesto, só como referência. `simulação PLECS/conferir_conexoes.py` compara cada modelo novo com o antigo e falha se houver qualquer diferença em:
+
+- o conjunto de componentes, cada um como tipo, nome e parâmetros ordenados (`Position`, `Direction`, `Flipped` e `LabelPosition` ficam de fora de propósito, porque são desenho);
+- o conjunto de nós elétricos e o de nós de sinal, cada nó como o conjunto de pares (componente, terminal) que ele liga, unidos pelas componentes conexas do grafo de pinos, de modo que a comparação não dependa de como as conexões foram quebradas em `Branch`;
+- os terminais Output de nível superior e o índice de cada bloco Output.
+
+O mesmo programa refaz a posição de cada terminal com a tabela usada na geração e confere, em todos os segmentos de todas as polilinhas, inclusive o trecho entre o último `Points` e o terminal, que o segmento é horizontal ou vertical e que não entra na caixa de nenhum bloco alheio à conexão. O resultado fica em `simulação PLECS/conferencia_conexoes.json`.
 
 ## 5. Parâmetros e hipóteses de simulação
 
@@ -174,3 +198,7 @@ Primeira rodada no PLECS (9 de novembro de 2026, 18h29, horário de Brasília). 
 Correções feitas no gerador antes da segunda rodada: todas as saídas de medidores e do C-Script passam a ser exportadas em todos os modelos; os subcircuitos do modelo completo foram reposicionados sem sobreposição; o gerador verifica terminais e posições antes de gravar; o executor passou a enviar `SolverOpts.Timeout`; o CC-CC ganhou os ramos RC da seção 5. O modelo do retificador não mudou (mesmo hash), e seus três ensaios foram preservados.
 
 O grupo `diagnostico` compara o CC-CC sem e com os ramos RC em ensaios curtos (5 ms e 20 ms), em regime e na partida com corrente nula em Lb, situação em que os ramos de S1 e S2 entram em condução descontínua. O resultado desse grupo indica se o travamento vinha de nós flutuantes e se a correção resolve; ele é relatado em [08](08-resultados.md).
+
+Segunda rodada (9 de novembro de 2026, 22h58 a 23h20, horário de Brasília), depois da reorganização do layout. O `--teste` carregou e simulou 2 ms dos cinco modelos sem erro, o que é a validação do novo desenho pelo próprio PLECS. O `--todos` executou 70 dos 71 ensaios e registrou uma falha, o `diag_cc_sem_20ms`, que estourou os 90 s de limite; o mesmo caso com os ramos RC terminou em 2,8 s, o que confirma a hipótese dos nós de comutação sem capacitância. Os tempos por ensaio foram de 0,5 s no retificador, 11 s no elevador, 1,7 s a 9,7 s no inversor, 48 s a 103 s no modelo completo e 25 s por lote de onze simulações paralelas nas curvas de regulação com rede, contra 404 s por lote em modo bateria.
+
+Três correções saíram desta rodada. A primeira é a tensão de bloqueio das chaves do CC-CC, que a tabela de [06](06-conversor-cc-cc-elevador.md) dava como VC8/2 e que o PLECS mediu igual a VC8; o item entrou na auditoria, que passou a ter 50 linhas, e a seleção de componentes em [09](09-componentes-e-melhorias.md) foi revista. A segunda é a janela `depois` do ensaio `inv_degrau_2116`, que terminava além do tempo simulado e contaminava o valor eficaz; a janela foi corrigida, o ensaio reexecutado e uma verificação automática passou a conferir que toda janela cabe dentro do tempo de cada ensaio. A terceira são três defeitos de legenda e de rótulo nos gráficos, listados em `artigo/qa/revisao_visual.md`. A correção dos parâmetros não alterou nenhum modelo: os cinco hashes permaneceram iguais, de modo que os ensaios já executados continuaram válidos.

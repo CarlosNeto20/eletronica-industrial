@@ -16,7 +16,7 @@ Este arquivo reúne uma seleção preliminar de componentes e a avaliação das 
 
 ## 3. Conversor CC-CC
 
-**Chaves.** As chaves bloqueiam 70 V e conduzem, em média, metade da corrente da bateria (27 A a 28 A, com picos de cerca de 60 A). Um MOSFET de 150 V com resistência de alguns miliohms é adequado. O IRFP4568 (150 V, 5,9 mΩ máximos, 171 A, TO-247AC) atende eletricamente, mas consta como produto em fim de vida em distribuidores; um equivalente atual da mesma classe deve ser escolhido no momento da compra.
+**Chaves.** A tensão de bloqueio foi corrigida depois da simulação: as chaves veem VC8, isto é, 140 V, e não os 70 V que a tabela da primeira versão trazia, porque o dreno da chave aberta é grampeado em VC8 pelo seu próprio diodo (ver [06](06-conversor-cc-cc-elevador.md) e a auditoria). O PLECS mediu 142 V de pico sobre S1 no ensaio `elev_42`, já com a oscilação do ramo RC. Elas conduzem, em média, metade da corrente da bateria (27 A a 28 A, com picos de cerca de 60 A). Isso descarta a classe de 150 V, em que o IRFP4568 indicado antes ficaria com menos de 6% de margem sobre o pico medido. A recomendação preliminar passa a ser a classe de 200 V em TO-247, com resistência de condução da ordem de 10 mΩ, que é a adotada na simulação; o código específico do fabricante fica como pendência, porque os dados de catálogo desta seção foram conferidos para a seleção anterior e não para a nova.
 
 **Diodos D17 e D18.** Bloqueiam 140 V e entregam a corrente da etapa de uma chave aberta. O STTH6002CW (ST, dois diodos ultrarrápidos de 30 A e 200 V com catodo comum em TO-247, trr típico de 22 ns) encaixa diretamente na célula, porque D17 e D18 têm catodo comum no ponto médio entre C7 e C8.
 

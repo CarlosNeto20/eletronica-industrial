@@ -64,14 +64,15 @@ A potência de 2250 W é a de saída do CC-CC e Iibmax não inclui as perdas do 
 |---|---|---|
 | VC8 e tensão reversa de D17 e D18 (V) | 140 | 140 |
 | VC7 e tensão reversa dos diodos D13 a D16 (V) | 70 | 70 |
-| Tensão de bloqueio de S1 e S2, VC8/2 (V) | 70 | 70 |
+| Tensão sobre cada enrolamento do primário, VC8/2 (V) | 70 | 70 |
+| Tensão de bloqueio de S1 e S2, VC8 (V) | 140 | 140 |
 | Corrente média na bateria, sem η (A) | 53,57 | 40,18 |
 | Corrente média com η = 0,95 (A) | 56,39 | 42,29 |
 | Ondulação ΔILb (A) | 10,71 | 7,14 |
 | Pico em Lb, sem η (A) | 58,93 | 43,75 |
 | Corrente média por chave, sem η (A) | 26,79 | 20,09 |
 
-A tensão nas chaves é só um terço do barramento, o que permite MOSFETs de 100 V a 150 V com baixa resistência de condução. As correntes eficazes nas chaves e nos diodos dependem da distribuição entre primários e secundário durante cada etapa e da dispersão do transformador; elas são medidas no PLECS em vez de estimadas por fórmulas simplificadas.
+Uma correção importante em relação à primeira versão deste arquivo. A tensão de bloqueio das chaves é VC8, e não VC8/2. Na etapa em que só uma chave conduz, o dreno da chave aberta é grampeado em VC8 pelo seu próprio diodo (D17 ou D18), como a própria descrição das etapas na seção 3 já dizia; os 70 V são a tensão sobre cada enrolamento do primário, que é outra grandeza. O erro estava na tabela e no texto, não na dedução. A simulação mediu 142 V de pico sobre S1 no ensaio `elev_42`, o que confirma a correção e está registrado na auditoria. A consequência prática é que as chaves veem dois terços do barramento, e não um terço: ainda é a vantagem central da célula de três estados frente a um boost simples, que exigiria 210 V, mas exige MOSFETs de 200 V e não de 100 V a 150 V. As correntes eficazes nas chaves e nos diodos dependem da distribuição entre primários e secundário durante cada etapa e da dispersão do transformador; elas são medidas no PLECS em vez de estimadas por fórmulas simplificadas.
 
 ## 6. Barramento em modo bateria
 

@@ -3,8 +3,8 @@
  "descricao": "Diagnostico do CC-CC (sem amortecedores RC), 5 ms, corrente inicial em Lb de 0.0 A",
  "grupo": "diagnostico",
  "modelo": "elevador_sem_amortecedor",
- "sha256_modelo": "e5725462edf19b82beaaa0f8101bc5683f2807bb60c46e8367ebc61ce06561fe",
- "inicio": "2026-11-09T19:02:34-03:00",
+ "sha256_modelo": "d054fbcafa6bc5e375118703dce0858016fd3188073fed3afd0ddcb621b05556",
+ "inicio": "2026-11-09T23:00:10-03:00",
  "PLECS": "PLECS Standalone 5.0 (64 bit), formato 5.0; 5.0.6 segundo o registro do Trabalho 4",
  "opcoes": {
   "ModelVars": {
@@ -43,7 +43,7 @@
   ]
  },
  "status": "executado",
- "duracao_real_s": 0.172,
+ "duracao_real_s": 0.206,
  "amostras": 501,
  "colunas": [
   "tempo_s",
@@ -62,5 +62,5 @@
  "sha256_csv": "1755e58723e47020bd3788c3b6d10d2da570a431fe08950be9b0dfc91f6852d7",
  "tempo_inicial_s": 0.0,
  "tempo_final_s": 0.005,
- "fim": "2026-11-09T19:02:35-03:00"
+ "fim": "2026-11-09T23:00:10-03:00"
 }

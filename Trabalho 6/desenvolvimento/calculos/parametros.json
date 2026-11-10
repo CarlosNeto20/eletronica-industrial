@@ -1,9 +1,9 @@
 {
  "meta": {
   "trabalho": "Trabalho 6 - No-break dupla conversao 3 kVA",
-  "gerado_em": "2026-11-09T21:54:16+00:00",
-  "python": "3.10.12",
-  "numpy": "2.2.6",
+  "gerado_em": "2026-11-09T23:22:52-03:00",
+  "python": "3.14.3",
+  "numpy": "2.4.2",
   "script": "desenvolvimento/calculos.py",
   "classes": {
    "F": "dado do professor (pagina)",
@@ -666,7 +666,8 @@
     "Iib_com_eta095": 56.39097744,
     "dILb_pp": 10.71428571,
     "ILb_pico": 58.92857143,
-    "V_chave": 70.0,
+    "V_chave": 140.0,
+    "V_Np": 70.0,
     "V_D17_D18": 140.0,
     "V_ponte_sec": 70.0,
     "I_chave_media": 26.78571429
@@ -680,7 +681,8 @@
     "Iib_com_eta095": 42.29323308,
     "dILb_pp": 7.142857143,
     "ILb_pico": 43.75,
-    "V_chave": 70.0,
+    "V_chave": 140.0,
+    "V_Np": 70.0,
     "V_D17_D18": 140.0,
     "V_ponte_sec": 70.0,
     "I_chave_media": 20.08928571

@@ -3,8 +3,8 @@
  "descricao": "Inversor a 211,57 V, degrau de vazio para 2100 W no pico da tensao",
  "grupo": "submodelo",
  "modelo": "inversor_malha_fechada",
- "sha256_modelo": "d7424ff76a4d427ea5dd3743d1dbde7cf3bdd39fd2403c2e6d0b7a1be79ca248",
- "inicio": "2026-11-09T19:03:25-03:00",
+ "sha256_modelo": "2ed9250a0a8f328a305258e5dcfc3a5d64269835ba029a371b9fafb3293e01ec",
+ "inicio": "2026-11-09T23:25:45-03:00",
  "PLECS": "PLECS Standalone 5.0 (64 bit), formato 5.0; 5.0.6 segundo o registro do Trabalho 4",
  "opcoes": {
   "ModelVars": {
@@ -44,8 +44,8 @@
    0.05416666666666667
   ],
   "depois": [
-   0.0875,
-   0.12083333333333333
+   0.06666666666666668,
+   0.1
   ],
   "degrau": [
    0.05416666666666667,
@@ -53,7 +53,7 @@
   ]
  },
  "status": "executado",
- "duracao_real_s": 24.531,
+ "duracao_real_s": 9.459,
  "amostras": 15002,
  "colunas": [
   "tempo_s",
@@ -73,5 +73,5 @@
  "sha256_csv": "917819ede8df1ed0c4536f89d1cc815995624ac80b2c130defedae8556cfd12f",
  "tempo_inicial_s": 0.0,
  "tempo_final_s": 0.1,
- "fim": "2026-11-09T19:03:51-03:00"
+ "fim": "2026-11-09T23:25:55-03:00"
 }

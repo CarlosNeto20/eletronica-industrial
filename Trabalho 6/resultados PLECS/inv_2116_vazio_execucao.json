@@ -3,8 +3,8 @@
  "descricao": "Inversor com barramento ideal de 211.57 V, vazio",
  "grupo": "submodelo",
  "modelo": "inversor_malha_fechada",
- "sha256_modelo": "d7424ff76a4d427ea5dd3743d1dbde7cf3bdd39fd2403c2e6d0b7a1be79ca248",
- "inicio": "2026-11-09T19:03:17-03:00",
+ "sha256_modelo": "2ed9250a0a8f328a305258e5dcfc3a5d64269835ba029a371b9fafb3293e01ec",
+ "inicio": "2026-11-09T23:00:49-03:00",
  "PLECS": "PLECS Standalone 5.0 (64 bit), formato 5.0; 5.0.6 segundo o registro do Trabalho 4",
  "opcoes": {
   "ModelVars": {
@@ -49,7 +49,7 @@
   ]
  },
  "status": "executado",
- "duracao_real_s": 3.25,
+ "duracao_real_s": 1.554,
  "amostras": 17801,
  "colunas": [
   "tempo_s",
@@ -69,5 +69,5 @@
  "sha256_csv": "e976891ecebbf331872b83a8060bb331f3fa8682d4f2e79e95a3192d936d161f",
  "tempo_inicial_s": 0.0,
  "tempo_final_s": 0.1,
- "fim": "2026-11-09T19:03:21-03:00"
+ "fim": "2026-11-09T23:00:51-03:00"
 }

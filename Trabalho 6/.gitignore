@@ -2,7 +2,10 @@
 documento explicativo/
 desenvolvimento/extracao_restrita.txt
 desenvolvimento/qa_fonte/
-artigo/qa/
+# As imagens de conferencia do PDF do professor ficam fora; a revisao visual e texto proprio
+# e por isso e versionada (a negacao precisa do padrao com /*, senao o git nem entra na pasta).
+artigo/qa/*
+!artigo/qa/revisao_visual.md
 # Dados brutos grandes do PLECS (regeneraveis com resultados PLECS/executar_ensaios.py).
 resultados PLECS/*.csv
 resultados PLECS/*_rpc.json.gz
